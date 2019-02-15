@@ -6,6 +6,7 @@ import { Route, Switch, Redirect } from "react-router-dom";
 import { Header, Footer, Sidebar } from "components";
 
 import dashboardRoutes from "routes/dashboard.jsx";
+import { getcurrentuser } from "../../firebase";
 
 var ps;
 
@@ -15,6 +16,14 @@ class Dashboard extends React.Component {
       ps = new PerfectScrollbar(this.refs.mainPanel);
       document.body.classList.toggle("perfect-scrollbar-on");
     }
+    var res = getcurrentuser();
+    res
+      .then(user => {
+        console.log(user);
+      })
+      .catch(() => {
+        this.props.history.push("/login");
+      });
   }
   componentWillUnmount() {
     if (navigator.platform.indexOf("Win") > -1) {

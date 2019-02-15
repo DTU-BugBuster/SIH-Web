@@ -30,9 +30,10 @@ class Login extends Component {
   }
   confirmsotp(code) {
     var res = confirmotp(code);
+    var self = this;
     res.then(uid => {
       if (!this.state.ok) {
-        this.props.history.push("/dashboard");
+        this.props.history.push("/signin");
       } else {
         register(
           {
@@ -45,7 +46,7 @@ class Login extends Component {
           uid
         ).then(() => {
           console.log("dekh le");
-          this.props.history.push("/dashboard");
+          self.props.history.push("/signin");
         });
       }
     });
