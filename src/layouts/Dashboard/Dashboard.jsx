@@ -19,14 +19,7 @@ class Dashboard extends React.Component {
       document.body.classList.toggle("perfect-scrollbar-on");
     }
 
-    var res = getcurrentuser();
-    res
-      .then(user => {
-        console.log(user);
-      })
-      .catch(() => {
-        this.props.history.push("/login");
-      });
+    
     addResponseMessage("Welcome to this awesome chat!");
   }
   componentWillUnmount() {

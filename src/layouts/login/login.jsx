@@ -5,7 +5,8 @@ import {
   getcapcha,
   sendotp,
   confirmotp,
-  register
+  register,
+  checkIntialized
 } from "../../firebase";
 import { Alert } from "react-bootstrap";
 class Login extends Component {
@@ -25,7 +26,7 @@ class Login extends Component {
     this.handleDismiss = this.handleDismiss.bind(this);
   }
   componentDidMount() {
-    initializeFirebase();
+    
     getcapcha();
   }
   confirmsotp(code) {
@@ -63,7 +64,7 @@ class Login extends Component {
       return;
     }
 
-    var res = sendotp(this.state.password,true);
+    var res = sendotp(this.state.password, true);
     res
       .then(() => {
         console.log("sahi");
@@ -84,7 +85,7 @@ class Login extends Component {
       return;
     }
     console.log(this.state.password);
-    var res = sendotp(this.state.password,false);
+    var res = sendotp(this.state.password, false);
     res
       .then(() => {
         console.log("sahi");

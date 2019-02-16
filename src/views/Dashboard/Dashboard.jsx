@@ -27,8 +27,21 @@ import {
 } from "variables/charts.jsx";
 
 import { tasks } from "variables/general.jsx";
+import { getcurrentuser, askForPermissionToReceiveNotifications } from "../../firebase";
 
 class Dashboard extends React.Component {
+  componentDidMount()
+  {var res = getcurrentuser();
+    res
+      .then(user => {
+        console.log(user);
+        askForPermissionToReceiveNotifications();
+      })
+      .catch(() => {
+        this.props.history.push("/login");
+      });
+   
+  }
   render() {
     return (
       <div>

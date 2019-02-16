@@ -6,22 +6,27 @@ import {
 export const initializeFirebase = () => {
   firebase.initializeApp({
     apiKey: "AIzaSyDnmpCJ5ZNyIf_ylwkU2s4yPYfGDlcXoeI",
-    authDomain: "water-borne.firebaseapp.com",
+    authDomain: "waterborne.firebaseapp.com",
     databaseURL: "https://waterborne.firebaseio.com",
-    projectId: "water-borne",
-    storageBucket: "water-borne.appspot.com",
-    messagingSenderId: "193288626620"
+    projectId: "waterborne",
+    storageBucket: "waterborne.appspot.com",
+    messagingSenderId: "816644377710"
   });
-  window.recaptchaVerifier = new firebase.auth.RecaptchaVerifier("capcha", {
-    size: "normal",
-    callback: function (response) {
-      return response;
-    }
-  });
+
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker
+      .register('firebase-sw.js')
+      .then((registration) => {
+        firebase.messaging().useServiceWorker(registration);
+      });
+  }
+  console.log("done")
 };
 
 export const getcapcha = () => {
-  window.recaptchaVerifier.clear();
+  if (window.recaptchaVerifier) {
+    window.recaptchaVerifier.clear();
+  }
   window.recaptchaVerifier = new firebase.auth.RecaptchaVerifier("capcha", {
     size: "normal",
     callback: function (response) {
@@ -107,3 +112,22 @@ export const getcurrentuser = () => {
   });
   return myPromise;
 }
+
+export const askForPermissionToReceiveNotifications = async () => {
+  console.log("k");
+  try {
+    const messaging = firebase.messaging();
+    await messaging.requestPermission();
+    const token = await messaging.getToken();
+    console.log('user token:', token);
+    firebase.database().ref('users/' + firebase.auth().currentUser.uid).update({
+      token: token
+    })
+  } catch (error) {
+    console.error(error);
+  }
+};
+
+export const checkIntialized = () => {
+  return firebase.apps.length;
+};
