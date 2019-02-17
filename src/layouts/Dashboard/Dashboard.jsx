@@ -19,8 +19,6 @@ class Dashboard extends React.Component {
       document.body.classList.toggle("perfect-scrollbar-on");
     }
 
-    
-    addResponseMessage("Welcome to this awesome chat!");
   }
   componentWillUnmount() {
     if (navigator.platform.indexOf("Win") > -1) {
@@ -63,7 +61,6 @@ class Dashboard extends React.Component {
               );
             })}
           </Switch>
-          <button onClick={() => this.aisek()} />
           <Widget
             handleNewUserMessage={this.handleNewUserMessage}
             title="assistant"
