@@ -1,6 +1,14 @@
 import React from "react";
 import { Row, Col, Card, CardHeader, CardBody } from "reactstrap";
 // react plugin used to create google maps
+import { Line, Bar } from "react-chartjs-2";
+
+import {
+  dashboardPanelChart,
+  dashboardShippedProductsChart,
+  dashboardAllProductsChart,
+  dashboard24HoursPerformanceChart
+} from "../../variables/charts.jsx";
 
 import { PanelHeader } from "components";
 import {
@@ -21,18 +29,22 @@ class FullScreenMap extends React.Component {
         <PanelHeader size="sm" />
         <div className="content">
           <Row>
-            <Col xs={12}>
+            <Col>
               <Card>
                 <CardHeader>Google Maps</CardHeader>
                 <CardBody>
+                  <Row>
+                    <Col xs={6}>
                   <ComposableMap
-                    projectionConfig={{ scale: 1000 }}
+                    projectionConfig={{ scale: 1200 }}
+                    width={500}
+                    height={600}
                     style={{
-                      width: "100%",
-                      height: "auto"
+                      width: "auto",
+                      height: "100%"
                     }}
                   >
-                    <ZoomableGroup center={[95, 22]} disablePanning>
+                    <ZoomableGroup center={[82, 22]} disablePanning>
                       <Geographies geography="indiastates.json">
                         {(geographies, projection) =>{
                           return geographies.map((geography, i) => {
@@ -41,6 +53,7 @@ class FullScreenMap extends React.Component {
                                 key={i}
                                 geography={geography}
                                 projection={projection}
+                                onClick={()=>console.log(geography.properties)}
                                 style={{
                                   default: {
                                     fill: "#ECEFF1",
@@ -66,10 +79,22 @@ class FullScreenMap extends React.Component {
                         }
                         }
                       </Geographies>
+                      
                     </ZoomableGroup>
+                    
                   </ComposableMap>
+                  </Col>
+                  <Col xs={6}>
+                  <div className="chart-area">
+                    <Bar
+                      data={dashboard24HoursPerformanceChart.data}
+                      options={dashboard24HoursPerformanceChart.options}
+                    />
+                  </div></Col>
+                  </Row>
                 </CardBody>
               </Card>
+             
             </Col>
           </Row>
         </div>
