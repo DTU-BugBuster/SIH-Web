@@ -1,6 +1,13 @@
 import React, { Component } from "react";
 import axios from "axios";
-import { initializeFirebase, getcapcha, sendotp,confirmotp } from "../../firebase";
+import {
+  initializeFirebase,
+  getcapcha,
+  sendotp,
+  confirmotp,
+  register,
+  checkIntialized
+} from "../../firebase";
 import { Alert } from "react-bootstrap";
 class Login extends Component {
   constructor(props) {
@@ -19,8 +26,31 @@ class Login extends Component {
     this.handleDismiss = this.handleDismiss.bind(this);
   }
   componentDidMount() {
-    initializeFirebase();
+    
     getcapcha();
+  }
+  confirmsotp(code) {
+    var res = confirmotp(code);
+    var self = this;
+    res.then(uid => {
+      if (!this.state.ok) {
+        this.props.history.push("/signin");
+      } else {
+        register(
+          {
+            first_name: this.state.first_name,
+            last_name: this.state.last_name,
+            username: this.state.username,
+            email: this.state.email,
+            phone: this.state.password
+          },
+          uid
+        ).then(() => {
+          console.log("dekh le");
+          self.props.history.push("/signin");
+        });
+      }
+    });
   }
   sign() {
     let temp = this.state.ok;
@@ -33,17 +63,29 @@ class Login extends Component {
     if (!document.forms["registerform"].reportValidity()) {
       return;
     }
-    this.setState({
-      ok: false,
-      getotp: true
-    });
+
+    var res = sendotp(this.state.password, true);
+    res
+      .then(() => {
+        console.log("sahi");
+        this.setState({
+          getotp: true
+        });
+      })
+      .catch(() => {
+        getcapcha();
+        this.setState({
+          password: "",
+          show: true
+        });
+      });
   }
   onlogin() {
     if (!document.forms["loginform"].reportValidity()) {
       return;
     }
     console.log(this.state.password);
-    var res = sendotp(this.state.password);
+    var res = sendotp(this.state.password, false);
     res
       .then(() => {
         console.log("sahi");
@@ -53,7 +95,8 @@ class Login extends Component {
       })
       .catch(() => {
         this.setState({
-          password: ""
+          password: "",
+          show: true
         });
       });
   }
@@ -74,7 +117,7 @@ class Login extends Component {
       <div className="login container">
         {this.state.show ? (
           <Alert bsStyle="danger" onDismiss={this.handleDismiss}>
-            <p>Wrong username/password!</p>
+            <p>this phone number doesnt exist</p>
           </Alert>
         ) : (
           ""
@@ -142,7 +185,7 @@ class Login extends Component {
                   <input
                     style={{ padding: "10px 10px 10px 10px" }}
                     name="password"
-                    type="password"
+                    type="text"
                     className="form-controls"
                     placeholder="Enter the Phone Number"
                     value={this.state.password}
@@ -236,7 +279,7 @@ class Login extends Component {
               <button
                 type="button"
                 onClick={() => {
-                  confirmotp(this.state.otp);
+                  this.confirmsotp(this.state.otp);
                 }}
                 className="ok btn btn-primary"
               >

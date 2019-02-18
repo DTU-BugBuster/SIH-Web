@@ -6,15 +6,19 @@ import { Route, Switch, Redirect } from "react-router-dom";
 import { Header, Footer, Sidebar } from "components";
 
 import dashboardRoutes from "routes/dashboard.jsx";
+import { getcurrentuser } from "../../firebase";
+import { Widget, addResponseMessage } from "react-chat-widget";
+
+import "react-chat-widget/lib/styles.css";
 
 var ps;
-
 class Dashboard extends React.Component {
   componentDidMount() {
     if (navigator.platform.indexOf("Win") > -1) {
       ps = new PerfectScrollbar(this.refs.mainPanel);
       document.body.classList.toggle("perfect-scrollbar-on");
     }
+
   }
   componentWillUnmount() {
     if (navigator.platform.indexOf("Win") > -1) {
@@ -28,6 +32,9 @@ class Dashboard extends React.Component {
       document.scrollingElement.scrollTop = 0;
     }
   }
+  handleNewUserMessage = newMessage => {
+    console.log(`New message incoming! ${newMessage}`);
+  };
   render() {
     return (
       <div className="wrapper">
@@ -54,6 +61,11 @@ class Dashboard extends React.Component {
               );
             })}
           </Switch>
+          <Widget
+            handleNewUserMessage={this.handleNewUserMessage}
+            title="assistant"
+            subtitle="hello"
+          />
           <Footer fluid />
         </div>
       </div>

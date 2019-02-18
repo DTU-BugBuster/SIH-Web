@@ -8,9 +8,9 @@ import "assets/scss/now-ui-dashboard.css";
 import "assets/css/demo.css";
 
 import indexRoutes from "routes/index.jsx";
-
+import { initializeFirebase } from "./firebase";
+initializeFirebase();
 const hist = createBrowserHistory();
-
 ReactDOM.render(
   <Router history={hist}>
     <Switch>
