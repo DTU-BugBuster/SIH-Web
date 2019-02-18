@@ -23,6 +23,17 @@ import {
 const include = [1287];
 
 class FullScreenMap extends React.Component {
+constructor(props) {
+    super(props);
+    this.state = {
+
+      name: "",
+
+    };
+    this.handleChange = this.handleChange.bind(this);
+
+  }
+
   render() {
     return (
       <div>
@@ -53,7 +64,8 @@ class FullScreenMap extends React.Component {
                                 key={i}
                                 geography={geography}
                                 projection={projection}
-                                onClick={()=>console.log(geography.properties)}
+                                //onMouseOver={this.handleChange(geography.properties.ID_1)}
+                                onClick={this.handleChange(geography.properties.ID_1)}
                                 style={{
                                   default: {
                                     fill: "#ECEFF1",
@@ -79,13 +91,14 @@ class FullScreenMap extends React.Component {
                         }
                         }
                       </Geographies>
-                      
+
                     </ZoomableGroup>
-                    
+
                   </ComposableMap>
                   </Col>
                   <Col xs={6}>
                   <div className="chart-area">
+                  <p> ANDHRA PRADESH</p>
                     <Bar
                       data={dashboard24HoursPerformanceChart.data}
                       options={dashboard24HoursPerformanceChart.options}
@@ -94,12 +107,18 @@ class FullScreenMap extends React.Component {
                   </Row>
                 </CardBody>
               </Card>
-             
+
             </Col>
           </Row>
         </div>
       </div>
     );
+  }
+  handleChange(e){
+  console.log("matlab click hua hai")
+    this.setState({
+      name: e
+    });
   }
 }
 
