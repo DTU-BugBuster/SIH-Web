@@ -50,15 +50,15 @@ return <MP />;
 if (isLoggedIn==1321)
 return <WB />;
 if (isLoggedIn==1291)
-return <bihar />;
+return <Bihar />;
 if (isLoggedIn==1319)
 return <UP />;
 if (isLoggedIn==1315)
-return <rajasthan />;
+return <Rajasthan />;
 if (isLoggedIn==1298)
-return <gujarat />;
+return <Gujarat />;
 if (isLoggedIn==1307)
-return <maharastra />;
+return <Maharastra />;
 if (isLoggedIn==1288)
 return <AP />;
 if (isLoggedIn==1317)
@@ -76,9 +76,10 @@ return <Tripura />;
 if (isLoggedIn==1300)
 return <HP />;
 if (isLoggedIn==1314)
-return <punjab />;
+return <Punjab />;
+else
+return <h1>  </h1>
 
-return <Orissa />
 }
 class Orissa extends React.Component{
 render(){
@@ -121,7 +122,8 @@ function WB() {
            />;
          </div>
 }
-function bihar() {
+function Bihar() {
+console.log("entered bihar");
     return <div>
            <p>BIHAR</p>
            <Bar
@@ -139,7 +141,7 @@ function UP() {
            />;
          </div>
 }
-function rajasthan() {
+function Rajasthan() {
     return <div>
            <p>RAJASTHAN</p>
            <Bar
@@ -148,7 +150,7 @@ function rajasthan() {
            />;
          </div>
 }
-function gujarat() {
+function Gujarat() {
     return <div>
            <p>GUJARAT</p>
            <Bar
@@ -157,7 +159,7 @@ function gujarat() {
            />;
          </div>
 }
-function maharastra() {
+function Maharastra() {
     return <div>
            <p>MAHARASTRA</p>
            <Bar
@@ -238,7 +240,7 @@ function HP() {
            />;
          </div>
 }
-function punjab() {
+function Punjab() {
     return <div>
            <p>PUNJAB</p>
            <Bar
@@ -330,7 +332,6 @@ render() {
                   <Col xs={6}>
                   <div className="chart-area">
                   <Greeting isLoggedIn={this.state.name} />,
-                  
                   </div></Col>
                   </Row>
                 </CardBody>

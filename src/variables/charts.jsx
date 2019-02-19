@@ -404,7 +404,7 @@ const dashboard24HoursPerformanceChart = {
   options: {
     maintainAspectRatio: true,
     legend: {
-      display: false
+      display: true
     },
     tooltips: {
       bodySpacing: 4,
@@ -427,7 +427,7 @@ const dashboard24HoursPerformanceChart = {
       ],
       xAxes: [
         {
-          display: 0,
+          display: 1,
           ticks: {
             display: false
           },
@@ -436,7 +436,11 @@ const dashboard24HoursPerformanceChart = {
             drawTicks: false,
             display: false,
             drawBorder: false
-          }
+          },
+          scaleLabel: {
+        display: true,
+        labelString: 'Zones in arunachal pradesh'
+      }
         }
       ]
     },
@@ -545,7 +549,7 @@ const dashboard24HoursPerformanceChartAssam = {
   options: {
     maintainAspectRatio: true,
     legend: {
-      display: false
+      display: true
     },
     tooltips: {
       bodySpacing: 4,
@@ -568,7 +572,7 @@ const dashboard24HoursPerformanceChartAssam = {
       ],
       xAxes: [
         {
-          display: 0,
+          display: 1,
           ticks: {
             display: false
           },
@@ -577,7 +581,11 @@ const dashboard24HoursPerformanceChartAssam = {
             drawTicks: false,
             display: false,
             drawBorder: false
-          }
+          },
+          scaleLabel: {
+        display: true,
+        labelString: 'Zones in assam'
+      }
         }
       ]
     },
@@ -676,7 +684,7 @@ const dashboard24HoursPerformanceChartMizoram = {
   options: {
     maintainAspectRatio: true,
     legend: {
-      display: false
+      display: true
     },
     tooltips: {
       bodySpacing: 4,
@@ -699,7 +707,7 @@ const dashboard24HoursPerformanceChartMizoram = {
       ],
       xAxes: [
         {
-          display: 0,
+          display: 1,
           ticks: {
             display: false
           },
@@ -708,7 +716,11 @@ const dashboard24HoursPerformanceChartMizoram = {
             drawTicks: false,
             display: false,
             drawBorder: false
-          }
+          },
+          scaleLabel: {
+        display: true,
+        labelString: 'Zones in mizoram'
+      }
         }
       ]
     },
@@ -807,7 +819,7 @@ const dashboard24HoursPerformanceChartManipur = {
   options: {
     maintainAspectRatio: true,
     legend: {
-      display: false
+      display: true
     },
     tooltips: {
       bodySpacing: 4,
@@ -830,7 +842,7 @@ const dashboard24HoursPerformanceChartManipur = {
       ],
       xAxes: [
         {
-          display: 0,
+          display: 1,
           ticks: {
             display: false
           },
@@ -839,7 +851,11 @@ const dashboard24HoursPerformanceChartManipur = {
             drawTicks: false,
             display: false,
             drawBorder: false
-          }
+          },
+          scaleLabel: {
+        display: true,
+        labelString: 'Zones in manipur'
+      }
         }
       ]
     },
@@ -922,7 +938,7 @@ const dashboard24HoursPerformanceChartTripura = {
   options: {
     maintainAspectRatio: true,
     legend: {
-      display: false
+      display: true
     },
     tooltips: {
       bodySpacing: 4,
@@ -945,7 +961,7 @@ const dashboard24HoursPerformanceChartTripura = {
       ],
       xAxes: [
         {
-          display: 0,
+          display: 1,
           ticks: {
             display: false
           },
@@ -954,7 +970,11 @@ const dashboard24HoursPerformanceChartTripura = {
             drawTicks: false,
             display: false,
             drawBorder: false
-          }
+          },
+          scaleLabel: {
+        display: true,
+        labelString: 'Zones in tripura'
+      }
         }
       ]
     },
@@ -1035,7 +1055,7 @@ const dashboard24HoursPerformanceChartChattisgarh = {
   options: {
     maintainAspectRatio: true,
     legend: {
-      display: false
+      display: true
     },
     tooltips: {
       bodySpacing: 4,
@@ -1058,7 +1078,7 @@ const dashboard24HoursPerformanceChartChattisgarh = {
       ],
       xAxes: [
         {
-          display: 0,
+          display: 1,
           ticks: {
             display: false
           },
@@ -1067,7 +1087,11 @@ const dashboard24HoursPerformanceChartChattisgarh = {
             drawTicks: false,
             display: false,
             drawBorder: false
-          }
+          },
+          scaleLabel: {
+        display: true,
+        labelString: 'Zones in chattisgarh'
+      }
         }
       ]
     },
@@ -1157,7 +1181,7 @@ const dashboard24HoursPerformanceChartMP = {
   options: {
     maintainAspectRatio: true,
     legend: {
-      display: false
+      display: true
     },
     tooltips: {
       bodySpacing: 4,
@@ -1180,7 +1204,7 @@ const dashboard24HoursPerformanceChartMP = {
       ],
       xAxes: [
         {
-          display: 0,
+          display: 1,
           ticks: {
             display: false
           },
@@ -1189,7 +1213,11 @@ const dashboard24HoursPerformanceChartMP = {
             drawTicks: false,
             display: false,
             drawBorder: false
-          }
+          },
+          scaleLabel: {
+        display: true,
+        labelString: 'Zones in madhya pradesh'
+      }
         }
       ]
     },
@@ -1285,7 +1313,7 @@ const dashboard24HoursPerformanceChartHP = {
   options: {
     maintainAspectRatio: true,
     legend: {
-      display: false
+      display: true
     },
     tooltips: {
       bodySpacing: 4,
@@ -1308,7 +1336,7 @@ const dashboard24HoursPerformanceChartHP = {
       ],
       xAxes: [
         {
-          display: 0,
+          display: 1,
           ticks: {
             display: false
           },
@@ -1317,7 +1345,11 @@ const dashboard24HoursPerformanceChartHP = {
             drawTicks: false,
             display: false,
             drawBorder: false
-          }
+          },
+          scaleLabel: {
+        display: true,
+        labelString: 'Zones in himachal pradesh'
+      }
         }
       ]
     },
@@ -1514,7 +1546,7 @@ const dashboard24HoursPerformanceChartPunjab = {
   options: {
     maintainAspectRatio: true,
     legend: {
-      display: false
+      display: true
     },
     tooltips: {
       bodySpacing: 4,
@@ -1537,7 +1569,7 @@ const dashboard24HoursPerformanceChartPunjab = {
       ],
       xAxes: [
         {
-          display: 0,
+          display: 1,
           ticks: {
             display: false
           },
@@ -1546,7 +1578,11 @@ const dashboard24HoursPerformanceChartPunjab = {
             drawTicks: false,
             display: false,
             drawBorder: false
-          }
+          },
+          scaleLabel: {
+        display: true,
+        labelString: 'Zones in punjab'
+      }
         }
       ]
     },
@@ -1653,7 +1689,7 @@ const dashboard24HoursPerformanceChartKerala = {
   options: {
     maintainAspectRatio: true,
     legend: {
-      display: false
+      display: true
     },
     tooltips: {
       bodySpacing: 4,
@@ -1676,7 +1712,7 @@ const dashboard24HoursPerformanceChartKerala = {
       ],
       xAxes: [
         {
-          display: 0,
+          display: 1,
           ticks: {
             display: false
           },
@@ -1685,7 +1721,11 @@ const dashboard24HoursPerformanceChartKerala = {
             drawTicks: false,
             display: false,
             drawBorder: false
-          }
+          },
+          scaleLabel: {
+        display: true,
+        labelString: 'Zones in kerala'
+      }
         }
       ]
     },
@@ -1764,7 +1804,7 @@ const dashboard24HoursPerformanceChartTN = {
   options: {
     maintainAspectRatio: true,
     legend: {
-      display: false
+      display: true
     },
     tooltips: {
       bodySpacing: 4,
@@ -1787,7 +1827,7 @@ const dashboard24HoursPerformanceChartTN = {
       ],
       xAxes: [
         {
-          display: 0,
+          display: 1,
           ticks: {
             display: false
           },
@@ -1796,7 +1836,11 @@ const dashboard24HoursPerformanceChartTN = {
             drawTicks: false,
             display: false,
             drawBorder: false
-          }
+          },
+          scaleLabel: {
+        display: true,
+        labelString: 'Zones in tamil nadu'
+      }
         }
       ]
     },
@@ -2128,7 +2172,7 @@ const dashboard24HoursPerformanceChartMaharastra = {
   options: {
     maintainAspectRatio: true,
     legend: {
-      display: false
+      display: true
     },
     tooltips: {
       bodySpacing: 4,
@@ -2151,7 +2195,7 @@ const dashboard24HoursPerformanceChartMaharastra = {
       ],
       xAxes: [
         {
-          display: 0,
+          display: 1,
           ticks: {
             display: false
           },
@@ -2160,7 +2204,11 @@ const dashboard24HoursPerformanceChartMaharastra = {
             drawTicks: false,
             display: false,
             drawBorder: false
-          }
+          },
+          scaleLabel: {
+        display: true,
+        labelString: 'Zones in maharastra'
+      }
         }
       ]
     },
@@ -2267,7 +2315,7 @@ const dashboard24HoursPerformanceChartGujarat = {
   options: {
     maintainAspectRatio: true,
     legend: {
-      display: false
+      display: true
     },
     tooltips: {
       bodySpacing: 4,
@@ -2290,7 +2338,7 @@ const dashboard24HoursPerformanceChartGujarat = {
       ],
       xAxes: [
         {
-          display: 0,
+          display: 1,
           ticks: {
             display: false
           },
@@ -2299,7 +2347,11 @@ const dashboard24HoursPerformanceChartGujarat = {
             drawTicks: false,
             display: false,
             drawBorder: false
-          }
+          },
+          scaleLabel: {
+        display: true,
+        labelString: 'Zones in gujarat'
+      }
         }
       ]
     },
@@ -2413,7 +2465,7 @@ const dashboard24HoursPerformanceChartRajasthan = {
   options: {
     maintainAspectRatio: true,
     legend: {
-      display: false
+      display: true
     },
     tooltips: {
       bodySpacing: 4,
@@ -2436,7 +2488,7 @@ const dashboard24HoursPerformanceChartRajasthan = {
       ],
       xAxes: [
         {
-          display: 0,
+          display: 1,
           ticks: {
             display: false
           },
@@ -2445,7 +2497,11 @@ const dashboard24HoursPerformanceChartRajasthan = {
             drawTicks: false,
             display: false,
             drawBorder: false
-          }
+          },
+          scaleLabel: {
+        display: true,
+        labelString: 'Zones in Rajasthan'
+      }
         }
       ]
     },
@@ -2546,7 +2602,7 @@ const dashboard24HoursPerformanceChartUP = {
   options: {
     maintainAspectRatio: true,
     legend: {
-      display: false
+      display: true
     },
     tooltips: {
       bodySpacing: 4,
@@ -2569,7 +2625,7 @@ const dashboard24HoursPerformanceChartUP = {
       ],
       xAxes: [
         {
-          display: 0,
+          display: 1,
           ticks: {
             display: false
           },
@@ -2578,7 +2634,11 @@ const dashboard24HoursPerformanceChartUP = {
             drawTicks: false,
             display: false,
             drawBorder: false
-          }
+          },
+          scaleLabel: {
+        display: true,
+        labelString: 'Zones in uttar pradesh'
+      }
         }
       ]
     },
@@ -2669,7 +2729,7 @@ const dashboard24HoursPerformanceChartOrrisa = {
   options: {
     maintainAspectRatio: true,
     legend: {
-      display: false
+      display: true
     },
     tooltips: {
       bodySpacing: 4,
@@ -2692,7 +2752,7 @@ const dashboard24HoursPerformanceChartOrrisa = {
       ],
       xAxes: [
         {
-          display: 0,
+          display: 1,
           ticks: {
             display: false
           },
@@ -2701,7 +2761,11 @@ const dashboard24HoursPerformanceChartOrrisa = {
             drawTicks: false,
             display: false,
             drawBorder: false
-          }
+          },
+          scaleLabel: {
+        display: true,
+        labelString: 'Zones in Orissa'
+      }
         }
       ]
     },
@@ -2796,7 +2860,7 @@ const dashboard24HoursPerformanceChartBihar = {
   options: {
     maintainAspectRatio: true,
     legend: {
-      display: false
+      display: true
     },
     tooltips: {
       bodySpacing: 4,
@@ -2814,28 +2878,37 @@ const dashboard24HoursPerformanceChartBihar = {
           gridLines: {
             zeroLineColor: "transparent",
             drawBorder: false
-          }
+          },
+          scaleLabel: {
+        display: true,
+        labelString: ' '
+      }
         }
       ],
       xAxes: [
         {
-          display: 0,
+          display: 1,
           ticks: {
             display: false
           },
           gridLines: {
             zeroLineColor: "transparent",
-            drawTicks: false,
-            display: false,
-            drawBorder: false
-          }
+            drawTicks: true,
+            display: true,
+            drawBorder: true
+          },
+          scaleLabel: {
+        display: true,
+        labelString: 'Zones in bihar'
         }
-      ]
-    },
+   }
+   ]
+   },
     layout: {
       padding: { left: 0, right: 0, top: 15, bottom: 15 }
     }
-  }
+
+}
 };
 const dashboard24HoursPerformanceChartWB = {
   data: canvas => {
@@ -2934,7 +3007,8 @@ const dashboard24HoursPerformanceChartWB = {
   options: {
     maintainAspectRatio: true,
     legend: {
-      display: false
+      display: true,
+
     },
     tooltips: {
       bodySpacing: 4,
@@ -2952,21 +3026,29 @@ const dashboard24HoursPerformanceChartWB = {
           gridLines: {
             zeroLineColor: "transparent",
             drawBorder: false
-          }
+          },
+          scaleLabel: {
+        display: true,
+        labelString: ' '
+      }
         }
       ],
       xAxes: [
         {
-          display: 0,
+          display: 1,
           ticks: {
-            display: false
+            display:false
           },
           gridLines: {
             zeroLineColor: "transparent",
-            drawTicks: false,
-            display: false,
-            drawBorder: false
-          }
+            drawTicks: true,
+            display: true,
+            drawBorder: true
+          },
+          scaleLabel: {
+        display: true,
+        labelString: 'Zones in west bengal'
+      }
         }
       ]
     },
