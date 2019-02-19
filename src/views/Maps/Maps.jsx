@@ -275,10 +275,10 @@ render() {
                 <CardHeader>Google Maps</CardHeader>
                 <CardBody>
                   <Row>
-                    <Col xs={6}>
+                    <Col xs={7}>
                   <ComposableMap
-                    projectionConfig={{ scale: 1200 }}
-                    width={500}
+                    projectionConfig={{ scale: 1400 }}
+                    width={600}
                     height={600}
                     style={{
                       width: "auto",
@@ -327,8 +327,8 @@ render() {
 
                   </ComposableMap>
                   </Col>
-                  <Col xs={6}>
-                  <div className="chart-area">
+                  <Col xs={5}>
+                  <div className="chart-area" style={{marginTop:"300px"}}>
                   <Greeting isLoggedIn={this.state.name} />,
                   
                   </div></Col>
