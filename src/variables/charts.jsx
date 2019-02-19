@@ -2980,5 +2980,23 @@ module.exports = {
   dashboardPanelChart, // Chart for Dashboard view - Will be rendered in panel
   dashboardShippedProductsChart, // Chart for Dashboard view - Shipped Products Card
   dashboardAllProductsChart, // Chart for Dashboard view - All products Card
-  dashboard24HoursPerformanceChart // Chart for Dashboard view - 24 Hours Performance Card
+  dashboard24HoursPerformanceChart, // Chart for Dashboard view - 24 Hours Performance Card
+  dashboard24HoursPerformanceChartKerala,
+  dashboard24HoursPerformanceChartBihar,
+  dashboard24HoursPerformanceChartChattisgarh,
+  dashboard24HoursPerformanceChartPunjab,
+  dashboard24HoursPerformanceChartTripura,
+  dashboard24HoursPerformanceChartMaharastra,
+  dashboard24HoursPerformanceChartRajasthan,
+  dashboard24HoursPerformanceChartManipur,
+  dashboard24HoursPerformanceChartAssam,
+  dashboard24HoursPerformanceChartWB,
+  dashboard24HoursPerformanceChartOrrisa,
+  dashboard24HoursPerformanceChartUP,
+  dashboard24HoursPerformanceChartHP,
+  dashboard24HoursPerformanceChartMP,
+  dashboard24HoursPerformanceChartGujarat,
+  dashboard24HoursPerformanceChartTN,
+  dashboard24HoursPerformanceChartMizoram
+
 };
