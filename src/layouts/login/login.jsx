@@ -17,6 +17,7 @@ class Login extends Component {
       last_name: "",
       username: "",
       email: "",
+      address : "",
       password: "",
       ok: false,
       show: false,
@@ -26,7 +27,6 @@ class Login extends Component {
     this.handleDismiss = this.handleDismiss.bind(this);
   }
   componentDidMount() {
-    
     getcapcha();
   }
   confirmsotp(code) {
@@ -36,19 +36,28 @@ class Login extends Component {
       if (!this.state.ok) {
         this.props.history.push("/signin");
       } else {
-        register(
-          {
-            first_name: this.state.first_name,
-            last_name: this.state.last_name,
-            username: this.state.username,
-            email: this.state.email,
-            phone: this.state.password
-          },
-          uid
-        ).then(() => {
-          console.log("dekh le");
-          self.props.history.push("/signin");
-        });
+        axios
+          .get(
+            `https://maps.googleapis.com/maps/api/geocode/json?address="${this.state.address}"&key=AIzaSyB7cYMRfxxQv8LrcCNTxcy3byqMjlW_IE4`
+          )
+          .then(data => {
+            console.log(data);
+            register(
+              {
+                first_name: this.state.first_name,
+                last_name: this.state.last_name,
+                username: this.state.username,
+                email: this.state.email,
+                phone: this.state.password,
+                addresslat : data.data.results[0].geometry.location.lat,
+                addresslng : data.data.results[0].geometry.location.lng,
+              },
+              uid
+            ).then(() => {
+              console.log("dekh le");
+              self.props.history.push("/signin");
+            });
+          });
       }
     });
   }
@@ -176,6 +185,19 @@ class Login extends Component {
                     className="form-controls"
                     placeholder="Enter your Email ID"
                     value={this.state.email}
+                    onChange={e => this.onchange(e)}
+                    autoComplete="off"
+                    required
+                  />
+                </div>
+                <div className="form-groups">
+                  <input
+                    style={{ padding: "10px 10px 10px 10px" }}
+                    name="address"
+                    type="text"
+                    className="form-controls"
+                    placeholder="Enter your address"
+                    value={this.state.address}
                     onChange={e => this.onchange(e)}
                     autoComplete="off"
                     required
