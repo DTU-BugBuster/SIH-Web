@@ -9,6 +9,8 @@ import {
   checkIntialized
 } from "../../firebase";
 import { Alert } from "react-bootstrap";
+
+const name="";
 class Login extends Component {
   constructor(props) {
     super(props);

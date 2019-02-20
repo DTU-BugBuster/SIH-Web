@@ -48,13 +48,24 @@ const wrapperStyles = {
 }
 
 const cities = [
-  { name: "Zurich", coordinates: [8.5417,47.3769] },
-  { name: "Singapore", coordinates: [103.8198,1.3521] },
-  { name: "San Francisco", coordinates: [-122.4194,37.7749] },
-  { name: "Sydney", coordinates: [151.2093,-33.8688] },
-  { name: "Lagos", coordinates: [3.3792,6.5244] },
-  { name: "Buenos Aires", coordinates: [-58.3816,-34.6037] },
-  { name: "Shanghai", coordinates: [121.4737,31.2304] },
+  { name: "Rajasthan", coordinates: [74.2179,27.0238] },
+  { name: "Kerala", coordinates: [76.2711,10.8505] },
+  { name: "Chattisgarh", coordinates: [81.8661,21.2787] },
+  { name: "Andhra Pradesh", coordinates: [79.0193,18.1124] },
+  { name: "Madhya Pradesh", coordinates: [78.6569,22.9734] },
+  { name: "Gujarat", coordinates: [71.1924,22.2587] },
+  { name: "Maharastra", coordinates: [75.7139,19.7515] },
+  { name: "Uttar Pradesh", coordinates: [80.9462,26.8467] },
+  { name: "Tamil Nadu", coordinates: [78.656891,11.127123] },
+  { name: "Orissa", coordinates: [84.803467,20.940920] },
+  { name: "West Bengal", coordinates: [87.747803,22.978624] },
+  { name: "Assam", coordinates: [92.537842,26.244156] },
+  { name: "Himachal Pradesh", coordinates: [77.571167,32.084206] },
+  { name: "Tripura", coordinates: [91.746826,23.745127] },
+  { name: "Mizoram", coordinates: [92.9376,23.1645] },
+  { name: "Manipur", coordinates: [93.9063,24.6637] },
+  { name: "Punjab", coordinates: [75.3412,31.1471] },
+  { name: "Bihar", coordinates: [85.3131,25.0961] },
 ]
 
 function Greeting(props) {
@@ -273,8 +284,12 @@ constructor(props) {
     super(props);
     this.state = {
        name: "0",
+       center: [100,20],
+       zoom: 5,
     };
     this.handleChange = this.handleChange.bind(this);
+    this.handleCityClick = this.handleCityClick.bind(this)
+    this.handleReset = this.handleReset.bind(this)
 }
   handleChange(key){
   console.log("clicked",key)
@@ -283,6 +298,18 @@ constructor(props) {
     },() =>{
     console.log('state changed',this.state.name)
     })
+}
+handleCityClick(city) {
+  this.setState({
+    zoom: 25,
+    center: city.coordinates,
+  })
+}
+handleReset() {
+  this.setState({
+    center: [100,20],
+    zoom: 5,
+  })
 }
 render() {
     return (
@@ -342,7 +369,23 @@ render() {
                         }
                         }
                       </Geographies>
-
+                      <Markers>
+                        {cities.map((city, i) => (
+                          <Marker
+                            key={i}
+                            marker={city}
+                            onClick={this.handleCityClick}
+                            >
+                            <circle
+                              cx={0}
+                              cy={0}
+                              r={6}
+                              fill="#FF5722"
+                              stroke="#DF3702"
+                            />
+                          </Marker>
+                        ))}
+                      </Markers>
                     </ZoomableGroup>
 
                   </ComposableMap>
@@ -351,7 +394,67 @@ render() {
                   <Col xs={5}>
                   <Col>
                   <Row xs={5}>
-                  <AnimatedMap />
+                  <div style={wrapperStyles}>
+
+                    <Motion
+                      defaultStyle={{
+                        zoom: 1,
+                        x: 100,
+                        y: 20,
+                      }}
+                      style={{
+                        zoom: spring(this.state.zoom, {stiffness: 210, damping: 20}),
+                        x: spring(this.state.center[0], {stiffness: 210, damping: 20}),
+                        y: spring(this.state.center[1], {stiffness: 210, damping: 20}),
+                      }}
+                      >
+                      {({zoom,x,y}) => (
+                        <ComposableMap
+                          projectionConfig={{ scale: 205 }}
+                          width={980}
+                          height={551}
+                          style={{
+                            width: "100%",
+                            height: "auto",
+                          }}
+                          >
+                          <ZoomableGroup center={[x,y]} zoom={zoom}>
+                            <Geographies geography="indiastates.json">
+                              {(geographies, projection) =>
+                                geographies.map((geography, i) => geography.id !== "010" && (
+                                  <Geography
+                                    key={i}
+                                    geography={geography}
+                                    projection={projection}
+
+                                    style={{
+                                      default: {
+                                        fill: "#ECEFF1",
+                                        stroke: "#607D8B",
+                                        strokeWidth: 0.15,
+                                        outline: "none",
+                                      },
+                                      hover: {
+                                        fill: "#CFD8DC",
+                                        stroke: "#607D8B",
+                                        strokeWidth: 0.15,
+                                        outline: "none",
+                                      },
+                                      pressed: {
+                                        fill: "#FF5722",
+                                        stroke: "#607D8B",
+                                        strokeWidth: 0.15,
+                                        outline: "none",
+                                      },
+                                    }}
+                                  />
+                              ))}
+                            </Geographies>
+                          </ZoomableGroup>
+                        </ComposableMap>
+                      )}
+                    </Motion>
+                  </div>
                   </Row>
                   <Row xs={7}>
                   <div className="chart-area" style={{marginTop:"10px",width:"100%"}}>
@@ -373,129 +476,6 @@ render() {
   }
 
 }
-class AnimatedMap extends React.Component {
-  constructor() {
-    super()
-    this.state = {
-      center: [0,20],
-      zoom: 1,
-    }
-    this.handleZoomIn = this.handleZoomIn.bind(this)
-    this.handleZoomOut = this.handleZoomOut.bind(this)
-    this.handleCityClick = this.handleCityClick.bind(this)
-    this.handleReset = this.handleReset.bind(this)
-  }
-  handleZoomIn() {
-    this.setState({
-      zoom: this.state.zoom * 2,
-    })
-  }
-  handleZoomOut() {
-    this.setState({
-      zoom: this.state.zoom / 2,
-    })
-  }
-  handleCityClick(city) {
-    this.setState({
-      zoom: 2,
-      center: city.coordinates,
-    })
-  }
-  handleReset() {
-    this.setState({
-      center: [0,20],
-      zoom: 1,
-    })
-  }
-  render() {
-    return (
-      <div style={wrapperStyles}>
-        <button onClick={this.handleZoomIn}>
-          { "Zoom in" }
-        </button>
-        <button onClick={this.handleZoomOut}>
-          { "Zoom out" }
-        </button>
-        <button onClick={this.handleReset}>
-          { "Reset" }
-        </button>
-        <Motion
-          defaultStyle={{
-            zoom: 1,
-            x: 0,
-            y: 20,
-          }}
-          style={{
-            zoom: spring(this.state.zoom, {stiffness: 210, damping: 20}),
-            x: spring(this.state.center[0], {stiffness: 210, damping: 20}),
-            y: spring(this.state.center[1], {stiffness: 210, damping: 20}),
-          }}
-          >
-          {({zoom,x,y}) => (
-            <ComposableMap
-              projectionConfig={{ scale: 205 }}
-              width={980}
-              height={551}
-              style={{
-                width: "100%",
-                height: "auto",
-              }}
-              >
-              <ZoomableGroup center={[x,y]} zoom={zoom}>
-                <Geographies geography="indiastates.json">
-                  {(geographies, projection) =>
-                    geographies.map((geography, i) => geography.id !== "010" && (
-                      <Geography
-                        key={i}
-                        geography={geography}
-                        projection={projection}
-                        style={{
-                          default: {
-                            fill: "#ECEFF1",
-                            stroke: "#607D8B",
-                            strokeWidth: 0.75,
-                            outline: "none",
-                          },
-                          hover: {
-                            fill: "#CFD8DC",
-                            stroke: "#607D8B",
-                            strokeWidth: 0.75,
-                            outline: "none",
-                          },
-                          pressed: {
-                            fill: "#FF5722",
-                            stroke: "#607D8B",
-                            strokeWidth: 0.75,
-                            outline: "none",
-                          },
-                        }}
-                      />
-                  ))}
-                </Geographies>
-                <Markers>
-                  {cities.map((city, i) => (
-                    <Marker
-                      key={i}
-                      marker={city}
-                      onClick={this.handleCityClick}
-                      >
-                      <circle
-                        cx={0}
-                        cy={0}
-                        r={6}
-                        fill="#FF5722"
-                        stroke="#DF3702"
-                      />
-                    </Marker>
-                  ))}
-                </Markers>
-              </ZoomableGroup>
-            </ComposableMap>
-          )}
-        </Motion>
-      </div>
-    )
-  }
-}
+
 
 export default FullScreenMap;
