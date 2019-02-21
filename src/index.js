@@ -9,10 +9,10 @@ import "assets/css/demo.css";
 
 import indexRoutes from "routes/index.jsx";
 import { initializeFirebase } from "./firebase";
-initializeFirebase();
+var fire = initializeFirebase();
 const hist = createBrowserHistory();
 ReactDOM.render(
-  <Router history={hist}>
+  <Router history={hist} fire={fire}>
     <Switch>
       {indexRoutes.map((prop, key) => {
         return <Route path={prop.path} key={key} component={prop.component} />;

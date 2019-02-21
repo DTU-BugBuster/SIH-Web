@@ -21,6 +21,7 @@ export const initializeFirebase = () => {
       });
   }
   console.log("done")
+  return firebase;
 };
 
 export const getcapcha = () => {
