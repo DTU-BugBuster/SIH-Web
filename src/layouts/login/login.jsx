@@ -38,12 +38,7 @@ class Login extends Component {
       if (!this.state.ok) {
         this.props.history.push("/signin");
       } else {
-        axios
-          .get(
-            `https://maps.googleapis.com/maps/api/geocode/json?address="${this.state.address}"&key=AIzaSyB7cYMRfxxQv8LrcCNTxcy3byqMjlW_IE4`
-          )
-          .then(data => {
-            console.log(data);
+        
             register(
               {
                 first_name: this.state.first_name,
@@ -59,7 +54,6 @@ class Login extends Component {
               console.log("dekh le");
               self.props.history.push("/signin");
             });
-          });
       }
     });
   }
