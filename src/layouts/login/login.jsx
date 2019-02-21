@@ -46,8 +46,6 @@ class Login extends Component {
                 username: this.state.username,
                 email: this.state.email,
                 phone: "+91"+this.state.password,
-                addresslat : data.data.results[0].geometry.location.lat,
-                addresslng : data.data.results[0].geometry.location.lng,
               },
               uid
             ).then(() => {
