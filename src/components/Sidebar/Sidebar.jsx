@@ -65,6 +65,7 @@ class Sidebar extends React.Component {
         <div className="sidebar-wrapper" ref="sidebar">
           <Nav>
             {this.props.routes.map((prop, key) => {
+              if(prop.name=="User Profile") return null;
               if (prop.redirect) return null;
               return (
                 <li

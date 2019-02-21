@@ -108,13 +108,13 @@ body  {
 	background-color: rgba(0,0,0,0.1);
 
 }
-input[type=text] {
+.form-groups > input[type=text] {
     color: white !important;
 }
-input[type=password] {
+.form-groups > input[type=password] {
     color: white !important;
 }
-input[type=email] {
+.form-groups > input[type=email] {
     color: white !important;
 }
 ::-webkit-input-placeholder { /* WebKit, Blink, Edge */

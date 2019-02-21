@@ -50,6 +50,7 @@ class FieldGroup extends React.Component {
             {...inputProps}
             onFocus={e => this.setState({ focus: true })}
             onBlur={e => this.setState({ focus: false })}
+            onChange={(e)=>console.log('cc',e.target.value)}
           />
           {addonRight !== undefined ? (
             <InputGroupAddon {...inputGroupAddonProps}>
@@ -74,7 +75,7 @@ class FieldGroup extends React.Component {
     ) : (
       <FormGroup {...formGroupProps}>
         {label ? <Label {...labelProps}>{label}</Label> : ""}
-        <Input {...inputProps} />
+        <Input {...inputProps}/>
       </FormGroup>
     );
   }

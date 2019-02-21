@@ -4,9 +4,40 @@ import { Card, CardHeader, CardBody, Row, Col } from "reactstrap";
 import { PanelHeader, FormInputs, CardAuthor, CardSocials } from "components";
 
 import userBackground from "assets/img/bg5.jpg";
-import userAvatar from "assets/img/mike.jpg";
+import userAvatar from "assets/img/default-avatar.png";
+import { getfirebase } from "../../firebase";
+
+
 
 class User extends React.Component {
+  constructor(props)
+  {
+    super(props);
+    this.state={
+      user:""
+    }
+  }
+  componentDidMount()
+  {
+    var fire = getfirebase();
+    fire.auth().onAuthStateChanged((user)=>{
+      if(user)
+      {
+        fire.database().ref('users/' + user.uid).once('value').then((snapshot) => {
+          this.setState({
+            user : snapshot.val()
+          })
+          console.log(snapshot.val())
+        }).catch((error) => {
+          console.log(error);
+        })
+      }
+    })
+  }
+  handlechange(e)
+  {
+    console.log(e.target.value);
+  }
   render() {
     return (
       <div>
@@ -21,6 +52,7 @@ class User extends React.Component {
                 <CardBody>
                   <form>
                     <FormInputs
+                      onChange={this.handlechange}
                       ncols={[
                         "col-md-5 pr-1",
                         "col-md-3 px-1",
@@ -28,25 +60,24 @@ class User extends React.Component {
                       ]}
                       proprieties={[
                         {
-                          label: "Company (disabled)",
+                          label: "Email",
                           inputProps: {
                             type: "text",
-                            disabled: true,
-                            defaultValue: "Creative Code Inc."
+                            defaultValue: this.state.user.email
+                          }
+                        },
+                        {
+                          label: "phone number",
+                          inputProps: {
+                            type: "text",
+                            defaultValue: this.state.user.phone
                           }
                         },
                         {
                           label: "Username",
                           inputProps: {
-                            type: "text",
-                            defaultValue: "michael23"
-                          }
-                        },
-                        {
-                          label: "Email address",
-                          inputProps: {
                             type: "email",
-                            placeholder: "Email"
+                            defaultValue: this.state.user.username
                           }
                         }
                       ]}
@@ -59,7 +90,7 @@ class User extends React.Component {
                           inputProps: {
                             type: "text",
                             placeholder: "First Name",
-                            defaultValue: "Mike"
+                            defaultValue: this.state.user.first_name
                           }
                         },
                         {
@@ -67,69 +98,7 @@ class User extends React.Component {
                           inputProps: {
                             type: "text",
                             placeholder: "Last Name",
-                            defaultValue: "Andrew"
-                          }
-                        }
-                      ]}
-                    />
-                    <FormInputs
-                      ncols={["col-md-12"]}
-                      proprieties={[
-                        {
-                          label: "Address",
-                          inputProps: {
-                            type: "text",
-                            placeholder: "Home Address",
-                            defaultValue:
-                              "Bld Mihail Kogalniceanu, nr. 8 Bl 1, Sc 1, Ap 09"
-                          }
-                        }
-                      ]}
-                    />
-                    <FormInputs
-                      ncols={[
-                        "col-md-4 pr-1",
-                        "col-md-4 px-1",
-                        "col-md-4 pl-1"
-                      ]}
-                      proprieties={[
-                        {
-                          label: "City",
-                          inputProps: {
-                            type: "text",
-                            defaultValue: "Bucharest",
-                            placeholder: "City"
-                          }
-                        },
-                        {
-                          label: "Country",
-                          inputProps: {
-                            type: "text",
-                            defaultValue: "Romania",
-                            placeholder: "Country"
-                          }
-                        },
-                        {
-                          label: "Postal Code",
-                          inputProps: {
-                            type: "number",
-                            placeholder: "ZIP Code"
-                          }
-                        }
-                      ]}
-                    />
-                    <FormInputs
-                      ncols={["col-md-12"]}
-                      proprieties={[
-                        {
-                          label: "About Me",
-                          inputProps: {
-                            type: "textarea",
-                            rows: "4",
-                            cols: "80",
-                            defaultValue:
-                              "Lamborghini Mercy, Your chick she so thirsty, I'm in that two seat Lambo.",
-                            placeholder: "Here can be your description"
+                            defaultValue: this.state.user.last_name
                           }
                         }
                       ]}
@@ -141,20 +110,15 @@ class User extends React.Component {
             <Col md={4} xs={12}>
               <Card className="card-user">
                 <div className="image">
-                  <img src={userBackground} alt="..." />
+                  <img style={{border:"black"}} src={userBackground} alt="..." />
                 </div>
                 <CardBody>
                   <CardAuthor
                     avatar={userAvatar}
                     avatarAlt="..."
-                    title="Mike Andrew"
-                    description="michael23"
+                    title={this.state.user.username}
+                    description="admin"
                   />
-                  <p className="description text-center">
-                    "Lamborghini Mercy <br />
-                    Your chick she so thirsty <br />
-                    I'm in that two seat Lambo"
-                  </p>
                 </CardBody>
                 <hr />
                 <CardSocials
