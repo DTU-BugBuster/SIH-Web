@@ -355,7 +355,7 @@ class FullScreenMap extends React.Component {
           <Row>
             <Col>
               <Card>
-                <CardHeader>Google Maps</CardHeader>
+                <CardHeader>Water Quality Map of India</CardHeader>
                 <CardBody>
                   <Row>
                     <Col xs={7}>

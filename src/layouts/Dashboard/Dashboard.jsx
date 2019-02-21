@@ -6,19 +6,42 @@ import { Route, Switch, Redirect } from "react-router-dom";
 import { Header, Footer, Sidebar } from "components";
 
 import dashboardRoutes from "routes/dashboard.jsx";
-import { getcurrentuser } from "../../firebase";
+import { getcurrentuser, getfirebase } from "../../firebase";
 import { Widget, addResponseMessage } from "react-chat-widget";
 
 import "react-chat-widget/lib/styles.css";
-
+var fire = getfirebase();
 var ps;
 class Dashboard extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      count: 0,
+      user: ""
+    };
+  }
   componentDidMount() {
     if (navigator.platform.indexOf("Win") > -1) {
       ps = new PerfectScrollbar(this.refs.mainPanel);
       document.body.classList.toggle("perfect-scrollbar-on");
     }
-
+    addResponseMessage("Welcome, How can i help you?");
+    fire.auth().onAuthStateChanged(user => {
+      if (user) {
+        fire
+          .database()
+          .ref("users/" + user.uid)
+          .once("value")
+          .then(snapshot => {
+            this.setState({
+              user: snapshot.key
+            });
+          })
+          .catch(error => {
+            console.log(error);
+          });
+      }
+    });
   }
   componentWillUnmount() {
     if (navigator.platform.indexOf("Win") > -1) {
@@ -34,6 +57,22 @@ class Dashboard extends React.Component {
   }
   handleNewUserMessage = newMessage => {
     console.log(`New message incoming! ${newMessage}`);
+    if (this.state.count == 0) {
+      addResponseMessage(
+        "Your message has been recorded!Soon a executive will come to help you"
+      );
+      this.setState({
+        count: 1
+      });
+    }
+
+    fire
+      .database()
+      .ref("chats")
+      .push({
+        user: this.state.user,
+        chat: newMessage
+      });
   };
   render() {
     return (
