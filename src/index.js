@@ -10,9 +10,19 @@ import "assets/css/demo.css";
 import indexRoutes from "routes/index.jsx";
 import { initializeFirebase } from "./firebase";
 var fire = initializeFirebase();
+var unsubscribe = fire.auth().onAuthStateChanged((user)=>{
+  if(user){
+    window.location.href='http://localhost:3000/dashboard';
+  }
+  else
+  {
+    window.location.href='http://localhost:3000/login';
+  }
+})
+unsubscribe();
 const hist = createBrowserHistory();
 ReactDOM.render(
-  <Router history={hist} fire={fire}>
+  <Router history={hist}>
     <Switch>
       {indexRoutes.map((prop, key) => {
         return <Route path={prop.path} key={key} component={prop.component} />;

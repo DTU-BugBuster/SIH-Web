@@ -132,3 +132,7 @@ export const askForPermissionToReceiveNotifications = async () => {
 export const checkIntialized = () => {
   return firebase.apps.length;
 };
+
+export const getfirebase = () =>{
+  return firebase;
+}

@@ -29,12 +29,12 @@ var dashRoutes = [
     icon: "users_single-02",
     component: UserPage
   },
-  // {
-  //   path: "/extended-tables",
-  //   name: "Table List",
-  //   icon: "files_paper",
-  //   component: TableList
-  // },
+  {
+    path: "/extended-tables",
+    name: "Table List",
+    icon: "files_paper",
+    component: TableList
+  },
   // {
   //   path: "/typography",
   //   name: "Typography",

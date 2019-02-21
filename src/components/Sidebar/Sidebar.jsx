@@ -5,7 +5,7 @@ import { Nav } from "reactstrap";
 import PerfectScrollbar from "perfect-scrollbar";
 
 import logo from "logo-white.svg";
-import { getcurrentuser } from "../../firebase";
+import { getcurrentuser, getfirebase } from "../../firebase";
 
 var ps;
 
@@ -28,15 +28,20 @@ class Sidebar extends React.Component {
         suppressScrollY: false
       });
     }
-    var res = getcurrentuser();
-    res.then((result)=>{
-          console.log('user',result);
+    var fire = getfirebase();
+    fire.auth().onAuthStateChanged((user)=>{
+      if(user)
+      {
+        fire.database().ref('users/' + user.uid).once('value').then((snapshot) => {
           this.setState({
-            user:result
+            user : snapshot.val()
           })
-    }).catch((error)=>{
-      console.log(error);
+        }).catch((error) => {
+          console.log(error);
+        })
+      }
     })
+
   }
   componentWillUnmount() {
     if (navigator.platform.indexOf("Win") > -1) {
@@ -54,7 +59,7 @@ class Sidebar extends React.Component {
             className="simple-text logo-normal"
             style={{marginLeft:"30px"}}
           >
-            {this.state.user ? "Hello,"+this.state.user.first_name +" " + this.state.user.last_name : ""}
+            {this.state.user ? "Hello, "+this.state.user.first_name +" " + this.state.user.last_name : ""}
           </div>
         </div>
         <div className="sidebar-wrapper" ref="sidebar">
