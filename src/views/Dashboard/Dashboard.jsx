@@ -136,10 +136,10 @@ class Dashboard extends React.Component {
                   <CardTitle tag="h4">24 Hours Performance</CardTitle>
                 </CardHeader>
                 <CardBody>
-                  <div className="chart-area">
-                    <Bar
-                      data={dashboard24HoursPerformanceChart.data}
-                      options={dashboard24HoursPerformanceChart.options}
+                <div className="chart-area">
+                    <Line
+                      data={dashboardAllProductsChart.data}
+                      options={dashboardAllProductsChart.options}
                     />
                   </div>
                 </CardBody>

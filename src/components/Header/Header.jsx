@@ -19,6 +19,7 @@ import {
 } from "reactstrap";
 
 import dashboardRoutes from "routes/dashboard.jsx";
+import { getfirebase } from "../../firebase";
 
 class Header extends React.Component {
   constructor(props) {
@@ -104,6 +105,16 @@ class Header extends React.Component {
       this.refs.sidebarToggle.classList.toggle("toggled");
     }
   }
+  logout()
+  {
+    var fire = getfirebase();
+    console.log("k")
+    fire.auth().signOut().then(()=>{
+      this.props.history.push('/login')
+    }).catch((error)=>{
+      console.log(error);
+    })
+  }
   render() {
     return (
       // add or remove classes depending if we are on full-screen-maps page or not
@@ -171,7 +182,7 @@ class Header extends React.Component {
                 </DropdownToggle>
                 <DropdownMenu right>
                   <DropdownItem href="/user-page" tag="a">User Profile</DropdownItem>
-                  <DropdownItem tag="a">Log out</DropdownItem>
+                  <DropdownItem onClick={()=>this.logout()} tag="a">Log out</DropdownItem>
                 </DropdownMenu>
               </Dropdown>
             </Nav>
