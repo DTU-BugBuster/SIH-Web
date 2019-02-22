@@ -47,7 +47,6 @@ const wrapperStyles = {
 };
 
 const cities = [
-<<<<<<< HEAD
   { name: "Rajasthan", coordinates: [74.2179,27.0238] },
   { name: "Kerala", coordinates: [76.2711,10.8505] },
   { name: "Chattisgarh", coordinates: [81.8661,21.2787] },
@@ -67,27 +66,6 @@ const cities = [
   { name: "Punjab", coordinates: [75.3412,31.1471] },
   { name: "Bihar", coordinates: [85.3131,25.0961] },
 ]
-=======
-  { name: "Rajasthan", coordinates: [74.2179, 27.0238] },
-  { name: "Kerala", coordinates: [76.2711, 10.8505] },
-  { name: "Chattisgarh", coordinates: [81.8661, 21.2787] },
-  { name: "Andhra Pradesh", coordinates: [79.0193, 18.1124] },
-  { name: "Madhya Pradesh", coordinates: [78.6569, 22.9734] },
-  { name: "Gujarat", coordinates: [71.1924, 22.2587] },
-  { name: "Maharastra", coordinates: [75.7139, 19.7515] },
-  { name: "Uttar Pradesh", coordinates: [80.9462, 26.8467] },
-  { name: "Tamil Nadu", coordinates: [78.656891, 11.127123] },
-  { name: "Orissa", coordinates: [84.803467, 20.94092] },
-  { name: "West Bengal", coordinates: [87.747803, 22.978624] },
-  { name: "Assam", coordinates: [92.537842, 26.244156] },
-  { name: "Himachal Pradesh", coordinates: [77.571167, 32.084206] },
-  { name: "Tripura", coordinates: [91.746826, 23.745127] },
-  { name: "Mizoram", coordinates: [92.9376, 23.1645] },
-  { name: "Manipur", coordinates: [93.9063, 24.6637] },
-  { name: "Punjab", coordinates: [75.3412, 31.1471] },
-  { name: "Bihar", coordinates: [85.3131, 25.0961] }
-];
->>>>>>> b29f7f018ac227fe122b9cac97e45bf73b99d7d7
 
 function Greeting(props) {
   const isLoggedIn = props.isLoggedIn;
@@ -336,46 +314,6 @@ class FullScreenMap extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-<<<<<<< HEAD
-       name: "0",
-       center: [100,20],
-       zoom: 5,
-       colour:"#FFFFFF",
-       h:6,
-    };
-    this.handleChange = this.handleChange.bind(this);
-    this.handleCityClick = this.handleCityClick.bind(this)
-    this.handleReset = this.handleReset.bind(this)
-}
-  handleChange(key){
-//  console.log("clicked",key)
-    this.setState({
-      name: key,
-      //colour:"#FFFFFF"
-    },() =>{
-  //  console.log('state changed',this.state.name)
-    })
-}
-handleCityClick(city) {
-console.log(this.state.colour)
-  this.setState({
-    zoom: 35,
-    center: city.coordinates,
-    colour:"#000000",
-    h:12,
-  },() => {
-  console.log('state changed',this.state.h)
-  })
-}
-handleReset() {
-  this.setState({
-    center: [100,20],
-    zoom: 5,
-    colour:"#FFFFFF"
-  })
-}
-render() {
-=======
       name: "0",
       center: [100, 20],
       zoom: 5,
@@ -410,7 +348,6 @@ render() {
     });
   }
   render() {
->>>>>>> b29f7f018ac227fe122b9cac97e45bf73b99d7d7
     return (
       <div>
         <PanelHeader size="sm" />
@@ -418,114 +355,6 @@ render() {
           <Row>
             <Col>
               <Card>
-<<<<<<< HEAD
-                <CardHeader>India's Water Quality</CardHeader>
-                <CardBody>
-                  <Row>
-                    <Col xs={7}>
-                  <ComposableMap
-                    projectionConfig={{ scale: 1400 }}
-                    width={600}
-                    height={600}
-                    style={{
-                      width: "auto",
-                      height: "100%"
-                    }}
-                  >
-                    <ZoomableGroup center={[82, 22]}>
-                      <Geographies geography="indiastates.json" disableOptimization={this.state.disableOptimization} >
-                        {(geographies, projection) =>{
-                          return geographies.map((geography, i) => {
-                            //console.log(geography,projection);
-                              return <Geography
-                                key={i}
-
-                                geography={geography}
-                                projection={projection}
-
-                                onMouseOver={()=>this.handleChange(geography.properties.ID_1)}
-                                style={{
-                                  default: {
-                                    fill: "#ECEFF1",
-                                    stroke: "#607D8B",
-                                    strokeWidth: 0.75,
-                                    outline: "none"
-                                  },
-                                  hover: {
-                                    fill: "#CFD8DC",
-                                    stroke: "#607D8B",
-                                    strokeWidth: 0.75,
-                                    outline: "none"
-                                  },
-                                  pressed: {
-                                    fill: "#FF5722",
-                                    stroke: "#607D8B",
-                                    strokeWidth: 0.75,
-                                    outline: "none"
-                                  }
-                                }}
-                              />
-                          })
-                        }
-                        }
-                      </Geographies>
-                      <Markers>
-                        {cities.map((city, i) => (
-                          <Marker
-                            key={i}
-                            marker={city}
-                            onClick={this.handleCityClick}
-                            >
-                            <circle
-                              cx={0}
-                              cy={0}
-                              r={6}
-                              fill="#FF5722"
-                              stroke="#DF3702"
-                            />
-                          </Marker>
-                        ))}
-                      </Markers>
-                    </ZoomableGroup>
-
-                  </ComposableMap>
-                  </Col>
-
-                  <Col xs={5}>
-                  <Col>
-                  <Row xs={5}>
-                  <div style={wrapperStyles}>
-
-                    <Motion
-                      defaultStyle={{
-                        zoom: 1,
-                        x: 100,
-                        y: 20,
-                        color:"FFFFFF",
-                      }}
-                      style={{
-                        zoom: spring(this.state.zoom, {stiffness: 210, damping: 20}),
-                        x: spring(this.state.center[0], {stiffness: 210, damping: 20}),
-                        y: spring(this.state.center[1], {stiffness: 210, damping: 20}),
-                        color: spring(this.state.colour, {stiffness: 210, damping: 20}),
-                      }}
-                      >
-                      {({zoom,x,y,color}) => (
-                        <ComposableMap
-                          projectionConfig={{ scale: 205 }}
-                          width={980}
-                          height={551}
-                          style={{
-                            width: "100%",
-                            height: "auto",
-                            fill:color,
-                          }}
-                          >
-                          <ZoomableGroup center={[x,y]} zoom={zoom} styles={color}>
-                            <Geographies geography="indiastates.json" disableOptimization={this.state.disableOptimization}>
-                              {(geographies, projection) =>
-                                geographies.map((geography, i) => geography.id !== "010" && (
-=======
                 <CardHeader>Water Quality Map of India</CardHeader>
                 <CardBody>
                   <Row>
@@ -548,7 +377,6 @@ render() {
                               return geographies.map((geography, i) => {
                                 //console.log(geography,projection);
                                 return (
->>>>>>> b29f7f018ac227fe122b9cac97e45bf73b99d7d7
                                   <Geography
                                     key={i}
                                     geography={geography}
@@ -563,77 +391,18 @@ render() {
                                       default: {
                                         fill: "#FFFFFF",
                                         stroke: "#607D8B",
-<<<<<<< HEAD
                                         strokeWidth: 0.15,
                                         outline: "true",
-=======
-                                        strokeWidth: 0.75,
-                                        outline: "none"
->>>>>>> b29f7f018ac227fe122b9cac97e45bf73b99d7d7
                                       },
                                       hover: {
                                         fill: "#FFFFFF",
                                         stroke: "#607D8B",
-<<<<<<< HEAD
                                         strokeWidth: 0.15,
                                         outline: "",
-=======
-                                        strokeWidth: 0.75,
-                                        outline: "none"
->>>>>>> b29f7f018ac227fe122b9cac97e45bf73b99d7d7
                                       },
                                       pressed: {
                                         fill: "#FFFFFF",
                                         stroke: "#607D8B",
-<<<<<<< HEAD
-                                        strokeWidth: 0.15,
-                                        outline: "",
-                                      },
-                                    }}
-                                  />
-
-                              ))}
-                            </Geographies>
-                            <Markers>
-                              {cities.map((city, i) => (
-                                <Marker
-                                  key={i}
-                                  marker={city}
-                                  //onClick={this.handleCityClick}
-                                  >
-                                  <circle
-                                    cx={0}
-                                    cy={0}
-                                    r={this.state.h}
-                                    fill="#FF5722"
-                                    stroke="#DF3702"
-                                  />
-                                  <text
-                                    textAnchor="middle"
-                                    y={25}
-                                    style={{
-                                     fontFamily: "Roboto, sans-serif",
-                                     fill: "#607D8B",
-                                     zoom:"10"
-                                    }}
-                                   >
-                                  {city.name}
-                                 </text>
-                                </Marker>
-                              ))}
-                            </Markers>
-                          </ZoomableGroup>
-                        </ComposableMap>
-                      )}
-                    </Motion>
-                  </div>
-                  </Row>
-                  <Row xs={7}>
-                  <div className="chart-area" style={{marginTop:"10px",width:"100%"}}>
-                  <Greeting isLoggedIn={this.state.name} />,
-                  </div>
-                  </Row>
-=======
                                         strokeWidth: 0.75,
                                         outline: "none"
                                       }
@@ -663,7 +432,6 @@ render() {
                         </ZoomableGroup>
                       </ComposableMap>
                     </Col>
->>>>>>> b29f7f018ac227fe122b9cac97e45bf73b99d7d7
 
                     <Col xs={5}>
                       <Col>

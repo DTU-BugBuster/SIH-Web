@@ -25,7 +25,7 @@ class User extends React.Component {
       {
         fire.database().ref('users/' + user.uid).once('value').then((snapshot) => {
           this.setState({
-            user : snapshot.val()
+            user : snapshot.key
           })
           console.log(snapshot.val())
         }).catch((error) => {
@@ -44,10 +44,10 @@ class User extends React.Component {
         <PanelHeader size="sm" />
         <div className="content">
           <Row>
-            <Col md={8} xs={12}>
+            <Col md={12} xs={24}>
               <Card>
                 <CardHeader>
-                  <h5 className="title">Edit Profile</h5>
+                  <h5 className="title">Report Cases</h5>
                 </CardHeader>
                 <CardBody>
                   <form>
@@ -105,39 +105,6 @@ class User extends React.Component {
                     />
                   </form>
                 </CardBody>
-              </Card>
-            </Col>
-            <Col md={4} xs={12}>
-              <Card className="card-user">
-                <div className="image">
-                  <img style={{border:"black"}} src={userBackground} alt="..." />
-                </div>
-                <CardBody>
-                  <CardAuthor
-                    avatar={userAvatar}
-                    avatarAlt="..."
-                    title={this.state.user.username}
-                    description="admin"
-                  />
-                </CardBody>
-                <hr />
-                <CardSocials
-                  size="lg"
-                  socials={[
-                    {
-                      icon: "fab fa-facebook-f",
-                      href: "https://www.facebook.com/"
-                    },
-                    {
-                      icon: "fab fa-twitter",
-                      href: "https://www.facebook.com/"
-                    },
-                    {
-                      icon: "fab fa-google-plus-g",
-                      href: "https://plus.google.com/discover"
-                    }
-                  ]}
-                />
               </Card>
             </Col>
           </Row>

@@ -145,7 +145,6 @@ function Year20163() {
 }
 
 class Dashboard extends React.Component {
-<<<<<<< HEAD
 constructor(props) {
     super(props);
     this.state = {
@@ -178,21 +177,7 @@ handle3(key){
     console.log('state changed',this.state.name)
   })
 }
-  componentDidMount()
-  {var res = getcurrentuser();
-    res
-      .then(user => {
-        console.log(user);
-        askForPermissionToReceiveNotifications();
-      })
-      .catch(() => {
-        this.props.history.push("/login");
-      });
-
-  }
-=======
   
->>>>>>> b29f7f018ac227fe122b9cac97e45bf73b99d7d7
   render() {
     return (
       <div>
@@ -281,7 +266,6 @@ handle3(key){
                 </CardFooter>
               </Card>
             </Col>
-<<<<<<< HEAD
 
 
           <Col xs={12} md={4}>
@@ -324,73 +308,6 @@ handle3(key){
 
 
 
-=======
-            <Col xs={12} md={4}>
-              <Card className="card-chart">
-                <CardHeader>
-                  <CardCategory>2018 Sales</CardCategory>
-                  <CardTitle tag="h4">All products</CardTitle>
-                  <UncontrolledDropdown>
-                    <DropdownToggle
-                      className="btn-round btn-simple btn-icon"
-                      color="default"
-                    >
-                      <i className="now-ui-icons loader_gear" />
-                    </DropdownToggle>
-                    <DropdownMenu right>
-                      <DropdownItem>Action</DropdownItem>
-                      <DropdownItem>Another Action</DropdownItem>
-                      <DropdownItem>Something else here</DropdownItem>
-                      <DropdownItem className="text-danger">
-                        Remove data
-                      </DropdownItem>
-                    </DropdownMenu>
-                  </UncontrolledDropdown>
-                </CardHeader>
-                <CardBody>
-                  <div className="chart-area">
-                    <Line
-                      data={dashboardAllProductsChart.data}
-                      options={dashboardAllProductsChart.options}
-                    />
-                  </div>
-                </CardBody>
-                <CardFooter>
-                  <Stats>
-                    {[
-                      {
-                        i: "now-ui-icons arrows-1_refresh-69",
-                        t: "Just Updated"
-                      }
-                    ]}
-                  </Stats>
-                </CardFooter>
-              </Card>
-            </Col>
-            <Col xs={12} md={4}>
-              <Card className="card-chart">
-                <CardHeader>
-                  <CardCategory>Email Statistics</CardCategory>
-                  <CardTitle tag="h4">24 Hours Performance</CardTitle>
-                </CardHeader>
-                <CardBody>
-                <div className="chart-area">
-                    <Line
-                      data={dashboardAllProductsChart.data}
-                      options={dashboardAllProductsChart.options}
-                    />
-                  </div>
-                </CardBody>
-                <CardFooter>
-                  <Stats>
-                    {[{ i: "now-ui-icons ui-2_time-alarm", t: "Last 7 days" }]}
-                  </Stats>
-                </CardFooter>
-              </Card>
-            </Col>
-          </Row>
-          <Row>
->>>>>>> b29f7f018ac227fe122b9cac97e45bf73b99d7d7
             <Col xs={12} md={6}>
               <Card className="card-tasks">
                 <CardHeader>
