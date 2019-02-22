@@ -8,7 +8,7 @@ import { Header, Footer, Sidebar } from "components";
 import dashboardRoutes from "routes/dashboard.jsx";
 import { getcurrentuser, getfirebase } from "../../firebase";
 import { Widget, addResponseMessage } from "react-chat-widget";
-
+import Dashboards from "../../views/Dashboard/Dashboard.jsx"
 import "react-chat-widget/lib/styles.css";
 var fire = getfirebase();
 var ps;
@@ -17,8 +17,16 @@ class Dashboard extends React.Component {
     super(props);
     this.state = {
       count: 0,
-      user: ""
+      user: "",
+      stateselected:"",
     };
+  }
+  changestate(value)
+  {
+    this.setState({
+      stateselected :value
+    })
+    console.log(value);
   }
   componentDidMount() {
     if (navigator.platform.indexOf("Win") > -1) {
@@ -77,9 +85,9 @@ class Dashboard extends React.Component {
   render() {
     return (
       <div className="wrapper">
-        <Sidebar {...this.props} routes={dashboardRoutes} />
+        <Sidebar {...this.props} routes={dashboardRoutes}  />
         <div className="main-panel" ref="mainPanel">
-          <Header {...this.props} />
+          <Header {...this.props} changestate={this.changestate.bind(this)} />
           <Switch>
             {dashboardRoutes.map((prop, key) => {
               if (prop.collapse) {
@@ -92,6 +100,12 @@ class Dashboard extends React.Component {
                     />
                   );
                 });
+              }
+              if(prop.name=="Dashboard")
+              {
+                return (
+                  <Route path={prop.path} render={()=>{return <Dashboards {...this.props} state={this.state.stateselected} />}} key={key}  />
+                );
               }
               if (prop.redirect)
                 return <Redirect from={prop.path} to={prop.pathTo} key={key} />;

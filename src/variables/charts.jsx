@@ -228,7 +228,6 @@ const dashboardPanelChart = {
 // ##############################
 // // // Dashboard view - Shipped Products - Card
 // #############################
-
 const dashboardShippedProductsChart = {
   data: canvas => {
     var ctx = canvas.getContext("2d");
@@ -277,8 +276,11 @@ const dashboardShippedProductsChart = {
 // ##############################
 // // // Dashboard view - All Products - Card
 // #############################
-
-const dashboardAllProductsChartC1 = {
+const states = ["Andhra Pradesh", "Arunachal Pradesh", "Assam", "Bihar", "Chattisgarh", "Goa", "Gujarat", "Haryana","Himachal Pradesh", "Jammu And Kashmir", "Jharkhand", "Karnataka", "Kerala", "Madhya Pradesh", "Maharashtra", "Manipur","Meghalaya","Mizoram", "Nagaland", "Odisha", "Punjab", "Rajasthan", "Sikkim", "Tamil Nadu", "Telangana","Tripura", "Uttarakhand", "Uttar Pradesh", "West Bengal", "A & N Islands", "Chandigarh", "D & N Haveli", "Daman & Diu","Delhi","Lakshdweep","Puducherry"];
+const dataC =[[0,0,0,0,20,0,158,7,0,0,0,32,3,17,252,0,1,0,0,0,0,56,0,14,0,0,0,0,173,0,15,28,0,65,0,3],[0,0,0,0,7,0,52,0,0,0,36,14,0,104,213,0,0,26,0,2,0,3,0,15,0,0,0,47,155,0,133,14,0,91,0,1],[0,9,0,0,55,0,88,0,0,0,5,29,7,94,107,0,0,17,6,0,0,2,0,8,0,0,0,4,157,0,10,15,0,228,0,0]]
+const getChartCholera = (state) => {
+  var index = states.indexOf(state);
+  return {
   data: canvas => {
     var ctx = canvas.getContext("2d");
     var gradientStroke = ctx.createLinearGradient(500, 0, 100, 0);
@@ -288,7 +290,7 @@ const dashboardAllProductsChartC1 = {
     gradientFill.addColorStop(0, "rgba(128, 182, 244, 0)");
     gradientFill.addColorStop(1, hexToRGB("#18ce0f", 0.4));
     return {
-      labels: ["Andhra Pradesh", "Arunachal Pradesh", "Assam", "Bihar", "Chattisgarh", "Goa", "Gujarat", "Haryana","Himachal Pradesh", "Jammu And Kashmir", "Jharkhand", "Karnataka", "Kerala", "Madhya Pradesh", "Maharashtra", "Manipur","Meghalaya","Mizoram", "Nagaland", "Odisha", "Punjab", "Rajasthan", "Sikkim", "Tamil Nadu", "Telangana","Tripura", "Uttarakhand", "Uttar Pradesh", "West Bengal", "A & N Islands", "Chandigarh", "D & N Haveli", "Daman & Diu","Delhi","Lakshdweep","Puducherry"],
+      labels: ["2014","2015","2016"],
       datasets: [
         {
           label: "Cases",
@@ -302,12 +304,13 @@ const dashboardAllProductsChartC1 = {
           fill: true,
           backgroundColor: gradientFill,
           borderWidth: 2,
-          data: [0,0,0,0,20,0,158,7,0,0,0,32,3,17,252,0,1,0,0,0,0,56,0,14,0,0,0,0,173,0,15,28,0,65,0,3]
+          data: [dataC[0][index],dataC[1][index],dataC[2][index]]
         }
       ]
     };
   },
   options: gradientChartOptionsConfigurationWithNumbersAndGrid
+}
 };
 const dashboardAllProductsChartC2 = {
   data: canvas => {
@@ -3309,15 +3312,8 @@ const dashboard24HoursPerformanceChartWB = {
 module.exports = {
   dashboardPanelChart, // Chart for Dashboard view - Will be rendered in panel
   dashboardShippedProductsChart, // Chart for Dashboard view - Shipped Products Card
-  dashboardAllProductsChartC1,
-  dashboardAllProductsChartD1,
-  dashboardAllProductsChartT1,
-  dashboardAllProductsChartT2,
-  dashboardAllProductsChartC2,
-  dashboardAllProductsChartD2,
-  dashboardAllProductsChartT3,
-  dashboardAllProductsChartC3,
-  dashboardAllProductsChartD3, // Chart for Dashboard view - All products Card
+  getChartCholera,
+  // Chart for Dashboard view - All products Card
   dashboard24HoursPerformanceChart, // Chart for Dashboard view - 24 Hours Performance Card
   dashboard24HoursPerformanceChartKerala,
   dashboard24HoursPerformanceChartBihar,

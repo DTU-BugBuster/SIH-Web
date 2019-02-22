@@ -17,6 +17,7 @@ import {
   InputGroupAddon,
   Input
 } from "reactstrap";
+import Autocomplete from "react-autocomplete";
 
 import dashboardRoutes from "routes/dashboard.jsx";
 import { getfirebase } from "../../firebase";
@@ -27,7 +28,8 @@ class Header extends React.Component {
     this.state = {
       isOpen: false,
       dropdownOpen: false,
-      color: "transparent"
+      color: "transparent",
+      value: ""
     };
     this.toggle = this.toggle.bind(this);
     this.dropdownToggle = this.dropdownToggle.bind(this);
@@ -105,15 +107,18 @@ class Header extends React.Component {
       this.refs.sidebarToggle.classList.toggle("toggled");
     }
   }
-  logout()
-  {
+  logout() {
     var fire = getfirebase();
-    console.log("k")
-    fire.auth().signOut().then(()=>{
-      this.props.history.push('/login')
-    }).catch((error)=>{
-      console.log(error);
-    })
+    console.log("k");
+    fire
+      .auth()
+      .signOut()
+      .then(() => {
+        this.props.history.push("/login");
+      })
+      .catch(error => {
+        console.log(error);
+      });
   }
   render() {
     return (
@@ -159,14 +164,72 @@ class Header extends React.Component {
             className="justify-content-end"
           >
             <form>
-              <InputGroup className="no-border">
-                <Input placeholder="Search..." />
-                <InputGroupAddon addonType="append">
-                  <InputGroupText>
-                    <i className="now-ui-icons ui-1_zoom-bold" />
-                  </InputGroupText>
-                </InputGroupAddon>
-              </InputGroup>
+              <Autocomplete
+                getItemValue={item => item}
+                items={[
+                  "Andhra Pradesh",
+                  "Arunachal Pradesh",
+                  "Assam",
+                  "Bihar",
+                  "Chattisgarh",
+                  "Goa",
+                  "Gujarat",
+                  "Haryana",
+                  "Himachal Pradesh",
+                  "Jammu And Kashmir",
+                  "Jharkhand",
+                  "Karnataka",
+                  "Kerala",
+                  "Madhya Pradesh",
+                  "Maharashtra",
+                  "Manipur",
+                  "Meghalaya",
+                  "Mizoram",
+                  "Nagaland",
+                  "Odisha",
+                  "Punjab",
+                  "Rajasthan",
+                  "Sikkim",
+                  "Tamil Nadu",
+                  "Telangana",
+                  "Tripura",
+                  "Uttarakhand",
+                  "Uttar Pradesh",
+                  "West Bengal",
+                  "A & N Islands",
+                  "Chandigarh",
+                  "D & N Haveli",
+                  "Daman & Diu",
+                  "Delhi",
+                  "Lakshdweep",
+                  "Puducherry"
+                ]}
+                shouldItemRender={(item, value) =>
+                  item.slice(0, value.length).toLowerCase() ==
+                  value.toLowerCase()
+                }
+                renderItem={(item, isHighlighted) => {
+                  return (
+                    <div className="form-control" style={{ fontSize: "15px" }}>
+                      {item}
+                    </div>
+                  );
+                }}
+                value={this.state.value}
+                onChange={e => this.setState({ value: e.target.value })}
+                onSelect={val => {
+                  this.setState({ value: val });
+                  this.props.changestate(val);
+                }}
+                wrapperProps={{
+                  className: "no-border input-group",
+                  style: {}
+                }}
+                inputProps={{
+                  className: "form-control",
+                  placeholder: "Select the state"
+                }}
+              />
             </form>
             <Nav navbar>
               <Dropdown
@@ -175,14 +238,18 @@ class Header extends React.Component {
                 toggle={e => this.dropdownToggle(e)}
               >
                 <DropdownToggle caret nav>
-                <i className="now-ui-icons users_single-02" />
+                  <i className="now-ui-icons users_single-02" />
                   <p>
                     <span className="d-lg-none d-md-block">Some Actions</span>
                   </p>
                 </DropdownToggle>
                 <DropdownMenu right>
-                  <DropdownItem href="/user-page" tag="a">User Profile</DropdownItem>
-                  <DropdownItem onClick={()=>this.logout()} tag="a">Log out</DropdownItem>
+                  <DropdownItem href="/user-page" tag="a">
+                    User Profile
+                  </DropdownItem>
+                  <DropdownItem onClick={() => this.logout()} tag="a">
+                    Log out
+                  </DropdownItem>
                 </DropdownMenu>
               </Dropdown>
             </Nav>
