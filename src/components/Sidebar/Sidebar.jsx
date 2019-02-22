@@ -5,12 +5,16 @@ import { Nav } from "reactstrap";
 import PerfectScrollbar from "perfect-scrollbar";
 
 import logo from "logo-white.svg";
+import { getcurrentuser, getfirebase } from "../../firebase";
 
 var ps;
 
 class Sidebar extends React.Component {
   constructor(props) {
     super(props);
+    this.state={
+      user:""
+    }
     this.activeRoute.bind(this);
   }
   // verifies if routeName is the one active (in browser input)
@@ -24,34 +28,44 @@ class Sidebar extends React.Component {
         suppressScrollY: false
       });
     }
+    var fire = getfirebase();
+    fire.auth().onAuthStateChanged((user)=>{
+      if(user)
+      {
+        fire.database().ref('users/' + user.uid).once('value').then((snapshot) => {
+          this.setState({
+            user : snapshot.val()
+          })
+        }).catch((error) => {
+          console.log(error);
+        })
+      }
+    })
+
   }
   componentWillUnmount() {
     if (navigator.platform.indexOf("Win") > -1) {
       ps.destroy();
     }
+    
   }
   render() {
     return (
       <div className="sidebar" data-color="blue">
         <div className="logo">
-          <a
-            href="https://www.creative-tim.com"
-            className="simple-text logo-mini"
-          >
-            <div className="logo-img">
-              <img src={logo} alt="react-logo" />
-            </div>
-          </a>
-          <a
+         
+          <div
             href="https://www.creative-tim.com"
             className="simple-text logo-normal"
+            style={{marginLeft:"30px"}}
           >
-            Creative Tim
-          </a>
+            {this.state.user ? "Hello, "+this.state.user.first_name +" " + this.state.user.last_name : ""}
+          </div>
         </div>
         <div className="sidebar-wrapper" ref="sidebar">
           <Nav>
             {this.props.routes.map((prop, key) => {
+              if(prop.name=="User Profile") return null;
               if (prop.redirect) return null;
               return (
                 <li

@@ -21,6 +21,7 @@ export const initializeFirebase = () => {
       });
   }
   console.log("done")
+  return firebase;
 };
 
 export const getcapcha = () => {
@@ -131,3 +132,10 @@ export const askForPermissionToReceiveNotifications = async () => {
 export const checkIntialized = () => {
   return firebase.apps.length;
 };
+<<<<<<< HEAD
+=======
+
+export const getfirebase = () =>{
+  return firebase;
+}
+>>>>>>> b29f7f018ac227fe122b9cac97e45bf73b99d7d7

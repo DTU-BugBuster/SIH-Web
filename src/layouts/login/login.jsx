@@ -38,28 +38,20 @@ class Login extends Component {
       if (!this.state.ok) {
         this.props.history.push("/signin");
       } else {
-        axios
-          .get(
-            `https://maps.googleapis.com/maps/api/geocode/json?address="${this.state.address}"&key=AIzaSyB7cYMRfxxQv8LrcCNTxcy3byqMjlW_IE4`
-          )
-          .then(data => {
-            console.log(data);
+        
             register(
               {
                 first_name: this.state.first_name,
                 last_name: this.state.last_name,
                 username: this.state.username,
                 email: this.state.email,
-                phone: this.state.password,
-                addresslat : data.data.results[0].geometry.location.lat,
-                addresslng : data.data.results[0].geometry.location.lng,
+                phone: "+91"+this.state.password,
               },
               uid
             ).then(() => {
               console.log("dekh le");
               self.props.history.push("/signin");
             });
-          });
       }
     });
   }
@@ -75,7 +67,7 @@ class Login extends Component {
       return;
     }
 
-    var res = sendotp(this.state.password, true);
+    var res = sendotp("+91"+this.state.password, true);
     res
       .then(() => {
         console.log("sahi");
@@ -96,7 +88,7 @@ class Login extends Component {
       return;
     }
     console.log(this.state.password);
-    var res = sendotp(this.state.password, false);
+    var res = sendotp("+91"+this.state.password, false);
     res
       .then(() => {
         console.log("sahi");
