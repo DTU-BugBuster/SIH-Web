@@ -278,7 +278,7 @@ const dashboardShippedProductsChart = {
 // // // Dashboard view - All Products - Card
 // #############################
 
-const dashboardAllProductsChart = {
+const dashboardAllProductsChartC1 = {
   data: canvas => {
     var ctx = canvas.getContext("2d");
     var gradientStroke = ctx.createLinearGradient(500, 0, 100, 0);
@@ -288,10 +288,10 @@ const dashboardAllProductsChart = {
     gradientFill.addColorStop(0, "rgba(128, 182, 244, 0)");
     gradientFill.addColorStop(1, hexToRGB("#18ce0f", 0.4));
     return {
-      labels: ["12pm,", "3pm", "6pm", "9pm", "12am", "3am", "6am", "9am"],
+      labels: ["Andhra Pradesh", "Arunachal Pradesh", "Assam", "Bihar", "Chattisgarh", "Goa", "Gujarat", "Haryana","Himachal Pradesh", "Jammu And Kashmir", "Jharkhand", "Karnataka", "Kerala", "Madhya Pradesh", "Maharashtra", "Manipur","Meghalaya","Mizoram", "Nagaland", "Odisha", "Punjab", "Rajasthan", "Sikkim", "Tamil Nadu", "Telangana","Tripura", "Uttarakhand", "Uttar Pradesh", "West Bengal", "A & N Islands", "Chandigarh", "D & N Haveli", "Daman & Diu","Delhi","Lakshdweep","Puducherry"],
       datasets: [
         {
-          label: "Email Stats",
+          label: "Cases",
           borderColor: "#18ce0f",
           pointBorderColor: "#FFF",
           pointBackgroundColor: "#18ce0f",
@@ -302,7 +302,255 @@ const dashboardAllProductsChart = {
           fill: true,
           backgroundColor: gradientFill,
           borderWidth: 2,
-          data: [40, 500, 650, 700, 1200, 1250, 1300, 1900]
+          data: [0,0,0,0,20,0,158,7,0,0,0,32,3,17,252,0,1,0,0,0,0,56,0,14,0,0,0,0,173,0,15,28,0,65,0,3]
+        }
+      ]
+    };
+  },
+  options: gradientChartOptionsConfigurationWithNumbersAndGrid
+};
+const dashboardAllProductsChartC2 = {
+  data: canvas => {
+    var ctx = canvas.getContext("2d");
+    var gradientStroke = ctx.createLinearGradient(500, 0, 100, 0);
+    gradientStroke.addColorStop(0, "#18ce0f");
+    gradientStroke.addColorStop(1, chartColor);
+    var gradientFill = ctx.createLinearGradient(0, 170, 0, 50);
+    gradientFill.addColorStop(0, "rgba(128, 182, 244, 0)");
+    gradientFill.addColorStop(1, hexToRGB("#18ce0f", 0.4));
+    return {
+      labels: ["Andhra Pradesh", "Arunachal Pradesh", "Assam", "Bihar", "Chattisgarh", "Goa", "Gujarat", "Haryana","Himachal Pradesh", "Jammu And Kashmir", "Jharkhand", "Karnataka", "Kerala", "Madhya Pradesh", "Maharashtra", "Manipur","Meghalaya","Mizoram", "Nagaland", "Odisha", "Punjab", "Rajasthan", "Sikkim", "Tamil Nadu", "Telangana","Tripura", "Uttarakhand", "Uttar Pradesh", "West Bengal", "A & N Islands", "Chandigarh", "D & N Haveli", "Daman & Diu","Delhi","Lakshdweep","Puducherry"],
+      datasets: [
+        {
+          label: "Cases",
+          borderColor: "#18ce0f",
+          pointBorderColor: "#FFF",
+          pointBackgroundColor: "#18ce0f",
+          pointBorderWidth: 2,
+          pointHoverRadius: 4,
+          pointHoverBorderWidth: 1,
+          pointRadius: 4,
+          fill: true,
+          backgroundColor: gradientFill,
+          borderWidth: 2,
+          data: [0,0,0,0,7,0,52,0,0,0,36,14,0,104,213,0,0,26,0,2,0,3,0,15,0,0,0,47,155,0,133,14,0,91,0,1]
+        }
+      ]
+    };
+  },
+  options: gradientChartOptionsConfigurationWithNumbersAndGrid
+};
+const dashboardAllProductsChartC3 = {
+  data: canvas => {
+    var ctx = canvas.getContext("2d");
+    var gradientStroke = ctx.createLinearGradient(500, 0, 100, 0);
+    gradientStroke.addColorStop(0, "#18ce0f");
+    gradientStroke.addColorStop(1, chartColor);
+    var gradientFill = ctx.createLinearGradient(0, 170, 0, 50);
+    gradientFill.addColorStop(0, "rgba(128, 182, 244, 0)");
+    gradientFill.addColorStop(1, hexToRGB("#18ce0f", 0.4));
+    return {
+      labels: ["Andhra Pradesh", "Arunachal Pradesh", "Assam", "Bihar", "Chattisgarh", "Goa", "Gujarat", "Haryana","Himachal Pradesh", "Jammu And Kashmir", "Jharkhand", "Karnataka", "Kerala", "Madhya Pradesh", "Maharashtra", "Manipur","Meghalaya","Mizoram", "Nagaland", "Odisha", "Punjab", "Rajasthan", "Sikkim", "Tamil Nadu", "Telangana","Tripura", "Uttarakhand", "Uttar Pradesh", "West Bengal", "A & N Islands", "Chandigarh", "D & N Haveli", "Daman & Diu","Delhi","Lakshdweep","Puducherry"],
+      datasets: [
+        {
+          label: "Cases",
+          borderColor: "#18ce0f",
+          pointBorderColor: "#FFF",
+          pointBackgroundColor: "#18ce0f",
+          pointBorderWidth: 2,
+          pointHoverRadius: 4,
+          pointHoverBorderWidth: 1,
+          pointRadius: 4,
+          fill: true,
+          backgroundColor: gradientFill,
+          borderWidth: 2,
+          data: [0,9,0,0,55,0,88,0,0,0,5,29,7,94,107,0,0,17,6,0,0,2,0,8,0,0,0,4,157,0,10,15,0,228,0,0]
+        }
+      ]
+    };
+  },
+  options: gradientChartOptionsConfigurationWithNumbersAndGrid
+};
+const dashboardAllProductsChartD1 = {
+  data: canvas => {
+    var ctx = canvas.getContext("2d");
+    var gradientStroke = ctx.createLinearGradient(500, 0, 100, 0);
+    gradientStroke.addColorStop(0, "#18ce0f");
+    gradientStroke.addColorStop(1, chartColor);
+    var gradientFill = ctx.createLinearGradient(0, 170, 0, 50);
+    gradientFill.addColorStop(0, "rgba(128, 182, 244, 0)");
+    gradientFill.addColorStop(1, hexToRGB("#18ce0f", 0.4));
+    return {
+      labels: ["Andhra Pradesh", "Arunachal Pradesh", "Assam", "Bihar", "Chattisgarh", "Goa", "Gujarat", "Haryana","Himachal Pradesh", "Jammu And Kashmir", "Jharkhand", "Karnataka", "Kerala", "Madhya Pradesh", "Maharashtra", "Manipur","Meghalaya","Mizoram", "Nagaland", "Odisha", "Punjab", "Rajasthan", "Sikkim", "Tamil Nadu", "Telangana","Tripura", "Uttarakhand", "Uttar Pradesh", "West Bengal", "A & N Islands", "Chandigarh", "D & N Haveli", "Daman & Diu","Delhi","Lakshdweep","Puducherry"],
+      datasets: [
+        {
+          label: "Cases",
+          borderColor: "#18ce0f",
+          pointBorderColor: "#FFF",
+          pointBackgroundColor: "#18ce0f",
+          pointBorderWidth: 2,
+          pointHoverRadius: 4,
+          pointHoverBorderWidth: 1,
+          pointRadius: 4,
+          fill: true,
+          backgroundColor: gradientFill,
+          borderWidth: 2,
+          data: [1332145,12657,83373,550038,115561,16097,504857,197898,350459,515013,81451,810781,402106,768021,664014,29954,197024,14201,22301,767575,170438,676832,39983,250264,0,80388,90428,754582,189612,23947,39277,63337,12831,120618,6750,87248]
+        }
+      ]
+    };
+  },
+  options: gradientChartOptionsConfigurationWithNumbersAndGrid
+};
+const dashboardAllProductsChartD2 = {
+  data: canvas => {
+    var ctx = canvas.getContext("2d");
+    var gradientStroke = ctx.createLinearGradient(500, 0, 100, 0);
+    gradientStroke.addColorStop(0, "#18ce0f");
+    gradientStroke.addColorStop(1, chartColor);
+    var gradientFill = ctx.createLinearGradient(0, 170, 0, 50);
+    gradientFill.addColorStop(0, "rgba(128, 182, 244, 0)");
+    gradientFill.addColorStop(1, hexToRGB("#18ce0f", 0.4));
+    return {
+      labels: ["Andhra Pradesh", "Arunachal Pradesh", "Assam", "Bihar", "Chattisgarh", "Goa", "Gujarat", "Haryana","Himachal Pradesh", "Jammu And Kashmir", "Jharkhand", "Karnataka", "Kerala", "Madhya Pradesh", "Maharashtra", "Manipur","Meghalaya","Mizoram", "Nagaland", "Odisha", "Punjab", "Rajasthan", "Sikkim", "Tamil Nadu", "Telangana","Tripura", "Uttarakhand", "Uttar Pradesh", "West Bengal", "A & N Islands", "Chandigarh", "D & N Haveli", "Daman & Diu","Delhi","Lakshdweep","Puducherry"],
+      datasets: [
+        {
+          label: "Cases",
+          borderColor: "#18ce0f",
+          pointBorderColor: "#FFF",
+          pointBackgroundColor: "#18ce0f",
+          pointBorderWidth: 2,
+          pointHoverRadius: 4,
+          pointHoverBorderWidth: 1,
+          pointRadius: 4,
+          fill: true,
+          backgroundColor: gradientFill,
+          borderWidth: 2,
+          data: [1122740,10834,128392,455125,132278,13204,567123,190390,334168,472843,81934,832356,428374,740690,877638,29159,167691,14215,15511,782151,179211,810518,53295,308358,963573,88064,108974,814481,1798754,22398,45284,51195,18169,157445,4472,92599]
+        }
+      ]
+    };
+  },
+  options: gradientChartOptionsConfigurationWithNumbersAndGrid
+};
+const dashboardAllProductsChartD3 = {
+  data: canvas => {
+    var ctx = canvas.getContext("2d");
+    var gradientStroke = ctx.createLinearGradient(500, 0, 100, 0);
+    gradientStroke.addColorStop(0, "#18ce0f");
+    gradientStroke.addColorStop(1, chartColor);
+    var gradientFill = ctx.createLinearGradient(0, 170, 0, 50);
+    gradientFill.addColorStop(0, "rgba(128, 182, 244, 0)");
+    gradientFill.addColorStop(1, hexToRGB("#18ce0f", 0.4));
+    return {
+      labels: ["Andhra Pradesh", "Arunachal Pradesh", "Assam", "Bihar", "Chattisgarh", "Goa", "Gujarat", "Haryana","Himachal Pradesh", "Jammu And Kashmir", "Jharkhand", "Karnataka", "Kerala", "Madhya Pradesh", "Maharashtra", "Manipur","Meghalaya","Mizoram", "Nagaland", "Odisha", "Punjab", "Rajasthan", "Sikkim", "Tamil Nadu", "Telangana","Tripura", "Uttarakhand", "Uttar Pradesh", "West Bengal", "A & N Islands", "Chandigarh", "D & N Haveli", "Daman & Diu","Delhi","Lakshdweep","Puducherry"],
+      datasets: [
+        {
+          label: "Cases",
+          borderColor: "#18ce0f",
+          pointBorderColor: "#FFF",
+          pointBackgroundColor: "#18ce0f",
+          pointBorderWidth: 2,
+          pointHoverRadius: 4,
+          pointHoverBorderWidth: 1,
+          pointRadius: 4,
+          fill: true,
+          backgroundColor: gradientFill,
+          borderWidth: 2,
+          data: [1194005,11715,88736,392224,157064,14245,641451,224780,310789,534341,93547,930369,476686,740236,1051445,33193,165404,13602,15062,775824,195281,897209,46289,367815,871497,95278,110942,1066342,2045451,23547,49891,43280,13062,135907,4387,92379]
+        }
+      ]
+    };
+  },
+  options: gradientChartOptionsConfigurationWithNumbersAndGrid
+};
+const dashboardAllProductsChartT1 = {
+  data: canvas => {
+    var ctx = canvas.getContext("2d");
+    var gradientStroke = ctx.createLinearGradient(500, 0, 100, 0);
+    gradientStroke.addColorStop(0, "#18ce0f");
+    gradientStroke.addColorStop(1, chartColor);
+    var gradientFill = ctx.createLinearGradient(0, 170, 0, 50);
+    gradientFill.addColorStop(0, "rgba(128, 182, 244, 0)");
+    gradientFill.addColorStop(1, hexToRGB("#18ce0f", 0.4));
+    return {
+      labels: ["Andhra Pradesh", "Arunachal Pradesh", "Assam", "Bihar", "Chattisgarh", "Goa", "Gujarat", "Haryana","Himachal Pradesh", "Jammu And Kashmir", "Jharkhand", "Karnataka", "Kerala", "Madhya Pradesh", "Maharashtra", "Manipur","Meghalaya","Mizoram", "Nagaland", "Odisha", "Punjab", "Rajasthan", "Sikkim", "Tamil Nadu", "Telangana","Tripura", "Uttarakhand", "Uttar Pradesh", "West Bengal", "A & N Islands", "Chandigarh", "D & N Haveli", "Daman & Diu","Delhi","Lakshdweep","Puducherry"],
+      datasets: [
+        {
+          label: "Cases",
+          borderColor: "#18ce0f",
+          pointBorderColor: "#FFF",
+          pointBackgroundColor: "#18ce0f",
+          pointBorderWidth: 2,
+          pointHoverRadius: 4,
+          pointHoverBorderWidth: 1,
+          pointRadius: 4,
+          fill: true,
+          backgroundColor: gradientFill,
+          borderWidth: 2,
+          data: [186446,4512,5328,283679,32617,573,29505,29990,48786,57537,36663,92959,2269,155190,102299,10636,10395,2758,11604,90363,34651,83540,716,29937,0,10553,28939,225829,90086,881,6021,2439,167,27339,3,1477]
+        }
+      ]
+    };
+  },
+  options: gradientChartOptionsConfigurationWithNumbersAndGrid
+};
+const dashboardAllProductsChartT2 = {
+  data: canvas => {
+    var ctx = canvas.getContext("2d");
+    var gradientStroke = ctx.createLinearGradient(500, 0, 100, 0);
+    gradientStroke.addColorStop(0, "#18ce0f");
+    gradientStroke.addColorStop(1, chartColor);
+    var gradientFill = ctx.createLinearGradient(0, 170, 0, 50);
+    gradientFill.addColorStop(0, "rgba(128, 182, 244, 0)");
+    gradientFill.addColorStop(1, hexToRGB("#18ce0f", 0.4));
+    return {
+      labels: ["Andhra Pradesh", "Arunachal Pradesh", "Assam", "Bihar", "Chattisgarh", "Goa", "Gujarat", "Haryana","Himachal Pradesh", "Jammu And Kashmir", "Jharkhand", "Karnataka", "Kerala", "Madhya Pradesh", "Maharashtra", "Manipur","Meghalaya","Mizoram", "Nagaland", "Odisha", "Punjab", "Rajasthan", "Sikkim", "Tamil Nadu", "Telangana","Tripura", "Uttarakhand", "Uttar Pradesh", "West Bengal", "A & N Islands", "Chandigarh", "D & N Haveli", "Daman & Diu","Delhi","Lakshdweep","Puducherry"],
+      datasets: [
+        {
+          label: "Cases",
+          borderColor: "#18ce0f",
+          pointBorderColor: "#FFF",
+          pointBackgroundColor: "#18ce0f",
+          pointBorderWidth: 2,
+          pointHoverRadius: 4,
+          pointHoverBorderWidth: 1,
+          pointRadius: 4,
+          fill: true,
+          backgroundColor: gradientFill,
+          borderWidth: 2,
+          data: [146385,4476,11333,265469,47970,1603,35362,31965,40639,52359,28330,85837,2862,125737,130809,5422,13459,2804,7977,90895,34867,79244,453,40579,163747,4596,34120,288140,112262,870,12447,1406,165,30698,77,2049]
+        }
+      ]
+    };
+  },
+  options: gradientChartOptionsConfigurationWithNumbersAndGrid
+};
+const dashboardAllProductsChartT3 = {
+  data: canvas => {
+    var ctx = canvas.getContext("2d");
+    var gradientStroke = ctx.createLinearGradient(500, 0, 100, 0);
+    gradientStroke.addColorStop(0, "#18ce0f");
+    gradientStroke.addColorStop(1, chartColor);
+    var gradientFill = ctx.createLinearGradient(0, 170, 0, 50);
+    gradientFill.addColorStop(0, "rgba(128, 182, 244, 0)");
+    gradientFill.addColorStop(1, hexToRGB("#18ce0f", 0.4));
+    return {
+      labels: ["Andhra Pradesh", "Arunachal Pradesh", "Assam", "Bihar", "Chattisgarh", "Goa", "Gujarat", "Haryana","Himachal Pradesh", "Jammu And Kashmir", "Jharkhand", "Karnataka", "Kerala", "Madhya Pradesh", "Maharashtra", "Manipur","Meghalaya","Mizoram", "Nagaland", "Odisha", "Punjab", "Rajasthan", "Sikkim", "Tamil Nadu", "Telangana","Tripura", "Uttarakhand", "Uttar Pradesh", "West Bengal", "A & N Islands", "Chandigarh", "D & N Haveli", "Daman & Diu","Delhi","Lakshdweep","Puducherry"],
+      datasets: [
+        {
+          label: "Cases",
+          borderColor: "#18ce0f",
+          pointBorderColor: "#FFF",
+          pointBackgroundColor: "#18ce0f",
+          pointBorderWidth: 2,
+          pointHoverRadius: 4,
+          pointHoverBorderWidth: 1,
+          pointRadius: 4,
+          fill: true,
+          backgroundColor: gradientFill,
+          borderWidth: 2,
+          data: [170249,4574,19328,204366,74632,724,45970,36442,38093,46904,41731,97493,2038,129998,137617,4942,14128,3085,8267,73330,37896,116470,474,33853,133838,5398,33904,495698,161264,1127,12237,4420,197,30015,50,1943]
         }
       ]
     };
@@ -3061,7 +3309,15 @@ const dashboard24HoursPerformanceChartWB = {
 module.exports = {
   dashboardPanelChart, // Chart for Dashboard view - Will be rendered in panel
   dashboardShippedProductsChart, // Chart for Dashboard view - Shipped Products Card
-  dashboardAllProductsChart, // Chart for Dashboard view - All products Card
+  dashboardAllProductsChartC1,
+  dashboardAllProductsChartD1,
+  dashboardAllProductsChartT1,
+  dashboardAllProductsChartT2,
+  dashboardAllProductsChartC2,
+  dashboardAllProductsChartD2,
+  dashboardAllProductsChartT3,
+  dashboardAllProductsChartC3,
+  dashboardAllProductsChartD3, // Chart for Dashboard view - All products Card
   dashboard24HoursPerformanceChart, // Chart for Dashboard view - 24 Hours Performance Card
   dashboard24HoursPerformanceChartKerala,
   dashboard24HoursPerformanceChartBihar,

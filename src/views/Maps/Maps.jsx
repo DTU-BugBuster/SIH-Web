@@ -51,7 +51,7 @@ const cities = [
   { name: "Rajasthan", coordinates: [74.2179,27.0238] },
   { name: "Kerala", coordinates: [76.2711,10.8505] },
   { name: "Chattisgarh", coordinates: [81.8661,21.2787] },
-  { name: "Andhra Pradesh", coordinates: [79.0193,18.1124] },
+  { name: "Andhra Pradesh", coordinates: [80.0193,17.1124] },
   { name: "Madhya Pradesh", coordinates: [78.6569,22.9734] },
   { name: "Gujarat", coordinates: [71.1924,22.2587] },
   { name: "Maharastra", coordinates: [75.7139,19.7515] },
@@ -286,29 +286,38 @@ constructor(props) {
        name: "0",
        center: [100,20],
        zoom: 5,
+       colour:"#FFFFFF",
+       h:6,
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleCityClick = this.handleCityClick.bind(this)
     this.handleReset = this.handleReset.bind(this)
 }
   handleChange(key){
-  console.log("clicked",key)
+//  console.log("clicked",key)
     this.setState({
-      name: key
+      name: key,
+      //colour:"#FFFFFF"
     },() =>{
-    console.log('state changed',this.state.name)
+  //  console.log('state changed',this.state.name)
     })
 }
 handleCityClick(city) {
+console.log(this.state.colour)
   this.setState({
-    zoom: 25,
+    zoom: 35,
     center: city.coordinates,
+    colour:"#000000",
+    h:12,
+  },() => {
+  console.log('state changed',this.state.h)
   })
 }
 handleReset() {
   this.setState({
     center: [100,20],
     zoom: 5,
+    colour:"#FFFFFF"
   })
 }
 render() {
@@ -319,7 +328,7 @@ render() {
           <Row>
             <Col>
               <Card>
-                <CardHeader>Google Maps</CardHeader>
+                <CardHeader>India's Water Quality</CardHeader>
                 <CardBody>
                   <Row>
                     <Col xs={7}>
@@ -332,7 +341,7 @@ render() {
                       height: "100%"
                     }}
                   >
-                    <ZoomableGroup center={[82, 22]} disablePanning>
+                    <ZoomableGroup center={[82, 22]}>
                       <Geographies geography="indiastates.json" disableOptimization={this.state.disableOptimization} >
                         {(geographies, projection) =>{
                           return geographies.map((geography, i) => {
@@ -401,14 +410,16 @@ render() {
                         zoom: 1,
                         x: 100,
                         y: 20,
+                        color:"FFFFFF",
                       }}
                       style={{
                         zoom: spring(this.state.zoom, {stiffness: 210, damping: 20}),
                         x: spring(this.state.center[0], {stiffness: 210, damping: 20}),
                         y: spring(this.state.center[1], {stiffness: 210, damping: 20}),
+                        color: spring(this.state.colour, {stiffness: 210, damping: 20}),
                       }}
                       >
-                      {({zoom,x,y}) => (
+                      {({zoom,x,y,color}) => (
                         <ComposableMap
                           projectionConfig={{ scale: 205 }}
                           width={980}
@@ -416,10 +427,11 @@ render() {
                           style={{
                             width: "100%",
                             height: "auto",
+                            fill:color,
                           }}
                           >
-                          <ZoomableGroup center={[x,y]} zoom={zoom}>
-                            <Geographies geography="indiastates.json">
+                          <ZoomableGroup center={[x,y]} zoom={zoom} styles={color}>
+                            <Geographies geography="indiastates.json" disableOptimization={this.state.disableOptimization}>
                               {(geographies, projection) =>
                                 geographies.map((geography, i) => geography.id !== "010" && (
                                   <Geography
@@ -428,28 +440,58 @@ render() {
                                     projection={projection}
 
                                     style={{
+
                                       default: {
-                                        fill: "#ECEFF1",
+                                        fill: "#FFFFFF",
                                         stroke: "#607D8B",
                                         strokeWidth: 0.15,
-                                        outline: "none",
+                                        outline: "true",
                                       },
                                       hover: {
-                                        fill: "#CFD8DC",
+                                        fill: "#FFFFFF",
                                         stroke: "#607D8B",
                                         strokeWidth: 0.15,
-                                        outline: "none",
+                                        outline: "",
                                       },
                                       pressed: {
-                                        fill: "#FF5722",
+                                        fill: "#FFFFFF",
                                         stroke: "#607D8B",
                                         strokeWidth: 0.15,
-                                        outline: "none",
+                                        outline: "",
                                       },
                                     }}
                                   />
+
                               ))}
                             </Geographies>
+                            <Markers>
+                              {cities.map((city, i) => (
+                                <Marker
+                                  key={i}
+                                  marker={city}
+                                  //onClick={this.handleCityClick}
+                                  >
+                                  <circle
+                                    cx={0}
+                                    cy={0}
+                                    r={this.state.h}
+                                    fill="#FF5722"
+                                    stroke="#DF3702"
+                                  />
+                                  <text
+                                    textAnchor="middle"
+                                    y={25}
+                                    style={{
+                                     fontFamily: "Roboto, sans-serif",
+                                     fill: "#607D8B",
+                                     zoom:"10"
+                                    }}
+                                   >
+                                  {city.name}
+                                 </text>
+                                </Marker>
+                              ))}
+                            </Markers>
                           </ZoomableGroup>
                         </ComposableMap>
                       )}
