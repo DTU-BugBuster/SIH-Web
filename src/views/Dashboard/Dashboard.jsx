@@ -16,7 +16,9 @@ import { PanelHeader, Stats, CardCategory, Tasks } from "components";
 
 import {
   dashboardPanelChart,
-  getChartCholera
+  getChartCholera,
+  getChartD,
+  getChartT
 } from "variables/charts.jsx";
 
 
@@ -60,9 +62,6 @@ componentWillReceiveProps(nextProp)
                 <CardTitle tag="h4"></CardTitle>
               </CardHeader>
               <CardBody>
-                {
-                  console.log(this.props)
-                }
                 <Line data={getChartCholera(this.props.state).data} options={getChartCholera(this.props.state).options}/>
               </CardBody>
               <CardFooter>
@@ -84,6 +83,8 @@ componentWillReceiveProps(nextProp)
                   <CardTitle tag="h4"></CardTitle>
                 </CardHeader>
                 <CardBody>
+                <Line data={getChartD(this.props.state).data} options={getChartD(this.props.state).options}/>
+
                 </CardBody>
                 <CardFooter>
                   <Stats>
@@ -106,6 +107,7 @@ componentWillReceiveProps(nextProp)
                 <CardTitle tag="h4"></CardTitle>
               </CardHeader>
               <CardBody>
+              <Line data={getChartT(this.props.state).data} options={getChartT(this.props.state).options}/>
               </CardBody>
               <CardFooter>
                 <Stats>

@@ -23,7 +23,7 @@ const chartColor = "#FFFFFF";
 const gradientChartOptionsConfiguration = {
   maintainAspectRatio: false,
   legend: {
-    display: false
+    display: true
   },
   tooltips: {
     bodySpacing: 4,
@@ -73,7 +73,7 @@ const gradientChartOptionsConfiguration = {
 var gradientChartOptionsConfigurationWithNumbersAndGrid = {
   maintainAspectRatio: false,
   legend: {
-    display: false
+    display: true
   },
   tooltips: {
     bodySpacing: 4,
@@ -98,11 +98,15 @@ var gradientChartOptionsConfigurationWithNumbersAndGrid = {
       {
         display: 0,
         ticks: {
-          display: false
+          display: true,
+          autoSkip: false,
+          callback: function(value, index, values) {
+            return value;
+          }
         },
         gridLines: {
           zeroLineColor: "transparent",
-          drawTicks: false,
+          drawTicks: true,
           display: false,
           drawBorder: false
         }
@@ -276,289 +280,493 @@ const dashboardShippedProductsChart = {
 // ##############################
 // // // Dashboard view - All Products - Card
 // #############################
-const states = ["Andhra Pradesh", "Arunachal Pradesh", "Assam", "Bihar", "Chattisgarh", "Goa", "Gujarat", "Haryana","Himachal Pradesh", "Jammu And Kashmir", "Jharkhand", "Karnataka", "Kerala", "Madhya Pradesh", "Maharashtra", "Manipur","Meghalaya","Mizoram", "Nagaland", "Odisha", "Punjab", "Rajasthan", "Sikkim", "Tamil Nadu", "Telangana","Tripura", "Uttarakhand", "Uttar Pradesh", "West Bengal", "A & N Islands", "Chandigarh", "D & N Haveli", "Daman & Diu","Delhi","Lakshdweep","Puducherry"];
-const dataC =[[0,0,0,0,20,0,158,7,0,0,0,32,3,17,252,0,1,0,0,0,0,56,0,14,0,0,0,0,173,0,15,28,0,65,0,3],[0,0,0,0,7,0,52,0,0,0,36,14,0,104,213,0,0,26,0,2,0,3,0,15,0,0,0,47,155,0,133,14,0,91,0,1],[0,9,0,0,55,0,88,0,0,0,5,29,7,94,107,0,0,17,6,0,0,2,0,8,0,0,0,4,157,0,10,15,0,228,0,0]]
-const getChartCholera = (state) => {
+const states = [
+  "Andhra Pradesh",
+  "Arunachal Pradesh",
+  "Assam",
+  "Bihar",
+  "Chattisgarh",
+  "Goa",
+  "Gujarat",
+  "Haryana",
+  "Himachal Pradesh",
+  "Jammu And Kashmir",
+  "Jharkhand",
+  "Karnataka",
+  "Kerala",
+  "Madhya Pradesh",
+  "Maharashtra",
+  "Manipur",
+  "Meghalaya",
+  "Mizoram",
+  "Nagaland",
+  "Odisha",
+  "Punjab",
+  "Rajasthan",
+  "Sikkim",
+  "Tamil Nadu",
+  "Telangana",
+  "Tripura",
+  "Uttarakhand",
+  "Uttar Pradesh",
+  "West Bengal",
+  "A & N Islands",
+  "Chandigarh",
+  "D & N Haveli",
+  "Daman & Diu",
+  "Delhi",
+  "Lakshdweep",
+  "Puducherry"
+];
+const dataC = [
+  [
+    0,
+    0,
+    0,
+    0,
+    20,
+    0,
+    158,
+    7,
+    0,
+    0,
+    0,
+    32,
+    3,
+    17,
+    252,
+    0,
+    1,
+    0,
+    0,
+    0,
+    0,
+    56,
+    0,
+    14,
+    0,
+    0,
+    0,
+    0,
+    173,
+    0,
+    15,
+    28,
+    0,
+    65,
+    0,
+    3
+  ],
+  [
+    0,
+    0,
+    0,
+    0,
+    7,
+    0,
+    52,
+    0,
+    0,
+    0,
+    36,
+    14,
+    0,
+    104,
+    213,
+    0,
+    0,
+    26,
+    0,
+    2,
+    0,
+    3,
+    0,
+    15,
+    0,
+    0,
+    0,
+    47,
+    155,
+    0,
+    133,
+    14,
+    0,
+    91,
+    0,
+    1
+  ],
+  [
+    0,
+    9,
+    0,
+    0,
+    55,
+    0,
+    88,
+    0,
+    0,
+    0,
+    5,
+    29,
+    7,
+    94,
+    107,
+    0,
+    0,
+    17,
+    6,
+    0,
+    0,
+    2,
+    0,
+    8,
+    0,
+    0,
+    0,
+    4,
+    157,
+    0,
+    10,
+    15,
+    0,
+    228,
+    0,
+    0
+  ]
+];
+const getChartCholera = state => {
   var index = states.indexOf(state);
   return {
-  data: canvas => {
-    var ctx = canvas.getContext("2d");
-    var gradientStroke = ctx.createLinearGradient(500, 0, 100, 0);
-    gradientStroke.addColorStop(0, "#18ce0f");
-    gradientStroke.addColorStop(1, chartColor);
-    var gradientFill = ctx.createLinearGradient(0, 170, 0, 50);
-    gradientFill.addColorStop(0, "rgba(128, 182, 244, 0)");
-    gradientFill.addColorStop(1, hexToRGB("#18ce0f", 0.4));
-    return {
-      labels: ["2014","2015","2016"],
-      datasets: [
-        {
-          label: "Cases",
-          borderColor: "#18ce0f",
-          pointBorderColor: "#FFF",
-          pointBackgroundColor: "#18ce0f",
-          pointBorderWidth: 2,
-          pointHoverRadius: 4,
-          pointHoverBorderWidth: 1,
-          pointRadius: 4,
-          fill: true,
-          backgroundColor: gradientFill,
-          borderWidth: 2,
-          data: [dataC[0][index],dataC[1][index],dataC[2][index]]
-        }
-      ]
-    };
-  },
-  options: gradientChartOptionsConfigurationWithNumbersAndGrid
-}
+    data: canvas => {
+      var ctx = canvas.getContext("2d");
+      var gradientStroke = ctx.createLinearGradient(500, 0, 100, 0);
+      gradientStroke.addColorStop(0, "#18ce0f");
+      gradientStroke.addColorStop(1, chartColor);
+      var gradientFill = ctx.createLinearGradient(0, 170, 0, 50);
+      gradientFill.addColorStop(0, "rgba(128, 182, 244, 0)");
+      gradientFill.addColorStop(1, hexToRGB("#18ce0f", 0.4));
+      return {
+        labels: ["2014", "2015", "2016"],
+        datasets: [
+          {
+            label: "Cases",
+            borderColor: "#18ce0f",
+            pointBorderColor: "#FFF",
+            pointBackgroundColor: "#18ce0f",
+            pointBorderWidth: 2,
+            pointHoverRadius: 4,
+            pointHoverBorderWidth: 1,
+            pointRadius: 4,
+            fill: true,
+            backgroundColor: gradientFill,
+            borderWidth: 2,
+            data: [dataC[0][index], dataC[1][index], dataC[2][index]]
+          }
+        ]
+      };
+    },
+    options: gradientChartOptionsConfigurationWithNumbersAndGrid
+  };
 };
-const dashboardAllProductsChartC2 = {
-  data: canvas => {
-    var ctx = canvas.getContext("2d");
-    var gradientStroke = ctx.createLinearGradient(500, 0, 100, 0);
-    gradientStroke.addColorStop(0, "#18ce0f");
-    gradientStroke.addColorStop(1, chartColor);
-    var gradientFill = ctx.createLinearGradient(0, 170, 0, 50);
-    gradientFill.addColorStop(0, "rgba(128, 182, 244, 0)");
-    gradientFill.addColorStop(1, hexToRGB("#18ce0f", 0.4));
-    return {
-      labels: ["Andhra Pradesh", "Arunachal Pradesh", "Assam", "Bihar", "Chattisgarh", "Goa", "Gujarat", "Haryana","Himachal Pradesh", "Jammu And Kashmir", "Jharkhand", "Karnataka", "Kerala", "Madhya Pradesh", "Maharashtra", "Manipur","Meghalaya","Mizoram", "Nagaland", "Odisha", "Punjab", "Rajasthan", "Sikkim", "Tamil Nadu", "Telangana","Tripura", "Uttarakhand", "Uttar Pradesh", "West Bengal", "A & N Islands", "Chandigarh", "D & N Haveli", "Daman & Diu","Delhi","Lakshdweep","Puducherry"],
-      datasets: [
-        {
-          label: "Cases",
-          borderColor: "#18ce0f",
-          pointBorderColor: "#FFF",
-          pointBackgroundColor: "#18ce0f",
-          pointBorderWidth: 2,
-          pointHoverRadius: 4,
-          pointHoverBorderWidth: 1,
-          pointRadius: 4,
-          fill: true,
-          backgroundColor: gradientFill,
-          borderWidth: 2,
-          data: [0,0,0,0,7,0,52,0,0,0,36,14,0,104,213,0,0,26,0,2,0,3,0,15,0,0,0,47,155,0,133,14,0,91,0,1]
-        }
-      ]
-    };
-  },
-  options: gradientChartOptionsConfigurationWithNumbersAndGrid
+const dataD = [
+  [
+    1332145,
+    12657,
+    83373,
+    550038,
+    115561,
+    16097,
+    504857,
+    197898,
+    350459,
+    515013,
+    81451,
+    810781,
+    402106,
+    768021,
+    664014,
+    29954,
+    197024,
+    14201,
+    22301,
+    767575,
+    170438,
+    676832,
+    39983,
+    250264,
+    0,
+    80388,
+    90428,
+    754582,
+    189612,
+    23947,
+    39277,
+    63337,
+    12831,
+    120618,
+    6750,
+    87248
+  ],
+  [
+    1122740,
+    10834,
+    128392,
+    455125,
+    132278,
+    13204,
+    567123,
+    190390,
+    334168,
+    472843,
+    81934,
+    832356,
+    428374,
+    740690,
+    877638,
+    29159,
+    167691,
+    14215,
+    15511,
+    782151,
+    179211,
+    810518,
+    53295,
+    308358,
+    963573,
+    88064,
+    108974,
+    814481,
+    1798754,
+    22398,
+    45284,
+    51195,
+    18169,
+    157445,
+    4472,
+    92599
+  ],
+  [
+    1122740,
+    10834,
+    128392,
+    455125,
+    132278,
+    13204,
+    567123,
+    190390,
+    334168,
+    472843,
+    81934,
+    832356,
+    428374,
+    740690,
+    877638,
+    29159,
+    167691,
+    14215,
+    15511,
+    782151,
+    179211,
+    810518,
+    53295,
+    308358,
+    963573,
+    88064,
+    108974,
+    814481,
+    1798754,
+    22398,
+    45284,
+    51195,
+    18169,
+    157445,
+    4472,
+    92599
+  ]
+];
+const getChartD = state => {
+  var index = states.indexOf(state);
+  return {
+    data: canvas => {
+      var ctx = canvas.getContext("2d");
+      var gradientStroke = ctx.createLinearGradient(500, 0, 100, 0);
+      gradientStroke.addColorStop(0, "#18ce0f");
+      gradientStroke.addColorStop(1, chartColor);
+      var gradientFill = ctx.createLinearGradient(0, 170, 0, 50);
+      gradientFill.addColorStop(0, "rgba(128, 182, 244, 0)");
+      gradientFill.addColorStop(1, hexToRGB("#18ce0f", 0.4));
+      return {
+        labels: ["2014", "2015", "2016"],
+        datasets: [
+          {
+            label: "Cases",
+            borderColor: "#18ce0f",
+            pointBorderColor: "#FFF",
+            pointBackgroundColor: "#18ce0f",
+            pointBorderWidth: 2,
+            pointHoverRadius: 4,
+            pointHoverBorderWidth: 1,
+            pointRadius: 4,
+            fill: true,
+            backgroundColor: gradientFill,
+            borderWidth: 2,
+            data: [dataD[0][index], dataD[1][index], dataD[2][index]]
+          }
+        ]
+      };
+    },
+    options: gradientChartOptionsConfigurationWithNumbersAndGrid
+  };
 };
-const dashboardAllProductsChartC3 = {
-  data: canvas => {
-    var ctx = canvas.getContext("2d");
-    var gradientStroke = ctx.createLinearGradient(500, 0, 100, 0);
-    gradientStroke.addColorStop(0, "#18ce0f");
-    gradientStroke.addColorStop(1, chartColor);
-    var gradientFill = ctx.createLinearGradient(0, 170, 0, 50);
-    gradientFill.addColorStop(0, "rgba(128, 182, 244, 0)");
-    gradientFill.addColorStop(1, hexToRGB("#18ce0f", 0.4));
-    return {
-      labels: ["Andhra Pradesh", "Arunachal Pradesh", "Assam", "Bihar", "Chattisgarh", "Goa", "Gujarat", "Haryana","Himachal Pradesh", "Jammu And Kashmir", "Jharkhand", "Karnataka", "Kerala", "Madhya Pradesh", "Maharashtra", "Manipur","Meghalaya","Mizoram", "Nagaland", "Odisha", "Punjab", "Rajasthan", "Sikkim", "Tamil Nadu", "Telangana","Tripura", "Uttarakhand", "Uttar Pradesh", "West Bengal", "A & N Islands", "Chandigarh", "D & N Haveli", "Daman & Diu","Delhi","Lakshdweep","Puducherry"],
-      datasets: [
-        {
-          label: "Cases",
-          borderColor: "#18ce0f",
-          pointBorderColor: "#FFF",
-          pointBackgroundColor: "#18ce0f",
-          pointBorderWidth: 2,
-          pointHoverRadius: 4,
-          pointHoverBorderWidth: 1,
-          pointRadius: 4,
-          fill: true,
-          backgroundColor: gradientFill,
-          borderWidth: 2,
-          data: [0,9,0,0,55,0,88,0,0,0,5,29,7,94,107,0,0,17,6,0,0,2,0,8,0,0,0,4,157,0,10,15,0,228,0,0]
-        }
-      ]
-    };
-  },
-  options: gradientChartOptionsConfigurationWithNumbersAndGrid
-};
-const dashboardAllProductsChartD1 = {
-  data: canvas => {
-    var ctx = canvas.getContext("2d");
-    var gradientStroke = ctx.createLinearGradient(500, 0, 100, 0);
-    gradientStroke.addColorStop(0, "#18ce0f");
-    gradientStroke.addColorStop(1, chartColor);
-    var gradientFill = ctx.createLinearGradient(0, 170, 0, 50);
-    gradientFill.addColorStop(0, "rgba(128, 182, 244, 0)");
-    gradientFill.addColorStop(1, hexToRGB("#18ce0f", 0.4));
-    return {
-      labels: ["Andhra Pradesh", "Arunachal Pradesh", "Assam", "Bihar", "Chattisgarh", "Goa", "Gujarat", "Haryana","Himachal Pradesh", "Jammu And Kashmir", "Jharkhand", "Karnataka", "Kerala", "Madhya Pradesh", "Maharashtra", "Manipur","Meghalaya","Mizoram", "Nagaland", "Odisha", "Punjab", "Rajasthan", "Sikkim", "Tamil Nadu", "Telangana","Tripura", "Uttarakhand", "Uttar Pradesh", "West Bengal", "A & N Islands", "Chandigarh", "D & N Haveli", "Daman & Diu","Delhi","Lakshdweep","Puducherry"],
-      datasets: [
-        {
-          label: "Cases",
-          borderColor: "#18ce0f",
-          pointBorderColor: "#FFF",
-          pointBackgroundColor: "#18ce0f",
-          pointBorderWidth: 2,
-          pointHoverRadius: 4,
-          pointHoverBorderWidth: 1,
-          pointRadius: 4,
-          fill: true,
-          backgroundColor: gradientFill,
-          borderWidth: 2,
-          data: [1332145,12657,83373,550038,115561,16097,504857,197898,350459,515013,81451,810781,402106,768021,664014,29954,197024,14201,22301,767575,170438,676832,39983,250264,0,80388,90428,754582,189612,23947,39277,63337,12831,120618,6750,87248]
-        }
-      ]
-    };
-  },
-  options: gradientChartOptionsConfigurationWithNumbersAndGrid
-};
-const dashboardAllProductsChartD2 = {
-  data: canvas => {
-    var ctx = canvas.getContext("2d");
-    var gradientStroke = ctx.createLinearGradient(500, 0, 100, 0);
-    gradientStroke.addColorStop(0, "#18ce0f");
-    gradientStroke.addColorStop(1, chartColor);
-    var gradientFill = ctx.createLinearGradient(0, 170, 0, 50);
-    gradientFill.addColorStop(0, "rgba(128, 182, 244, 0)");
-    gradientFill.addColorStop(1, hexToRGB("#18ce0f", 0.4));
-    return {
-      labels: ["Andhra Pradesh", "Arunachal Pradesh", "Assam", "Bihar", "Chattisgarh", "Goa", "Gujarat", "Haryana","Himachal Pradesh", "Jammu And Kashmir", "Jharkhand", "Karnataka", "Kerala", "Madhya Pradesh", "Maharashtra", "Manipur","Meghalaya","Mizoram", "Nagaland", "Odisha", "Punjab", "Rajasthan", "Sikkim", "Tamil Nadu", "Telangana","Tripura", "Uttarakhand", "Uttar Pradesh", "West Bengal", "A & N Islands", "Chandigarh", "D & N Haveli", "Daman & Diu","Delhi","Lakshdweep","Puducherry"],
-      datasets: [
-        {
-          label: "Cases",
-          borderColor: "#18ce0f",
-          pointBorderColor: "#FFF",
-          pointBackgroundColor: "#18ce0f",
-          pointBorderWidth: 2,
-          pointHoverRadius: 4,
-          pointHoverBorderWidth: 1,
-          pointRadius: 4,
-          fill: true,
-          backgroundColor: gradientFill,
-          borderWidth: 2,
-          data: [1122740,10834,128392,455125,132278,13204,567123,190390,334168,472843,81934,832356,428374,740690,877638,29159,167691,14215,15511,782151,179211,810518,53295,308358,963573,88064,108974,814481,1798754,22398,45284,51195,18169,157445,4472,92599]
-        }
-      ]
-    };
-  },
-  options: gradientChartOptionsConfigurationWithNumbersAndGrid
-};
-const dashboardAllProductsChartD3 = {
-  data: canvas => {
-    var ctx = canvas.getContext("2d");
-    var gradientStroke = ctx.createLinearGradient(500, 0, 100, 0);
-    gradientStroke.addColorStop(0, "#18ce0f");
-    gradientStroke.addColorStop(1, chartColor);
-    var gradientFill = ctx.createLinearGradient(0, 170, 0, 50);
-    gradientFill.addColorStop(0, "rgba(128, 182, 244, 0)");
-    gradientFill.addColorStop(1, hexToRGB("#18ce0f", 0.4));
-    return {
-      labels: ["Andhra Pradesh", "Arunachal Pradesh", "Assam", "Bihar", "Chattisgarh", "Goa", "Gujarat", "Haryana","Himachal Pradesh", "Jammu And Kashmir", "Jharkhand", "Karnataka", "Kerala", "Madhya Pradesh", "Maharashtra", "Manipur","Meghalaya","Mizoram", "Nagaland", "Odisha", "Punjab", "Rajasthan", "Sikkim", "Tamil Nadu", "Telangana","Tripura", "Uttarakhand", "Uttar Pradesh", "West Bengal", "A & N Islands", "Chandigarh", "D & N Haveli", "Daman & Diu","Delhi","Lakshdweep","Puducherry"],
-      datasets: [
-        {
-          label: "Cases",
-          borderColor: "#18ce0f",
-          pointBorderColor: "#FFF",
-          pointBackgroundColor: "#18ce0f",
-          pointBorderWidth: 2,
-          pointHoverRadius: 4,
-          pointHoverBorderWidth: 1,
-          pointRadius: 4,
-          fill: true,
-          backgroundColor: gradientFill,
-          borderWidth: 2,
-          data: [1194005,11715,88736,392224,157064,14245,641451,224780,310789,534341,93547,930369,476686,740236,1051445,33193,165404,13602,15062,775824,195281,897209,46289,367815,871497,95278,110942,1066342,2045451,23547,49891,43280,13062,135907,4387,92379]
-        }
-      ]
-    };
-  },
-  options: gradientChartOptionsConfigurationWithNumbersAndGrid
-};
-const dashboardAllProductsChartT1 = {
-  data: canvas => {
-    var ctx = canvas.getContext("2d");
-    var gradientStroke = ctx.createLinearGradient(500, 0, 100, 0);
-    gradientStroke.addColorStop(0, "#18ce0f");
-    gradientStroke.addColorStop(1, chartColor);
-    var gradientFill = ctx.createLinearGradient(0, 170, 0, 50);
-    gradientFill.addColorStop(0, "rgba(128, 182, 244, 0)");
-    gradientFill.addColorStop(1, hexToRGB("#18ce0f", 0.4));
-    return {
-      labels: ["Andhra Pradesh", "Arunachal Pradesh", "Assam", "Bihar", "Chattisgarh", "Goa", "Gujarat", "Haryana","Himachal Pradesh", "Jammu And Kashmir", "Jharkhand", "Karnataka", "Kerala", "Madhya Pradesh", "Maharashtra", "Manipur","Meghalaya","Mizoram", "Nagaland", "Odisha", "Punjab", "Rajasthan", "Sikkim", "Tamil Nadu", "Telangana","Tripura", "Uttarakhand", "Uttar Pradesh", "West Bengal", "A & N Islands", "Chandigarh", "D & N Haveli", "Daman & Diu","Delhi","Lakshdweep","Puducherry"],
-      datasets: [
-        {
-          label: "Cases",
-          borderColor: "#18ce0f",
-          pointBorderColor: "#FFF",
-          pointBackgroundColor: "#18ce0f",
-          pointBorderWidth: 2,
-          pointHoverRadius: 4,
-          pointHoverBorderWidth: 1,
-          pointRadius: 4,
-          fill: true,
-          backgroundColor: gradientFill,
-          borderWidth: 2,
-          data: [186446,4512,5328,283679,32617,573,29505,29990,48786,57537,36663,92959,2269,155190,102299,10636,10395,2758,11604,90363,34651,83540,716,29937,0,10553,28939,225829,90086,881,6021,2439,167,27339,3,1477]
-        }
-      ]
-    };
-  },
-  options: gradientChartOptionsConfigurationWithNumbersAndGrid
-};
-const dashboardAllProductsChartT2 = {
-  data: canvas => {
-    var ctx = canvas.getContext("2d");
-    var gradientStroke = ctx.createLinearGradient(500, 0, 100, 0);
-    gradientStroke.addColorStop(0, "#18ce0f");
-    gradientStroke.addColorStop(1, chartColor);
-    var gradientFill = ctx.createLinearGradient(0, 170, 0, 50);
-    gradientFill.addColorStop(0, "rgba(128, 182, 244, 0)");
-    gradientFill.addColorStop(1, hexToRGB("#18ce0f", 0.4));
-    return {
-      labels: ["Andhra Pradesh", "Arunachal Pradesh", "Assam", "Bihar", "Chattisgarh", "Goa", "Gujarat", "Haryana","Himachal Pradesh", "Jammu And Kashmir", "Jharkhand", "Karnataka", "Kerala", "Madhya Pradesh", "Maharashtra", "Manipur","Meghalaya","Mizoram", "Nagaland", "Odisha", "Punjab", "Rajasthan", "Sikkim", "Tamil Nadu", "Telangana","Tripura", "Uttarakhand", "Uttar Pradesh", "West Bengal", "A & N Islands", "Chandigarh", "D & N Haveli", "Daman & Diu","Delhi","Lakshdweep","Puducherry"],
-      datasets: [
-        {
-          label: "Cases",
-          borderColor: "#18ce0f",
-          pointBorderColor: "#FFF",
-          pointBackgroundColor: "#18ce0f",
-          pointBorderWidth: 2,
-          pointHoverRadius: 4,
-          pointHoverBorderWidth: 1,
-          pointRadius: 4,
-          fill: true,
-          backgroundColor: gradientFill,
-          borderWidth: 2,
-          data: [146385,4476,11333,265469,47970,1603,35362,31965,40639,52359,28330,85837,2862,125737,130809,5422,13459,2804,7977,90895,34867,79244,453,40579,163747,4596,34120,288140,112262,870,12447,1406,165,30698,77,2049]
-        }
-      ]
-    };
-  },
-  options: gradientChartOptionsConfigurationWithNumbersAndGrid
-};
-const dashboardAllProductsChartT3 = {
-  data: canvas => {
-    var ctx = canvas.getContext("2d");
-    var gradientStroke = ctx.createLinearGradient(500, 0, 100, 0);
-    gradientStroke.addColorStop(0, "#18ce0f");
-    gradientStroke.addColorStop(1, chartColor);
-    var gradientFill = ctx.createLinearGradient(0, 170, 0, 50);
-    gradientFill.addColorStop(0, "rgba(128, 182, 244, 0)");
-    gradientFill.addColorStop(1, hexToRGB("#18ce0f", 0.4));
-    return {
-      labels: ["Andhra Pradesh", "Arunachal Pradesh", "Assam", "Bihar", "Chattisgarh", "Goa", "Gujarat", "Haryana","Himachal Pradesh", "Jammu And Kashmir", "Jharkhand", "Karnataka", "Kerala", "Madhya Pradesh", "Maharashtra", "Manipur","Meghalaya","Mizoram", "Nagaland", "Odisha", "Punjab", "Rajasthan", "Sikkim", "Tamil Nadu", "Telangana","Tripura", "Uttarakhand", "Uttar Pradesh", "West Bengal", "A & N Islands", "Chandigarh", "D & N Haveli", "Daman & Diu","Delhi","Lakshdweep","Puducherry"],
-      datasets: [
-        {
-          label: "Cases",
-          borderColor: "#18ce0f",
-          pointBorderColor: "#FFF",
-          pointBackgroundColor: "#18ce0f",
-          pointBorderWidth: 2,
-          pointHoverRadius: 4,
-          pointHoverBorderWidth: 1,
-          pointRadius: 4,
-          fill: true,
-          backgroundColor: gradientFill,
-          borderWidth: 2,
-          data: [170249,4574,19328,204366,74632,724,45970,36442,38093,46904,41731,97493,2038,129998,137617,4942,14128,3085,8267,73330,37896,116470,474,33853,133838,5398,33904,495698,161264,1127,12237,4420,197,30015,50,1943]
-        }
-      ]
-    };
-  },
-  options: gradientChartOptionsConfigurationWithNumbersAndGrid
+const dataT = [
+  [
+    186446,
+    4512,
+    5328,
+    283679,
+    32617,
+    573,
+    29505,
+    29990,
+    48786,
+    57537,
+    36663,
+    92959,
+    2269,
+    155190,
+    102299,
+    10636,
+    10395,
+    2758,
+    11604,
+    90363,
+    34651,
+    83540,
+    716,
+    29937,
+    0,
+    10553,
+    28939,
+    225829,
+    90086,
+    881,
+    6021,
+    2439,
+    167,
+    27339,
+    3,
+    1477
+  ],
+  [
+    146385,
+    4476,
+    11333,
+    265469,
+    47970,
+    1603,
+    35362,
+    31965,
+    40639,
+    52359,
+    28330,
+    85837,
+    2862,
+    125737,
+    130809,
+    5422,
+    13459,
+    2804,
+    7977,
+    90895,
+    34867,
+    79244,
+    453,
+    40579,
+    163747,
+    4596,
+    34120,
+    288140,
+    112262,
+    870,
+    12447,
+    1406,
+    165,
+    30698,
+    77,
+    2049
+  ],
+  [
+    170249,
+    4574,
+    19328,
+    204366,
+    74632,
+    724,
+    45970,
+    36442,
+    38093,
+    46904,
+    41731,
+    97493,
+    2038,
+    129998,
+    137617,
+    4942,
+    14128,
+    3085,
+    8267,
+    73330,
+    37896,
+    116470,
+    474,
+    33853,
+    133838,
+    5398,
+    33904,
+    495698,
+    161264,
+    1127,
+    12237,
+    4420,
+    197,
+    30015,
+    50,
+    1943
+  ]
+];
+const getChartT = state => {
+  var index = states.indexOf(state);
+  return {
+    data: canvas => {
+      var ctx = canvas.getContext("2d");
+      var gradientStroke = ctx.createLinearGradient(500, 0, 100, 0);
+      gradientStroke.addColorStop(0, "#18ce0f");
+      gradientStroke.addColorStop(1, chartColor);
+      var gradientFill = ctx.createLinearGradient(0, 170, 0, 50);
+      gradientFill.addColorStop(0, "rgba(128, 182, 244, 0)");
+      gradientFill.addColorStop(1, hexToRGB("#18ce0f", 0.4));
+      return {
+        labels: ["2014", "2015", "2016"],
+        datasets: [
+          {
+            label: "Cases",
+            borderColor: "#18ce0f",
+            pointBorderColor: "#FFF",
+            pointBackgroundColor: "#18ce0f",
+            pointBorderWidth: 2,
+            pointHoverRadius: 4,
+            pointHoverBorderWidth: 1,
+            pointRadius: 4,
+            fill: true,
+            backgroundColor: gradientFill,
+            borderWidth: 2,
+            data: [dataT[0][index], dataT[1][index], dataT[2][index]]
+          }
+        ]
+      };
+    },
+    options: gradientChartOptionsConfigurationWithNumbersAndGrid
+  };
 };
 
 // ##############################
@@ -596,11 +804,10 @@ const dashboard24HoursPerformanceChart = {
         "O/W.PEDDANUYYI - VIZIANAGARAM",
         "B/W.- NEAR M/S ANDHRA SUGARS LTD.- KOVVUR - W.G.DIST.",
         "O/W.-NEAR PARTAP NAGAR BRIIDGE -KAKINADA - E.G.DIST.- A.P"
-
       ],
       datasets: [
         {
-          label:"Mean Temprature",
+          label: "Mean Temprature",
           backgroundColor: gradientFill,
           borderColor: "#2CA8FF",
           pointBorderColor: "#FFF",
@@ -612,33 +819,40 @@ const dashboard24HoursPerformanceChart = {
           fill: true,
           borderWidth: 1,
 
-          data:[25,24,30,22,23,23,24,24,22,21,25,30,30,27,31,25,25,25,23,28,31,28,27]
-        },{
-          label:"pH",
-          type:'line',
-          borderColor: '#EC932F',
-          pointBorderColor: '#EC932F',
-          pointBackgroundColor: '#EC932F',
-          pointHoverBackgroundColor: '#EC932F',
-          pointHoverBorderColor: '#EC932F',
-          backgroundColor: gradientFill,
-          pointBorderWidth: 2,
-          pointHoverRadius: 4,
-          pointHoverBorderWidth: 1,
-          pointRadius: 1,
-          fill: true,
-          borderWidth: 1,
-
-          data:[7.1,7,7.4,8,7.1,7,7.3,7.3,7.6,7.6,7.6,7.5,7.4,7.6,7.2,7.4,7.7,7.6,7.8,7.2,7.8,7.8,7.5]
+          data: [
+            25,
+            24,
+            30,
+            22,
+            23,
+            23,
+            24,
+            24,
+            22,
+            21,
+            25,
+            30,
+            30,
+            27,
+            31,
+            25,
+            25,
+            25,
+            23,
+            28,
+            31,
+            28,
+            27
+          ]
         },
         {
-          label:"B.O.D",
-          type:'line',
-          borderColor: '#800000',
-          pointBorderColor: '#800000',
-          pointBackgroundColor: '#800000',
-          pointHoverBackgroundColor: '#800000',
-          pointHoverBorderColor: '#800000',
+          label: "pH",
+          type: "line",
+          borderColor: "#EC932F",
+          pointBorderColor: "#EC932F",
+          pointBackgroundColor: "#EC932F",
+          pointHoverBackgroundColor: "#EC932F",
+          pointHoverBorderColor: "#EC932F",
           backgroundColor: gradientFill,
           pointBorderWidth: 2,
           pointHoverRadius: 4,
@@ -647,7 +861,73 @@ const dashboard24HoursPerformanceChart = {
           fill: true,
           borderWidth: 1,
 
-          data:[0.5,0.8,0.8,0,0.3,0.4,0.45,0.35,0,0,0,1,0.8,2.2,3,1.6,1.4,1.6,2.1,1.1,1,1,0.9]
+          data: [
+            7.1,
+            7,
+            7.4,
+            8,
+            7.1,
+            7,
+            7.3,
+            7.3,
+            7.6,
+            7.6,
+            7.6,
+            7.5,
+            7.4,
+            7.6,
+            7.2,
+            7.4,
+            7.7,
+            7.6,
+            7.8,
+            7.2,
+            7.8,
+            7.8,
+            7.5
+          ]
+        },
+        {
+          label: "B.O.D",
+          type: "line",
+          borderColor: "#800000",
+          pointBorderColor: "#800000",
+          pointBackgroundColor: "#800000",
+          pointHoverBackgroundColor: "#800000",
+          pointHoverBorderColor: "#800000",
+          backgroundColor: gradientFill,
+          pointBorderWidth: 2,
+          pointHoverRadius: 4,
+          pointHoverBorderWidth: 1,
+          pointRadius: 1,
+          fill: true,
+          borderWidth: 1,
+
+          data: [
+            0.5,
+            0.8,
+            0.8,
+            0,
+            0.3,
+            0.4,
+            0.45,
+            0.35,
+            0,
+            0,
+            0,
+            1,
+            0.8,
+            2.2,
+            3,
+            1.6,
+            1.4,
+            1.6,
+            2.1,
+            1.1,
+            1,
+            1,
+            0.9
+          ]
         }
       ]
     };
@@ -689,9 +969,9 @@ const dashboard24HoursPerformanceChart = {
             drawBorder: false
           },
           scaleLabel: {
-        display: true,
-        labelString: 'Zones in arunachal pradesh'
-      }
+            display: true,
+            labelString: "Zones in arunachal pradesh"
+          }
         }
       ]
     },
@@ -708,44 +988,42 @@ const dashboard24HoursPerformanceChartAssam = {
     gradientFill.addColorStop(1, hexToRGB("#2CA8FF", 0.6));
     return {
       labels: [
-      "DIGBOI- TINSUKIA DISTT.- ASSAM",
-"KARBI ANGLONG DISTT.- ASSAM",
-"SIBSAGAR - ASSAM",
-"SIBSAGAR- ASSAM",
-"(JORHAT- ASSAM",
-"SILCHAR- ASSAM",
-"BARPETA- ASSAM",
-"BONAIGAON- ASSAM",
-"GUWAHATI- ASSAM",
-"GUWAHATI- ASSAM",
-"GROUND WATER FROM LEDO-MARGHERITA",
-"GROUND WATER FROM NAZIRA",
-"GROUND WATER FROM NUMALIGARH(NEAR NRL TE LABOR COLONY)",
-"GROUND WATER FROMSEMENCHAPARI",
-"GROUND WATER FROM SILAPATHAR",
-"GROUND WATER FROM LAKHIMPURTOWN",
-"GROUND WATER FROM TEZPUR(MISSION CHARIALI)",
-"GROUND WATER FROM NAGAON(PANIGAON)",
-"GROUND WATER FROM JAGIROAD NRHPC EFFLUENT DISCHARGE POINT",
-"GROUND WATER NR MSW DUMPING SITE AT GARCHUK-GUWAHATI",
-"GROUND WATER FROM NALBARI",
-"GROUND WATER FROM BARPETA ROAD(RLY STATION)",
-"GROUND WATER NEAR BPRL-DHALIGAON",
-"GROUND WATER FROM KOKRAJHAR DISTRICT (HS SCHOOL )",
-"GROUND WATER FROM DHUBRIDISTRICT (COLLEGE NAGAR )",
-"GROUND WATER FROM GOALPARA DIST.(GOALPARA COLLEGE )",
-"GROUND WATER FROM DIPHU (GOVT.COLLEGE)",
-"GROUND WATER FROM HAMREN",
-"GROUND WATER FROM HAFLONG",
-"GROUND WATER FROM KARIMGANJ(COLLEGE)",
-"GROUND WATER FROM HIALAKANDI (NEAR ASTC BUS STAND )",
-"GROUND WATER IN PANCHGRAMMARKET NEAR CACHAR PAPER MILL"
-
-
+        "DIGBOI- TINSUKIA DISTT.- ASSAM",
+        "KARBI ANGLONG DISTT.- ASSAM",
+        "SIBSAGAR - ASSAM",
+        "SIBSAGAR- ASSAM",
+        "(JORHAT- ASSAM",
+        "SILCHAR- ASSAM",
+        "BARPETA- ASSAM",
+        "BONAIGAON- ASSAM",
+        "GUWAHATI- ASSAM",
+        "GUWAHATI- ASSAM",
+        "GROUND WATER FROM LEDO-MARGHERITA",
+        "GROUND WATER FROM NAZIRA",
+        "GROUND WATER FROM NUMALIGARH(NEAR NRL TE LABOR COLONY)",
+        "GROUND WATER FROMSEMENCHAPARI",
+        "GROUND WATER FROM SILAPATHAR",
+        "GROUND WATER FROM LAKHIMPURTOWN",
+        "GROUND WATER FROM TEZPUR(MISSION CHARIALI)",
+        "GROUND WATER FROM NAGAON(PANIGAON)",
+        "GROUND WATER FROM JAGIROAD NRHPC EFFLUENT DISCHARGE POINT",
+        "GROUND WATER NR MSW DUMPING SITE AT GARCHUK-GUWAHATI",
+        "GROUND WATER FROM NALBARI",
+        "GROUND WATER FROM BARPETA ROAD(RLY STATION)",
+        "GROUND WATER NEAR BPRL-DHALIGAON",
+        "GROUND WATER FROM KOKRAJHAR DISTRICT (HS SCHOOL )",
+        "GROUND WATER FROM DHUBRIDISTRICT (COLLEGE NAGAR )",
+        "GROUND WATER FROM GOALPARA DIST.(GOALPARA COLLEGE )",
+        "GROUND WATER FROM DIPHU (GOVT.COLLEGE)",
+        "GROUND WATER FROM HAMREN",
+        "GROUND WATER FROM HAFLONG",
+        "GROUND WATER FROM KARIMGANJ(COLLEGE)",
+        "GROUND WATER FROM HIALAKANDI (NEAR ASTC BUS STAND )",
+        "GROUND WATER IN PANCHGRAMMARKET NEAR CACHAR PAPER MILL"
       ],
       datasets: [
         {
-          label:"Mean Temprature",
+          label: "Mean Temprature",
           backgroundColor: gradientFill,
           borderColor: "#2CA8FF",
           pointBorderColor: "#FFF",
@@ -757,33 +1035,40 @@ const dashboard24HoursPerformanceChartAssam = {
           fill: true,
           borderWidth: 1,
 
-          data:[25,24,30,22,23,23,24,24,22,21,25,30,30,27,31,25,25,25,23,28,31,28,27]
-        },{
-          label:"pH",
-          type:'line',
-          borderColor: '#EC932F',
-          pointBorderColor: '#EC932F',
-          pointBackgroundColor: '#EC932F',
-          pointHoverBackgroundColor: '#EC932F',
-          pointHoverBorderColor: '#EC932F',
-          backgroundColor: gradientFill,
-          pointBorderWidth: 2,
-          pointHoverRadius: 4,
-          pointHoverBorderWidth: 1,
-          pointRadius: 1,
-          fill: true,
-          borderWidth: 1,
-
-          data:[7.1,7,7.4,8,7.1,7,7.3,7.3,7.6,7.6,7.6,7.5,7.4,7.6,7.2,7.4,7.7,7.6,7.8,7.2,7.8,7.8,7.5]
+          data: [
+            25,
+            24,
+            30,
+            22,
+            23,
+            23,
+            24,
+            24,
+            22,
+            21,
+            25,
+            30,
+            30,
+            27,
+            31,
+            25,
+            25,
+            25,
+            23,
+            28,
+            31,
+            28,
+            27
+          ]
         },
         {
-          label:"B.O.D",
-          type:'line',
-          borderColor: '#800000',
-          pointBorderColor: '#800000',
-          pointBackgroundColor: '#800000',
-          pointHoverBackgroundColor: '#800000',
-          pointHoverBorderColor: '#800000',
+          label: "pH",
+          type: "line",
+          borderColor: "#EC932F",
+          pointBorderColor: "#EC932F",
+          pointBackgroundColor: "#EC932F",
+          pointHoverBackgroundColor: "#EC932F",
+          pointHoverBorderColor: "#EC932F",
           backgroundColor: gradientFill,
           pointBorderWidth: 2,
           pointHoverRadius: 4,
@@ -792,7 +1077,73 @@ const dashboard24HoursPerformanceChartAssam = {
           fill: true,
           borderWidth: 1,
 
-          data:[0.5,0.8,0.8,0,0.3,0.4,0.45,0.35,0,0,0,1,0.8,2.2,3,1.6,1.4,1.6,2.1,1.1,1,1,0.9]
+          data: [
+            7.1,
+            7,
+            7.4,
+            8,
+            7.1,
+            7,
+            7.3,
+            7.3,
+            7.6,
+            7.6,
+            7.6,
+            7.5,
+            7.4,
+            7.6,
+            7.2,
+            7.4,
+            7.7,
+            7.6,
+            7.8,
+            7.2,
+            7.8,
+            7.8,
+            7.5
+          ]
+        },
+        {
+          label: "B.O.D",
+          type: "line",
+          borderColor: "#800000",
+          pointBorderColor: "#800000",
+          pointBackgroundColor: "#800000",
+          pointHoverBackgroundColor: "#800000",
+          pointHoverBorderColor: "#800000",
+          backgroundColor: gradientFill,
+          pointBorderWidth: 2,
+          pointHoverRadius: 4,
+          pointHoverBorderWidth: 1,
+          pointRadius: 1,
+          fill: true,
+          borderWidth: 1,
+
+          data: [
+            0.5,
+            0.8,
+            0.8,
+            0,
+            0.3,
+            0.4,
+            0.45,
+            0.35,
+            0,
+            0,
+            0,
+            1,
+            0.8,
+            2.2,
+            3,
+            1.6,
+            1.4,
+            1.6,
+            2.1,
+            1.1,
+            1,
+            1,
+            0.9
+          ]
         }
       ]
     };
@@ -834,9 +1185,9 @@ const dashboard24HoursPerformanceChartAssam = {
             drawBorder: false
           },
           scaleLabel: {
-        display: true,
-        labelString: 'Zones in assam'
-      }
+            display: true,
+            labelString: "Zones in assam"
+          }
         }
       ]
     },
@@ -876,11 +1227,10 @@ const dashboard24HoursPerformanceChartMizoram = {
         "O/W.PEDDANUYYI - VIZIANAGARAM",
         "B/W.- NEAR M/S ANDHRA SUGARS LTD.- KOVVUR - W.G.DIST.",
         "O/W.-NEAR PARTAP NAGAR BRIIDGE -KAKINADA - E.G.DIST.- A.P"
-
       ],
       datasets: [
         {
-          label:"Mean Temprature",
+          label: "Mean Temprature",
           backgroundColor: gradientFill,
           borderColor: "#2CA8FF",
           pointBorderColor: "#FFF",
@@ -892,33 +1242,40 @@ const dashboard24HoursPerformanceChartMizoram = {
           fill: true,
           borderWidth: 1,
 
-          data:[25,24,30,22,23,23,24,24,22,21,25,30,30,27,31,25,25,25,23,28,31,28,27]
-        },{
-          label:"pH",
-          type:'line',
-          borderColor: '#EC932F',
-          pointBorderColor: '#EC932F',
-          pointBackgroundColor: '#EC932F',
-          pointHoverBackgroundColor: '#EC932F',
-          pointHoverBorderColor: '#EC932F',
-          backgroundColor: gradientFill,
-          pointBorderWidth: 2,
-          pointHoverRadius: 4,
-          pointHoverBorderWidth: 1,
-          pointRadius: 1,
-          fill: true,
-          borderWidth: 1,
-
-          data:[7.1,7,7.4,8,7.1,7,7.3,7.3,7.6,7.6,7.6,7.5,7.4,7.6,7.2,7.4,7.7,7.6,7.8,7.2,7.8,7.8,7.5]
+          data: [
+            25,
+            24,
+            30,
+            22,
+            23,
+            23,
+            24,
+            24,
+            22,
+            21,
+            25,
+            30,
+            30,
+            27,
+            31,
+            25,
+            25,
+            25,
+            23,
+            28,
+            31,
+            28,
+            27
+          ]
         },
         {
-          label:"B.O.D",
-          type:'line',
-          borderColor: '#800000',
-          pointBorderColor: '#800000',
-          pointBackgroundColor: '#800000',
-          pointHoverBackgroundColor: '#800000',
-          pointHoverBorderColor: '#800000',
+          label: "pH",
+          type: "line",
+          borderColor: "#EC932F",
+          pointBorderColor: "#EC932F",
+          pointBackgroundColor: "#EC932F",
+          pointHoverBackgroundColor: "#EC932F",
+          pointHoverBorderColor: "#EC932F",
           backgroundColor: gradientFill,
           pointBorderWidth: 2,
           pointHoverRadius: 4,
@@ -927,7 +1284,73 @@ const dashboard24HoursPerformanceChartMizoram = {
           fill: true,
           borderWidth: 1,
 
-          data:[0.5,0.8,0.8,0,0.3,0.4,0.45,0.35,0,0,0,1,0.8,2.2,3,1.6,1.4,1.6,2.1,1.1,1,1,0.9]
+          data: [
+            7.1,
+            7,
+            7.4,
+            8,
+            7.1,
+            7,
+            7.3,
+            7.3,
+            7.6,
+            7.6,
+            7.6,
+            7.5,
+            7.4,
+            7.6,
+            7.2,
+            7.4,
+            7.7,
+            7.6,
+            7.8,
+            7.2,
+            7.8,
+            7.8,
+            7.5
+          ]
+        },
+        {
+          label: "B.O.D",
+          type: "line",
+          borderColor: "#800000",
+          pointBorderColor: "#800000",
+          pointBackgroundColor: "#800000",
+          pointHoverBackgroundColor: "#800000",
+          pointHoverBorderColor: "#800000",
+          backgroundColor: gradientFill,
+          pointBorderWidth: 2,
+          pointHoverRadius: 4,
+          pointHoverBorderWidth: 1,
+          pointRadius: 1,
+          fill: true,
+          borderWidth: 1,
+
+          data: [
+            0.5,
+            0.8,
+            0.8,
+            0,
+            0.3,
+            0.4,
+            0.45,
+            0.35,
+            0,
+            0,
+            0,
+            1,
+            0.8,
+            2.2,
+            3,
+            1.6,
+            1.4,
+            1.6,
+            2.1,
+            1.1,
+            1,
+            1,
+            0.9
+          ]
         }
       ]
     };
@@ -969,9 +1392,9 @@ const dashboard24HoursPerformanceChartMizoram = {
             drawBorder: false
           },
           scaleLabel: {
-        display: true,
-        labelString: 'Zones in mizoram'
-      }
+            display: true,
+            labelString: "Zones in mizoram"
+          }
         }
       ]
     },
@@ -1011,11 +1434,10 @@ const dashboard24HoursPerformanceChartManipur = {
         "O/W.PEDDANUYYI - VIZIANAGARAM",
         "B/W.- NEAR M/S ANDHRA SUGARS LTD.- KOVVUR - W.G.DIST.",
         "O/W.-NEAR PARTAP NAGAR BRIIDGE -KAKINADA - E.G.DIST.- A.P"
-
       ],
       datasets: [
         {
-          label:"Mean Temprature",
+          label: "Mean Temprature",
           backgroundColor: gradientFill,
           borderColor: "#2CA8FF",
           pointBorderColor: "#FFF",
@@ -1027,33 +1449,40 @@ const dashboard24HoursPerformanceChartManipur = {
           fill: true,
           borderWidth: 1,
 
-          data:[25,24,30,22,23,23,24,24,22,21,25,30,30,27,31,25,25,25,23,28,31,28,27]
-        },{
-          label:"pH",
-          type:'line',
-          borderColor: '#EC932F',
-          pointBorderColor: '#EC932F',
-          pointBackgroundColor: '#EC932F',
-          pointHoverBackgroundColor: '#EC932F',
-          pointHoverBorderColor: '#EC932F',
-          backgroundColor: gradientFill,
-          pointBorderWidth: 2,
-          pointHoverRadius: 4,
-          pointHoverBorderWidth: 1,
-          pointRadius: 1,
-          fill: true,
-          borderWidth: 1,
-
-          data:[7.1,7,7.4,8,7.1,7,7.3,7.3,7.6,7.6,7.6,7.5,7.4,7.6,7.2,7.4,7.7,7.6,7.8,7.2,7.8,7.8,7.5]
+          data: [
+            25,
+            24,
+            30,
+            22,
+            23,
+            23,
+            24,
+            24,
+            22,
+            21,
+            25,
+            30,
+            30,
+            27,
+            31,
+            25,
+            25,
+            25,
+            23,
+            28,
+            31,
+            28,
+            27
+          ]
         },
         {
-          label:"B.O.D",
-          type:'line',
-          borderColor: '#800000',
-          pointBorderColor: '#800000',
-          pointBackgroundColor: '#800000',
-          pointHoverBackgroundColor: '#800000',
-          pointHoverBorderColor: '#800000',
+          label: "pH",
+          type: "line",
+          borderColor: "#EC932F",
+          pointBorderColor: "#EC932F",
+          pointBackgroundColor: "#EC932F",
+          pointHoverBackgroundColor: "#EC932F",
+          pointHoverBorderColor: "#EC932F",
           backgroundColor: gradientFill,
           pointBorderWidth: 2,
           pointHoverRadius: 4,
@@ -1062,7 +1491,73 @@ const dashboard24HoursPerformanceChartManipur = {
           fill: true,
           borderWidth: 1,
 
-          data:[0.5,0.8,0.8,0,0.3,0.4,0.45,0.35,0,0,0,1,0.8,2.2,3,1.6,1.4,1.6,2.1,1.1,1,1,0.9]
+          data: [
+            7.1,
+            7,
+            7.4,
+            8,
+            7.1,
+            7,
+            7.3,
+            7.3,
+            7.6,
+            7.6,
+            7.6,
+            7.5,
+            7.4,
+            7.6,
+            7.2,
+            7.4,
+            7.7,
+            7.6,
+            7.8,
+            7.2,
+            7.8,
+            7.8,
+            7.5
+          ]
+        },
+        {
+          label: "B.O.D",
+          type: "line",
+          borderColor: "#800000",
+          pointBorderColor: "#800000",
+          pointBackgroundColor: "#800000",
+          pointHoverBackgroundColor: "#800000",
+          pointHoverBorderColor: "#800000",
+          backgroundColor: gradientFill,
+          pointBorderWidth: 2,
+          pointHoverRadius: 4,
+          pointHoverBorderWidth: 1,
+          pointRadius: 1,
+          fill: true,
+          borderWidth: 1,
+
+          data: [
+            0.5,
+            0.8,
+            0.8,
+            0,
+            0.3,
+            0.4,
+            0.45,
+            0.35,
+            0,
+            0,
+            0,
+            1,
+            0.8,
+            2.2,
+            3,
+            1.6,
+            1.4,
+            1.6,
+            2.1,
+            1.1,
+            1,
+            1,
+            0.9
+          ]
         }
       ]
     };
@@ -1104,9 +1599,9 @@ const dashboard24HoursPerformanceChartManipur = {
             drawBorder: false
           },
           scaleLabel: {
-        display: true,
-        labelString: 'Zones in manipur'
-      }
+            display: true,
+            labelString: "Zones in manipur"
+          }
         }
       ]
     },
@@ -1123,18 +1618,17 @@ const dashboard24HoursPerformanceChartTripura = {
     gradientFill.addColorStop(1, hexToRGB("#2CA8FF", 0.6));
     return {
       labels: [
-      "WELL AT UDAIPUR (TUBEWELL)-",
-"WELL AROUND UDAIPUR (TUBEWELL)-TRIPURA",
-"KUNJBAN- AGARTALA- TRIPURA",
-"LANKAMURA- TRIPURA",
-"A.D.NAGAR- AGARTALA- TRIPURA",
-"SHIBNAGAR- AGARTALA- TRIPURA",
-"GANDHIGRAM- AGARTALA- TRIPURA"
-
+        "WELL AT UDAIPUR (TUBEWELL)-",
+        "WELL AROUND UDAIPUR (TUBEWELL)-TRIPURA",
+        "KUNJBAN- AGARTALA- TRIPURA",
+        "LANKAMURA- TRIPURA",
+        "A.D.NAGAR- AGARTALA- TRIPURA",
+        "SHIBNAGAR- AGARTALA- TRIPURA",
+        "GANDHIGRAM- AGARTALA- TRIPURA"
       ],
       datasets: [
         {
-          label:"Mean Temprature",
+          label: "Mean Temprature",
           backgroundColor: gradientFill,
           borderColor: "#2CA8FF",
           pointBorderColor: "#FFF",
@@ -1146,33 +1640,40 @@ const dashboard24HoursPerformanceChartTripura = {
           fill: true,
           borderWidth: 1,
 
-          data:[25,24,30,22,23,23,24,24,22,21,25,30,30,27,31,25,25,25,23,28,31,28,27]
-        },{
-          label:"pH",
-          type:'line',
-          borderColor: '#EC932F',
-          pointBorderColor: '#EC932F',
-          pointBackgroundColor: '#EC932F',
-          pointHoverBackgroundColor: '#EC932F',
-          pointHoverBorderColor: '#EC932F',
-          backgroundColor: gradientFill,
-          pointBorderWidth: 2,
-          pointHoverRadius: 4,
-          pointHoverBorderWidth: 1,
-          pointRadius: 1,
-          fill: true,
-          borderWidth: 1,
-
-          data:[7.1,7,7.4,8,7.1,7,7.3,7.3,7.6,7.6,7.6,7.5,7.4,7.6,7.2,7.4,7.7,7.6,7.8,7.2,7.8,7.8,7.5]
+          data: [
+            25,
+            24,
+            30,
+            22,
+            23,
+            23,
+            24,
+            24,
+            22,
+            21,
+            25,
+            30,
+            30,
+            27,
+            31,
+            25,
+            25,
+            25,
+            23,
+            28,
+            31,
+            28,
+            27
+          ]
         },
         {
-          label:"B.O.D",
-          type:'line',
-          borderColor: '#800000',
-          pointBorderColor: '#800000',
-          pointBackgroundColor: '#800000',
-          pointHoverBackgroundColor: '#800000',
-          pointHoverBorderColor: '#800000',
+          label: "pH",
+          type: "line",
+          borderColor: "#EC932F",
+          pointBorderColor: "#EC932F",
+          pointBackgroundColor: "#EC932F",
+          pointHoverBackgroundColor: "#EC932F",
+          pointHoverBorderColor: "#EC932F",
           backgroundColor: gradientFill,
           pointBorderWidth: 2,
           pointHoverRadius: 4,
@@ -1181,7 +1682,73 @@ const dashboard24HoursPerformanceChartTripura = {
           fill: true,
           borderWidth: 1,
 
-          data:[0.5,0.8,0.8,0,0.3,0.4,0.45,0.35,0,0,0,1,0.8,2.2,3,1.6,1.4,1.6,2.1,1.1,1,1,0.9]
+          data: [
+            7.1,
+            7,
+            7.4,
+            8,
+            7.1,
+            7,
+            7.3,
+            7.3,
+            7.6,
+            7.6,
+            7.6,
+            7.5,
+            7.4,
+            7.6,
+            7.2,
+            7.4,
+            7.7,
+            7.6,
+            7.8,
+            7.2,
+            7.8,
+            7.8,
+            7.5
+          ]
+        },
+        {
+          label: "B.O.D",
+          type: "line",
+          borderColor: "#800000",
+          pointBorderColor: "#800000",
+          pointBackgroundColor: "#800000",
+          pointHoverBackgroundColor: "#800000",
+          pointHoverBorderColor: "#800000",
+          backgroundColor: gradientFill,
+          pointBorderWidth: 2,
+          pointHoverRadius: 4,
+          pointHoverBorderWidth: 1,
+          pointRadius: 1,
+          fill: true,
+          borderWidth: 1,
+
+          data: [
+            0.5,
+            0.8,
+            0.8,
+            0,
+            0.3,
+            0.4,
+            0.45,
+            0.35,
+            0,
+            0,
+            0,
+            1,
+            0.8,
+            2.2,
+            3,
+            1.6,
+            1.4,
+            1.6,
+            2.1,
+            1.1,
+            1,
+            1,
+            0.9
+          ]
         }
       ]
     };
@@ -1223,9 +1790,9 @@ const dashboard24HoursPerformanceChartTripura = {
             drawBorder: false
           },
           scaleLabel: {
-        display: true,
-        labelString: 'Zones in tripura'
-      }
+            display: true,
+            labelString: "Zones in tripura"
+          }
         }
       ]
     },
@@ -1242,16 +1809,14 @@ const dashboard24HoursPerformanceChartChattisgarh = {
     gradientFill.addColorStop(1, hexToRGB("#2CA8FF", 0.6));
     return {
       labels: [
-      "AT RAIPUR REGION- CHHATISSGARH",
-"AT RAIPUR REGION-CHHATISSGARH",
-"AT BILASPUR REGION",
-"AT BILASPUR REGION"
-
-
+        "AT RAIPUR REGION- CHHATISSGARH",
+        "AT RAIPUR REGION-CHHATISSGARH",
+        "AT BILASPUR REGION",
+        "AT BILASPUR REGION"
       ],
       datasets: [
         {
-          label:"Mean Temprature",
+          label: "Mean Temprature",
           backgroundColor: gradientFill,
           borderColor: "#2CA8FF",
           pointBorderColor: "#FFF",
@@ -1263,33 +1828,40 @@ const dashboard24HoursPerformanceChartChattisgarh = {
           fill: true,
           borderWidth: 1,
 
-          data:[25,24,30,22,23,23,24,24,22,21,25,30,30,27,31,25,25,25,23,28,31,28,27]
-        },{
-          label:"pH",
-          type:'line',
-          borderColor: '#EC932F',
-          pointBorderColor: '#EC932F',
-          pointBackgroundColor: '#EC932F',
-          pointHoverBackgroundColor: '#EC932F',
-          pointHoverBorderColor: '#EC932F',
-          backgroundColor: gradientFill,
-          pointBorderWidth: 2,
-          pointHoverRadius: 4,
-          pointHoverBorderWidth: 1,
-          pointRadius: 1,
-          fill: true,
-          borderWidth: 1,
-
-          data:[7.1,7,7.4,8,7.1,7,7.3,7.3,7.6,7.6,7.6,7.5,7.4,7.6,7.2,7.4,7.7,7.6,7.8,7.2,7.8,7.8,7.5]
+          data: [
+            25,
+            24,
+            30,
+            22,
+            23,
+            23,
+            24,
+            24,
+            22,
+            21,
+            25,
+            30,
+            30,
+            27,
+            31,
+            25,
+            25,
+            25,
+            23,
+            28,
+            31,
+            28,
+            27
+          ]
         },
         {
-          label:"B.O.D",
-          type:'line',
-          borderColor: '#800000',
-          pointBorderColor: '#800000',
-          pointBackgroundColor: '#800000',
-          pointHoverBackgroundColor: '#800000',
-          pointHoverBorderColor: '#800000',
+          label: "pH",
+          type: "line",
+          borderColor: "#EC932F",
+          pointBorderColor: "#EC932F",
+          pointBackgroundColor: "#EC932F",
+          pointHoverBackgroundColor: "#EC932F",
+          pointHoverBorderColor: "#EC932F",
           backgroundColor: gradientFill,
           pointBorderWidth: 2,
           pointHoverRadius: 4,
@@ -1298,7 +1870,73 @@ const dashboard24HoursPerformanceChartChattisgarh = {
           fill: true,
           borderWidth: 1,
 
-          data:[0.5,0.8,0.8,0,0.3,0.4,0.45,0.35,0,0,0,1,0.8,2.2,3,1.6,1.4,1.6,2.1,1.1,1,1,0.9]
+          data: [
+            7.1,
+            7,
+            7.4,
+            8,
+            7.1,
+            7,
+            7.3,
+            7.3,
+            7.6,
+            7.6,
+            7.6,
+            7.5,
+            7.4,
+            7.6,
+            7.2,
+            7.4,
+            7.7,
+            7.6,
+            7.8,
+            7.2,
+            7.8,
+            7.8,
+            7.5
+          ]
+        },
+        {
+          label: "B.O.D",
+          type: "line",
+          borderColor: "#800000",
+          pointBorderColor: "#800000",
+          pointBackgroundColor: "#800000",
+          pointHoverBackgroundColor: "#800000",
+          pointHoverBorderColor: "#800000",
+          backgroundColor: gradientFill,
+          pointBorderWidth: 2,
+          pointHoverRadius: 4,
+          pointHoverBorderWidth: 1,
+          pointRadius: 1,
+          fill: true,
+          borderWidth: 1,
+
+          data: [
+            0.5,
+            0.8,
+            0.8,
+            0,
+            0.3,
+            0.4,
+            0.45,
+            0.35,
+            0,
+            0,
+            0,
+            1,
+            0.8,
+            2.2,
+            3,
+            1.6,
+            1.4,
+            1.6,
+            2.1,
+            1.1,
+            1,
+            1,
+            0.9
+          ]
         }
       ]
     };
@@ -1340,9 +1978,9 @@ const dashboard24HoursPerformanceChartChattisgarh = {
             drawBorder: false
           },
           scaleLabel: {
-        display: true,
-        labelString: 'Zones in chattisgarh'
-      }
+            display: true,
+            labelString: "Zones in chattisgarh"
+          }
         }
       ]
     },
@@ -1359,25 +1997,24 @@ const dashboard24HoursPerformanceChartMP = {
     gradientFill.addColorStop(1, hexToRGB("#2CA8FF", 0.6));
     return {
       labels: [
-      "OPEN WELL/TUBE WELL INDUSTRIAL AREA- GOVINDPURA- BHOPAL",
-"OPEN WELL/TUBE WELL INDL AREAMANDIDEEP- RAISEN",
-"GW SAMPLING AT TWO POINTS IN INDUSTRIAL AREA MALANPUR- M.P",
-"GROUND WATER SAMPLING AT TWOPOINTS IN INDL AREA MALANPUR",
-"TUBE WELL AT JAINABAD- NEAR TAPTI RIVER BRIDGE- PUMPING STN-BURHANPUR",
-"KATHODA- JABALPUR",
-"MADAI GRAM- JABALPUR",
-"MEHATWAS- NAGDA",
-"BHAGATPURI VILLAGE- NAGDA",
-"PRATAL NAGAR- DEWAS",
-"CULVERT ON A.B.ROAD- MAKSI",
-"TRENCHING GROUND- NEAR GARDEN- DEV GURADIYA ROAD- INDORE",
-"TRENCHING GROUND IN THE PREMISES OF M/S RISHABH MASALA UDYOG- INDORE",
-"TRENCHING GROUND IN THE PREMISES OF M/S LAKHANI FOOT WEAR- INDORE"
-
+        "OPEN WELL/TUBE WELL INDUSTRIAL AREA- GOVINDPURA- BHOPAL",
+        "OPEN WELL/TUBE WELL INDL AREAMANDIDEEP- RAISEN",
+        "GW SAMPLING AT TWO POINTS IN INDUSTRIAL AREA MALANPUR- M.P",
+        "GROUND WATER SAMPLING AT TWOPOINTS IN INDL AREA MALANPUR",
+        "TUBE WELL AT JAINABAD- NEAR TAPTI RIVER BRIDGE- PUMPING STN-BURHANPUR",
+        "KATHODA- JABALPUR",
+        "MADAI GRAM- JABALPUR",
+        "MEHATWAS- NAGDA",
+        "BHAGATPURI VILLAGE- NAGDA",
+        "PRATAL NAGAR- DEWAS",
+        "CULVERT ON A.B.ROAD- MAKSI",
+        "TRENCHING GROUND- NEAR GARDEN- DEV GURADIYA ROAD- INDORE",
+        "TRENCHING GROUND IN THE PREMISES OF M/S RISHABH MASALA UDYOG- INDORE",
+        "TRENCHING GROUND IN THE PREMISES OF M/S LAKHANI FOOT WEAR- INDORE"
       ],
       datasets: [
         {
-          label:"Mean Temprature",
+          label: "Mean Temprature",
           backgroundColor: gradientFill,
           borderColor: "#2CA8FF",
           pointBorderColor: "#FFF",
@@ -1389,33 +2026,40 @@ const dashboard24HoursPerformanceChartMP = {
           fill: true,
           borderWidth: 1,
 
-          data:[25,24,30,22,23,23,24,24,22,21,25,30,30,27,31,25,25,25,23,28,31,28,27]
-        },{
-          label:"pH",
-          type:'line',
-          borderColor: '#EC932F',
-          pointBorderColor: '#EC932F',
-          pointBackgroundColor: '#EC932F',
-          pointHoverBackgroundColor: '#EC932F',
-          pointHoverBorderColor: '#EC932F',
-          backgroundColor: gradientFill,
-          pointBorderWidth: 2,
-          pointHoverRadius: 4,
-          pointHoverBorderWidth: 1,
-          pointRadius: 1,
-          fill: true,
-          borderWidth: 1,
-
-          data:[7.1,7,7.4,8,7.1,7,7.3,7.3,7.6,7.6,7.6,7.5,7.4,7.6,7.2,7.4,7.7,7.6,7.8,7.2,7.8,7.8,7.5]
+          data: [
+            25,
+            24,
+            30,
+            22,
+            23,
+            23,
+            24,
+            24,
+            22,
+            21,
+            25,
+            30,
+            30,
+            27,
+            31,
+            25,
+            25,
+            25,
+            23,
+            28,
+            31,
+            28,
+            27
+          ]
         },
         {
-          label:"B.O.D",
-          type:'line',
-          borderColor: '#800000',
-          pointBorderColor: '#800000',
-          pointBackgroundColor: '#800000',
-          pointHoverBackgroundColor: '#800000',
-          pointHoverBorderColor: '#800000',
+          label: "pH",
+          type: "line",
+          borderColor: "#EC932F",
+          pointBorderColor: "#EC932F",
+          pointBackgroundColor: "#EC932F",
+          pointHoverBackgroundColor: "#EC932F",
+          pointHoverBorderColor: "#EC932F",
           backgroundColor: gradientFill,
           pointBorderWidth: 2,
           pointHoverRadius: 4,
@@ -1424,7 +2068,73 @@ const dashboard24HoursPerformanceChartMP = {
           fill: true,
           borderWidth: 1,
 
-          data:[0.5,0.8,0.8,0,0.3,0.4,0.45,0.35,0,0,0,1,0.8,2.2,3,1.6,1.4,1.6,2.1,1.1,1,1,0.9]
+          data: [
+            7.1,
+            7,
+            7.4,
+            8,
+            7.1,
+            7,
+            7.3,
+            7.3,
+            7.6,
+            7.6,
+            7.6,
+            7.5,
+            7.4,
+            7.6,
+            7.2,
+            7.4,
+            7.7,
+            7.6,
+            7.8,
+            7.2,
+            7.8,
+            7.8,
+            7.5
+          ]
+        },
+        {
+          label: "B.O.D",
+          type: "line",
+          borderColor: "#800000",
+          pointBorderColor: "#800000",
+          pointBackgroundColor: "#800000",
+          pointHoverBackgroundColor: "#800000",
+          pointHoverBorderColor: "#800000",
+          backgroundColor: gradientFill,
+          pointBorderWidth: 2,
+          pointHoverRadius: 4,
+          pointHoverBorderWidth: 1,
+          pointRadius: 1,
+          fill: true,
+          borderWidth: 1,
+
+          data: [
+            0.5,
+            0.8,
+            0.8,
+            0,
+            0.3,
+            0.4,
+            0.45,
+            0.35,
+            0,
+            0,
+            0,
+            1,
+            0.8,
+            2.2,
+            3,
+            1.6,
+            1.4,
+            1.6,
+            2.1,
+            1.1,
+            1,
+            1,
+            0.9
+          ]
         }
       ]
     };
@@ -1466,9 +2176,9 @@ const dashboard24HoursPerformanceChartMP = {
             drawBorder: false
           },
           scaleLabel: {
-        display: true,
-        labelString: 'Zones in madhya pradesh'
-      }
+            display: true,
+            labelString: "Zones in madhya pradesh"
+          }
         }
       ]
     },
@@ -1485,31 +2195,29 @@ const dashboard24HoursPerformanceChartHP = {
     gradientFill.addColorStop(1, hexToRGB("#2CA8FF", 0.6));
     return {
       labels: [
-      "AT KALA AMB- H.P",
-"AT PAONTA SAHIB- H.P",
-"AT PARWANOO- H.P",
-"AT BADDI- H.P",
-"AT BAROTIWALA- H.P",
-"AT NALAGARH- H.P",
-"AT DAMTAL- H.P",
-"AT UNA- H.P",
-"SHIMLA DOWNSTREAM OF MSW DUMPING SITE",
-"DHARAMSHALA KANGRA DOWNSTREAM OF MSWDUMPING SITE",
-"MANDI-DOWNSTREAM OF MSW DUMPING SITE",
-"PARWANOO INDUSTRIAL AREA",
-"BADDI INDUSTRIAL AREA",
-"BAROTIWALA INDUSTRIAL AREA",
-"NALAGARH INDUSTRIAL AREA",
-"KALA AMB INDUSTRIAL AREA",
-"PAONTA SAHIB INDUSTRIAL AREA",
-"MEHATPUR INDUSTRIAL AREA",
-"UNA INDUSTRIAL AREA"
-
-
+        "AT KALA AMB- H.P",
+        "AT PAONTA SAHIB- H.P",
+        "AT PARWANOO- H.P",
+        "AT BADDI- H.P",
+        "AT BAROTIWALA- H.P",
+        "AT NALAGARH- H.P",
+        "AT DAMTAL- H.P",
+        "AT UNA- H.P",
+        "SHIMLA DOWNSTREAM OF MSW DUMPING SITE",
+        "DHARAMSHALA KANGRA DOWNSTREAM OF MSWDUMPING SITE",
+        "MANDI-DOWNSTREAM OF MSW DUMPING SITE",
+        "PARWANOO INDUSTRIAL AREA",
+        "BADDI INDUSTRIAL AREA",
+        "BAROTIWALA INDUSTRIAL AREA",
+        "NALAGARH INDUSTRIAL AREA",
+        "KALA AMB INDUSTRIAL AREA",
+        "PAONTA SAHIB INDUSTRIAL AREA",
+        "MEHATPUR INDUSTRIAL AREA",
+        "UNA INDUSTRIAL AREA"
       ],
       datasets: [
         {
-          label:"Mean Temprature",
+          label: "Mean Temprature",
           backgroundColor: gradientFill,
           borderColor: "#2CA8FF",
           pointBorderColor: "#FFF",
@@ -1521,33 +2229,40 @@ const dashboard24HoursPerformanceChartHP = {
           fill: true,
           borderWidth: 1,
 
-          data:[25,24,30,22,23,23,24,24,22,21,25,30,30,27,31,25,25,25,23,28,31,28,27]
-        },{
-          label:"pH",
-          type:'line',
-          borderColor: '#EC932F',
-          pointBorderColor: '#EC932F',
-          pointBackgroundColor: '#EC932F',
-          pointHoverBackgroundColor: '#EC932F',
-          pointHoverBorderColor: '#EC932F',
-          backgroundColor: gradientFill,
-          pointBorderWidth: 2,
-          pointHoverRadius: 4,
-          pointHoverBorderWidth: 1,
-          pointRadius: 1,
-          fill: true,
-          borderWidth: 1,
-
-          data:[7.1,7,7.4,8,7.1,7,7.3,7.3,7.6,7.6,7.6,7.5,7.4,7.6,7.2,7.4,7.7,7.6,7.8,7.2,7.8,7.8,7.5]
+          data: [
+            25,
+            24,
+            30,
+            22,
+            23,
+            23,
+            24,
+            24,
+            22,
+            21,
+            25,
+            30,
+            30,
+            27,
+            31,
+            25,
+            25,
+            25,
+            23,
+            28,
+            31,
+            28,
+            27
+          ]
         },
         {
-          label:"B.O.D",
-          type:'line',
-          borderColor: '#800000',
-          pointBorderColor: '#800000',
-          pointBackgroundColor: '#800000',
-          pointHoverBackgroundColor: '#800000',
-          pointHoverBorderColor: '#800000',
+          label: "pH",
+          type: "line",
+          borderColor: "#EC932F",
+          pointBorderColor: "#EC932F",
+          pointBackgroundColor: "#EC932F",
+          pointHoverBackgroundColor: "#EC932F",
+          pointHoverBorderColor: "#EC932F",
           backgroundColor: gradientFill,
           pointBorderWidth: 2,
           pointHoverRadius: 4,
@@ -1556,7 +2271,73 @@ const dashboard24HoursPerformanceChartHP = {
           fill: true,
           borderWidth: 1,
 
-          data:[0.5,0.8,0.8,0,0.3,0.4,0.45,0.35,0,0,0,1,0.8,2.2,3,1.6,1.4,1.6,2.1,1.1,1,1,0.9]
+          data: [
+            7.1,
+            7,
+            7.4,
+            8,
+            7.1,
+            7,
+            7.3,
+            7.3,
+            7.6,
+            7.6,
+            7.6,
+            7.5,
+            7.4,
+            7.6,
+            7.2,
+            7.4,
+            7.7,
+            7.6,
+            7.8,
+            7.2,
+            7.8,
+            7.8,
+            7.5
+          ]
+        },
+        {
+          label: "B.O.D",
+          type: "line",
+          borderColor: "#800000",
+          pointBorderColor: "#800000",
+          pointBackgroundColor: "#800000",
+          pointHoverBackgroundColor: "#800000",
+          pointHoverBorderColor: "#800000",
+          backgroundColor: gradientFill,
+          pointBorderWidth: 2,
+          pointHoverRadius: 4,
+          pointHoverBorderWidth: 1,
+          pointRadius: 1,
+          fill: true,
+          borderWidth: 1,
+
+          data: [
+            0.5,
+            0.8,
+            0.8,
+            0,
+            0.3,
+            0.4,
+            0.45,
+            0.35,
+            0,
+            0,
+            0,
+            1,
+            0.8,
+            2.2,
+            3,
+            1.6,
+            1.4,
+            1.6,
+            2.1,
+            1.1,
+            1,
+            1,
+            0.9
+          ]
         }
       ]
     };
@@ -1598,9 +2379,9 @@ const dashboard24HoursPerformanceChartHP = {
             drawBorder: false
           },
           scaleLabel: {
-        display: true,
-        labelString: 'Zones in himachal pradesh'
-      }
+            display: true,
+            labelString: "Zones in himachal pradesh"
+          }
         }
       ]
     },
@@ -1617,18 +2398,17 @@ const dashboard24HoursPerformanceChartChandigarh = {
     gradientFill.addColorStop(1, hexToRGB("#2CA8FF", 0.6));
     return {
       labels: [
-      "SECTOR 15",
-"SECTOR  22",
-"SECTOR  34",
-"SECTOR 47",
-"PALSORA VILLAGE",
-"DHANAS VILLAGE",
-"DADU MAJRA"
-
+        "SECTOR 15",
+        "SECTOR  22",
+        "SECTOR  34",
+        "SECTOR 47",
+        "PALSORA VILLAGE",
+        "DHANAS VILLAGE",
+        "DADU MAJRA"
       ],
       datasets: [
         {
-          label:"Mean Temprature",
+          label: "Mean Temprature",
           backgroundColor: gradientFill,
           borderColor: "#2CA8FF",
           pointBorderColor: "#FFF",
@@ -1640,33 +2420,40 @@ const dashboard24HoursPerformanceChartChandigarh = {
           fill: true,
           borderWidth: 1,
 
-          data:[25,24,30,22,23,23,24,24,22,21,25,30,30,27,31,25,25,25,23,28,31,28,27]
-        },{
-          label:"pH",
-          type:'line',
-          borderColor: '#EC932F',
-          pointBorderColor: '#EC932F',
-          pointBackgroundColor: '#EC932F',
-          pointHoverBackgroundColor: '#EC932F',
-          pointHoverBorderColor: '#EC932F',
-          backgroundColor: gradientFill,
-          pointBorderWidth: 2,
-          pointHoverRadius: 4,
-          pointHoverBorderWidth: 1,
-          pointRadius: 1,
-          fill: true,
-          borderWidth: 1,
-
-          data:[7.1,7,7.4,8,7.1,7,7.3,7.3,7.6,7.6,7.6,7.5,7.4,7.6,7.2,7.4,7.7,7.6,7.8,7.2,7.8,7.8,7.5]
+          data: [
+            25,
+            24,
+            30,
+            22,
+            23,
+            23,
+            24,
+            24,
+            22,
+            21,
+            25,
+            30,
+            30,
+            27,
+            31,
+            25,
+            25,
+            25,
+            23,
+            28,
+            31,
+            28,
+            27
+          ]
         },
         {
-          label:"B.O.D",
-          type:'line',
-          borderColor: '#800000',
-          pointBorderColor: '#800000',
-          pointBackgroundColor: '#800000',
-          pointHoverBackgroundColor: '#800000',
-          pointHoverBorderColor: '#800000',
+          label: "pH",
+          type: "line",
+          borderColor: "#EC932F",
+          pointBorderColor: "#EC932F",
+          pointBackgroundColor: "#EC932F",
+          pointHoverBackgroundColor: "#EC932F",
+          pointHoverBorderColor: "#EC932F",
           backgroundColor: gradientFill,
           pointBorderWidth: 2,
           pointHoverRadius: 4,
@@ -1675,7 +2462,73 @@ const dashboard24HoursPerformanceChartChandigarh = {
           fill: true,
           borderWidth: 1,
 
-          data:[0.5,0.8,0.8,0,0.3,0.4,0.45,0.35,0,0,0,1,0.8,2.2,3,1.6,1.4,1.6,2.1,1.1,1,1,0.9]
+          data: [
+            7.1,
+            7,
+            7.4,
+            8,
+            7.1,
+            7,
+            7.3,
+            7.3,
+            7.6,
+            7.6,
+            7.6,
+            7.5,
+            7.4,
+            7.6,
+            7.2,
+            7.4,
+            7.7,
+            7.6,
+            7.8,
+            7.2,
+            7.8,
+            7.8,
+            7.5
+          ]
+        },
+        {
+          label: "B.O.D",
+          type: "line",
+          borderColor: "#800000",
+          pointBorderColor: "#800000",
+          pointBackgroundColor: "#800000",
+          pointHoverBackgroundColor: "#800000",
+          pointHoverBorderColor: "#800000",
+          backgroundColor: gradientFill,
+          pointBorderWidth: 2,
+          pointHoverRadius: 4,
+          pointHoverBorderWidth: 1,
+          pointRadius: 1,
+          fill: true,
+          borderWidth: 1,
+
+          data: [
+            0.5,
+            0.8,
+            0.8,
+            0,
+            0.3,
+            0.4,
+            0.45,
+            0.35,
+            0,
+            0,
+            0,
+            1,
+            0.8,
+            2.2,
+            3,
+            1.6,
+            1.4,
+            1.6,
+            2.1,
+            1.1,
+            1,
+            1,
+            0.9
+          ]
         }
       ]
     };
@@ -1732,17 +2585,16 @@ const dashboard24HoursPerformanceChartPunjab = {
     gradientFill.addColorStop(1, hexToRGB("#2CA8FF", 0.6));
     return {
       labels: [
-      "PETROL PUMP OPP. HERO CYCLE-LUDHIANA",
-"BHAGWAN SINGH- H.NO.907- DASMESH NAGAR- GALI NO. 6- LUDHIANA",
-"GURCHAARAN SINGH HAIBOWAL DAIRY COMPLEX- LUDHIANA",
-"DUSSHERA GROUND INDUSTRIAL ESTATE- LUDHIANA",
-"SHUKLA TEA STAL POINT- LUDHIANA",
-"PUNJAB AGRICULTUREAL UNIVERSITY- LUDHIANA"
-
+        "PETROL PUMP OPP. HERO CYCLE-LUDHIANA",
+        "BHAGWAN SINGH- H.NO.907- DASMESH NAGAR- GALI NO. 6- LUDHIANA",
+        "GURCHAARAN SINGH HAIBOWAL DAIRY COMPLEX- LUDHIANA",
+        "DUSSHERA GROUND INDUSTRIAL ESTATE- LUDHIANA",
+        "SHUKLA TEA STAL POINT- LUDHIANA",
+        "PUNJAB AGRICULTUREAL UNIVERSITY- LUDHIANA"
       ],
       datasets: [
         {
-          label:"Mean Temprature",
+          label: "Mean Temprature",
           backgroundColor: gradientFill,
           borderColor: "#2CA8FF",
           pointBorderColor: "#FFF",
@@ -1754,33 +2606,40 @@ const dashboard24HoursPerformanceChartPunjab = {
           fill: true,
           borderWidth: 1,
 
-          data:[25,24,30,22,23,23,24,24,22,21,25,30,30,27,31,25,25,25,23,28,31,28,27]
-        },{
-          label:"pH",
-          type:'line',
-          borderColor: '#EC932F',
-          pointBorderColor: '#EC932F',
-          pointBackgroundColor: '#EC932F',
-          pointHoverBackgroundColor: '#EC932F',
-          pointHoverBorderColor: '#EC932F',
-          backgroundColor: gradientFill,
-          pointBorderWidth: 2,
-          pointHoverRadius: 4,
-          pointHoverBorderWidth: 1,
-          pointRadius: 1,
-          fill: true,
-          borderWidth: 1,
-
-          data:[7.1,7,7.4,8,7.1,7,7.3,7.3,7.6,7.6,7.6,7.5,7.4,7.6,7.2,7.4,7.7,7.6,7.8,7.2,7.8,7.8,7.5]
+          data: [
+            25,
+            24,
+            30,
+            22,
+            23,
+            23,
+            24,
+            24,
+            22,
+            21,
+            25,
+            30,
+            30,
+            27,
+            31,
+            25,
+            25,
+            25,
+            23,
+            28,
+            31,
+            28,
+            27
+          ]
         },
         {
-          label:"B.O.D",
-          type:'line',
-          borderColor: '#800000',
-          pointBorderColor: '#800000',
-          pointBackgroundColor: '#800000',
-          pointHoverBackgroundColor: '#800000',
-          pointHoverBorderColor: '#800000',
+          label: "pH",
+          type: "line",
+          borderColor: "#EC932F",
+          pointBorderColor: "#EC932F",
+          pointBackgroundColor: "#EC932F",
+          pointHoverBackgroundColor: "#EC932F",
+          pointHoverBorderColor: "#EC932F",
           backgroundColor: gradientFill,
           pointBorderWidth: 2,
           pointHoverRadius: 4,
@@ -1789,7 +2648,73 @@ const dashboard24HoursPerformanceChartPunjab = {
           fill: true,
           borderWidth: 1,
 
-          data:[0.5,0.8,0.8,0,0.3,0.4,0.45,0.35,0,0,0,1,0.8,2.2,3,1.6,1.4,1.6,2.1,1.1,1,1,0.9]
+          data: [
+            7.1,
+            7,
+            7.4,
+            8,
+            7.1,
+            7,
+            7.3,
+            7.3,
+            7.6,
+            7.6,
+            7.6,
+            7.5,
+            7.4,
+            7.6,
+            7.2,
+            7.4,
+            7.7,
+            7.6,
+            7.8,
+            7.2,
+            7.8,
+            7.8,
+            7.5
+          ]
+        },
+        {
+          label: "B.O.D",
+          type: "line",
+          borderColor: "#800000",
+          pointBorderColor: "#800000",
+          pointBackgroundColor: "#800000",
+          pointHoverBackgroundColor: "#800000",
+          pointHoverBorderColor: "#800000",
+          backgroundColor: gradientFill,
+          pointBorderWidth: 2,
+          pointHoverRadius: 4,
+          pointHoverBorderWidth: 1,
+          pointRadius: 1,
+          fill: true,
+          borderWidth: 1,
+
+          data: [
+            0.5,
+            0.8,
+            0.8,
+            0,
+            0.3,
+            0.4,
+            0.45,
+            0.35,
+            0,
+            0,
+            0,
+            1,
+            0.8,
+            2.2,
+            3,
+            1.6,
+            1.4,
+            1.6,
+            2.1,
+            1.1,
+            1,
+            1,
+            0.9
+          ]
         }
       ]
     };
@@ -1831,9 +2756,9 @@ const dashboard24HoursPerformanceChartPunjab = {
             drawBorder: false
           },
           scaleLabel: {
-        display: true,
-        labelString: 'Zones in punjab'
-      }
+            display: true,
+            labelString: "Zones in punjab"
+          }
         }
       ]
     },
@@ -1850,42 +2775,40 @@ const dashboard24HoursPerformanceChartKerala = {
     gradientFill.addColorStop(1, hexToRGB("#2CA8FF", 0.6));
     return {
       labels: [
-      "WELL AT ELOOR- KERALA",
-"WELL AT CHUNGAPALLY- KERALA",
-"WELL AT PUNALUR- KERALA",
-"PAPPANAMKODE-THIRUVANANTHAPURAM",
-"NEDUMANGAD-THIRUVANANTHAPURAM",
-"NEDUMANGAD-THIRUVANANTHAPURAM",
-"CHERTHALA-ALLEPPY- KERALA",
-"VYTTILA-ERNAKULAM",
-"EDAYAR ERNAKULAM DISTT.",
-"KALAMASSERY ERNAKULAM",
-"PUNKUNNAM TRISSUR DISTT.",
-"MALAPURAM - KERALA",
-"MAVOOR- KOZHIKKODE DISTT.- KERALA",
-"KANNUR (MUNICIPALITY) KANNUR",
-"PAYYANNUR- KANNUR DISTT.",
-"FATHIMAPURAM (CHANGANASSERY)",
-"KAROOR (PALA)",
-"VAIKOM",
-"VADAVATHOOR (KOTTAYAM)",
-"SARVODAPURAM- ALAPPUZHA",
-"KUREEPUZHA (KOLLAM)",
-"K.M.M.L.(KOLLAM)",
-"CHELLORA TRENCHING GROUND(KANNUR)",
-"PUNNALPETTIPPALAM (TELLICHERRYMUNICIPALITY)",
-"MANJERI",
-"LALOOR (THRISSUR)",
-"OLLUR (THRISSUR)",
-"BRAHMAPURAM M.S.W.DUMPARK (ERNAKULAM)",
-"HAZARDOUS WASTE DUMP(AMBALAMUGHAL)",
-"KARUKAMANI"
-
-
+        "WELL AT ELOOR- KERALA",
+        "WELL AT CHUNGAPALLY- KERALA",
+        "WELL AT PUNALUR- KERALA",
+        "PAPPANAMKODE-THIRUVANANTHAPURAM",
+        "NEDUMANGAD-THIRUVANANTHAPURAM",
+        "NEDUMANGAD-THIRUVANANTHAPURAM",
+        "CHERTHALA-ALLEPPY- KERALA",
+        "VYTTILA-ERNAKULAM",
+        "EDAYAR ERNAKULAM DISTT.",
+        "KALAMASSERY ERNAKULAM",
+        "PUNKUNNAM TRISSUR DISTT.",
+        "MALAPURAM - KERALA",
+        "MAVOOR- KOZHIKKODE DISTT.- KERALA",
+        "KANNUR (MUNICIPALITY) KANNUR",
+        "PAYYANNUR- KANNUR DISTT.",
+        "FATHIMAPURAM (CHANGANASSERY)",
+        "KAROOR (PALA)",
+        "VAIKOM",
+        "VADAVATHOOR (KOTTAYAM)",
+        "SARVODAPURAM- ALAPPUZHA",
+        "KUREEPUZHA (KOLLAM)",
+        "K.M.M.L.(KOLLAM)",
+        "CHELLORA TRENCHING GROUND(KANNUR)",
+        "PUNNALPETTIPPALAM (TELLICHERRYMUNICIPALITY)",
+        "MANJERI",
+        "LALOOR (THRISSUR)",
+        "OLLUR (THRISSUR)",
+        "BRAHMAPURAM M.S.W.DUMPARK (ERNAKULAM)",
+        "HAZARDOUS WASTE DUMP(AMBALAMUGHAL)",
+        "KARUKAMANI"
       ],
       datasets: [
         {
-          label:"Mean Temprature",
+          label: "Mean Temprature",
           backgroundColor: gradientFill,
           borderColor: "#2CA8FF",
           pointBorderColor: "#FFF",
@@ -1897,33 +2820,40 @@ const dashboard24HoursPerformanceChartKerala = {
           fill: true,
           borderWidth: 1,
 
-          data:[25,24,30,22,23,23,24,24,22,21,25,30,30,27,31,25,25,25,23,28,31,28,27]
-        },{
-          label:"pH",
-          type:'line',
-          borderColor: '#EC932F',
-          pointBorderColor: '#EC932F',
-          pointBackgroundColor: '#EC932F',
-          pointHoverBackgroundColor: '#EC932F',
-          pointHoverBorderColor: '#EC932F',
-          backgroundColor: gradientFill,
-          pointBorderWidth: 2,
-          pointHoverRadius: 4,
-          pointHoverBorderWidth: 1,
-          pointRadius: 1,
-          fill: true,
-          borderWidth: 1,
-
-          data:[7.1,7,7.4,8,7.1,7,7.3,7.3,7.6,7.6,7.6,7.5,7.4,7.6,7.2,7.4,7.7,7.6,7.8,7.2,7.8,7.8,7.5]
+          data: [
+            25,
+            24,
+            30,
+            22,
+            23,
+            23,
+            24,
+            24,
+            22,
+            21,
+            25,
+            30,
+            30,
+            27,
+            31,
+            25,
+            25,
+            25,
+            23,
+            28,
+            31,
+            28,
+            27
+          ]
         },
         {
-          label:"B.O.D",
-          type:'line',
-          borderColor: '#800000',
-          pointBorderColor: '#800000',
-          pointBackgroundColor: '#800000',
-          pointHoverBackgroundColor: '#800000',
-          pointHoverBorderColor: '#800000',
+          label: "pH",
+          type: "line",
+          borderColor: "#EC932F",
+          pointBorderColor: "#EC932F",
+          pointBackgroundColor: "#EC932F",
+          pointHoverBackgroundColor: "#EC932F",
+          pointHoverBorderColor: "#EC932F",
           backgroundColor: gradientFill,
           pointBorderWidth: 2,
           pointHoverRadius: 4,
@@ -1932,7 +2862,73 @@ const dashboard24HoursPerformanceChartKerala = {
           fill: true,
           borderWidth: 1,
 
-          data:[0.5,0.8,0.8,0,0.3,0.4,0.45,0.35,0,0,0,1,0.8,2.2,3,1.6,1.4,1.6,2.1,1.1,1,1,0.9]
+          data: [
+            7.1,
+            7,
+            7.4,
+            8,
+            7.1,
+            7,
+            7.3,
+            7.3,
+            7.6,
+            7.6,
+            7.6,
+            7.5,
+            7.4,
+            7.6,
+            7.2,
+            7.4,
+            7.7,
+            7.6,
+            7.8,
+            7.2,
+            7.8,
+            7.8,
+            7.5
+          ]
+        },
+        {
+          label: "B.O.D",
+          type: "line",
+          borderColor: "#800000",
+          pointBorderColor: "#800000",
+          pointBackgroundColor: "#800000",
+          pointHoverBackgroundColor: "#800000",
+          pointHoverBorderColor: "#800000",
+          backgroundColor: gradientFill,
+          pointBorderWidth: 2,
+          pointHoverRadius: 4,
+          pointHoverBorderWidth: 1,
+          pointRadius: 1,
+          fill: true,
+          borderWidth: 1,
+
+          data: [
+            0.5,
+            0.8,
+            0.8,
+            0,
+            0.3,
+            0.4,
+            0.45,
+            0.35,
+            0,
+            0,
+            0,
+            1,
+            0.8,
+            2.2,
+            3,
+            1.6,
+            1.4,
+            1.6,
+            2.1,
+            1.1,
+            1,
+            1,
+            0.9
+          ]
         }
       ]
     };
@@ -1974,9 +2970,9 @@ const dashboard24HoursPerformanceChartKerala = {
             drawBorder: false
           },
           scaleLabel: {
-        display: true,
-        labelString: 'Zones in kerala'
-      }
+            display: true,
+            labelString: "Zones in kerala"
+          }
         }
       ]
     },
@@ -1993,14 +2989,12 @@ const dashboard24HoursPerformanceChartTN = {
     gradientFill.addColorStop(1, hexToRGB("#2CA8FF", 0.6));
     return {
       labels: [
-      "WELL AT MUSIRI- TAMIL NADU",
-"COLLECTOR WELL AT THIRUPUVANAM FOR MADURAI WAT. SUPPLY SCHEME"
-
-
+        "WELL AT MUSIRI- TAMIL NADU",
+        "COLLECTOR WELL AT THIRUPUVANAM FOR MADURAI WAT. SUPPLY SCHEME"
       ],
       datasets: [
         {
-          label:"Mean Temprature",
+          label: "Mean Temprature",
           backgroundColor: gradientFill,
           borderColor: "#2CA8FF",
           pointBorderColor: "#FFF",
@@ -2012,33 +3006,40 @@ const dashboard24HoursPerformanceChartTN = {
           fill: true,
           borderWidth: 1,
 
-          data:[25,24,30,22,23,23,24,24,22,21,25,30,30,27,31,25,25,25,23,28,31,28,27]
-        },{
-          label:"pH",
-          type:'line',
-          borderColor: '#EC932F',
-          pointBorderColor: '#EC932F',
-          pointBackgroundColor: '#EC932F',
-          pointHoverBackgroundColor: '#EC932F',
-          pointHoverBorderColor: '#EC932F',
-          backgroundColor: gradientFill,
-          pointBorderWidth: 2,
-          pointHoverRadius: 4,
-          pointHoverBorderWidth: 1,
-          pointRadius: 1,
-          fill: true,
-          borderWidth: 1,
-
-          data:[7.1,7,7.4,8,7.1,7,7.3,7.3,7.6,7.6,7.6,7.5,7.4,7.6,7.2,7.4,7.7,7.6,7.8,7.2,7.8,7.8,7.5]
+          data: [
+            25,
+            24,
+            30,
+            22,
+            23,
+            23,
+            24,
+            24,
+            22,
+            21,
+            25,
+            30,
+            30,
+            27,
+            31,
+            25,
+            25,
+            25,
+            23,
+            28,
+            31,
+            28,
+            27
+          ]
         },
         {
-          label:"B.O.D",
-          type:'line',
-          borderColor: '#800000',
-          pointBorderColor: '#800000',
-          pointBackgroundColor: '#800000',
-          pointHoverBackgroundColor: '#800000',
-          pointHoverBorderColor: '#800000',
+          label: "pH",
+          type: "line",
+          borderColor: "#EC932F",
+          pointBorderColor: "#EC932F",
+          pointBackgroundColor: "#EC932F",
+          pointHoverBackgroundColor: "#EC932F",
+          pointHoverBorderColor: "#EC932F",
           backgroundColor: gradientFill,
           pointBorderWidth: 2,
           pointHoverRadius: 4,
@@ -2047,7 +3048,73 @@ const dashboard24HoursPerformanceChartTN = {
           fill: true,
           borderWidth: 1,
 
-          data:[0.5,0.8,0.8,0,0.3,0.4,0.45,0.35,0,0,0,1,0.8,2.2,3,1.6,1.4,1.6,2.1,1.1,1,1,0.9]
+          data: [
+            7.1,
+            7,
+            7.4,
+            8,
+            7.1,
+            7,
+            7.3,
+            7.3,
+            7.6,
+            7.6,
+            7.6,
+            7.5,
+            7.4,
+            7.6,
+            7.2,
+            7.4,
+            7.7,
+            7.6,
+            7.8,
+            7.2,
+            7.8,
+            7.8,
+            7.5
+          ]
+        },
+        {
+          label: "B.O.D",
+          type: "line",
+          borderColor: "#800000",
+          pointBorderColor: "#800000",
+          pointBackgroundColor: "#800000",
+          pointHoverBackgroundColor: "#800000",
+          pointHoverBorderColor: "#800000",
+          backgroundColor: gradientFill,
+          pointBorderWidth: 2,
+          pointHoverRadius: 4,
+          pointHoverBorderWidth: 1,
+          pointRadius: 1,
+          fill: true,
+          borderWidth: 1,
+
+          data: [
+            0.5,
+            0.8,
+            0.8,
+            0,
+            0.3,
+            0.4,
+            0.45,
+            0.35,
+            0,
+            0,
+            0,
+            1,
+            0.8,
+            2.2,
+            3,
+            1.6,
+            1.4,
+            1.6,
+            2.1,
+            1.1,
+            1,
+            1,
+            0.9
+          ]
         }
       ]
     };
@@ -2089,9 +3156,9 @@ const dashboard24HoursPerformanceChartTN = {
             drawBorder: false
           },
           scaleLabel: {
-        display: true,
-        labelString: 'Zones in tamil nadu'
-      }
+            display: true,
+            labelString: "Zones in tamil nadu"
+          }
         }
       ]
     },
@@ -2108,25 +3175,23 @@ const dashboard24HoursPerformanceChartPondicherry = {
     gradientFill.addColorStop(1, hexToRGB("#2CA8FF", 0.6));
     return {
       labels: [
-      "WELL AT MUTHIALPET AREA(I)",
-"WELL AT THENGAITHITTU AREA-(II)",
-"WELL AT MUTHARAPLATYAM (PWD)",
-"WELL AT KALAPET-PONDI.UNIVER.ADMN.BLOCK",
-"NEHRU STATUE- PONDICHERRY",
-"KATTERIKUPPAM- PODICHERRY",
-"CHUNMBAR RIVER- PONDICHERRY",
-"KURUMBAPET",
-"METTUPALAYAM",
-"URUVAIYAR",
-"KARUVADIKUPPAM",
-"T.R.PATTINAM- KARAIKAL",
-"VADAMATTAM- KARAIKAL"
-
-
+        "WELL AT MUTHIALPET AREA(I)",
+        "WELL AT THENGAITHITTU AREA-(II)",
+        "WELL AT MUTHARAPLATYAM (PWD)",
+        "WELL AT KALAPET-PONDI.UNIVER.ADMN.BLOCK",
+        "NEHRU STATUE- PONDICHERRY",
+        "KATTERIKUPPAM- PODICHERRY",
+        "CHUNMBAR RIVER- PONDICHERRY",
+        "KURUMBAPET",
+        "METTUPALAYAM",
+        "URUVAIYAR",
+        "KARUVADIKUPPAM",
+        "T.R.PATTINAM- KARAIKAL",
+        "VADAMATTAM- KARAIKAL"
       ],
       datasets: [
         {
-          label:"Mean Temprature",
+          label: "Mean Temprature",
           backgroundColor: gradientFill,
           borderColor: "#2CA8FF",
           pointBorderColor: "#FFF",
@@ -2138,33 +3203,40 @@ const dashboard24HoursPerformanceChartPondicherry = {
           fill: true,
           borderWidth: 1,
 
-          data:[25,24,30,22,23,23,24,24,22,21,25,30,30,27,31,25,25,25,23,28,31,28,27]
-        },{
-          label:"pH",
-          type:'line',
-          borderColor: '#EC932F',
-          pointBorderColor: '#EC932F',
-          pointBackgroundColor: '#EC932F',
-          pointHoverBackgroundColor: '#EC932F',
-          pointHoverBorderColor: '#EC932F',
-          backgroundColor: gradientFill,
-          pointBorderWidth: 2,
-          pointHoverRadius: 4,
-          pointHoverBorderWidth: 1,
-          pointRadius: 1,
-          fill: true,
-          borderWidth: 1,
-
-          data:[7.1,7,7.4,8,7.1,7,7.3,7.3,7.6,7.6,7.6,7.5,7.4,7.6,7.2,7.4,7.7,7.6,7.8,7.2,7.8,7.8,7.5]
+          data: [
+            25,
+            24,
+            30,
+            22,
+            23,
+            23,
+            24,
+            24,
+            22,
+            21,
+            25,
+            30,
+            30,
+            27,
+            31,
+            25,
+            25,
+            25,
+            23,
+            28,
+            31,
+            28,
+            27
+          ]
         },
         {
-          label:"B.O.D",
-          type:'line',
-          borderColor: '#800000',
-          pointBorderColor: '#800000',
-          pointBackgroundColor: '#800000',
-          pointHoverBackgroundColor: '#800000',
-          pointHoverBorderColor: '#800000',
+          label: "pH",
+          type: "line",
+          borderColor: "#EC932F",
+          pointBorderColor: "#EC932F",
+          pointBackgroundColor: "#EC932F",
+          pointHoverBackgroundColor: "#EC932F",
+          pointHoverBorderColor: "#EC932F",
           backgroundColor: gradientFill,
           pointBorderWidth: 2,
           pointHoverRadius: 4,
@@ -2173,7 +3245,73 @@ const dashboard24HoursPerformanceChartPondicherry = {
           fill: true,
           borderWidth: 1,
 
-          data:[0.5,0.8,0.8,0,0.3,0.4,0.45,0.35,0,0,0,1,0.8,2.2,3,1.6,1.4,1.6,2.1,1.1,1,1,0.9]
+          data: [
+            7.1,
+            7,
+            7.4,
+            8,
+            7.1,
+            7,
+            7.3,
+            7.3,
+            7.6,
+            7.6,
+            7.6,
+            7.5,
+            7.4,
+            7.6,
+            7.2,
+            7.4,
+            7.7,
+            7.6,
+            7.8,
+            7.2,
+            7.8,
+            7.8,
+            7.5
+          ]
+        },
+        {
+          label: "B.O.D",
+          type: "line",
+          borderColor: "#800000",
+          pointBorderColor: "#800000",
+          pointBackgroundColor: "#800000",
+          pointHoverBackgroundColor: "#800000",
+          pointHoverBorderColor: "#800000",
+          backgroundColor: gradientFill,
+          pointBorderWidth: 2,
+          pointHoverRadius: 4,
+          pointHoverBorderWidth: 1,
+          pointRadius: 1,
+          fill: true,
+          borderWidth: 1,
+
+          data: [
+            0.5,
+            0.8,
+            0.8,
+            0,
+            0.3,
+            0.4,
+            0.45,
+            0.35,
+            0,
+            0,
+            0,
+            1,
+            0.8,
+            2.2,
+            3,
+            1.6,
+            1.4,
+            1.6,
+            2.1,
+            1.1,
+            1,
+            1,
+            0.9
+          ]
         }
       ]
     };
@@ -2229,13 +3367,10 @@ const dashboard24HoursPerformanceChartDAD = {
     gradientFill.addColorStop(0, "rgba(128, 182, 244, 0)");
     gradientFill.addColorStop(1, hexToRGB("#2CA8FF", 0.6));
     return {
-      labels: [
-      "WELL AT SOMNATH INDL ESTATE"
-
-      ],
+      labels: ["WELL AT SOMNATH INDL ESTATE"],
       datasets: [
         {
-          label:"Mean Temprature",
+          label: "Mean Temprature",
           backgroundColor: gradientFill,
           borderColor: "#2CA8FF",
           pointBorderColor: "#FFF",
@@ -2247,33 +3382,16 @@ const dashboard24HoursPerformanceChartDAD = {
           fill: true,
           borderWidth: 1,
 
-          data:[25]
-        },{
-          label:"pH",
-          type:'line',
-          borderColor: '#EC932F',
-          pointBorderColor: '#EC932F',
-          pointBackgroundColor: '#EC932F',
-          pointHoverBackgroundColor: '#EC932F',
-          pointHoverBorderColor: '#EC932F',
-          backgroundColor: gradientFill,
-          pointBorderWidth: 2,
-          pointHoverRadius: 4,
-          pointHoverBorderWidth: 1,
-          pointRadius: 1,
-          fill: true,
-          borderWidth: 1,
-
-          data:[7.1]
+          data: [25]
         },
         {
-          label:"B.O.D",
-          type:'line',
-          borderColor: '#800000',
-          pointBorderColor: '#800000',
-          pointBackgroundColor: '#800000',
-          pointHoverBackgroundColor: '#800000',
-          pointHoverBorderColor: '#800000',
+          label: "pH",
+          type: "line",
+          borderColor: "#EC932F",
+          pointBorderColor: "#EC932F",
+          pointBackgroundColor: "#EC932F",
+          pointHoverBackgroundColor: "#EC932F",
+          pointHoverBorderColor: "#EC932F",
           backgroundColor: gradientFill,
           pointBorderWidth: 2,
           pointHoverRadius: 4,
@@ -2282,7 +3400,25 @@ const dashboard24HoursPerformanceChartDAD = {
           fill: true,
           borderWidth: 1,
 
-          data:[0.5]
+          data: [7.1]
+        },
+        {
+          label: "B.O.D",
+          type: "line",
+          borderColor: "#800000",
+          pointBorderColor: "#800000",
+          pointBackgroundColor: "#800000",
+          pointHoverBackgroundColor: "#800000",
+          pointHoverBorderColor: "#800000",
+          backgroundColor: gradientFill,
+          pointBorderWidth: 2,
+          pointHoverRadius: 4,
+          pointHoverBorderWidth: 1,
+          pointRadius: 1,
+          fill: true,
+          borderWidth: 1,
+
+          data: [0.5]
         }
       ]
     };
@@ -2339,36 +3475,35 @@ const dashboard24HoursPerformanceChartMaharastra = {
     gradientFill.addColorStop(1, hexToRGB("#2CA8FF", 0.6));
     return {
       labels: [
-      "INDL.ESTATE TARAPUR",
-"MIRA-BHAYANDER",
-"DAHANU",
-"VASAI",
-"PALGHAR",
-"BMW SITE- BURUDGAON- AHMEDNAGAR",
-"MSW SITE- PATHARDI- NASIK",
-"MSW SITE- PIMPRI-CHINCHWAD- PUNE",
-"PHANDARPUR- GANGAPUR-AURANGABAD",
-"KHAPERKHEDA- NAGPUR",
-"KORADI- NAGPUR",
-"RAIPUR- NAGPUR",
-"BHAHMNI- KALMESHWAR- NAGPUR",
-"SANGERA GONDIA",
-"BHANDEWARI- NAGPUR",
-"SUKALI- AMRAVATI",
-"AKOT- AKOLA",
-"SAWARGAON- YAVATMAL",
-"PARVATI INDL.ESTATE- SHIROL",
-"MIDC- SHINOLI- CHENDGAD",
-"SAVALI- SANGLI",
-"RASULWADI-SAMBARWADI- SANGLI",
-"BORE WELL AT KATPUR- NEAR Z.PSCHOOL.",
-"DUG WELL AT RANJANGAON.",
-"HAND PUMP IN THE PREMISES OFZILLA PARISHAD PRIMARY SCHOOL"
-
+        "INDL.ESTATE TARAPUR",
+        "MIRA-BHAYANDER",
+        "DAHANU",
+        "VASAI",
+        "PALGHAR",
+        "BMW SITE- BURUDGAON- AHMEDNAGAR",
+        "MSW SITE- PATHARDI- NASIK",
+        "MSW SITE- PIMPRI-CHINCHWAD- PUNE",
+        "PHANDARPUR- GANGAPUR-AURANGABAD",
+        "KHAPERKHEDA- NAGPUR",
+        "KORADI- NAGPUR",
+        "RAIPUR- NAGPUR",
+        "BHAHMNI- KALMESHWAR- NAGPUR",
+        "SANGERA GONDIA",
+        "BHANDEWARI- NAGPUR",
+        "SUKALI- AMRAVATI",
+        "AKOT- AKOLA",
+        "SAWARGAON- YAVATMAL",
+        "PARVATI INDL.ESTATE- SHIROL",
+        "MIDC- SHINOLI- CHENDGAD",
+        "SAVALI- SANGLI",
+        "RASULWADI-SAMBARWADI- SANGLI",
+        "BORE WELL AT KATPUR- NEAR Z.PSCHOOL.",
+        "DUG WELL AT RANJANGAON.",
+        "HAND PUMP IN THE PREMISES OFZILLA PARISHAD PRIMARY SCHOOL"
       ],
       datasets: [
         {
-          label:"Mean Temprature",
+          label: "Mean Temprature",
           backgroundColor: gradientFill,
           borderColor: "#2CA8FF",
           pointBorderColor: "#FFF",
@@ -2380,33 +3515,40 @@ const dashboard24HoursPerformanceChartMaharastra = {
           fill: true,
           borderWidth: 1,
 
-          data:[25,24,30,22,23,23,24,24,22,21,25,30,30,27,31,25,25,25,23,28,31,28,27]
-        },{
-          label:"pH",
-          type:'line',
-          borderColor: '#EC932F',
-          pointBorderColor: '#EC932F',
-          pointBackgroundColor: '#EC932F',
-          pointHoverBackgroundColor: '#EC932F',
-          pointHoverBorderColor: '#EC932F',
-          backgroundColor: gradientFill,
-          pointBorderWidth: 2,
-          pointHoverRadius: 4,
-          pointHoverBorderWidth: 1,
-          pointRadius: 1,
-          fill: true,
-          borderWidth: 1,
-
-          data:[7.1,7,7.4,8,7.1,7,7.3,7.3,7.6,7.6,7.6,7.5,7.4,7.6,7.2,7.4,7.7,7.6,7.8,7.2,7.8,7.8,7.5]
+          data: [
+            25,
+            24,
+            30,
+            22,
+            23,
+            23,
+            24,
+            24,
+            22,
+            21,
+            25,
+            30,
+            30,
+            27,
+            31,
+            25,
+            25,
+            25,
+            23,
+            28,
+            31,
+            28,
+            27
+          ]
         },
         {
-          label:"B.O.D",
-          type:'line',
-          borderColor: '#800000',
-          pointBorderColor: '#800000',
-          pointBackgroundColor: '#800000',
-          pointHoverBackgroundColor: '#800000',
-          pointHoverBorderColor: '#800000',
+          label: "pH",
+          type: "line",
+          borderColor: "#EC932F",
+          pointBorderColor: "#EC932F",
+          pointBackgroundColor: "#EC932F",
+          pointHoverBackgroundColor: "#EC932F",
+          pointHoverBorderColor: "#EC932F",
           backgroundColor: gradientFill,
           pointBorderWidth: 2,
           pointHoverRadius: 4,
@@ -2415,7 +3557,73 @@ const dashboard24HoursPerformanceChartMaharastra = {
           fill: true,
           borderWidth: 1,
 
-          data:[0.5,0.8,0.8,0,0.3,0.4,0.45,0.35,0,0,0,1,0.8,2.2,3,1.6,1.4,1.6,2.1,1.1,1,1,0.9]
+          data: [
+            7.1,
+            7,
+            7.4,
+            8,
+            7.1,
+            7,
+            7.3,
+            7.3,
+            7.6,
+            7.6,
+            7.6,
+            7.5,
+            7.4,
+            7.6,
+            7.2,
+            7.4,
+            7.7,
+            7.6,
+            7.8,
+            7.2,
+            7.8,
+            7.8,
+            7.5
+          ]
+        },
+        {
+          label: "B.O.D",
+          type: "line",
+          borderColor: "#800000",
+          pointBorderColor: "#800000",
+          pointBackgroundColor: "#800000",
+          pointHoverBackgroundColor: "#800000",
+          pointHoverBorderColor: "#800000",
+          backgroundColor: gradientFill,
+          pointBorderWidth: 2,
+          pointHoverRadius: 4,
+          pointHoverBorderWidth: 1,
+          pointRadius: 1,
+          fill: true,
+          borderWidth: 1,
+
+          data: [
+            0.5,
+            0.8,
+            0.8,
+            0,
+            0.3,
+            0.4,
+            0.45,
+            0.35,
+            0,
+            0,
+            0,
+            1,
+            0.8,
+            2.2,
+            3,
+            1.6,
+            1.4,
+            1.6,
+            2.1,
+            1.1,
+            1,
+            1,
+            0.9
+          ]
         }
       ]
     };
@@ -2457,9 +3665,9 @@ const dashboard24HoursPerformanceChartMaharastra = {
             drawBorder: false
           },
           scaleLabel: {
-        display: true,
-        labelString: 'Zones in maharastra'
-      }
+            display: true,
+            labelString: "Zones in maharastra"
+          }
         }
       ]
     },
@@ -2476,42 +3684,41 @@ const dashboard24HoursPerformanceChartGujarat = {
     gradientFill.addColorStop(1, hexToRGB("#2CA8FF", 0.6));
     return {
       labels: [
-      "WELL AT AHMEDABAD",
-"WELL AT NAROL- AHMEDABAD",
-"JUNAGADH",
-"RAJKOT",
-"SURENDRANAGAR",
-"PALANPUR",
-"MEHASANA",
-"SIDDHPUR (DIST.PATAN)",
-"HIMATNAGAR",
-"NADIAD",
-"DAHOD",
-"GODHARA",
-"VADODARA (INDUSTRIAL-NANDESARI)",
-"ANKLESHWAR (INDUSTRIAL AREA)",
-"PANDESARA (INDSTRIAL) SURAT",
-"MORA-HAJIRA (INDUSTRIAL)- HAJIRA",
-"GABHENI VILL- SURAT (INDUSTRIAL)",
-"BORE WELL OF CHHATRAL GIDC.",
-"BORE WELL OF PALSANA VILLAGE.",
-"ORE WELL OF SANTEJ VILLAGE.",
-"B/W- HAZARDOUS W.DISPOSAL SITE (GUJ.ENVIRO P.& I.LTD.)",
-"BORE WELL OF SACHIN GIDC.",
-"WELL AT OLPAD.",
-"BORE WELL OF NAVSARI GIDCINDUSTRIES ASSOCIATION OFFICE.",
-"FROM WATER WORKS OF NAVSARINEAR DHUDIA TALAV.",
-"BORE WELL - BARDOLI REST HOUSE.",
-"WELL AT ANKLESHWAR INDUSTRIAL AREA (BORE WELL OF M/S INDUSTRIAL CARBON AT ANKLESHWAR- RAJPIPLA ROAD.",
-"BORE WELL AT STP MADHAPAR- DIST. RAJKOT",
-"B/W- SNR. VINAYAK JAL SUDDHIKARAN SAHAKARI MANDALI LTD.(CETP )- BAVLA- AHMEDABAD",
-"B/W OF SOMESHWAR RICE MILL- NR. BAVLA ECO PROJECT- (CETP )- BAVLA- AHMEDABAD",
-"BORE WELL OF PIRANA TERMINAL PUMPING STN- PIRANA- NR. V. N. BDG- AHMEDABAD",
-
+        "WELL AT AHMEDABAD",
+        "WELL AT NAROL- AHMEDABAD",
+        "JUNAGADH",
+        "RAJKOT",
+        "SURENDRANAGAR",
+        "PALANPUR",
+        "MEHASANA",
+        "SIDDHPUR (DIST.PATAN)",
+        "HIMATNAGAR",
+        "NADIAD",
+        "DAHOD",
+        "GODHARA",
+        "VADODARA (INDUSTRIAL-NANDESARI)",
+        "ANKLESHWAR (INDUSTRIAL AREA)",
+        "PANDESARA (INDSTRIAL) SURAT",
+        "MORA-HAJIRA (INDUSTRIAL)- HAJIRA",
+        "GABHENI VILL- SURAT (INDUSTRIAL)",
+        "BORE WELL OF CHHATRAL GIDC.",
+        "BORE WELL OF PALSANA VILLAGE.",
+        "ORE WELL OF SANTEJ VILLAGE.",
+        "B/W- HAZARDOUS W.DISPOSAL SITE (GUJ.ENVIRO P.& I.LTD.)",
+        "BORE WELL OF SACHIN GIDC.",
+        "WELL AT OLPAD.",
+        "BORE WELL OF NAVSARI GIDCINDUSTRIES ASSOCIATION OFFICE.",
+        "FROM WATER WORKS OF NAVSARINEAR DHUDIA TALAV.",
+        "BORE WELL - BARDOLI REST HOUSE.",
+        "WELL AT ANKLESHWAR INDUSTRIAL AREA (BORE WELL OF M/S INDUSTRIAL CARBON AT ANKLESHWAR- RAJPIPLA ROAD.",
+        "BORE WELL AT STP MADHAPAR- DIST. RAJKOT",
+        "B/W- SNR. VINAYAK JAL SUDDHIKARAN SAHAKARI MANDALI LTD.(CETP )- BAVLA- AHMEDABAD",
+        "B/W OF SOMESHWAR RICE MILL- NR. BAVLA ECO PROJECT- (CETP )- BAVLA- AHMEDABAD",
+        "BORE WELL OF PIRANA TERMINAL PUMPING STN- PIRANA- NR. V. N. BDG- AHMEDABAD"
       ],
       datasets: [
         {
-          label:"Mean Temprature",
+          label: "Mean Temprature",
           backgroundColor: gradientFill,
           borderColor: "#2CA8FF",
           pointBorderColor: "#FFF",
@@ -2523,33 +3730,40 @@ const dashboard24HoursPerformanceChartGujarat = {
           fill: true,
           borderWidth: 1,
 
-          data:[25,24,30,22,23,23,24,24,22,21,25,30,30,27,31,25,25,25,23,28,31,28,27]
-        },{
-          label:"pH",
-          type:'line',
-          borderColor: '#EC932F',
-          pointBorderColor: '#EC932F',
-          pointBackgroundColor: '#EC932F',
-          pointHoverBackgroundColor: '#EC932F',
-          pointHoverBorderColor: '#EC932F',
-          backgroundColor: gradientFill,
-          pointBorderWidth: 2,
-          pointHoverRadius: 4,
-          pointHoverBorderWidth: 1,
-          pointRadius: 1,
-          fill: true,
-          borderWidth: 1,
-
-          data:[7.1,7,7.4,8,7.1,7,7.3,7.3,7.6,7.6,7.6,7.5,7.4,7.6,7.2,7.4,7.7,7.6,7.8,7.2,7.8,7.8,7.5]
+          data: [
+            25,
+            24,
+            30,
+            22,
+            23,
+            23,
+            24,
+            24,
+            22,
+            21,
+            25,
+            30,
+            30,
+            27,
+            31,
+            25,
+            25,
+            25,
+            23,
+            28,
+            31,
+            28,
+            27
+          ]
         },
         {
-          label:"B.O.D",
-          type:'line',
-          borderColor: '#800000',
-          pointBorderColor: '#800000',
-          pointBackgroundColor: '#800000',
-          pointHoverBackgroundColor: '#800000',
-          pointHoverBorderColor: '#800000',
+          label: "pH",
+          type: "line",
+          borderColor: "#EC932F",
+          pointBorderColor: "#EC932F",
+          pointBackgroundColor: "#EC932F",
+          pointHoverBackgroundColor: "#EC932F",
+          pointHoverBorderColor: "#EC932F",
           backgroundColor: gradientFill,
           pointBorderWidth: 2,
           pointHoverRadius: 4,
@@ -2558,7 +3772,73 @@ const dashboard24HoursPerformanceChartGujarat = {
           fill: true,
           borderWidth: 1,
 
-          data:[0.5,0.8,0.8,0,0.3,0.4,0.45,0.35,0,0,0,1,0.8,2.2,3,1.6,1.4,1.6,2.1,1.1,1,1,0.9]
+          data: [
+            7.1,
+            7,
+            7.4,
+            8,
+            7.1,
+            7,
+            7.3,
+            7.3,
+            7.6,
+            7.6,
+            7.6,
+            7.5,
+            7.4,
+            7.6,
+            7.2,
+            7.4,
+            7.7,
+            7.6,
+            7.8,
+            7.2,
+            7.8,
+            7.8,
+            7.5
+          ]
+        },
+        {
+          label: "B.O.D",
+          type: "line",
+          borderColor: "#800000",
+          pointBorderColor: "#800000",
+          pointBackgroundColor: "#800000",
+          pointHoverBackgroundColor: "#800000",
+          pointHoverBorderColor: "#800000",
+          backgroundColor: gradientFill,
+          pointBorderWidth: 2,
+          pointHoverRadius: 4,
+          pointHoverBorderWidth: 1,
+          pointRadius: 1,
+          fill: true,
+          borderWidth: 1,
+
+          data: [
+            0.5,
+            0.8,
+            0.8,
+            0,
+            0.3,
+            0.4,
+            0.45,
+            0.35,
+            0,
+            0,
+            0,
+            1,
+            0.8,
+            2.2,
+            3,
+            1.6,
+            1.4,
+            1.6,
+            2.1,
+            1.1,
+            1,
+            1,
+            0.9
+          ]
         }
       ]
     };
@@ -2600,9 +3880,9 @@ const dashboard24HoursPerformanceChartGujarat = {
             drawBorder: false
           },
           scaleLabel: {
-        display: true,
-        labelString: 'Zones in gujarat'
-      }
+            display: true,
+            labelString: "Zones in gujarat"
+          }
         }
       ]
     },
@@ -2619,49 +3899,47 @@ const dashboard24HoursPerformanceChartRajasthan = {
     gradientFill.addColorStop(1, hexToRGB("#2CA8FF", 0.6));
     return {
       labels: [
-      "WELL OF LOOMJI- CHAUDHARY- NEARNAYAGAON- PALI- (UPSTREAM 1 KM.FROM PALI TOWN)",
-"WELL (UPSTREAM 1 KM FROM JODHPUR TOWN)",
-"WELL (U/S 1 KM FROM JODHPUR TOWN)",
-"RIICO PUMP HOUSE NEAR MONTOMOTORS- MIA- ALWAR",
-"BORE WELL IN MODI ALKALIS & CHEMICALS- MIA- ALWAR",
-"WELL KOTHI IN VILLAGE BAGARRAJPUT- ALWAR",
-"WELL AT VILLAGE SANTHLA VERY NEAR BHIWADI INDUSTRIAL AREA- BHIWADI",
-"WELL AT VILLAGE ALUPUR- VERYNEAR BHIWADI INDUSTRIAL AREA- BHIWADI",
-"WELL AT VILLAGE HARCHANDPUR- VERY NEAR- BHIWADI TO BHIWADI INDUSTRIAL AREA- BHIWADI",
-"WELL AT VILLAGE BHIWADI - VERYNEAR- BHIWADI TO BHIWADI INDUSTRIAL AREA- BHIWADI",
-"WELL AT VILLAGE GATTAL- NEAR-BHIWADI TO BHIWADI INDUSTRIAL AREA- BHIWADI",
-"HAND PUMP NEAR SECONDARY SCHOOL ABOUT 300mt.FROM KANSUA NALLAH KOTA",
-"CHAUDHARY KA WELL VILLAGEPANIALA- KOTAPUTALI NEAR ASSOCIATED ALCOHOL BREVERIES LTD JAIPUR",
-"PHED WELL NEAR RAILWAY LINE JHOTAWARA- JAIPUR",
-"PHED WELL NEAR NEI- KHATIPURA",
-"HAND PUMP OF VIDHANI VILLAGEGONER ROAD JAIPUR",
-"WELL OF GOOJARON KI TALAI-MOHANA ROAD SANGANER JAIPUR",
-"PUBLIC HAND PUMP BEFORESANGANER PULIA",
-"PABUPURA ROAD NEAR CIVIL AIRPORT- JODHPUR (MANGILAL RATHOR)",
-"VILLAGE VINAYAKIA- JODHPUR(HIRALAL KUMHAR)",
-"VILLAGE VINAYAKIA- JODHPUR (BADRIKUMHAR)",
-"VILLAGE VINAYAKIA- JODHPUR(HUKUM SINGH RATHORE)",
-"NEAR UIT BRIDGE- UDAIPUR",
-"NEW FATEHPURA- 200 FT.FROMPANCHWATI NALLAH- UDAIPUR",
-"NEAR ARVIND GENERAL STORE- ALOO FACTORY- KACCHI BASTI- SARDARPURA- UDAIPUR",
-"NEAR RANA PRATAP NAGAR- RAILWAYSTATION- UDAIPUR",
-"HOTEL ORIENT PLACE- SUBHAS NAGAR- UDAIPUR",
-"IN SIDE SHIV TEMPLE NEAR AIRFORCE STATION AMER ROAD- JAIPUR",
-"NEAR SHREE KALYANESHWAR MAHADEV TEMPLE- JAI SINGH PURA KHURD- JAIPUR",
-"NEAR FOJI NAGAR- KACCHI BASTI-AMBABARI- JAIPUR",
-"NEAR ABN CENTRAL ACADEMY- SUSILPURA- SODALA- JAIPUR",
-"NEAR SAMSHAN VISHWAKARMANAGAR- MAHARANIFARM- JAIPUR",
-"NEAR GANDHI BHWAN- AJMER",
-"OPPOSITE PRIVATE BUS STAND- AJMER",
-"NEAR 9 NO.PETROL PUMP- NEARADARSH NAGAR GATE- AJMER",
-"NEAR KHANPURA TALAB- AJMER",
-"OUTSIDE JLN HOSPITAL- AJMER",
-
-
+        "WELL OF LOOMJI- CHAUDHARY- NEARNAYAGAON- PALI- (UPSTREAM 1 KM.FROM PALI TOWN)",
+        "WELL (UPSTREAM 1 KM FROM JODHPUR TOWN)",
+        "WELL (U/S 1 KM FROM JODHPUR TOWN)",
+        "RIICO PUMP HOUSE NEAR MONTOMOTORS- MIA- ALWAR",
+        "BORE WELL IN MODI ALKALIS & CHEMICALS- MIA- ALWAR",
+        "WELL KOTHI IN VILLAGE BAGARRAJPUT- ALWAR",
+        "WELL AT VILLAGE SANTHLA VERY NEAR BHIWADI INDUSTRIAL AREA- BHIWADI",
+        "WELL AT VILLAGE ALUPUR- VERYNEAR BHIWADI INDUSTRIAL AREA- BHIWADI",
+        "WELL AT VILLAGE HARCHANDPUR- VERY NEAR- BHIWADI TO BHIWADI INDUSTRIAL AREA- BHIWADI",
+        "WELL AT VILLAGE BHIWADI - VERYNEAR- BHIWADI TO BHIWADI INDUSTRIAL AREA- BHIWADI",
+        "WELL AT VILLAGE GATTAL- NEAR-BHIWADI TO BHIWADI INDUSTRIAL AREA- BHIWADI",
+        "HAND PUMP NEAR SECONDARY SCHOOL ABOUT 300mt.FROM KANSUA NALLAH KOTA",
+        "CHAUDHARY KA WELL VILLAGEPANIALA- KOTAPUTALI NEAR ASSOCIATED ALCOHOL BREVERIES LTD JAIPUR",
+        "PHED WELL NEAR RAILWAY LINE JHOTAWARA- JAIPUR",
+        "PHED WELL NEAR NEI- KHATIPURA",
+        "HAND PUMP OF VIDHANI VILLAGEGONER ROAD JAIPUR",
+        "WELL OF GOOJARON KI TALAI-MOHANA ROAD SANGANER JAIPUR",
+        "PUBLIC HAND PUMP BEFORESANGANER PULIA",
+        "PABUPURA ROAD NEAR CIVIL AIRPORT- JODHPUR (MANGILAL RATHOR)",
+        "VILLAGE VINAYAKIA- JODHPUR(HIRALAL KUMHAR)",
+        "VILLAGE VINAYAKIA- JODHPUR (BADRIKUMHAR)",
+        "VILLAGE VINAYAKIA- JODHPUR(HUKUM SINGH RATHORE)",
+        "NEAR UIT BRIDGE- UDAIPUR",
+        "NEW FATEHPURA- 200 FT.FROMPANCHWATI NALLAH- UDAIPUR",
+        "NEAR ARVIND GENERAL STORE- ALOO FACTORY- KACCHI BASTI- SARDARPURA- UDAIPUR",
+        "NEAR RANA PRATAP NAGAR- RAILWAYSTATION- UDAIPUR",
+        "HOTEL ORIENT PLACE- SUBHAS NAGAR- UDAIPUR",
+        "IN SIDE SHIV TEMPLE NEAR AIRFORCE STATION AMER ROAD- JAIPUR",
+        "NEAR SHREE KALYANESHWAR MAHADEV TEMPLE- JAI SINGH PURA KHURD- JAIPUR",
+        "NEAR FOJI NAGAR- KACCHI BASTI-AMBABARI- JAIPUR",
+        "NEAR ABN CENTRAL ACADEMY- SUSILPURA- SODALA- JAIPUR",
+        "NEAR SAMSHAN VISHWAKARMANAGAR- MAHARANIFARM- JAIPUR",
+        "NEAR GANDHI BHWAN- AJMER",
+        "OPPOSITE PRIVATE BUS STAND- AJMER",
+        "NEAR 9 NO.PETROL PUMP- NEARADARSH NAGAR GATE- AJMER",
+        "NEAR KHANPURA TALAB- AJMER",
+        "OUTSIDE JLN HOSPITAL- AJMER"
       ],
       datasets: [
         {
-          label:"Mean Temprature",
+          label: "Mean Temprature",
           backgroundColor: gradientFill,
           borderColor: "#2CA8FF",
           pointBorderColor: "#FFF",
@@ -2673,33 +3951,40 @@ const dashboard24HoursPerformanceChartRajasthan = {
           fill: true,
           borderWidth: 1,
 
-          data:[25,24,30,22,23,23,24,24,22,21,25,30,30,27,31,25,25,25,23,28,31,28,27]
-        },{
-          label:"pH",
-          type:'line',
-          borderColor: '#EC932F',
-          pointBorderColor: '#EC932F',
-          pointBackgroundColor: '#EC932F',
-          pointHoverBackgroundColor: '#EC932F',
-          pointHoverBorderColor: '#EC932F',
-          backgroundColor: gradientFill,
-          pointBorderWidth: 2,
-          pointHoverRadius: 4,
-          pointHoverBorderWidth: 1,
-          pointRadius: 1,
-          fill: true,
-          borderWidth: 1,
-
-          data:[7.1,7,7.4,8,7.1,7,7.3,7.3,7.6,7.6,7.6,7.5,7.4,7.6,7.2,7.4,7.7,7.6,7.8,7.2,7.8,7.8,7.5]
+          data: [
+            25,
+            24,
+            30,
+            22,
+            23,
+            23,
+            24,
+            24,
+            22,
+            21,
+            25,
+            30,
+            30,
+            27,
+            31,
+            25,
+            25,
+            25,
+            23,
+            28,
+            31,
+            28,
+            27
+          ]
         },
         {
-          label:"B.O.D",
-          type:'line',
-          borderColor: '#800000',
-          pointBorderColor: '#800000',
-          pointBackgroundColor: '#800000',
-          pointHoverBackgroundColor: '#800000',
-          pointHoverBorderColor: '#800000',
+          label: "pH",
+          type: "line",
+          borderColor: "#EC932F",
+          pointBorderColor: "#EC932F",
+          pointBackgroundColor: "#EC932F",
+          pointHoverBackgroundColor: "#EC932F",
+          pointHoverBorderColor: "#EC932F",
           backgroundColor: gradientFill,
           pointBorderWidth: 2,
           pointHoverRadius: 4,
@@ -2708,7 +3993,73 @@ const dashboard24HoursPerformanceChartRajasthan = {
           fill: true,
           borderWidth: 1,
 
-          data:[0.5,0.8,0.8,0,0.3,0.4,0.45,0.35,0,0,0,1,0.8,2.2,3,1.6,1.4,1.6,2.1,1.1,1,1,0.9]
+          data: [
+            7.1,
+            7,
+            7.4,
+            8,
+            7.1,
+            7,
+            7.3,
+            7.3,
+            7.6,
+            7.6,
+            7.6,
+            7.5,
+            7.4,
+            7.6,
+            7.2,
+            7.4,
+            7.7,
+            7.6,
+            7.8,
+            7.2,
+            7.8,
+            7.8,
+            7.5
+          ]
+        },
+        {
+          label: "B.O.D",
+          type: "line",
+          borderColor: "#800000",
+          pointBorderColor: "#800000",
+          pointBackgroundColor: "#800000",
+          pointHoverBackgroundColor: "#800000",
+          pointHoverBorderColor: "#800000",
+          backgroundColor: gradientFill,
+          pointBorderWidth: 2,
+          pointHoverRadius: 4,
+          pointHoverBorderWidth: 1,
+          pointRadius: 1,
+          fill: true,
+          borderWidth: 1,
+
+          data: [
+            0.5,
+            0.8,
+            0.8,
+            0,
+            0.3,
+            0.4,
+            0.45,
+            0.35,
+            0,
+            0,
+            0,
+            1,
+            0.8,
+            2.2,
+            3,
+            1.6,
+            1.4,
+            1.6,
+            2.1,
+            1.1,
+            1,
+            1,
+            0.9
+          ]
         }
       ]
     };
@@ -2750,9 +4101,9 @@ const dashboard24HoursPerformanceChartRajasthan = {
             drawBorder: false
           },
           scaleLabel: {
-        display: true,
-        labelString: 'Zones in Rajasthan'
-      }
+            display: true,
+            labelString: "Zones in Rajasthan"
+          }
         }
       ]
     },
@@ -2769,36 +4120,35 @@ const dashboard24HoursPerformanceChartUP = {
     gradientFill.addColorStop(1, hexToRGB("#2CA8FF", 0.6));
     return {
       labels: [
-      "GW QUALITY STATION SARDARNAGAR",
-"GW QUALITY STATION CAPTANGANJ",
-"SITE 1- INDUSTRIAL AREA NEAR M/SWOODWARM CHEMICAL LTD.- UNNAO",
-"SITE 2- INDUSTRIAL AREA NEAR M/SAMIN SONS- UNNAO-U.P",
-"AT ROADWAYS BUS STATION- UNNAO",
-"MAGAWARA INDUSTRIAL AREA NEARM/S JAMJAM TANNERS- UNNAO- U.P",
-"CHINHAT INDUSTRIAL AREA IN LUCKNOW NEAR M/S INDIA PESTICIDES LUCKNOW",
-"AISHBAGH INDUSTRIAL AREA AT LUCKNOW NEAR M/S EVEREADY INDUSTRIES LTD.",
-"JAJMAU INDL AREA No.6 KANPUR",
-"PANKI INDUSTRIAL AREA NEARINDUSTRY OF AMMONIA FERTIZER KANPUR- U.P",
-"NAGAR PALIKA TUBE WELL-SULTANPUR- U.P",
-"INDIA MARKA HAND PUMP IN SAROWNIBLOCK AT RAIBAREILLY",
-"TUBE WELL AT MEERUT CITY",
-"TUBE WELL AT BAGPAT CITY",
-"TUBE WELL IN INDUSTRIAL AREA ATGAJRAULA-MORADABAD- U.P",
-"SAHIBABAD INDUSTRIAL AREA-GHAZIABAD- U.P",
-"MEERUT ROAD INDUSTRIAL AREAGHAZIABAD- U.P",
-"HAPUR ROAD INDUSTRIAL AREAGHAZIABAD- U.P",
-"PILKHUA INDUSTRIAL AREAGHAZIABAD- U.P",
-"GOPIGANJ INDUSTRIAL AREABHADOHI- VARANASI- U.P",
-"MIRZAPUR INDUSTRIAL AREA- U.P",
-"GROUND AROUND STPDINAPUR-VARANASI- U.P",
-"IFFCO- PHOOLPUR-ALLAHABAD- U.P",
-"M/S KANORIA CHEMICAL SONBHADRA-U.P",
-"TUBE WELL-SINGRAULI INDL AREA- U.P",
-
+        "GW QUALITY STATION SARDARNAGAR",
+        "GW QUALITY STATION CAPTANGANJ",
+        "SITE 1- INDUSTRIAL AREA NEAR M/SWOODWARM CHEMICAL LTD.- UNNAO",
+        "SITE 2- INDUSTRIAL AREA NEAR M/SAMIN SONS- UNNAO-U.P",
+        "AT ROADWAYS BUS STATION- UNNAO",
+        "MAGAWARA INDUSTRIAL AREA NEARM/S JAMJAM TANNERS- UNNAO- U.P",
+        "CHINHAT INDUSTRIAL AREA IN LUCKNOW NEAR M/S INDIA PESTICIDES LUCKNOW",
+        "AISHBAGH INDUSTRIAL AREA AT LUCKNOW NEAR M/S EVEREADY INDUSTRIES LTD.",
+        "JAJMAU INDL AREA No.6 KANPUR",
+        "PANKI INDUSTRIAL AREA NEARINDUSTRY OF AMMONIA FERTIZER KANPUR- U.P",
+        "NAGAR PALIKA TUBE WELL-SULTANPUR- U.P",
+        "INDIA MARKA HAND PUMP IN SAROWNIBLOCK AT RAIBAREILLY",
+        "TUBE WELL AT MEERUT CITY",
+        "TUBE WELL AT BAGPAT CITY",
+        "TUBE WELL IN INDUSTRIAL AREA ATGAJRAULA-MORADABAD- U.P",
+        "SAHIBABAD INDUSTRIAL AREA-GHAZIABAD- U.P",
+        "MEERUT ROAD INDUSTRIAL AREAGHAZIABAD- U.P",
+        "HAPUR ROAD INDUSTRIAL AREAGHAZIABAD- U.P",
+        "PILKHUA INDUSTRIAL AREAGHAZIABAD- U.P",
+        "GOPIGANJ INDUSTRIAL AREABHADOHI- VARANASI- U.P",
+        "MIRZAPUR INDUSTRIAL AREA- U.P",
+        "GROUND AROUND STPDINAPUR-VARANASI- U.P",
+        "IFFCO- PHOOLPUR-ALLAHABAD- U.P",
+        "M/S KANORIA CHEMICAL SONBHADRA-U.P",
+        "TUBE WELL-SINGRAULI INDL AREA- U.P"
       ],
       datasets: [
         {
-          label:"Mean Temprature",
+          label: "Mean Temprature",
           backgroundColor: gradientFill,
           borderColor: "#2CA8FF",
           pointBorderColor: "#FFF",
@@ -2810,33 +4160,40 @@ const dashboard24HoursPerformanceChartUP = {
           fill: true,
           borderWidth: 1,
 
-          data:[25,24,30,22,23,23,24,24,22,21,25,30,30,27,31,25,25,25,23,28,31,28,27]
-        },{
-          label:"pH",
-          type:'line',
-          borderColor: '#EC932F',
-          pointBorderColor: '#EC932F',
-          pointBackgroundColor: '#EC932F',
-          pointHoverBackgroundColor: '#EC932F',
-          pointHoverBorderColor: '#EC932F',
-          backgroundColor: gradientFill,
-          pointBorderWidth: 2,
-          pointHoverRadius: 4,
-          pointHoverBorderWidth: 1,
-          pointRadius: 1,
-          fill: true,
-          borderWidth: 1,
-
-          data:[7.1,7,7.4,8,7.1,7,7.3,7.3,7.6,7.6,7.6,7.5,7.4,7.6,7.2,7.4,7.7,7.6,7.8,7.2,7.8,7.8,7.5]
+          data: [
+            25,
+            24,
+            30,
+            22,
+            23,
+            23,
+            24,
+            24,
+            22,
+            21,
+            25,
+            30,
+            30,
+            27,
+            31,
+            25,
+            25,
+            25,
+            23,
+            28,
+            31,
+            28,
+            27
+          ]
         },
         {
-          label:"B.O.D",
-          type:'line',
-          borderColor: '#800000',
-          pointBorderColor: '#800000',
-          pointBackgroundColor: '#800000',
-          pointHoverBackgroundColor: '#800000',
-          pointHoverBorderColor: '#800000',
+          label: "pH",
+          type: "line",
+          borderColor: "#EC932F",
+          pointBorderColor: "#EC932F",
+          pointBackgroundColor: "#EC932F",
+          pointHoverBackgroundColor: "#EC932F",
+          pointHoverBorderColor: "#EC932F",
           backgroundColor: gradientFill,
           pointBorderWidth: 2,
           pointHoverRadius: 4,
@@ -2845,7 +4202,73 @@ const dashboard24HoursPerformanceChartUP = {
           fill: true,
           borderWidth: 1,
 
-          data:[0.5,0.8,0.8,0,0.3,0.4,0.45,0.35,0,0,0,1,0.8,2.2,3,1.6,1.4,1.6,2.1,1.1,1,1,0.9]
+          data: [
+            7.1,
+            7,
+            7.4,
+            8,
+            7.1,
+            7,
+            7.3,
+            7.3,
+            7.6,
+            7.6,
+            7.6,
+            7.5,
+            7.4,
+            7.6,
+            7.2,
+            7.4,
+            7.7,
+            7.6,
+            7.8,
+            7.2,
+            7.8,
+            7.8,
+            7.5
+          ]
+        },
+        {
+          label: "B.O.D",
+          type: "line",
+          borderColor: "#800000",
+          pointBorderColor: "#800000",
+          pointBackgroundColor: "#800000",
+          pointHoverBackgroundColor: "#800000",
+          pointHoverBorderColor: "#800000",
+          backgroundColor: gradientFill,
+          pointBorderWidth: 2,
+          pointHoverRadius: 4,
+          pointHoverBorderWidth: 1,
+          pointRadius: 1,
+          fill: true,
+          borderWidth: 1,
+
+          data: [
+            0.5,
+            0.8,
+            0.8,
+            0,
+            0.3,
+            0.4,
+            0.45,
+            0.35,
+            0,
+            0,
+            0,
+            1,
+            0.8,
+            2.2,
+            3,
+            1.6,
+            1.4,
+            1.6,
+            2.1,
+            1.1,
+            1,
+            1,
+            0.9
+          ]
         }
       ]
     };
@@ -2887,9 +4310,9 @@ const dashboard24HoursPerformanceChartUP = {
             drawBorder: false
           },
           scaleLabel: {
-        display: true,
-        labelString: 'Zones in uttar pradesh'
-      }
+            display: true,
+            labelString: "Zones in uttar pradesh"
+          }
         }
       ]
     },
@@ -2906,26 +4329,25 @@ const dashboard24HoursPerformanceChartOrrisa = {
     gradientFill.addColorStop(1, hexToRGB("#2CA8FF", 0.6));
     return {
       labels: [
-      "JAGATPUR INDUSTRIAL AREA-CUTTACK ORISSA",
-"MADHUPATNA- KALYAN NAGAR AREA-CUTTACK- ORISSA",
-"BIDANASHI - TULASIPUR AREA-CUTTACK- ORISSA",
-"BADAMBARI AREA- CUTTACK- ORISSA",
-"RANIHAT- MANGALABAGH AREA-CUTTACK- ORISSA",
-"KHANDAGIRI AREA- BHUBANESWAR-ORISSA",
-"CAPITAL HOSPITAL AREA-BHUBANESWAR- ORISSA",
-"OLD TOWN- SAMANTARAAIPUR AREA-BHUBANESWAR-ORISSA",
-"KALPNA - LAXMINAGAR AREA-BHUBANESWAR- ORISSA",
-"MANCHESWAR INDUSTRIAL AREA- BHUBANESWAR",
-"SECRETARIAT- GOVERNOR HOUSE-OLDBUS STAND AREA- BHUBANESWAR- ORISSA",
-"NEAR SEA BEACH- PURI- ORISSA",
-"NEAR JAGANNATH TEMPLE- PURI-ORISSA",
-"HOSPITAL - BUSSTAND- MAUSHIMATEMPLE AREA- PURI- ORISSA",
-"NEAR RIVER KUSHABHADRA- PURI"
-
+        "JAGATPUR INDUSTRIAL AREA-CUTTACK ORISSA",
+        "MADHUPATNA- KALYAN NAGAR AREA-CUTTACK- ORISSA",
+        "BIDANASHI - TULASIPUR AREA-CUTTACK- ORISSA",
+        "BADAMBARI AREA- CUTTACK- ORISSA",
+        "RANIHAT- MANGALABAGH AREA-CUTTACK- ORISSA",
+        "KHANDAGIRI AREA- BHUBANESWAR-ORISSA",
+        "CAPITAL HOSPITAL AREA-BHUBANESWAR- ORISSA",
+        "OLD TOWN- SAMANTARAAIPUR AREA-BHUBANESWAR-ORISSA",
+        "KALPNA - LAXMINAGAR AREA-BHUBANESWAR- ORISSA",
+        "MANCHESWAR INDUSTRIAL AREA- BHUBANESWAR",
+        "SECRETARIAT- GOVERNOR HOUSE-OLDBUS STAND AREA- BHUBANESWAR- ORISSA",
+        "NEAR SEA BEACH- PURI- ORISSA",
+        "NEAR JAGANNATH TEMPLE- PURI-ORISSA",
+        "HOSPITAL - BUSSTAND- MAUSHIMATEMPLE AREA- PURI- ORISSA",
+        "NEAR RIVER KUSHABHADRA- PURI"
       ],
       datasets: [
         {
-          label:"Mean Temprature",
+          label: "Mean Temprature",
           backgroundColor: gradientFill,
           borderColor: "#2CA8FF",
           pointBorderColor: "#FFF",
@@ -2937,33 +4359,40 @@ const dashboard24HoursPerformanceChartOrrisa = {
           fill: true,
           borderWidth: 1,
 
-          data:[25,24,30,22,23,23,24,24,22,21,25,30,30,27,31,25,25,25,23,28,31,28,27]
-        },{
-          label:"pH",
-          type:'line',
-          borderColor: '#EC932F',
-          pointBorderColor: '#EC932F',
-          pointBackgroundColor: '#EC932F',
-          pointHoverBackgroundColor: '#EC932F',
-          pointHoverBorderColor: '#EC932F',
-          backgroundColor: gradientFill,
-          pointBorderWidth: 2,
-          pointHoverRadius: 4,
-          pointHoverBorderWidth: 1,
-          pointRadius: 1,
-          fill: true,
-          borderWidth: 1,
-
-          data:[7.1,7,7.4,8,7.1,7,7.3,7.3,7.6,7.6,7.6,7.5,7.4,7.6,7.2,7.4,7.7,7.6,7.8,7.2,7.8,7.8,7.5]
+          data: [
+            25,
+            24,
+            30,
+            22,
+            23,
+            23,
+            24,
+            24,
+            22,
+            21,
+            25,
+            30,
+            30,
+            27,
+            31,
+            25,
+            25,
+            25,
+            23,
+            28,
+            31,
+            28,
+            27
+          ]
         },
         {
-          label:"B.O.D",
-          type:'line',
-          borderColor: '#800000',
-          pointBorderColor: '#800000',
-          pointBackgroundColor: '#800000',
-          pointHoverBackgroundColor: '#800000',
-          pointHoverBorderColor: '#800000',
+          label: "pH",
+          type: "line",
+          borderColor: "#EC932F",
+          pointBorderColor: "#EC932F",
+          pointBackgroundColor: "#EC932F",
+          pointHoverBackgroundColor: "#EC932F",
+          pointHoverBorderColor: "#EC932F",
           backgroundColor: gradientFill,
           pointBorderWidth: 2,
           pointHoverRadius: 4,
@@ -2972,7 +4401,73 @@ const dashboard24HoursPerformanceChartOrrisa = {
           fill: true,
           borderWidth: 1,
 
-          data:[0.5,0.8,0.8,0,0.3,0.4,0.45,0.35,0,0,0,1,0.8,2.2,3,1.6,1.4,1.6,2.1,1.1,1,1,0.9]
+          data: [
+            7.1,
+            7,
+            7.4,
+            8,
+            7.1,
+            7,
+            7.3,
+            7.3,
+            7.6,
+            7.6,
+            7.6,
+            7.5,
+            7.4,
+            7.6,
+            7.2,
+            7.4,
+            7.7,
+            7.6,
+            7.8,
+            7.2,
+            7.8,
+            7.8,
+            7.5
+          ]
+        },
+        {
+          label: "B.O.D",
+          type: "line",
+          borderColor: "#800000",
+          pointBorderColor: "#800000",
+          pointBackgroundColor: "#800000",
+          pointHoverBackgroundColor: "#800000",
+          pointHoverBorderColor: "#800000",
+          backgroundColor: gradientFill,
+          pointBorderWidth: 2,
+          pointHoverRadius: 4,
+          pointHoverBorderWidth: 1,
+          pointRadius: 1,
+          fill: true,
+          borderWidth: 1,
+
+          data: [
+            0.5,
+            0.8,
+            0.8,
+            0,
+            0.3,
+            0.4,
+            0.45,
+            0.35,
+            0,
+            0,
+            0,
+            1,
+            0.8,
+            2.2,
+            3,
+            1.6,
+            1.4,
+            1.6,
+            2.1,
+            1.1,
+            1,
+            1,
+            0.9
+          ]
         }
       ]
     };
@@ -3014,9 +4509,9 @@ const dashboard24HoursPerformanceChartOrrisa = {
             drawBorder: false
           },
           scaleLabel: {
-        display: true,
-        labelString: 'Zones in Orissa'
-      }
+            display: true,
+            labelString: "Zones in Orissa"
+          }
         }
       ]
     },
@@ -3033,30 +4528,30 @@ const dashboard24HoursPerformanceChartBihar = {
     gradientFill.addColorStop(1, hexToRGB("#2CA8FF", 0.6));
     return {
       labels: [
-      "PATNA",
-      "PATNA",
-      "PATNA",
-      "PATNA",
-      "PATNA",
-      "MUZAFFARPUR",
-      "MUZAFFARPUR",
-      "BEGUSARAI",
-      "BEGUSARAI",
-      "PURNEA",
-      "PURNEA",
-      "BEGUSARAI",
-      "BEGUSARAI",
-      "MUNGER",
-      "MUNGER",
-      "MOTIHARI",
-      "GAYA",
-      "GAYA-",
-      "RAJGIR",
-      "CHAPRA"
+        "PATNA",
+        "PATNA",
+        "PATNA",
+        "PATNA",
+        "PATNA",
+        "MUZAFFARPUR",
+        "MUZAFFARPUR",
+        "BEGUSARAI",
+        "BEGUSARAI",
+        "PURNEA",
+        "PURNEA",
+        "BEGUSARAI",
+        "BEGUSARAI",
+        "MUNGER",
+        "MUNGER",
+        "MOTIHARI",
+        "GAYA",
+        "GAYA-",
+        "RAJGIR",
+        "CHAPRA"
       ],
       datasets: [
         {
-          label:"Mean Temprature",
+          label: "Mean Temprature",
           backgroundColor: gradientFill,
           borderColor: "#2CA8FF",
           pointBorderColor: "#FFF",
@@ -3068,33 +4563,37 @@ const dashboard24HoursPerformanceChartBihar = {
           fill: true,
           borderWidth: 1,
 
-          data:[25,24,25,24,23,26,26,23,23,25,25,23,24,24,24,25,25,26,27,26]
-        },{
-          label:"pH",
-          type:'line',
-          borderColor: '#EC932F',
-          pointBorderColor: '#EC932F',
-          pointBackgroundColor: '#EC932F',
-          pointHoverBackgroundColor: '#EC932F',
-          pointHoverBorderColor: '#EC932F',
-          backgroundColor: gradientFill,
-          pointBorderWidth: 2,
-          pointHoverRadius: 4,
-          pointHoverBorderWidth: 1,
-          pointRadius: 1,
-          fill: true,
-          borderWidth: 1,
-
-          data:[7.1,7,7.4,8,7.1,7,7.3,7.3,7.6,7.6,7.6,7.5,7.4,7.6,7.2,7.4,7.7,7.6,7.8,7.2,7.8,7.8,7.5]
+          data: [
+            25,
+            24,
+            25,
+            24,
+            23,
+            26,
+            26,
+            23,
+            23,
+            25,
+            25,
+            23,
+            24,
+            24,
+            24,
+            25,
+            25,
+            26,
+            27,
+            26
+          ]
         },
         {
-          label:"B.O.D",
-          type:'line',
-          borderColor: '#800000',
-          pointBorderColor: '#800000',
-          pointBackgroundColor: '#800000',
-          pointHoverBackgroundColor: '#800000',
-          pointHoverBorderColor: '#800000',
+          label: "pH",
+          type: "line",
+          borderColor: "#EC932F",
+          pointBorderColor: "#EC932F",
+          pointBackgroundColor: "#EC932F",
+          pointHoverBackgroundColor: "#EC932F",
+          pointHoverBorderColor: "#EC932F",
           backgroundColor: gradientFill,
           pointBorderWidth: 2,
           pointHoverRadius: 4,
@@ -3103,7 +4602,68 @@ const dashboard24HoursPerformanceChartBihar = {
           fill: true,
           borderWidth: 1,
 
-        data:[7.5,7.6,7.5,7.9,7.6,8,8.1,8.2,8.4,7.8,7.9,7.7,7.6,8.8,8,8.1,8.2,7.7]
+          data: [
+            7.1,
+            7,
+            7.4,
+            8,
+            7.1,
+            7,
+            7.3,
+            7.3,
+            7.6,
+            7.6,
+            7.6,
+            7.5,
+            7.4,
+            7.6,
+            7.2,
+            7.4,
+            7.7,
+            7.6,
+            7.8,
+            7.2,
+            7.8,
+            7.8,
+            7.5
+          ]
+        },
+        {
+          label: "B.O.D",
+          type: "line",
+          borderColor: "#800000",
+          pointBorderColor: "#800000",
+          pointBackgroundColor: "#800000",
+          pointHoverBackgroundColor: "#800000",
+          pointHoverBorderColor: "#800000",
+          backgroundColor: gradientFill,
+          pointBorderWidth: 2,
+          pointHoverRadius: 4,
+          pointHoverBorderWidth: 1,
+          pointRadius: 1,
+          fill: true,
+          borderWidth: 1,
+
+          data: [
+            7.5,
+            7.6,
+            7.5,
+            7.9,
+            7.6,
+            8,
+            8.1,
+            8.2,
+            8.4,
+            7.8,
+            7.9,
+            7.7,
+            7.6,
+            8.8,
+            8,
+            8.1,
+            8.2,
+            7.7
+          ]
         }
       ]
     };
@@ -3131,9 +4691,9 @@ const dashboard24HoursPerformanceChartBihar = {
             drawBorder: false
           },
           scaleLabel: {
-        display: true,
-        labelString: ' '
-      }
+            display: true,
+            labelString: " "
+          }
         }
       ],
       xAxes: [
@@ -3149,17 +4709,16 @@ const dashboard24HoursPerformanceChartBihar = {
             drawBorder: true
           },
           scaleLabel: {
-        display: true,
-        labelString: 'Zones in bihar'
+            display: true,
+            labelString: "Zones in bihar"
+          }
         }
-   }
-   ]
-   },
+      ]
+    },
     layout: {
       padding: { left: 0, right: 0, top: 15, bottom: 15 }
     }
-
-}
+  }
 };
 const dashboard24HoursPerformanceChartWB = {
   data: canvas => {
@@ -3169,41 +4728,39 @@ const dashboard24HoursPerformanceChartWB = {
     gradientFill.addColorStop(1, hexToRGB("#2CA8FF", 0.6));
     return {
       labels: [
-      "MINE PIT WATER ASSANSOL- WESTBENGAL",
-      "DURGAPUR TOWN-NEAR IISCO-BURDWAN- WEST BENGAL",
-      "DURGAPUR TOWN- BURDWAN- WESTBENGAL",
-      "INSIDE HINDUSTAN LIVER FACTORY-HALDIA- WEST BENGAL",
-      "NEAR IOC REFINERY HALDIA- WESTBENGAL",
-      "KALYANI INDUSTRIAL AREA- NADIA-WEST BENGAL",
-      "BARSAT MUNICIPALITY NORTH 24-P-WEST BENGAL",
-      "TANGRA- CALCUTTA -WEST BENGAL",
-      "TOPSIA CALCUTTA- WEST BENGAL",
-      "DHAPA CALCUTTA- WEST BENGAL",
-      "GARIA CALCUTTA- WEST BENGAL",
-      "BEHALA CALCUTTA- WEST BENGAL",
-      "DOMJUR HOWRAH- WEST BENGAL",
-      "DANKUNI (NEAR COAL COMPLEX)- WEST BENGAL",
-      "COSSIPORE - NORTH KOLKATA",
-      "CENTRAL KOLKATA",
-      "NEAR GALVANISATION UNIT- HOWRAH",
-      "CENTRAL HOWRAH-RESIDENTAILAREA",
-      "INSIDE KOLKATA LEATHER COMPLEX",
-      "RESIDENTIAL AREA - SONARPUR",
-      "RAJARHAT - NEW TOWNSHIP",
-      "BSIRHAT MUNICIPALITY",
-      "BARRAKPORE MUNICIPALITY",
-      "NEAR THE PHOSPHATE COMPANY-RISHRA",
-      "NEAR FLY ASH DUMPING SITE-KUNTIGHAT- BANDEL",
-      "NEAR EXIDE INDUSTRIES-HALDIA",
-      "INSIDE TATA METALIKS- KHARAGPUR",
-      "KHARAGPUR INDUSTRIAL AREA",
-      "ENGLISH BAZAR- MALDAH"
-
-
+        "MINE PIT WATER ASSANSOL- WESTBENGAL",
+        "DURGAPUR TOWN-NEAR IISCO-BURDWAN- WEST BENGAL",
+        "DURGAPUR TOWN- BURDWAN- WESTBENGAL",
+        "INSIDE HINDUSTAN LIVER FACTORY-HALDIA- WEST BENGAL",
+        "NEAR IOC REFINERY HALDIA- WESTBENGAL",
+        "KALYANI INDUSTRIAL AREA- NADIA-WEST BENGAL",
+        "BARSAT MUNICIPALITY NORTH 24-P-WEST BENGAL",
+        "TANGRA- CALCUTTA -WEST BENGAL",
+        "TOPSIA CALCUTTA- WEST BENGAL",
+        "DHAPA CALCUTTA- WEST BENGAL",
+        "GARIA CALCUTTA- WEST BENGAL",
+        "BEHALA CALCUTTA- WEST BENGAL",
+        "DOMJUR HOWRAH- WEST BENGAL",
+        "DANKUNI (NEAR COAL COMPLEX)- WEST BENGAL",
+        "COSSIPORE - NORTH KOLKATA",
+        "CENTRAL KOLKATA",
+        "NEAR GALVANISATION UNIT- HOWRAH",
+        "CENTRAL HOWRAH-RESIDENTAILAREA",
+        "INSIDE KOLKATA LEATHER COMPLEX",
+        "RESIDENTIAL AREA - SONARPUR",
+        "RAJARHAT - NEW TOWNSHIP",
+        "BSIRHAT MUNICIPALITY",
+        "BARRAKPORE MUNICIPALITY",
+        "NEAR THE PHOSPHATE COMPANY-RISHRA",
+        "NEAR FLY ASH DUMPING SITE-KUNTIGHAT- BANDEL",
+        "NEAR EXIDE INDUSTRIES-HALDIA",
+        "INSIDE TATA METALIKS- KHARAGPUR",
+        "KHARAGPUR INDUSTRIAL AREA",
+        "ENGLISH BAZAR- MALDAH"
       ],
       datasets: [
         {
-          label:"Mean Temprature",
+          label: "Mean Temprature",
           backgroundColor: gradientFill,
           borderColor: "#2CA8FF",
           pointBorderColor: "#FFF",
@@ -3215,33 +4772,46 @@ const dashboard24HoursPerformanceChartWB = {
           fill: true,
           borderWidth: 1,
 
-          data:[32,33,31,32,33,28,28,30,28,29,28,30,28,29,29,28,28,28,29,25,28,30,28,30,28,32,31,30,29]
-        },{
-          label:"pH",
-          type:'line',
-          borderColor: '#EC932F',
-          pointBorderColor: '#EC932F',
-          pointBackgroundColor: '#EC932F',
-          pointHoverBackgroundColor: '#EC932F',
-          pointHoverBorderColor: '#EC932F',
-          backgroundColor: gradientFill,
-          pointBorderWidth: 2,
-          pointHoverRadius: 4,
-          pointHoverBorderWidth: 1,
-          pointRadius: 1,
-          fill: true,
-          borderWidth: 1,
-
-          data:[7.7,8.3,7.6,7.3,7.4,7.5,7.8,7.5,7.7,7.9,7.8,8,8.1,7.6,7.4,8,8,7.8,7.9,8,8,7.7,8.5,7.9,7.6,7.6,7.4,7.8,7.5,8]
+          data: [
+            32,
+            33,
+            31,
+            32,
+            33,
+            28,
+            28,
+            30,
+            28,
+            29,
+            28,
+            30,
+            28,
+            29,
+            29,
+            28,
+            28,
+            28,
+            29,
+            25,
+            28,
+            30,
+            28,
+            30,
+            28,
+            32,
+            31,
+            30,
+            29
+          ]
         },
         {
-          label:"B.O.D",
-          type:'line',
-          borderColor: '#800000',
-          pointBorderColor: '#800000',
-          pointBackgroundColor: '#800000',
-          pointHoverBackgroundColor: '#800000',
-          pointHoverBorderColor: '#800000',
+          label: "pH",
+          type: "line",
+          borderColor: "#EC932F",
+          pointBorderColor: "#EC932F",
+          pointBackgroundColor: "#EC932F",
+          pointHoverBackgroundColor: "#EC932F",
+          pointHoverBorderColor: "#EC932F",
           backgroundColor: gradientFill,
           pointBorderWidth: 2,
           pointHoverRadius: 4,
@@ -3250,7 +4820,86 @@ const dashboard24HoursPerformanceChartWB = {
           fill: true,
           borderWidth: 1,
 
-          data:[2.1,0.6,0.1,0.7,0.6,0.8,0.6,1.1,0.7,1.3,0.8,1.1,0.9,0.7,1.5,1.5,1.3,1.4,0.8,1.2,1.3,0.5,0.2,0.8,0.8,0.7,1.4,0.9,0.9]
+          data: [
+            7.7,
+            8.3,
+            7.6,
+            7.3,
+            7.4,
+            7.5,
+            7.8,
+            7.5,
+            7.7,
+            7.9,
+            7.8,
+            8,
+            8.1,
+            7.6,
+            7.4,
+            8,
+            8,
+            7.8,
+            7.9,
+            8,
+            8,
+            7.7,
+            8.5,
+            7.9,
+            7.6,
+            7.6,
+            7.4,
+            7.8,
+            7.5,
+            8
+          ]
+        },
+        {
+          label: "B.O.D",
+          type: "line",
+          borderColor: "#800000",
+          pointBorderColor: "#800000",
+          pointBackgroundColor: "#800000",
+          pointHoverBackgroundColor: "#800000",
+          pointHoverBorderColor: "#800000",
+          backgroundColor: gradientFill,
+          pointBorderWidth: 2,
+          pointHoverRadius: 4,
+          pointHoverBorderWidth: 1,
+          pointRadius: 1,
+          fill: true,
+          borderWidth: 1,
+
+          data: [
+            2.1,
+            0.6,
+            0.1,
+            0.7,
+            0.6,
+            0.8,
+            0.6,
+            1.1,
+            0.7,
+            1.3,
+            0.8,
+            1.1,
+            0.9,
+            0.7,
+            1.5,
+            1.5,
+            1.3,
+            1.4,
+            0.8,
+            1.2,
+            1.3,
+            0.5,
+            0.2,
+            0.8,
+            0.8,
+            0.7,
+            1.4,
+            0.9,
+            0.9
+          ]
         }
       ]
     };
@@ -3258,8 +4907,7 @@ const dashboard24HoursPerformanceChartWB = {
   options: {
     maintainAspectRatio: true,
     legend: {
-      display: true,
-
+      display: true
     },
     tooltips: {
       bodySpacing: 4,
@@ -3279,16 +4927,16 @@ const dashboard24HoursPerformanceChartWB = {
             drawBorder: false
           },
           scaleLabel: {
-        display: true,
-        labelString: ' '
-      }
+            display: true,
+            labelString: " "
+          }
         }
       ],
       xAxes: [
         {
           display: 1,
           ticks: {
-            display:false
+            display: false
           },
           gridLines: {
             zeroLineColor: "transparent",
@@ -3297,9 +4945,9 @@ const dashboard24HoursPerformanceChartWB = {
             drawBorder: true
           },
           scaleLabel: {
-        display: true,
-        labelString: 'Zones in west bengal'
-      }
+            display: true,
+            labelString: "Zones in west bengal"
+          }
         }
       ]
     },
@@ -3313,6 +4961,8 @@ module.exports = {
   dashboardPanelChart, // Chart for Dashboard view - Will be rendered in panel
   dashboardShippedProductsChart, // Chart for Dashboard view - Shipped Products Card
   getChartCholera,
+  getChartD,
+  getChartT,
   // Chart for Dashboard view - All products Card
   dashboard24HoursPerformanceChart, // Chart for Dashboard view - 24 Hours Performance Card
   dashboard24HoursPerformanceChartKerala,
@@ -3332,5 +4982,4 @@ module.exports = {
   dashboard24HoursPerformanceChartGujarat,
   dashboard24HoursPerformanceChartTN,
   dashboard24HoursPerformanceChartMizoram
-
 };
