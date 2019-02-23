@@ -210,7 +210,7 @@ class Header extends React.Component {
                 }
                 renderItem={(item, isHighlighted) => {
                   return (
-                    <div className="form-control" style={{ fontSize: "15px" }}>
+                    <div className="form-control"  style={{ fontSize: "14px",borderRadius:"0",background:"rgba(255,255,255,1)",color:"black" }}>
                       {item}
                     </div>
                   );
@@ -227,7 +227,8 @@ class Header extends React.Component {
                 }}
                 inputProps={{
                   className: "form-control",
-                  placeholder: "Select the state"
+                  placeholder: "Select the state",
+                  style: {marginBottom:"5px",borderRadius:"30px"}
                 }}
               />
             </form>
