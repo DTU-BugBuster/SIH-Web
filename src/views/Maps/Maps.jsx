@@ -25,7 +25,16 @@ import {
   dashboard24HoursPerformanceChartMP,
   dashboard24HoursPerformanceChartGujarat,
   dashboard24HoursPerformanceChartTN,
-  dashboard24HoursPerformanceChartMizoram
+  dashboard24HoursPerformanceChartMizoram,
+  dashboard24HoursPerformanceChartJK,
+  dashboard24HoursPerformanceChartSikkim,
+  dashboard24HoursPerformanceChartKarnatka,
+  dashboard24HoursPerformanceChartNagaland,
+  dashboard24HoursPerformanceChartArunachal,
+  dashboard24HoursPerformanceChartUttrakhand,
+  dashboard24HoursPerformanceChartHaryana,
+  dashboard24HoursPerformanceChartMeghalaya,
+  dashboard24HoursPerformanceChartJharkhand,
 } from "../../variables/charts.jsx";
 
 import { PanelHeader } from "components";
@@ -65,6 +74,16 @@ const cities = [
   { name: "Manipur", coordinates: [93.9063,24.6637] },
   { name: "Punjab", coordinates: [75.3412,31.1471] },
   { name: "Bihar", coordinates: [85.3131,25.0961] },
+  { name: "Jammu and Kashmir", coordinates: [74.797371,34.083656]},
+  { name: "Nagaland", coordinates: [94.5624,26.1584]},
+  { name: "Sikkim", coordinates: [88.5122,27.5330]},
+  { name: "Karnataka", coordinates: [75.7139,15.3173]},
+  { name: "Jharkhand", coordinates: [85.2799,23.6102]},
+  { name: "Uttrakhand", coordinates: [79.0193,30.0668]},
+  { name: "Haryana", coordinates: [76.0856,29.0588]},
+  { name: "Meghalaya", coordinates: [91.3662,25.4670]},
+  { name: "Arunachal Pradesh", coordinates: [94.7278,28.2180]},
+
 ]
 
 function Greeting(props) {
@@ -86,7 +105,16 @@ function Greeting(props) {
   if (isLoggedIn == 1310) return <Mizoram />;
   if (isLoggedIn == 1318) return <Tripura />;
   if (isLoggedIn == 1300) return <HP />;
+  if (isLoggedIn == 1301) return <JK />;
+  if (isLoggedIn == 1316) return <Sikkim />;
+  if (isLoggedIn == 1311) return <Nagaland />;
+  if (isLoggedIn == 1303) return <Karnataka />;
   if (isLoggedIn == 1314) return <Punjab />;
+  if (isLoggedIn == 1320) return <Uttrakhand />;
+  if (isLoggedIn == 1299) return <Haryana />;
+  if (isLoggedIn == 1289) return <Arunachal />;
+  if (isLoggedIn == 1302) return <Jharkhand />;
+  if (isLoggedIn == 1309) return <Meghalaya />;
   else return <h1> </h1>;
 }
 class Orissa extends React.Component {
@@ -116,6 +144,66 @@ function Chattisgarh() {
     </div>
   );
 }
+function Uttrakhand() {
+  return (
+    <div>
+      <p>UTTRAKHAND</p>
+      <Bar
+        data={dashboard24HoursPerformanceChartUttrakhand.data}
+        options={dashboard24HoursPerformanceChartUttrakhand.options}
+      />
+      ;
+    </div>
+  );
+}
+function Jharkhand() {
+  return (
+    <div>
+      <p>JHARKHAND</p>
+      <Bar
+        data={dashboard24HoursPerformanceChartJharkhand.data}
+        options={dashboard24HoursPerformanceChartJharkhand.options}
+      />
+      ;
+    </div>
+  );
+}
+function Meghalaya() {
+  return (
+    <div>
+      <p>MEGHALAYA</p>
+      <Bar
+        data={dashboard24HoursPerformanceChartMeghalaya.data}
+        options={dashboard24HoursPerformanceChartMeghalaya.options}
+      />
+      ;
+    </div>
+  );
+}
+function Haryana() {
+  return (
+    <div>
+      <p>HARYANA</p>
+      <Bar
+        data={dashboard24HoursPerformanceChartHaryana.data}
+        options={dashboard24HoursPerformanceChartHaryana.options}
+      />
+      ;
+    </div>
+  );
+}
+function Arunachal() {
+  return (
+    <div>
+      <p>ARUNACHAL PRADESH</p>
+      <Bar
+        data={dashboard24HoursPerformanceChartArunachal.data}
+        options={dashboard24HoursPerformanceChartArunachal.options}
+      />
+      ;
+    </div>
+  );
+}
 function MP() {
   return (
     <div>
@@ -123,6 +211,54 @@ function MP() {
       <Bar
         data={dashboard24HoursPerformanceChartMP.data}
         options={dashboard24HoursPerformanceChartMP.options}
+      />
+      ;
+    </div>
+  );
+}
+function JK() {
+  return (
+    <div>
+      <p>JAMMU AND KASHMIR</p>
+      <Bar
+        data={dashboard24HoursPerformanceChartJK.data}
+        options={dashboard24HoursPerformanceChartJK.options}
+      />
+      ;
+    </div>
+  );
+}
+function Sikkim() {
+  return (
+    <div>
+      <p>SIKKIM</p>
+      <Bar
+        data={dashboard24HoursPerformanceChartSikkim.data}
+        options={dashboard24HoursPerformanceChartSikkim.options}
+      />
+      ;
+    </div>
+  );
+}
+function Karnataka() {
+  return (
+    <div>
+      <p>KARNATKA</p>
+      <Bar
+        data={dashboard24HoursPerformanceChartKarnatka.data}
+        options={dashboard24HoursPerformanceChartKarnatka.options}
+      />
+      ;
+    </div>
+  );
+}
+function Nagaland() {
+  return (
+    <div>
+      <p>NAGALAND</p>
+      <Bar
+        data={dashboard24HoursPerformanceChartNagaland.data}
+        options={dashboard24HoursPerformanceChartNagaland.options}
       />
       ;
     </div>

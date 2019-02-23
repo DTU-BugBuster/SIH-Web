@@ -2390,7 +2390,7 @@ const dashboard24HoursPerformanceChartHP = {
     }
   }
 };
-const dashboard24HoursPerformanceChartChandigarh = {
+const dashboard24HoursPerformanceChartKarnatka = {
   data: canvas => {
     var ctx = canvas.getContext("2d");
     var gradientFill = ctx.createLinearGradient(0, 170, 0, 50);
@@ -2591,6 +2591,196 @@ const dashboard24HoursPerformanceChartPunjab = {
         "DUSSHERA GROUND INDUSTRIAL ESTATE- LUDHIANA",
         "SHUKLA TEA STAL POINT- LUDHIANA",
         "PUNJAB AGRICULTUREAL UNIVERSITY- LUDHIANA"
+      ],
+      datasets: [
+        {
+          label: "Mean Temprature",
+          backgroundColor: gradientFill,
+          borderColor: "#2CA8FF",
+          pointBorderColor: "#FFF",
+          pointBackgroundColor: "#2CA8FF",
+          pointBorderWidth: 2,
+          pointHoverRadius: 4,
+          pointHoverBorderWidth: 1,
+          pointRadius: 4,
+          fill: true,
+          borderWidth: 1,
+
+          data: [
+            25,
+            24,
+            30,
+            22,
+            23,
+            23,
+            24,
+            24,
+            22,
+            21,
+            25,
+            30,
+            30,
+            27,
+            31,
+            25,
+            25,
+            25,
+            23,
+            28,
+            31,
+            28,
+            27
+          ]
+        },
+        {
+          label: "pH",
+          type: "line",
+          borderColor: "#EC932F",
+          pointBorderColor: "#EC932F",
+          pointBackgroundColor: "#EC932F",
+          pointHoverBackgroundColor: "#EC932F",
+          pointHoverBorderColor: "#EC932F",
+          backgroundColor: gradientFill,
+          pointBorderWidth: 2,
+          pointHoverRadius: 4,
+          pointHoverBorderWidth: 1,
+          pointRadius: 1,
+          fill: true,
+          borderWidth: 1,
+
+          data: [
+            7.1,
+            7,
+            7.4,
+            8,
+            7.1,
+            7,
+            7.3,
+            7.3,
+            7.6,
+            7.6,
+            7.6,
+            7.5,
+            7.4,
+            7.6,
+            7.2,
+            7.4,
+            7.7,
+            7.6,
+            7.8,
+            7.2,
+            7.8,
+            7.8,
+            7.5
+          ]
+        },
+        {
+          label: "B.O.D",
+          type: "line",
+          borderColor: "#800000",
+          pointBorderColor: "#800000",
+          pointBackgroundColor: "#800000",
+          pointHoverBackgroundColor: "#800000",
+          pointHoverBorderColor: "#800000",
+          backgroundColor: gradientFill,
+          pointBorderWidth: 2,
+          pointHoverRadius: 4,
+          pointHoverBorderWidth: 1,
+          pointRadius: 1,
+          fill: true,
+          borderWidth: 1,
+
+          data: [
+            0.5,
+            0.8,
+            0.8,
+            0,
+            0.3,
+            0.4,
+            0.45,
+            0.35,
+            0,
+            0,
+            0,
+            1,
+            0.8,
+            2.2,
+            3,
+            1.6,
+            1.4,
+            1.6,
+            2.1,
+            1.1,
+            1,
+            1,
+            0.9
+          ]
+        }
+      ]
+    };
+  },
+  options: {
+    maintainAspectRatio: true,
+    legend: {
+      display: true
+    },
+    tooltips: {
+      bodySpacing: 4,
+      mode: "nearest",
+      intersect: 1,
+      position: "nearest",
+      xPadding: 10,
+      yPadding: 10,
+      caretPadding: 10
+    },
+    responsive: 1,
+    scales: {
+      yAxes: [
+        {
+          gridLines: {
+            zeroLineColor: "transparent",
+            drawBorder: false
+          }
+        }
+      ],
+      xAxes: [
+        {
+          display: 1,
+          ticks: {
+            display: false
+          },
+          gridLines: {
+            zeroLineColor: "transparent",
+            drawTicks: false,
+            display: false,
+            drawBorder: false
+          },
+          scaleLabel: {
+            display: true,
+            labelString: "Zones in punjab"
+          }
+        }
+      ]
+    },
+    layout: {
+      padding: { left: 0, right: 0, top: 15, bottom: 15 }
+    }
+  }
+};
+const dashboard24HoursPerformanceChartSikkim = {
+  data: canvas => {
+    var ctx = canvas.getContext("2d");
+    var gradientFill = ctx.createLinearGradient(0, 170, 0, 50);
+    gradientFill.addColorStop(0, "rgba(128, 182, 244, 0)");
+    gradientFill.addColorStop(1, hexToRGB("#2CA8FF", 0.6));
+    return {
+      labels: [
+        "PETROL PUMP OPP. HERO CYCLE-Sikkim",
+        "BHAGWAN SINGH- H.NO.907- DASMESH NAGAR- GALI NO. 6- Sikkim",
+        "GURCHAARAN SINGH HAIBOWAL DAIRY COMPLEX- Sikkim",
+        "DUSSHERA GROUND INDUSTRIAL ESTATE- Sikkim",
+        "SHUKLA TEA STAL POINT- Sikkim",
+        "PUNJAB AGRICULTUREAL UNIVERSITY- Sikkim"
       ],
       datasets: [
         {
@@ -3167,7 +3357,7 @@ const dashboard24HoursPerformanceChartTN = {
     }
   }
 };
-const dashboard24HoursPerformanceChartPondicherry = {
+const dashboard24HoursPerformanceChartJK = {
   data: canvas => {
     var ctx = canvas.getContext("2d");
     var gradientFill = ctx.createLinearGradient(0, 170, 0, 50);
@@ -3360,7 +3550,7 @@ const dashboard24HoursPerformanceChartPondicherry = {
     }
   }
 };
-const dashboard24HoursPerformanceChartDAD = {
+const dashboard24HoursPerformanceChartJharkhand = {
   data: canvas => {
     var ctx = canvas.getContext("2d");
     var gradientFill = ctx.createLinearGradient(0, 170, 0, 50);
@@ -3467,6 +3657,114 @@ const dashboard24HoursPerformanceChartDAD = {
     }
   }
 };
+const dashboard24HoursPerformanceChartNagaland = {
+  data: canvas => {
+    var ctx = canvas.getContext("2d");
+    var gradientFill = ctx.createLinearGradient(0, 170, 0, 50);
+    gradientFill.addColorStop(0, "rgba(128, 182, 244, 0)");
+    gradientFill.addColorStop(1, hexToRGB("#2CA8FF", 0.6));
+    return {
+      labels: ["WELL AT SOMNATH INDL ESTATE"],
+      datasets: [
+        {
+          label: "Mean Temprature",
+          backgroundColor: gradientFill,
+          borderColor: "#2CA8FF",
+          pointBorderColor: "#FFF",
+          pointBackgroundColor: "#2CA8FF",
+          pointBorderWidth: 2,
+          pointHoverRadius: 4,
+          pointHoverBorderWidth: 1,
+          pointRadius: 4,
+          fill: true,
+          borderWidth: 1,
+
+          data: [25]
+        },
+        {
+          label: "pH",
+          type: "line",
+          borderColor: "#EC932F",
+          pointBorderColor: "#EC932F",
+          pointBackgroundColor: "#EC932F",
+          pointHoverBackgroundColor: "#EC932F",
+          pointHoverBorderColor: "#EC932F",
+          backgroundColor: gradientFill,
+          pointBorderWidth: 2,
+          pointHoverRadius: 4,
+          pointHoverBorderWidth: 1,
+          pointRadius: 1,
+          fill: true,
+          borderWidth: 1,
+
+          data: [7.1]
+        },
+        {
+          label: "B.O.D",
+          type: "line",
+          borderColor: "#800000",
+          pointBorderColor: "#800000",
+          pointBackgroundColor: "#800000",
+          pointHoverBackgroundColor: "#800000",
+          pointHoverBorderColor: "#800000",
+          backgroundColor: gradientFill,
+          pointBorderWidth: 2,
+          pointHoverRadius: 4,
+          pointHoverBorderWidth: 1,
+          pointRadius: 1,
+          fill: true,
+          borderWidth: 1,
+
+          data: [0.5]
+        }
+      ]
+    };
+  },
+  options: {
+    maintainAspectRatio: true,
+    legend: {
+      display: false
+    },
+    tooltips: {
+      bodySpacing: 4,
+      mode: "nearest",
+      intersect: 1,
+      position: "nearest",
+      xPadding: 10,
+      yPadding: 10,
+      caretPadding: 10
+    },
+    responsive: 1,
+    scales: {
+      yAxes: [
+        {
+          gridLines: {
+            zeroLineColor: "transparent",
+            drawBorder: false
+          }
+        }
+      ],
+      xAxes: [
+        {
+          display: 0,
+          ticks: {
+            display: false
+          },
+          gridLines: {
+            zeroLineColor: "transparent",
+            drawTicks: false,
+            display: false,
+            drawBorder: false
+          }
+        }
+      ]
+    },
+    layout: {
+      padding: { left: 0, right: 0, top: 15, bottom: 15 }
+    }
+  }
+};
+
 const dashboard24HoursPerformanceChartMaharastra = {
   data: canvas => {
     var ctx = canvas.getContext("2d");
@@ -3677,6 +3975,866 @@ const dashboard24HoursPerformanceChartMaharastra = {
   }
 };
 const dashboard24HoursPerformanceChartGujarat = {
+  data: canvas => {
+    var ctx = canvas.getContext("2d");
+    var gradientFill = ctx.createLinearGradient(0, 170, 0, 50);
+    gradientFill.addColorStop(0, "rgba(128, 182, 244, 0)");
+    gradientFill.addColorStop(1, hexToRGB("#2CA8FF", 0.6));
+    return {
+      labels: [
+        "WELL AT AHMEDABAD",
+        "WELL AT NAROL- AHMEDABAD",
+        "JUNAGADH",
+        "RAJKOT",
+        "SURENDRANAGAR",
+        "PALANPUR",
+        "MEHASANA",
+        "SIDDHPUR (DIST.PATAN)",
+        "HIMATNAGAR",
+        "NADIAD",
+        "DAHOD",
+        "GODHARA",
+        "VADODARA (INDUSTRIAL-NANDESARI)",
+        "ANKLESHWAR (INDUSTRIAL AREA)",
+        "PANDESARA (INDSTRIAL) SURAT",
+        "MORA-HAJIRA (INDUSTRIAL)- HAJIRA",
+        "GABHENI VILL- SURAT (INDUSTRIAL)",
+        "BORE WELL OF CHHATRAL GIDC.",
+        "BORE WELL OF PALSANA VILLAGE.",
+        "ORE WELL OF SANTEJ VILLAGE.",
+        "B/W- HAZARDOUS W.DISPOSAL SITE (GUJ.ENVIRO P.& I.LTD.)",
+        "BORE WELL OF SACHIN GIDC.",
+        "WELL AT OLPAD.",
+        "BORE WELL OF NAVSARI GIDCINDUSTRIES ASSOCIATION OFFICE.",
+        "FROM WATER WORKS OF NAVSARINEAR DHUDIA TALAV.",
+        "BORE WELL - BARDOLI REST HOUSE.",
+        "WELL AT ANKLESHWAR INDUSTRIAL AREA (BORE WELL OF M/S INDUSTRIAL CARBON AT ANKLESHWAR- RAJPIPLA ROAD.",
+        "BORE WELL AT STP MADHAPAR- DIST. RAJKOT",
+        "B/W- SNR. VINAYAK JAL SUDDHIKARAN SAHAKARI MANDALI LTD.(CETP )- BAVLA- AHMEDABAD",
+        "B/W OF SOMESHWAR RICE MILL- NR. BAVLA ECO PROJECT- (CETP )- BAVLA- AHMEDABAD",
+        "BORE WELL OF PIRANA TERMINAL PUMPING STN- PIRANA- NR. V. N. BDG- AHMEDABAD"
+      ],
+      datasets: [
+        {
+          label: "Mean Temprature",
+          backgroundColor: gradientFill,
+          borderColor: "#2CA8FF",
+          pointBorderColor: "#FFF",
+          pointBackgroundColor: "#2CA8FF",
+          pointBorderWidth: 2,
+          pointHoverRadius: 4,
+          pointHoverBorderWidth: 1,
+          pointRadius: 4,
+          fill: true,
+          borderWidth: 1,
+
+          data: [
+            25,
+            24,
+            30,
+            22,
+            23,
+            23,
+            24,
+            24,
+            22,
+            21,
+            25,
+            30,
+            30,
+            27,
+            31,
+            25,
+            25,
+            25,
+            23,
+            28,
+            31,
+            28,
+            27
+          ]
+        },
+        {
+          label: "pH",
+          type: "line",
+          borderColor: "#EC932F",
+          pointBorderColor: "#EC932F",
+          pointBackgroundColor: "#EC932F",
+          pointHoverBackgroundColor: "#EC932F",
+          pointHoverBorderColor: "#EC932F",
+          backgroundColor: gradientFill,
+          pointBorderWidth: 2,
+          pointHoverRadius: 4,
+          pointHoverBorderWidth: 1,
+          pointRadius: 1,
+          fill: true,
+          borderWidth: 1,
+
+          data: [
+            7.1,
+            7,
+            7.4,
+            8,
+            7.1,
+            7,
+            7.3,
+            7.3,
+            7.6,
+            7.6,
+            7.6,
+            7.5,
+            7.4,
+            7.6,
+            7.2,
+            7.4,
+            7.7,
+            7.6,
+            7.8,
+            7.2,
+            7.8,
+            7.8,
+            7.5
+          ]
+        },
+        {
+          label: "B.O.D",
+          type: "line",
+          borderColor: "#800000",
+          pointBorderColor: "#800000",
+          pointBackgroundColor: "#800000",
+          pointHoverBackgroundColor: "#800000",
+          pointHoverBorderColor: "#800000",
+          backgroundColor: gradientFill,
+          pointBorderWidth: 2,
+          pointHoverRadius: 4,
+          pointHoverBorderWidth: 1,
+          pointRadius: 1,
+          fill: true,
+          borderWidth: 1,
+
+          data: [
+            0.5,
+            0.8,
+            0.8,
+            0,
+            0.3,
+            0.4,
+            0.45,
+            0.35,
+            0,
+            0,
+            0,
+            1,
+            0.8,
+            2.2,
+            3,
+            1.6,
+            1.4,
+            1.6,
+            2.1,
+            1.1,
+            1,
+            1,
+            0.9
+          ]
+        }
+      ]
+    };
+  },
+  options: {
+    maintainAspectRatio: true,
+    legend: {
+      display: true
+    },
+    tooltips: {
+      bodySpacing: 4,
+      mode: "nearest",
+      intersect: 1,
+      position: "nearest",
+      xPadding: 10,
+      yPadding: 10,
+      caretPadding: 10
+    },
+    responsive: 1,
+    scales: {
+      yAxes: [
+        {
+          gridLines: {
+            zeroLineColor: "transparent",
+            drawBorder: false
+          }
+        }
+      ],
+      xAxes: [
+        {
+          display: 1,
+          ticks: {
+            display: false
+          },
+          gridLines: {
+            zeroLineColor: "transparent",
+            drawTicks: false,
+            display: false,
+            drawBorder: false
+          },
+          scaleLabel: {
+            display: true,
+            labelString: "Zones in gujarat"
+          }
+        }
+      ]
+    },
+    layout: {
+      padding: { left: 0, right: 0, top: 15, bottom: 15 }
+    }
+  }
+};
+const dashboard24HoursPerformanceChartUttrakhand = {
+  data: canvas => {
+    var ctx = canvas.getContext("2d");
+    var gradientFill = ctx.createLinearGradient(0, 170, 0, 50);
+    gradientFill.addColorStop(0, "rgba(128, 182, 244, 0)");
+    gradientFill.addColorStop(1, hexToRGB("#2CA8FF", 0.6));
+    return {
+      labels: [
+        "WELL AT AHMEDABAD",
+        "WELL AT NAROL- AHMEDABAD",
+        "JUNAGADH",
+        "RAJKOT",
+        "SURENDRANAGAR",
+        "PALANPUR",
+        "MEHASANA",
+        "SIDDHPUR (DIST.PATAN)",
+        "HIMATNAGAR",
+        "NADIAD",
+        "DAHOD",
+        "GODHARA",
+        "VADODARA (INDUSTRIAL-NANDESARI)",
+        "ANKLESHWAR (INDUSTRIAL AREA)",
+        "PANDESARA (INDSTRIAL) SURAT",
+        "MORA-HAJIRA (INDUSTRIAL)- HAJIRA",
+        "GABHENI VILL- SURAT (INDUSTRIAL)",
+        "BORE WELL OF CHHATRAL GIDC.",
+        "BORE WELL OF PALSANA VILLAGE.",
+        "ORE WELL OF SANTEJ VILLAGE.",
+        "B/W- HAZARDOUS W.DISPOSAL SITE (GUJ.ENVIRO P.& I.LTD.)",
+        "BORE WELL OF SACHIN GIDC.",
+        "WELL AT OLPAD.",
+        "BORE WELL OF NAVSARI GIDCINDUSTRIES ASSOCIATION OFFICE.",
+        "FROM WATER WORKS OF NAVSARINEAR DHUDIA TALAV.",
+        "BORE WELL - BARDOLI REST HOUSE.",
+        "WELL AT ANKLESHWAR INDUSTRIAL AREA (BORE WELL OF M/S INDUSTRIAL CARBON AT ANKLESHWAR- RAJPIPLA ROAD.",
+        "BORE WELL AT STP MADHAPAR- DIST. RAJKOT",
+        "B/W- SNR. VINAYAK JAL SUDDHIKARAN SAHAKARI MANDALI LTD.(CETP )- BAVLA- AHMEDABAD",
+        "B/W OF SOMESHWAR RICE MILL- NR. BAVLA ECO PROJECT- (CETP )- BAVLA- AHMEDABAD",
+        "BORE WELL OF PIRANA TERMINAL PUMPING STN- PIRANA- NR. V. N. BDG- AHMEDABAD"
+      ],
+      datasets: [
+        {
+          label: "Mean Temprature",
+          backgroundColor: gradientFill,
+          borderColor: "#2CA8FF",
+          pointBorderColor: "#FFF",
+          pointBackgroundColor: "#2CA8FF",
+          pointBorderWidth: 2,
+          pointHoverRadius: 4,
+          pointHoverBorderWidth: 1,
+          pointRadius: 4,
+          fill: true,
+          borderWidth: 1,
+
+          data: [
+            25,
+            24,
+            30,
+            22,
+            23,
+            23,
+            24,
+            24,
+            22,
+            21,
+            25,
+            30,
+            30,
+            27,
+            31,
+            25,
+            25,
+            25,
+            23,
+            28,
+            31,
+            28,
+            27
+          ]
+        },
+        {
+          label: "pH",
+          type: "line",
+          borderColor: "#EC932F",
+          pointBorderColor: "#EC932F",
+          pointBackgroundColor: "#EC932F",
+          pointHoverBackgroundColor: "#EC932F",
+          pointHoverBorderColor: "#EC932F",
+          backgroundColor: gradientFill,
+          pointBorderWidth: 2,
+          pointHoverRadius: 4,
+          pointHoverBorderWidth: 1,
+          pointRadius: 1,
+          fill: true,
+          borderWidth: 1,
+
+          data: [
+            7.1,
+            7,
+            7.4,
+            8,
+            7.1,
+            7,
+            7.3,
+            7.3,
+            7.6,
+            7.6,
+            7.6,
+            7.5,
+            7.4,
+            7.6,
+            7.2,
+            7.4,
+            7.7,
+            7.6,
+            7.8,
+            7.2,
+            7.8,
+            7.8,
+            7.5
+          ]
+        },
+        {
+          label: "B.O.D",
+          type: "line",
+          borderColor: "#800000",
+          pointBorderColor: "#800000",
+          pointBackgroundColor: "#800000",
+          pointHoverBackgroundColor: "#800000",
+          pointHoverBorderColor: "#800000",
+          backgroundColor: gradientFill,
+          pointBorderWidth: 2,
+          pointHoverRadius: 4,
+          pointHoverBorderWidth: 1,
+          pointRadius: 1,
+          fill: true,
+          borderWidth: 1,
+
+          data: [
+            0.5,
+            0.8,
+            0.8,
+            0,
+            0.3,
+            0.4,
+            0.45,
+            0.35,
+            0,
+            0,
+            0,
+            1,
+            0.8,
+            2.2,
+            3,
+            1.6,
+            1.4,
+            1.6,
+            2.1,
+            1.1,
+            1,
+            1,
+            0.9
+          ]
+        }
+      ]
+    };
+  },
+  options: {
+    maintainAspectRatio: true,
+    legend: {
+      display: true
+    },
+    tooltips: {
+      bodySpacing: 4,
+      mode: "nearest",
+      intersect: 1,
+      position: "nearest",
+      xPadding: 10,
+      yPadding: 10,
+      caretPadding: 10
+    },
+    responsive: 1,
+    scales: {
+      yAxes: [
+        {
+          gridLines: {
+            zeroLineColor: "transparent",
+            drawBorder: false
+          }
+        }
+      ],
+      xAxes: [
+        {
+          display: 1,
+          ticks: {
+            display: false
+          },
+          gridLines: {
+            zeroLineColor: "transparent",
+            drawTicks: false,
+            display: false,
+            drawBorder: false
+          },
+          scaleLabel: {
+            display: true,
+            labelString: "Zones in gujarat"
+          }
+        }
+      ]
+    },
+    layout: {
+      padding: { left: 0, right: 0, top: 15, bottom: 15 }
+    }
+  }
+};
+const dashboard24HoursPerformanceChartHaryana = {
+  data: canvas => {
+    var ctx = canvas.getContext("2d");
+    var gradientFill = ctx.createLinearGradient(0, 170, 0, 50);
+    gradientFill.addColorStop(0, "rgba(128, 182, 244, 0)");
+    gradientFill.addColorStop(1, hexToRGB("#2CA8FF", 0.6));
+    return {
+      labels: [
+        "WELL AT AHMEDABAD",
+        "WELL AT NAROL- AHMEDABAD",
+        "JUNAGADH",
+        "RAJKOT",
+        "SURENDRANAGAR",
+        "PALANPUR",
+        "MEHASANA",
+        "SIDDHPUR (DIST.PATAN)",
+        "HIMATNAGAR",
+        "NADIAD",
+        "DAHOD",
+        "GODHARA",
+        "VADODARA (INDUSTRIAL-NANDESARI)",
+        "ANKLESHWAR (INDUSTRIAL AREA)",
+        "PANDESARA (INDSTRIAL) SURAT",
+        "MORA-HAJIRA (INDUSTRIAL)- HAJIRA",
+        "GABHENI VILL- SURAT (INDUSTRIAL)",
+        "BORE WELL OF CHHATRAL GIDC.",
+        "BORE WELL OF PALSANA VILLAGE.",
+        "ORE WELL OF SANTEJ VILLAGE.",
+        "B/W- HAZARDOUS W.DISPOSAL SITE (GUJ.ENVIRO P.& I.LTD.)",
+        "BORE WELL OF SACHIN GIDC.",
+        "WELL AT OLPAD.",
+        "BORE WELL OF NAVSARI GIDCINDUSTRIES ASSOCIATION OFFICE.",
+        "FROM WATER WORKS OF NAVSARINEAR DHUDIA TALAV.",
+        "BORE WELL - BARDOLI REST HOUSE.",
+        "WELL AT ANKLESHWAR INDUSTRIAL AREA (BORE WELL OF M/S INDUSTRIAL CARBON AT ANKLESHWAR- RAJPIPLA ROAD.",
+        "BORE WELL AT STP MADHAPAR- DIST. RAJKOT",
+        "B/W- SNR. VINAYAK JAL SUDDHIKARAN SAHAKARI MANDALI LTD.(CETP )- BAVLA- AHMEDABAD",
+        "B/W OF SOMESHWAR RICE MILL- NR. BAVLA ECO PROJECT- (CETP )- BAVLA- AHMEDABAD",
+        "BORE WELL OF PIRANA TERMINAL PUMPING STN- PIRANA- NR. V. N. BDG- AHMEDABAD"
+      ],
+      datasets: [
+        {
+          label: "Mean Temprature",
+          backgroundColor: gradientFill,
+          borderColor: "#2CA8FF",
+          pointBorderColor: "#FFF",
+          pointBackgroundColor: "#2CA8FF",
+          pointBorderWidth: 2,
+          pointHoverRadius: 4,
+          pointHoverBorderWidth: 1,
+          pointRadius: 4,
+          fill: true,
+          borderWidth: 1,
+
+          data: [
+            25,
+            24,
+            30,
+            22,
+            23,
+            23,
+            24,
+            24,
+            22,
+            21,
+            25,
+            30,
+            30,
+            27,
+            31,
+            25,
+            25,
+            25,
+            23,
+            28,
+            31,
+            28,
+            27
+          ]
+        },
+        {
+          label: "pH",
+          type: "line",
+          borderColor: "#EC932F",
+          pointBorderColor: "#EC932F",
+          pointBackgroundColor: "#EC932F",
+          pointHoverBackgroundColor: "#EC932F",
+          pointHoverBorderColor: "#EC932F",
+          backgroundColor: gradientFill,
+          pointBorderWidth: 2,
+          pointHoverRadius: 4,
+          pointHoverBorderWidth: 1,
+          pointRadius: 1,
+          fill: true,
+          borderWidth: 1,
+
+          data: [
+            7.1,
+            7,
+            7.4,
+            8,
+            7.1,
+            7,
+            7.3,
+            7.3,
+            7.6,
+            7.6,
+            7.6,
+            7.5,
+            7.4,
+            7.6,
+            7.2,
+            7.4,
+            7.7,
+            7.6,
+            7.8,
+            7.2,
+            7.8,
+            7.8,
+            7.5
+          ]
+        },
+        {
+          label: "B.O.D",
+          type: "line",
+          borderColor: "#800000",
+          pointBorderColor: "#800000",
+          pointBackgroundColor: "#800000",
+          pointHoverBackgroundColor: "#800000",
+          pointHoverBorderColor: "#800000",
+          backgroundColor: gradientFill,
+          pointBorderWidth: 2,
+          pointHoverRadius: 4,
+          pointHoverBorderWidth: 1,
+          pointRadius: 1,
+          fill: true,
+          borderWidth: 1,
+
+          data: [
+            0.5,
+            0.8,
+            0.8,
+            0,
+            0.3,
+            0.4,
+            0.45,
+            0.35,
+            0,
+            0,
+            0,
+            1,
+            0.8,
+            2.2,
+            3,
+            1.6,
+            1.4,
+            1.6,
+            2.1,
+            1.1,
+            1,
+            1,
+            0.9
+          ]
+        }
+      ]
+    };
+  },
+  options: {
+    maintainAspectRatio: true,
+    legend: {
+      display: true
+    },
+    tooltips: {
+      bodySpacing: 4,
+      mode: "nearest",
+      intersect: 1,
+      position: "nearest",
+      xPadding: 10,
+      yPadding: 10,
+      caretPadding: 10
+    },
+    responsive: 1,
+    scales: {
+      yAxes: [
+        {
+          gridLines: {
+            zeroLineColor: "transparent",
+            drawBorder: false
+          }
+        }
+      ],
+      xAxes: [
+        {
+          display: 1,
+          ticks: {
+            display: false
+          },
+          gridLines: {
+            zeroLineColor: "transparent",
+            drawTicks: false,
+            display: false,
+            drawBorder: false
+          },
+          scaleLabel: {
+            display: true,
+            labelString: "Zones in gujarat"
+          }
+        }
+      ]
+    },
+    layout: {
+      padding: { left: 0, right: 0, top: 15, bottom: 15 }
+    }
+  }
+};
+const dashboard24HoursPerformanceChartArunachal = {
+  data: canvas => {
+    var ctx = canvas.getContext("2d");
+    var gradientFill = ctx.createLinearGradient(0, 170, 0, 50);
+    gradientFill.addColorStop(0, "rgba(128, 182, 244, 0)");
+    gradientFill.addColorStop(1, hexToRGB("#2CA8FF", 0.6));
+    return {
+      labels: [
+        "WELL AT AHMEDABAD",
+        "WELL AT NAROL- AHMEDABAD",
+        "JUNAGADH",
+        "RAJKOT",
+        "SURENDRANAGAR",
+        "PALANPUR",
+        "MEHASANA",
+        "SIDDHPUR (DIST.PATAN)",
+        "HIMATNAGAR",
+        "NADIAD",
+        "DAHOD",
+        "GODHARA",
+        "VADODARA (INDUSTRIAL-NANDESARI)",
+        "ANKLESHWAR (INDUSTRIAL AREA)",
+        "PANDESARA (INDSTRIAL) SURAT",
+        "MORA-HAJIRA (INDUSTRIAL)- HAJIRA",
+        "GABHENI VILL- SURAT (INDUSTRIAL)",
+        "BORE WELL OF CHHATRAL GIDC.",
+        "BORE WELL OF PALSANA VILLAGE.",
+        "ORE WELL OF SANTEJ VILLAGE.",
+        "B/W- HAZARDOUS W.DISPOSAL SITE (GUJ.ENVIRO P.& I.LTD.)",
+        "BORE WELL OF SACHIN GIDC.",
+        "WELL AT OLPAD.",
+        "BORE WELL OF NAVSARI GIDCINDUSTRIES ASSOCIATION OFFICE.",
+        "FROM WATER WORKS OF NAVSARINEAR DHUDIA TALAV.",
+        "BORE WELL - BARDOLI REST HOUSE.",
+        "WELL AT ANKLESHWAR INDUSTRIAL AREA (BORE WELL OF M/S INDUSTRIAL CARBON AT ANKLESHWAR- RAJPIPLA ROAD.",
+        "BORE WELL AT STP MADHAPAR- DIST. RAJKOT",
+        "B/W- SNR. VINAYAK JAL SUDDHIKARAN SAHAKARI MANDALI LTD.(CETP )- BAVLA- AHMEDABAD",
+        "B/W OF SOMESHWAR RICE MILL- NR. BAVLA ECO PROJECT- (CETP )- BAVLA- AHMEDABAD",
+        "BORE WELL OF PIRANA TERMINAL PUMPING STN- PIRANA- NR. V. N. BDG- AHMEDABAD"
+      ],
+      datasets: [
+        {
+          label: "Mean Temprature",
+          backgroundColor: gradientFill,
+          borderColor: "#2CA8FF",
+          pointBorderColor: "#FFF",
+          pointBackgroundColor: "#2CA8FF",
+          pointBorderWidth: 2,
+          pointHoverRadius: 4,
+          pointHoverBorderWidth: 1,
+          pointRadius: 4,
+          fill: true,
+          borderWidth: 1,
+
+          data: [
+            25,
+            24,
+            30,
+            22,
+            23,
+            23,
+            24,
+            24,
+            22,
+            21,
+            25,
+            30,
+            30,
+            27,
+            31,
+            25,
+            25,
+            25,
+            23,
+            28,
+            31,
+            28,
+            27
+          ]
+        },
+        {
+          label: "pH",
+          type: "line",
+          borderColor: "#EC932F",
+          pointBorderColor: "#EC932F",
+          pointBackgroundColor: "#EC932F",
+          pointHoverBackgroundColor: "#EC932F",
+          pointHoverBorderColor: "#EC932F",
+          backgroundColor: gradientFill,
+          pointBorderWidth: 2,
+          pointHoverRadius: 4,
+          pointHoverBorderWidth: 1,
+          pointRadius: 1,
+          fill: true,
+          borderWidth: 1,
+
+          data: [
+            7.1,
+            7,
+            7.4,
+            8,
+            7.1,
+            7,
+            7.3,
+            7.3,
+            7.6,
+            7.6,
+            7.6,
+            7.5,
+            7.4,
+            7.6,
+            7.2,
+            7.4,
+            7.7,
+            7.6,
+            7.8,
+            7.2,
+            7.8,
+            7.8,
+            7.5
+          ]
+        },
+        {
+          label: "B.O.D",
+          type: "line",
+          borderColor: "#800000",
+          pointBorderColor: "#800000",
+          pointBackgroundColor: "#800000",
+          pointHoverBackgroundColor: "#800000",
+          pointHoverBorderColor: "#800000",
+          backgroundColor: gradientFill,
+          pointBorderWidth: 2,
+          pointHoverRadius: 4,
+          pointHoverBorderWidth: 1,
+          pointRadius: 1,
+          fill: true,
+          borderWidth: 1,
+
+          data: [
+            0.5,
+            0.8,
+            0.8,
+            0,
+            0.3,
+            0.4,
+            0.45,
+            0.35,
+            0,
+            0,
+            0,
+            1,
+            0.8,
+            2.2,
+            3,
+            1.6,
+            1.4,
+            1.6,
+            2.1,
+            1.1,
+            1,
+            1,
+            0.9
+          ]
+        }
+      ]
+    };
+  },
+  options: {
+    maintainAspectRatio: true,
+    legend: {
+      display: true
+    },
+    tooltips: {
+      bodySpacing: 4,
+      mode: "nearest",
+      intersect: 1,
+      position: "nearest",
+      xPadding: 10,
+      yPadding: 10,
+      caretPadding: 10
+    },
+    responsive: 1,
+    scales: {
+      yAxes: [
+        {
+          gridLines: {
+            zeroLineColor: "transparent",
+            drawBorder: false
+          }
+        }
+      ],
+      xAxes: [
+        {
+          display: 1,
+          ticks: {
+            display: false
+          },
+          gridLines: {
+            zeroLineColor: "transparent",
+            drawTicks: false,
+            display: false,
+            drawBorder: false
+          },
+          scaleLabel: {
+            display: true,
+            labelString: "Zones in gujarat"
+          }
+        }
+      ]
+    },
+    layout: {
+      padding: { left: 0, right: 0, top: 15, bottom: 15 }
+    }
+  }
+};
+const dashboard24HoursPerformanceChartMeghalaya = {
   data: canvas => {
     var ctx = canvas.getContext("2d");
     var gradientFill = ctx.createLinearGradient(0, 170, 0, 50);
@@ -4981,5 +6139,15 @@ module.exports = {
   dashboard24HoursPerformanceChartMP,
   dashboard24HoursPerformanceChartGujarat,
   dashboard24HoursPerformanceChartTN,
-  dashboard24HoursPerformanceChartMizoram
+  dashboard24HoursPerformanceChartMizoram,
+  dashboard24HoursPerformanceChartJK,
+  dashboard24HoursPerformanceChartSikkim,
+  dashboard24HoursPerformanceChartNagaland,
+  dashboard24HoursPerformanceChartKarnatka,
+  dashboard24HoursPerformanceChartJharkhand,
+  dashboard24HoursPerformanceChartUttrakhand,
+  dashboard24HoursPerformanceChartHaryana,
+  dashboard24HoursPerformanceChartArunachal,
+  dashboard24HoursPerformanceChartMeghalaya,
+
 };
