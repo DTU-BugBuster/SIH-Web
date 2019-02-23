@@ -58,11 +58,11 @@ componentWillReceiveProps(nextProp)
           <Col xs={12} md={4}>
             <Card className="card-chart">
               <CardHeader>
-                <CardCategory>Cases Of Cholera in {this.state.stateselected}</CardCategory>
+                <CardCategory>Cases Of Cholera in {this.state.stateselected || "Uttar Pradesh"}</CardCategory>
                 <CardTitle tag="h4"></CardTitle>
               </CardHeader>
               <CardBody>
-                <Line data={getChartCholera(this.props.state).data} options={getChartCholera(this.props.state).options}/>
+                <Line data={getChartCholera(this.state.stateselected || "Uttar Pradesh").data} options={getChartCholera(this.state.stateselected || "Uttar Pradesh").options}/>
               </CardBody>
               <CardFooter>
                 <Stats>
@@ -79,11 +79,11 @@ componentWillReceiveProps(nextProp)
             <Col xs={12} md={4}>
               <Card className="card-chart">
                 <CardHeader>
-                  <CardCategory>Cases Of Diarrhea in {this.state.stateselected}</CardCategory>
+                  <CardCategory>Cases Of Diarrhea in {this.state.stateselected || "Uttar Pradesh"}</CardCategory>
                   <CardTitle tag="h4"></CardTitle>
                 </CardHeader>
                 <CardBody>
-                <Line data={getChartD(this.props.state).data} options={getChartD(this.props.state).options}/>
+                <Line data={getChartD(this.props.state || "Uttar Pradesh").data} options={getChartD(this.props.state || "Uttar Pradesh").options}/>
 
                 </CardBody>
                 <CardFooter>
@@ -103,11 +103,11 @@ componentWillReceiveProps(nextProp)
           <Col xs={12} md={4}>
             <Card className="card-chart">
               <CardHeader>
-                <CardCategory>Cases Of Typhoid in {this.state.stateselected}</CardCategory>
+                <CardCategory>Cases Of Typhoid in {this.state.stateselected || "Uttar Pradesh"}</CardCategory>
                 <CardTitle tag="h4"></CardTitle>
               </CardHeader>
               <CardBody>
-              <Line data={getChartT(this.props.state).data} options={getChartT(this.props.state).options}/>
+              <Line data={getChartT(this.props.state || "Uttar Pradesh").data} options={getChartT(this.props.state|| "Uttar Pradesh").options}/>
               </CardBody>
               <CardFooter>
                 <Stats>
