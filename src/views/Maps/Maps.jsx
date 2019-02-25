@@ -121,7 +121,6 @@ class Orissa extends React.Component {
   render() {
     return (
       <div>
-        <p>ORISSA</p>
         <Bar
           data={dashboard24HoursPerformanceChartOrrisa.data}
           options={dashboard24HoursPerformanceChartOrrisa.options}
@@ -135,7 +134,6 @@ class Orissa extends React.Component {
 function Chattisgarh() {
   return (
     <div>
-      <p>Chattisgarh</p>
       <Bar
         data={dashboard24HoursPerformanceChartChattisgarh.data}
         options={dashboard24HoursPerformanceChartChattisgarh.options}
@@ -147,7 +145,6 @@ function Chattisgarh() {
 function Uttrakhand() {
   return (
     <div>
-      <p>UTTRAKHAND</p>
       <Bar
         data={dashboard24HoursPerformanceChartUttrakhand.data}
         options={dashboard24HoursPerformanceChartUttrakhand.options}
@@ -159,7 +156,6 @@ function Uttrakhand() {
 function Jharkhand() {
   return (
     <div>
-      <p>JHARKHAND</p>
       <Bar
         data={dashboard24HoursPerformanceChartJharkhand.data}
         options={dashboard24HoursPerformanceChartJharkhand.options}
@@ -171,7 +167,6 @@ function Jharkhand() {
 function Meghalaya() {
   return (
     <div>
-      <p>MEGHALAYA</p>
       <Bar
         data={dashboard24HoursPerformanceChartMeghalaya.data}
         options={dashboard24HoursPerformanceChartMeghalaya.options}
@@ -183,7 +178,6 @@ function Meghalaya() {
 function Haryana() {
   return (
     <div>
-      <p>HARYANA</p>
       <Bar
         data={dashboard24HoursPerformanceChartHaryana.data}
         options={dashboard24HoursPerformanceChartHaryana.options}
@@ -195,7 +189,6 @@ function Haryana() {
 function Arunachal() {
   return (
     <div>
-      <p>ARUNACHAL PRADESH</p>
       <Bar
         data={dashboard24HoursPerformanceChartArunachal.data}
         options={dashboard24HoursPerformanceChartArunachal.options}
@@ -207,7 +200,6 @@ function Arunachal() {
 function MP() {
   return (
     <div>
-      <p> MADHYA PRADESH</p>
       <Bar
         data={dashboard24HoursPerformanceChartMP.data}
         options={dashboard24HoursPerformanceChartMP.options}
@@ -219,7 +211,6 @@ function MP() {
 function JK() {
   return (
     <div>
-      <p>JAMMU AND KASHMIR</p>
       <Bar
         data={dashboard24HoursPerformanceChartJK.data}
         options={dashboard24HoursPerformanceChartJK.options}
@@ -231,7 +222,6 @@ function JK() {
 function Sikkim() {
   return (
     <div>
-      <p>SIKKIM</p>
       <Bar
         data={dashboard24HoursPerformanceChartSikkim.data}
         options={dashboard24HoursPerformanceChartSikkim.options}
@@ -243,7 +233,6 @@ function Sikkim() {
 function Karnataka() {
   return (
     <div>
-      <p>KARNATKA</p>
       <Bar
         data={dashboard24HoursPerformanceChartKarnatka.data}
         options={dashboard24HoursPerformanceChartKarnatka.options}
@@ -255,7 +244,6 @@ function Karnataka() {
 function Nagaland() {
   return (
     <div>
-      <p>NAGALAND</p>
       <Bar
         data={dashboard24HoursPerformanceChartNagaland.data}
         options={dashboard24HoursPerformanceChartNagaland.options}
@@ -267,7 +255,6 @@ function Nagaland() {
 function WB() {
   return (
     <div>
-      <p>WEST BENGAL</p>
       <Bar
         data={dashboard24HoursPerformanceChartWB.data}
         options={dashboard24HoursPerformanceChartWB.options}
@@ -280,7 +267,6 @@ function Bihar() {
   console.log("entered bihar");
   return (
     <div>
-      <p>BIHAR</p>
       <Bar
         data={dashboard24HoursPerformanceChartBihar.data}
         options={dashboard24HoursPerformanceChartBihar.options}
@@ -292,7 +278,6 @@ function Bihar() {
 function UP() {
   return (
     <div>
-      <p> UTTAR PRADESH</p>
       <Bar
         data={dashboard24HoursPerformanceChartUP.data}
         options={dashboard24HoursPerformanceChartUP.options}
@@ -304,7 +289,6 @@ function UP() {
 function Rajasthan() {
   return (
     <div>
-      <p>RAJASTHAN</p>
       <Bar
         data={dashboard24HoursPerformanceChartRajasthan.data}
         options={dashboard24HoursPerformanceChartRajasthan.options}
@@ -316,7 +300,6 @@ function Rajasthan() {
 function Gujarat() {
   return (
     <div>
-      <p>GUJARAT</p>
       <Bar
         data={dashboard24HoursPerformanceChartGujarat.data}
         options={dashboard24HoursPerformanceChartGujarat.options}
@@ -328,7 +311,6 @@ function Gujarat() {
 function Maharastra() {
   return (
     <div>
-      <p>MAHARASTRA</p>
       <Bar
         data={dashboard24HoursPerformanceChartMaharastra.data}
         options={dashboard24HoursPerformanceChartMaharastra.options}
@@ -340,7 +322,6 @@ function Maharastra() {
 function AP() {
   return (
     <div>
-      <p> ANDHRA PRADESH</p>
       <Bar
         data={dashboard24HoursPerformanceChart.data}
         options={dashboard24HoursPerformanceChart.options}
@@ -352,7 +333,6 @@ function AP() {
 function TN() {
   return (
     <div>
-      <p>TAMIL NADU</p>
       <Bar
         data={dashboard24HoursPerformanceChartTN.data}
         options={dashboard24HoursPerformanceChartTN.options}
@@ -364,7 +344,6 @@ function TN() {
 function Kerala() {
   return (
     <div>
-      <p>KERALA</p>
       <Bar
         data={dashboard24HoursPerformanceChartKerala.data}
         options={dashboard24HoursPerformanceChartKerala.options}
@@ -376,7 +355,6 @@ function Kerala() {
 function Assam() {
   return (
     <div>
-      <p> ASSAM</p>
       <Bar
         data={dashboard24HoursPerformanceChartAssam.data}
         options={dashboard24HoursPerformanceChartAssam.options}
@@ -388,7 +366,6 @@ function Assam() {
 function Manipur() {
   return (
     <div>
-      <p>MANIPUR</p>
       <Bar
         data={dashboard24HoursPerformanceChartManipur.data}
         options={dashboard24HoursPerformanceChartManipur.options}
@@ -400,7 +377,6 @@ function Manipur() {
 function Mizoram() {
   return (
     <div>
-      <p>MIZORAM</p>
       <Bar
         data={dashboard24HoursPerformanceChartMizoram.data}
         options={dashboard24HoursPerformanceChartMizoram.options}
@@ -412,7 +388,6 @@ function Mizoram() {
 function Tripura() {
   return (
     <div>
-      <p>TRIPURA</p>
       <Bar
         data={dashboard24HoursPerformanceChartTripura.data}
         options={dashboard24HoursPerformanceChartTripura.options}
@@ -424,7 +399,6 @@ function Tripura() {
 function HP() {
   return (
     <div>
-      <p> HIMACHAL PRADESH</p>
       <Bar
         data={dashboard24HoursPerformanceChartHP.data}
         options={dashboard24HoursPerformanceChartHP.options}
@@ -436,7 +410,6 @@ function HP() {
 function Punjab() {
   return (
     <div>
-      <p>PUNJAB</p>
       <Bar
         data={dashboard24HoursPerformanceChartPunjab.data}
         options={dashboard24HoursPerformanceChartPunjab.options}
