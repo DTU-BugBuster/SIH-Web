@@ -1,12 +1,14 @@
 import React from "react";
-import { Card, CardHeader, CardBody, Row, Col } from "reactstrap";
+import { Card, CardHeader, CardBody, Row, Col,Input,Label,Button } from "reactstrap";
 
 import { PanelHeader, FormInputs, CardAuthor, CardSocials } from "components";
 
 import userBackground from "assets/img/bg5.jpg";
 import userAvatar from "assets/img/default-avatar.png";
 import { getfirebase } from "../../firebase";
-
+import Axios from "axios";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 
 class User extends React.Component {
@@ -14,29 +16,47 @@ class User extends React.Component {
   {
     super(props);
     this.state={
-      user:""
+      d_name : "",
+      h_name : "",
+      address : "",
     }
+    this.handlechange = this.handlechange.bind(this);
+    this.submit = this.submit.bind(this);
   }
-  componentDidMount()
-  {
-    var fire = getfirebase();
-    fire.auth().onAuthStateChanged((user)=>{
-      if(user)
-      {
-        fire.database().ref('users/' + user.uid).once('value').then((snapshot) => {
-          this.setState({
-            user : snapshot.key
-          })
-          console.log(snapshot.val())
-        }).catch((error) => {
-          console.log(error);
-        })
-      }
-    })
-  }
+  
   handlechange(e)
   {
-    console.log(e.target.value);
+    console.log(e.target.value)
+    this.setState({
+      [e.target.id] : e.target.value
+    })
+  }
+  submit()
+  {
+    console.log("dds");
+    Axios .get(
+            `https://maps.googleapis.com/maps/api/geocode/json?address="${this.state.address}"&key=AIzaSyB7cYMRfxxQv8LrcCNTxcy3byqMjlW_IE4`
+          )
+          .then(data => {
+            console.log(data);
+            var firebase = getfirebase();
+            firebase.database().ref('cases').push({
+              'd_name' : this.state.d_name,
+              'h_name' : this.state.h_name,
+              'addresslat' : data.data.results[0].geometry.location.lat,
+              'addresslng' : data.data.results[0].geometry.location.lng,
+            }).then(() => {
+              this.setState({
+                d_name : "",
+                h_name : "",
+                address : "",
+
+              })
+              toast.info("Case has been reported!");
+            }).catch((error)=>{
+              console.log(error);
+            });
+          });
   }
   render() {
     return (
@@ -51,64 +71,36 @@ class User extends React.Component {
                 </CardHeader>
                 <CardBody>
                   <form>
-                    <FormInputs
-                      onChange={this.handlechange}
-                      ncols={[
-                        "col-md-5 pr-1",
-                        "col-md-3 px-1",
-                        "col-md-4 pl-1"
-                      ]}
-                      proprieties={[
-                        {
-                          label: "Email",
-                          inputProps: {
-                            type: "text",
-                            defaultValue: this.state.user.email
-                          }
-                        },
-                        {
-                          label: "phone number",
-                          inputProps: {
-                            type: "text",
-                            defaultValue: this.state.user.phone
-                          }
-                        },
-                        {
-                          label: "Username",
-                          inputProps: {
-                            type: "email",
-                            defaultValue: this.state.user.username
-                          }
-                        }
-                      ]}
-                    />
-                    <FormInputs
-                      ncols={["col-md-6 pr-1", "col-md-6 pl-1"]}
-                      proprieties={[
-                        {
-                          label: "First Name",
-                          inputProps: {
-                            type: "text",
-                            placeholder: "First Name",
-                            defaultValue: this.state.user.first_name
-                          }
-                        },
-                        {
-                          label: "Last Name",
-                          inputProps: {
-                            type: "text",
-                            placeholder: "Last Name",
-                            defaultValue: this.state.user.last_name
-                          }
-                        }
-                      ]}
-                    />
+                    <Row>
+                      <Col md={6} pr={1}>
+                      <Label >Disease Name:</Label>
+                      <br></br>
+                      <Input id="d_name" value={this.state.d_name} onChange={this.handlechange}/>
+                      </Col>
+                      <Col md={6} pr={1}>
+                      <Label >Hospital Name:</Label>
+                      <br></br>
+                      <Input id="h_name" value={this.state.h_name} onChange={this.handlechange}/>
+                      </Col>
+                    </Row>
+                    <br></br>
+                    <br></br>
+                    <Row>
+                    <Col md={12} pr={1}>
+                      <Label >Address of person:</Label>
+                      <br></br>
+                      <Input id="address" value={this.state.address} onChange={this.handlechange}/>
+                      </Col>
+                    </Row>
+                    <br></br>
+                    <Button color="primary" onClick={this.submit}>Submit case</Button>
                   </form>
                 </CardBody>
               </Card>
             </Col>
           </Row>
         </div>
+        <ToastContainer></ToastContainer>
       </div>
     );
   }

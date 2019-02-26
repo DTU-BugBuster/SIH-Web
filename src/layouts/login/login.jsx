@@ -39,19 +39,28 @@ class Login extends Component {
         this.props.history.push("/signin");
       } else {
         
-            register(
-              {
-                first_name: this.state.first_name,
-                last_name: this.state.last_name,
-                username: this.state.username,
-                email: this.state.email,
-                phone: "+91"+this.state.password,
-              },
-              uid
-            ).then(() => {
-              console.log("dekh le");
-              self.props.history.push("/signin");
-            });
+        axios
+        .get(
+          `https://maps.googleapis.com/maps/api/geocode/json?address="${this.state.address}"&key=AIzaSyB7cYMRfxxQv8LrcCNTxcy3byqMjlW_IE4`
+        )
+        .then(data => {
+          console.log(data);
+          register(
+            {
+              first_name: this.state.first_name,
+              last_name: this.state.last_name,
+              username: this.state.username,
+              email: this.state.email,
+              phone: this.state.password,
+              addresslat : data.data.results[0].geometry.location.lat,
+              addresslng : data.data.results[0].geometry.location.lng,
+            },
+            uid
+          ).then(() => {
+            console.log("dekh le");
+            self.props.history.push("/signin");
+          });
+        });
       }
     });
   }
