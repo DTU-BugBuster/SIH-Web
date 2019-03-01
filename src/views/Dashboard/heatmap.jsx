@@ -82,7 +82,10 @@ class MapExample extends React.Component {
           return obj.name === nextProp.state;
         }
       });
-
+      if(!result)
+      {
+        result = [75.7139, 19.7515];
+      }
       this.setState({
         coordinates: result.coordinates
       });
@@ -104,12 +107,12 @@ class MapExample extends React.Component {
     }
 
     const gradient = {
-      0.1: "#89BDE0",
+      0.1: "#21e031",
       0.2: "#96E3E6",
-      0.4: "#82CEB6",
+      0.4: "#1b43e2",
       0.6: "#FAF3A5",
-      0.8: "#F5D98B",
-      "1.0": "#DE9A96"
+      0.8: "#ffea00",
+      "1.0": "#e80909"
     };
 
     return (

@@ -20,6 +20,7 @@ var unsubscribe = fire.auth().onAuthStateChanged((user)=>{
   }
 })
 unsubscribe();
+
 const hist = createBrowserHistory();
 ReactDOM.render(
   <Router history={hist}>
