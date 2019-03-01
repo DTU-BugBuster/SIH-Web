@@ -45,6 +45,7 @@ class User extends React.Component {
               'h_name' : this.state.h_name,
               'addresslat' : data.data.results[0].geometry.location.lat,
               'addresslng' : data.data.results[0].geometry.location.lng,
+              'Date' : Date.now()
             }).then(() => {
               this.setState({
                 d_name : "",
