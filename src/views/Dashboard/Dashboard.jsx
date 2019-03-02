@@ -1027,10 +1027,10 @@ class App extends React.Component {
       width:300,
 			animationEnabled: true,
 			title: {
-				text: "Customer Satisfaction"
+				text: "Realtime data"
 			},
 			subtitles: [{
-				text: "71% Positive",
+				text: " ",
 				verticalAlign: "center",
 				fontSize: 24,
 				dockInsidePlotArea: true
@@ -1057,6 +1057,84 @@ class App extends React.Component {
 		);
 	}
 }
+class Gender extends React.Component {
+	render() {
+		const options = {
+    backgroundColor:"White",
+      height:300,
+      width:300,
+			animationEnabled: true,
+			title: {
+				text: "Gender wise data"
+			},
+			subtitles: [{
+				text: " ",
+				verticalAlign: "center",
+				fontSize: 24,
+				dockInsidePlotArea: true
+			}],
+			data: [{
+				type: "doughnut",
+				showInLegend: true,
+				indexLabel: "{name}: {y}",
+				yValueFormatString: "#,###'%'",
+				dataPoints: [
+					{ name: "Females", y: this.props.c },
+					{ name: "Males", y: this.props.d }
+				]
+			}]
+		}
+		return (
+		<div>
+			<CanvasJSChart options = {options}
+				/* onRef={ref => this.chart = ref} */
+			/>
+			{/*You can get reference to the chart instance as shown above using onRef. This allows you to access all chart properties and methods*/}
+		</div>
+		);
+	}
+}
+class Age extends React.Component {
+	render() {
+		const options = {
+    backgroundColor:"#211e1c",
+      height:300,
+      width:300,
+      theme: "dark2",
+			title: {
+				text: "Age Wise Outbreak",
+        fontColor:"White"
+			},
+      axisY:{
+      title: "Number of cases reported"
+      },
+      axisX:{
+      title: "Age Intervals"
+      },
+
+			data: [
+			{
+				// Change type to "doughnut", "line", "splineArea", etc.
+				type: "column",
+				dataPoints: [
+					{ label: "20",  y: this.props.c  },
+					{ label: "40", y: this.props.d  },
+					{ label: "60", y: this.props.z  },
+					{ label: "80",  y: this.props.k  }
+				]
+			}
+			]
+		}
+		return (
+		<div>
+			<CanvasJSChart options = {options}
+				/* onRef={ref => this.chart = ref} */
+			/>
+			{/*You can get reference to the chart instance as shown above using onRef. This allows you to access all chart properties and methods*/}
+		</div>
+		);
+	}
+}
 
 class Dashboards extends React.Component {
   constructor(props) {
@@ -1064,12 +1142,23 @@ class Dashboards extends React.Component {
     this.state = {
       stateselected: "Uttar Pradesh",
       casespoint : [],
-      numcases:0,
+      numcases:11,
       numdeaths:0,
       numhealthy:10,
-      m:[],
+      numfem:27,
+      nummale:73,
+      u20:3,
+      u40:5,
+      u60:8,
+      u80:2
     };
     this.ap=this.ap.bind(this);
+    this.fe=this.fe.bind(this);
+    this.male=this.male.bind(this);
+    this.age1=this.age1.bind(this);
+    this.age2=this.age2.bind(this);
+    this.age3=this.age3.bind(this);
+    this.age4=this.age4.bind(this);
   }
   componentDidMount() {
     var firebase = getfirebase();
@@ -1101,11 +1190,33 @@ class Dashboards extends React.Component {
 
   }
   ap(val){
-var k=val[1].state.substr(1);
-
-return k==this.state.stateselected;
-   }
-
+    var k=val[1].state.substr(1);
+    return k==this.state.stateselected;
+  }
+  fe(val){
+    var k=val[1].gender;
+    return k=="F";
+  }
+  male(val){
+    var k=val[1].gender;
+    return k=="M";
+  }
+  age1(val){
+    var k=val[1].age;
+    return k>=0&&k<=20;
+  }
+  age2(val){
+    var k=val[1].age;
+    return k>=20&&k<=40;
+  }
+  age3(val){
+    var k=val[1].age;
+    return k>=40&&k<=60;
+  }
+  age4(val){
+    var k=val[1].age;
+    return k>=60&&k<=80;
+  }
   componentWillReceiveProps(nextProp) {
 
     if (nextProp.state != this.state.stateselected) {
@@ -1119,6 +1230,28 @@ return k==this.state.stateselected;
     this.setState({
       numcases:final.length
     });
+    var f=final.filter(this.fe);
+    var m=final.filter(this.male);
+    this.setState({
+      numfem:f.length,
+      nummale:m.length
+    });
+    var k=final.filter(this.age1);
+    this.setState({
+      u20:k.length
+    })
+    var j=final.filter(this.age2);
+    this.setState({
+      u40:j.length
+    })
+    var a=final.filter(this.age3);
+    this.setState({
+      u60:a.length
+    })
+    var g=final.filter(this.age4);
+    this.setState({
+      u80:g.length
+    })
   }
   render() {
     return (
@@ -1133,16 +1266,29 @@ return k==this.state.stateselected;
               <Col xs={12} md={4}>
               <div>
                 <Greeting isLoggedIn={this.state.stateselected} />
-                <div style={{ marginTop: "0px",height:"10%"}}>
-                <App style={{marginLeft:"-10px"}} c={this.state.numcases} d={this.state.numdeaths} z={this.state.numhealthy}/>
+                <div>
+                  <Age c={this.state.u20} d={this.stateu40} z={this.stateu60} k={this.stateu80}/>
                 </div>
               </div>
               </Col>
             </Row>
           }
         />
-        <div className="content" style={{ marginTop: "70px"}}>
+        <div className="content" style={{ marginTop: "50px"}}>
+        <Col>
           <Row>
+            <Col xs={12} md={6}>
+            <div style={{marginLeft:"100px"}}>
+              <Gender style={{marginLeft:"-10px"}} c={this.state.numfem} d={this.state.nummale} />
+            </div>
+            </Col>
+            <Col xs={12} md={6}>
+            <div style={{ marginTop: "0px",height:"10%"}}>
+            <App style={{marginLeft:"-10px"}} c={this.state.numcases} d={this.state.numdeaths} z={this.state.numhealthy}/>
+            </div>
+            </Col>
+          </Row>
+          <Row style={{marginTop:"40px"}}>
             <Col xs={12} md={4}>
               <Card className="card-chart">
                 <CardHeader>
@@ -1238,6 +1384,7 @@ return k==this.state.stateselected;
               </Card>
             </Col>
           </Row>
+          </Col>
         </div>
 
       </div>
