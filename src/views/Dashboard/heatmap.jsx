@@ -43,7 +43,7 @@ class MapExample extends React.Component {
     mapHidden: false,
     layerHidden: false,
     addressPoints,
-    radius: 10,
+    radius: 7,
     blur: 8,
     max: 0.5,
     limitAddressPoints: true,

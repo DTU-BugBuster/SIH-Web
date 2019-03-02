@@ -496,25 +496,24 @@ class FullScreenMap extends React.Component {
                                       )
                                     }
                                     style={{
-
                                       default: {
-                                        fill: "#FFFFFF",
-                                        stroke: "#607D8B",
-                                        strokeWidth: 0.15,
-                                        outline: "true",
-                                      },
-                                      hover: {
-                                        fill: "#FFFFFF",
-                                        stroke: "#607D8B",
-                                        strokeWidth: 0.15,
-                                        outline: "",
-                                      },
-                                      pressed: {
-                                        fill: "#FFFFFF",
+                                        fill: "#ECEFF1",
                                         stroke: "#607D8B",
                                         strokeWidth: 0.75,
-                                        outline: "none"
-                                      }
+                                        outline: "none",
+                                      },
+                                      hover: {
+                                        fill: "#607D8B",
+                                        stroke: "#607D8B",
+                                        strokeWidth: 0.75,
+                                        outline: "none",
+                                      },
+                                      pressed: {
+                                        fill: "#FF5722",
+                                        stroke: "#607D8B",
+                                        strokeWidth: 0.75,
+                                        outline: "none",
+                                      },
                                     }}
                                   />
                                 );
