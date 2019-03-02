@@ -1,4 +1,5 @@
 import React from "react";
+import {Polar} from 'react-chartjs-2';
 import {
   Card,
   CardHeader,
@@ -21,7 +22,6 @@ import {
   getChartD,
   getChartT
 } from "variables/charts.jsx";
-
 function Greeting(props) {
   const isLoggedIn = props.isLoggedIn;
   if (isLoggedIn == "Orissa") return <Orissa />;
@@ -95,7 +95,7 @@ function Chattisgarh() {
   return (
     <div
       style={{
-        marginTop: "-20px",
+        marginTop: "0px",
         marginLeft: "-10px",
         width: "95%",
         height: "10%"
@@ -129,7 +129,7 @@ function Uttrakhand() {
   return (
     <div
       style={{
-        marginTop: "-20px",
+        marginTop: "0px",
         marginLeft: "-10px",
         width: "95%",
         height: "10%"
@@ -163,7 +163,7 @@ function Jharkhand() {
   return (
     <div
       style={{
-        marginTop: "-20px",
+        marginTop: "0px",
         marginLeft: "-10px",
         width: "95%",
         height: "10%"
@@ -197,7 +197,7 @@ function Meghalaya() {
   return (
     <div
       style={{
-        marginTop: "-20px",
+        marginTop: "0px",
         marginLeft: "-10px",
         width: "95%",
         height: "10%"
@@ -231,7 +231,7 @@ function Haryana() {
   return (
     <div
       style={{
-        marginTop: "-20px",
+        marginTop: "0px",
         marginLeft: "-10px",
         width: "95%",
         height: "10%"
@@ -265,7 +265,7 @@ function Arunachal() {
   return (
     <div
       style={{
-        marginTop: "-20px",
+        marginTop: "0px",
         marginLeft: "-10px",
         width: "95%",
         height: "10%"
@@ -299,7 +299,7 @@ function MP() {
   return (
     <div
       style={{
-        marginTop: "-20px",
+        marginTop: "0px",
         marginLeft: "-10px",
         width: "95%",
         height: "10%"
@@ -333,7 +333,7 @@ function JK() {
   return (
     <div
       style={{
-        marginTop: "-20px",
+        marginTop: "0px",
         marginLeft: "-10px",
         width: "95%",
         height: "10%"
@@ -367,7 +367,7 @@ function Sikkim() {
   return (
     <div
       style={{
-        marginTop: "-20px",
+        marginTop: "0px",
         marginLeft: "-10px",
         width: "95%",
         height: "10%"
@@ -401,7 +401,7 @@ function Karnataka() {
   return (
     <div
       style={{
-        marginTop: "-20px",
+        marginTop: "0px",
         marginLeft: "-10px",
         width: "95%",
         height: "10%"
@@ -435,7 +435,7 @@ function Nagaland() {
   return (
     <div
       style={{
-        marginTop: "-20px",
+        marginTop: "0px",
         marginLeft: "-10px",
         width: "95%",
         height: "10%"
@@ -469,7 +469,7 @@ function WB() {
   return (
     <div
       style={{
-        marginTop: "-20px",
+        marginTop: "0px",
         marginLeft: "-10px",
         width: "95%",
         height: "10%"
@@ -504,7 +504,7 @@ function Bihar() {
   return (
     <div
       style={{
-        marginTop: "-20px",
+        marginTop: "0px",
         marginLeft: "-10px",
         width: "95%",
         height: "10%"
@@ -538,7 +538,7 @@ function UP() {
   return (
     <div
       style={{
-        marginTop: "-20px",
+        marginTop: "0px",
         marginLeft: "-10px",
         width: "95%",
         height: "10%"
@@ -572,7 +572,7 @@ function Rajasthan() {
   return (
     <div
       style={{
-        marginTop: "-20px",
+        marginTop: "0px",
         marginLeft: "-10px",
         width: "95%",
         height: "10%"
@@ -606,7 +606,7 @@ function Gujarat() {
   return (
     <div
       style={{
-        marginTop: "-20px",
+        marginTop: "0px",
         marginLeft: "-10px",
         width: "95%",
         height: "10%"
@@ -640,7 +640,7 @@ function Maharastra() {
   return (
     <div
       style={{
-        marginTop: "-20px",
+        marginTop: "0px",
         marginLeft: "-10px",
         width: "95%",
         height: "10%"
@@ -674,7 +674,7 @@ function AP() {
   return (
     <div
       style={{
-        marginTop: "-20px",
+        marginTop: "0px",
         marginLeft: "-10px",
         width: "95%",
         height: "10%"
@@ -708,7 +708,7 @@ function TN() {
   return (
     <div
       style={{
-        marginTop: "-20px",
+        marginTop: "0px",
         marginLeft: "-10px",
         width: "95%",
         height: "10%"
@@ -742,7 +742,7 @@ function Kerala() {
   return (
     <div
       style={{
-        marginTop: "-20px",
+        marginTop: "0px",
         marginLeft: "-10px",
         width: "95%",
         height: "10%"
@@ -776,7 +776,7 @@ function Assam() {
   return (
     <div
       style={{
-        marginTop: "-20px",
+        marginTop: "0px",
         marginLeft: "-10px",
         width: "95%",
         height: "10%"
@@ -810,7 +810,7 @@ function Manipur() {
   return (
     <div
       style={{
-        marginTop: "-20px",
+        marginTop: "0px",
         marginLeft: "-10px",
         width: "95%",
         height: "10%"
@@ -844,7 +844,7 @@ function Mizoram() {
   return (
     <div
       style={{
-        marginTop: "-20px",
+        marginTop: "0px",
         marginLeft: "-10px",
         width: "95%",
         height: "10%"
@@ -878,7 +878,7 @@ function Tripura() {
   return (
     <div
       style={{
-        marginTop: "-20px",
+        marginTop: "0px",
         marginLeft: "-10px",
         width: "95%",
         height: "10%"
@@ -912,7 +912,7 @@ function HP() {
   return (
     <div
       style={{
-        marginTop: "-20px",
+        marginTop: "0px",
         marginLeft: "-10px",
         width: "95%",
         height: "10%"
@@ -946,7 +946,7 @@ function Punjab() {
   return (
     <div
       style={{
-        marginTop: "-20px",
+        marginTop: "0px",
         marginLeft: "-10px",
         width: "95%",
         height: "10%"
@@ -976,23 +976,107 @@ function Punjab() {
     </div>
   );
 }
+function Chats(props){
+ const isLoggedIn=props.isLoggedIn;
+ const data = {
+  datasets: [{
+    data: [
+      props.c,
+      props.d,
+      props.h
+    ],
+    backgroundColor: [
+      '#4BC0C0',
+      '#FFCE56',
+      '#FF6384',
+    ]
+   }],
+   labels:[
+   'cases',
+   'deaths',
+   'Healthy people'
+   ],
+ };
+    return (
+      <div style={{ marginTop: "20px"}}>
+        <h2></h2>
+        <Polar data={data} />
+      </div>
+    );
+}
+
+
+function G(props){
+return(
+<div>
+        <h2>Polar Example</h2>
+        <Polar data={props.p} />
+</div>
+)
+}
+
 
 class Dashboards extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      stateselected: ""
+      stateselected: "Uttar Pradesh",
+      casespoint : [],
+      numcases:0,
+      numdeaths:0,
+      numhealthy:10,
+      m:[],
     };
+    this.ap=this.ap.bind(this);
   }
+  componentDidMount() {
+    var firebase = getfirebase();
+    firebase.database().ref('cases').on('value',(snapshot)=>{
+      this.setState({
+          casespoint : snapshot.val()
+      })
+      var keys=Object.keys(snapshot.val());
 
-  
+      for(var i=0;i<keys.length;i++){
+         var z=Object.entries(snapshot.val())[i][1].state;
+         if(z==this.state.stateselected){
+           var z=this.state.numcases;
+           var k=this.state.numhealthy;
+           var s=this.state.numdeaths;
+           this.setState({
+              numcases:z+1,
+              numhealthy:k-(z+s)
+           },() => {
+           console.log("state changed", this.state.numcases);
+           })
+         }
+
+      }
+
+
+    });
+
+
+  }
+  ap(val){
+var k=val[1].state.substr(1);
+
+return k==this.state.stateselected;
+   }
+
   componentWillReceiveProps(nextProp) {
+
     if (nextProp.state != this.state.stateselected) {
       this.setState({
-        stateselected: nextProp.state
+        stateselected:nextProp.state
       });
     }
-    console.log("g", nextProp);
+    var keys=Object.entries(this.state.casespoint);
+
+    var final=keys.filter(this.ap);
+    this.setState({
+      numcases:final.length
+    });
   }
 
   render() {
@@ -1006,12 +1090,17 @@ class Dashboards extends React.Component {
                 <Map state={this.state.stateselected} />
               </Col>
               <Col xs={12} md={4}>
+              <div>
                 <Greeting isLoggedIn={this.state.stateselected} />
+                <div style={{ marginTop: "0px"}}>
+                <Chats isLoggedIn={this.state.stateselected} c={this.state.numcases} d={this.state.numdeaths} h={this.state.numhealthy} />
+                </div>
+              </div>
               </Col>
             </Row>
           }
         />
-        <div className="content">
+        <div className="content" style={{ marginTop: "40px"}}>
           <Row>
             <Col xs={12} md={4}>
               <Card className="card-chart">
@@ -1109,6 +1198,7 @@ class Dashboards extends React.Component {
             </Col>
           </Row>
         </div>
+
       </div>
     );
   }

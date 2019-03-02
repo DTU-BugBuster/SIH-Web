@@ -137,10 +137,10 @@ class MapExample extends React.Component {
     return (
       <div className="app">
         <div className="app-map">
-         
+
 
           <Map
-            style={{ width: "100%", height: "100%" }}
+            style={{ width: "100%", height: "100%" ,marginLeft:"10px"}}
             center={[this.state.coordinates[1], this.state.coordinates[0]]}
             zoom={6}
             onClick={e => {

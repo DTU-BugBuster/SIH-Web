@@ -47,13 +47,13 @@ class Sidebar extends React.Component {
     if (navigator.platform.indexOf("Win") > -1) {
       ps.destroy();
     }
-    
+
   }
   render() {
     return (
       <div className="sidebar" data-color="blue">
         <div className="logo">
-         
+
           <div
             href="https://www.creative-tim.com"
             className="simple-text logo-normal"
@@ -66,14 +66,7 @@ class Sidebar extends React.Component {
           <Nav>
             {this.props.routes.map((prop, key) => {
               if(prop.name=="User Profile") return null;
-              if (prop.name == "Report Case" )
-              {
-                 if(this.state.user.role!="HA") return null;
-              }
-              if (prop.name == "Grievances" )
-              {
-                 if(this.state.user.role!="A") return null;
-              }
+              
               if (prop.redirect) return null;
               return (
                 <li
