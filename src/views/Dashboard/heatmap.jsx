@@ -1,13 +1,21 @@
 import React from "react";
 import { render } from "react-dom";
-import { Map, TileLayer } from "react-leaflet";
+import { Map, TileLayer,Marker,Popup } from "react-leaflet";
 import HeatmapLayer from "react-leaflet-heatmap-layer";
 import "leaflet/dist/leaflet.css";
 import "./styles.css";
 import { getfirebase } from "../../firebase";
 
 import { addressPoints } from "./realworld.1000.js";
+import L from 'leaflet';
 
+delete L.Icon.Default.prototype._getIconUrl;
+
+L.Icon.Default.mergeOptions({
+    iconRetinaUrl: require('leaflet/dist/images/marker-icon-2x.png'),
+    iconUrl: require('leaflet/dist/images/marker-icon.png'),
+    shadowUrl: require('leaflet/dist/images/marker-shadow.png')
+});
 const cities = [
   { name: "Rajasthan", coordinates: [74.2179, 27.0238] },
   { name: "Kerala", coordinates: [76.2711, 10.8505] },
@@ -48,7 +56,8 @@ class MapExample extends React.Component {
     max: 0.5,
     limitAddressPoints: true,
     coordinates: [80.9462, 26.8467],
-    casespoint : []
+    casespoint: [],
+    position : [1,1]
   };
 
   /**
@@ -66,12 +75,14 @@ class MapExample extends React.Component {
   }
   componentDidMount() {
     var firebase = getfirebase();
-    firebase.database().ref('cases').on('value',(snapshot)=>{
-      this.setState({
-          casespoint : snapshot.val()
-      })
-    });
-
+    firebase
+      .database()
+      .ref("cases")
+      .on("value", snapshot => {
+        this.setState({
+          casespoint: snapshot.val()
+        });
+      });
   }
   componentWillReceiveProps(nextProp) {
     if (nextProp.state != this.props.state) {
@@ -82,8 +93,7 @@ class MapExample extends React.Component {
           return obj.name === nextProp.state;
         }
       });
-      if(!result)
-      {
+      if (!result) {
         result = [75.7139, 19.7515];
       }
       this.setState({
@@ -122,6 +132,11 @@ class MapExample extends React.Component {
             style={{ width: "100%", height: "100%" }}
             center={[this.state.coordinates[1], this.state.coordinates[0]]}
             zoom={6}
+            onClick={e => {
+              this.setState({
+                position : [e.latlng.lat,e.latlng.lng],
+              })
+            }}
           >
             {!this.state.layerHidden && (
               <HeatmapLayer
@@ -137,8 +152,15 @@ class MapExample extends React.Component {
             )}
             <TileLayer
               url="http://{s}.tile.osm.org/{z}/{x}/{y}.png"
-              attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-            />
+              attribution="&copy; <a href=&quot;http://osm.org/copyright&quot;>OpenStreetMap</a> contributors"
+              />
+            <Marker position={this.state.position}>
+              <Popup>
+                A pretty CSS3 popup.
+                <br />
+                Easily customizable.
+              </Popup>
+            </Marker>
           </Map>
         </div>
       </div>

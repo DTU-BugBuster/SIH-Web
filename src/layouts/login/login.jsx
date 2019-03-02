@@ -10,7 +10,7 @@ import {
 } from "../../firebase";
 import { Alert } from "react-bootstrap";
 
-const name="";
+const name = "";
 class Login extends Component {
   constructor(props) {
     super(props);
@@ -19,11 +19,12 @@ class Login extends Component {
       last_name: "",
       username: "",
       email: "",
-      address : "",
+      address: "",
       password: "",
       ok: false,
       show: false,
       getotp: false,
+      role: "",
       otp: ""
     };
     this.handleDismiss = this.handleDismiss.bind(this);
@@ -38,29 +39,31 @@ class Login extends Component {
       if (!this.state.ok) {
         this.props.history.push("/signin");
       } else {
-        
         axios
-        .get(
-          `https://maps.googleapis.com/maps/api/geocode/json?address="${this.state.address}"&key=AIzaSyB7cYMRfxxQv8LrcCNTxcy3byqMjlW_IE4`
-        )
-        .then(data => {
-          console.log(data);
-          register(
-            {
-              first_name: this.state.first_name,
-              last_name: this.state.last_name,
-              username: this.state.username,
-              email: this.state.email,
-              phone: this.state.password,
-              addresslat : data.data.results[0].geometry.location.lat,
-              addresslng : data.data.results[0].geometry.location.lng,
-            },
-            uid
-          ).then(() => {
-            console.log("dekh le");
-            self.props.history.push("/signin");
+          .get(
+            `https://maps.googleapis.com/maps/api/geocode/json?address="${
+              this.state.address
+            }"&key=AIzaSyB7cYMRfxxQv8LrcCNTxcy3byqMjlW_IE4`
+          )
+          .then(data => {
+            console.log(data);
+            register(
+              {
+                first_name: this.state.first_name,
+                last_name: this.state.last_name,
+                username: this.state.username,
+                email: this.state.email,
+                phone: this.state.password,
+                addresslat: data.data.results[0].geometry.location.lat,
+                addresslng: data.data.results[0].geometry.location.lng,
+                role:this.state.role,
+              },
+              uid
+            ).then(() => {
+              console.log("dekh le");
+              self.props.history.push("/signin");
+            });
           });
-        });
       }
     });
   }
@@ -76,7 +79,7 @@ class Login extends Component {
       return;
     }
 
-    var res = sendotp("+91"+this.state.password, true);
+    var res = sendotp("+91" + this.state.password, true);
     res
       .then(() => {
         console.log("sahi");
@@ -97,7 +100,7 @@ class Login extends Component {
       return;
     }
     console.log(this.state.password);
-    var res = sendotp("+91"+this.state.password, false);
+    var res = sendotp("+91" + this.state.password, false);
     res
       .then(() => {
         console.log("sahi");
@@ -169,7 +172,7 @@ class Login extends Component {
                 </div>
                 <div className="form-groupss">
                   <input
-                    style={{ padding: "10px 10px 10px 10px" }}
+                    style={{ padding: "10px 10px 10px 10px",color:"white" }}
                     name="username"
                     type="text"
                     className="form-controls"
@@ -218,6 +221,23 @@ class Login extends Component {
                     autoComplete="off"
                     required
                   />
+                </div>
+                <div className="form-groups">
+                  <select
+                    style={{ padding: "10px 10px 10px 10px",color:"white" }}
+                    name="role"
+                    type="text"
+                    className="form-controls"
+                    placeholder="Enter the Role"
+                    value={this.state.role}
+                    onChange={e => this.onchange(e)}
+                    autoComplete="off"
+                    required
+                  >
+                    <option style={{color: "black"}} value="">Select your Role</option>
+                    <option  style={{color: "black"}} value="HA">Hospital admistrative</option>
+                    <option   style={{color: "black"}} value="A">Admin</option>
+                  </select>
                 </div>
                 <div style={{ padding: "30px" }} id="capcha" />
                 <button

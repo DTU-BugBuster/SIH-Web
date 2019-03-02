@@ -8,8 +8,9 @@ import { Header, Footer, Sidebar } from "components";
 import dashboardRoutes from "routes/dashboard.jsx";
 import { getcurrentuser, getfirebase } from "../../firebase";
 import { Widget, addResponseMessage } from "react-chat-widget";
-import Dashboards from "../../views/Dashboard/Dashboard.jsx"
+import Dashboards from "../../views/Dashboard/Dashboard.jsx";
 import "react-chat-widget/lib/styles.css";
+import { watchFile } from "fs";
 var fire = getfirebase();
 var ps;
 class Dashboard extends React.Component {
@@ -18,14 +19,14 @@ class Dashboard extends React.Component {
     this.state = {
       count: 0,
       user: "",
-      stateselected:"",
+      stateselected: "",
+      role: ""
     };
   }
-  changestate(value)
-  {
+  changestate(value) {
     this.setState({
-      stateselected :value
-    })
+      stateselected: value
+    });
     console.log(value);
   }
   componentDidMount() {
@@ -42,8 +43,10 @@ class Dashboard extends React.Component {
           .once("value")
           .then(snapshot => {
             this.setState({
-              user: snapshot.key
+              user: snapshot.key,
+              role: snapshot.val().role
             });
+            console.log("role", snapshot.val().role);
           })
           .catch(error => {
             console.log(error);
@@ -66,14 +69,15 @@ class Dashboard extends React.Component {
   handleNewUserMessage = newMessage => {
     console.log(`New message incoming! ${newMessage}`);
     if (this.state.count == 0) {
-      addResponseMessage(
-        "Your message has been recorded!Soon a executive will come to help you"
-      );
-      this.setState({
-        count: 1
-      });
+      setTimeout(() => {
+        addResponseMessage(
+          "Your message has been recorded!Soon a executive will come to help you"
+        );
+        this.setState({
+          count: 1
+        });
+      }, 1000);
     }
-
     fire
       .database()
       .ref("chats")
@@ -85,7 +89,7 @@ class Dashboard extends React.Component {
   render() {
     return (
       <div className="wrapper">
-        <Sidebar {...this.props} routes={dashboardRoutes}  />
+        <Sidebar {...this.props} routes={dashboardRoutes} />
         <div className="main-panel" ref="mainPanel">
           <Header {...this.props} changestate={this.changestate.bind(this)} />
           <Switch>
@@ -101,17 +105,35 @@ class Dashboard extends React.Component {
                   );
                 });
               }
-              if(prop.name=="Dashboard")
-              {
+              if (prop.name == "Dashboard") {
                 return (
-                  <Route path={prop.path} render={()=>{return <Dashboards {...this.props} state={this.state.stateselected} />}} key={key}  />
+                  <Route
+                    path={prop.path}
+                    render={() => {
+                      return (
+                        <Dashboards
+                          {...this.props}
+                          state={this.state.stateselected}
+                        />
+                      );
+                    }}
+                    key={key}
+                  />
                 );
               }
-              if (prop.redirect)
-                return <Redirect from={prop.path} to={prop.pathTo} key={key} />;
-              return (
-                <Route path={prop.path} component={prop.component} key={key} />
-              );
+              
+                if (prop.redirect)
+                  return (
+                    <Redirect from={prop.path} to={prop.pathTo} key={key} />
+                  );
+                return (
+                  <Route
+                    path={prop.path}
+                    component={prop.component}
+                    key={key}
+                  />
+                );
+              
             })}
           </Switch>
           <Widget
