@@ -6,14 +6,50 @@ import {
   CardTitle,
   Table,
   Row,
-  Col
+  Col,
+  Input,
+  FormGroup,
+  Label
 } from "reactstrap";
 
 import { PanelHeader } from "components";
+import { Checkbox } from "components";
 
 import { thead, tbody } from "variables/general";
+import { getfirebase } from "../../firebase";
 
 class RegularTables extends React.Component {
+  constructor(props) {
+    super(props);
+    {
+      this.state = {
+        issues: []
+      };
+    }
+  }
+  componentDidMount() {
+    var firebase = getfirebase();
+    firebase
+      .database()
+      .ref("Issues")
+      .on("value", snapshot => {
+        this.setState({
+          issues: snapshot.val()
+        });
+        console.log(snapshot.val());
+      });
+  }
+  actiontaken(key, value) {
+    var firebase = getfirebase();
+    console.log(key);
+    var update = {};
+    firebase
+      .database()
+      .ref("Issues/" + key)
+      .update({
+        ActionsTaken: value
+      });
+  }
   render() {
     return (
       <div>
@@ -23,7 +59,7 @@ class RegularTables extends React.Component {
             <Col xs={12}>
               <Card>
                 <CardHeader>
-                  <CardTitle tag="h4">Simple Table</CardTitle>
+                  <CardTitle tag="h4">Issues reported</CardTitle>
                 </CardHeader>
                 <CardBody>
                   <Table responsive>
@@ -41,18 +77,43 @@ class RegularTables extends React.Component {
                       </tr>
                     </thead>
                     <tbody>
-                      {tbody.map((prop, key) => {
+                      {this.state.issues.map((prop, key) => {
                         return (
-                          <tr key={key} className={prop.className}>
-                            {prop.data.map((prop, key) => {
-                              if (key === thead.length - 1)
-                                return (
-                                  <td key={key} className="text-right">
-                                    {prop}
-                                  </td>
-                                );
-                              return <td key={key}>{prop}</td>;
-                            })}
+                          <tr key={key}>
+                            <td>{prop.DateOfComplain}</td>
+                            <td>{prop.Name}</td>
+                            <td>{prop.RegularFluctuations}</td>
+                            <td>{prop.ReportedAuthorities}</td>
+                            <td>{prop.ChangeTaste}</td>
+                            <td>{prop.WaterTaste}</td>
+                            <td>
+                              {prop.ActionsTaken == "No" ? (
+                                <FormGroup check>
+                                  <Label check>
+                                    <Input
+                                      type="checkbox"
+                                      onChange={() =>
+                                        this.actiontaken(key, "Yes")
+                                      }
+                                    />
+                                    <span className="form-check-sign" />
+                                  </Label>
+                                </FormGroup>
+                              ) : (
+                                <FormGroup check>
+                                  <Label check>
+                                    <Input
+                                      type="checkbox"
+                                      checked={true}
+                                      onChange={() =>
+                                        this.actiontaken(key, "No")
+                                      }
+                                    />
+                                    <span className="form-check-sign" />
+                                  </Label>
+                                </FormGroup>
+                              )}
+                            </td>
                           </tr>
                         );
                       })}
