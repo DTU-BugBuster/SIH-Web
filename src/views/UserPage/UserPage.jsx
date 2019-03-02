@@ -2,7 +2,7 @@ import React from "react";
 import { Card, CardHeader, CardBody, Row, Col } from "reactstrap";
 
 import { FormInputs, CardAuthor, CardSocials } from "components";
-import {PanelHeader} from '../../../layouts/PanelHeader/PanelHeader.jsx'
+import PanelHeader from '../../layouts/PanelHeader/PanelHeader'
 
 import userBackground from "assets/img/bg5.jpg";
 import userAvatar from "assets/img/default-avatar.png";

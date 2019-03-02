@@ -108,7 +108,8 @@ class Login extends Component {
           getotp: true
         });
       })
-      .catch(() => {
+      .catch((error) => {
+        console.log(error);
         this.setState({
           password: "",
           show: true

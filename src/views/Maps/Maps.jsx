@@ -38,7 +38,7 @@ import {
 } from "../../variables/charts.jsx";
 
 
-import {PanelHeader} from '../../../layouts/PanelHeader/PanelHeader.jsx'
+import PanelHeader from '../../layouts/PanelHeader/PanelHeader'
 import {
   ComposableMap,
   ZoomableGroup,

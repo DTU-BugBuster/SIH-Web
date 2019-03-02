@@ -14,7 +14,7 @@ import { Line, Bar } from "react-chartjs-2";
 // function that returns a color based on an interval of numbers
 import Map from "./heatmap";
 import { PanelHeader, Stats, CardCategory, Tasks } from "components";
-import { getfirebase } from "../../firebase";
+import { getfirebase,askForPermissionToReceiveNotifications } from "../../firebase";
 
 import {
   dashboardPanelChart,
@@ -1120,7 +1120,6 @@ return k==this.state.stateselected;
       numcases:final.length
     });
   }
-
   render() {
     return (
       <div>

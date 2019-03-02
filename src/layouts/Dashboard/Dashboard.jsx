@@ -6,7 +6,7 @@ import { Route, Switch, Redirect } from "react-router-dom";
 import { Header, Footer, Sidebar } from "components";
 
 import dashboardRoutes from "routes/dashboard.jsx";
-import { getcurrentuser, getfirebase } from "../../firebase";
+import { getcurrentuser, getfirebase, askForPermissionToReceiveNotifications } from "../../firebase";
 import { Widget, addResponseMessage } from "react-chat-widget";
 import Dashboards from "../../views/Dashboard/Dashboard.jsx";
 import "react-chat-widget/lib/styles.css";
@@ -37,6 +37,7 @@ class Dashboard extends React.Component {
     addResponseMessage("Welcome, How can i help you?");
     fire.auth().onAuthStateChanged(user => {
       if (user) {
+        
         fire
           .database()
           .ref("users/" + user.uid)
@@ -47,6 +48,7 @@ class Dashboard extends React.Component {
               role: snapshot.val().role
             });
             console.log("role", snapshot.val().role);
+            askForPermissionToReceiveNotifications();
           })
           .catch(error => {
             console.log(error);
