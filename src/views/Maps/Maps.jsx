@@ -37,7 +37,8 @@ import {
   dashboard24HoursPerformanceChartJharkhand,
 } from "../../variables/charts.jsx";
 
-import { PanelHeader } from "components";
+
+import {PanelHeader} from '../../../layouts/PanelHeader/PanelHeader.jsx'
 import {
   ComposableMap,
   ZoomableGroup,

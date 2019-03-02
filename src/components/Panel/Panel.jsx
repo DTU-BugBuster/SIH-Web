@@ -1,13 +1,13 @@
 import React from "react";
 
-class PanelHeader extends React.Component {
+class Panel extends React.Component {
   render() {
     return (
-      <div style={{height:"670px",marginLeft:"0px"}}
+      <div
         className={
-          "panel-header " +
+          "panel " +
           (this.props.size !== undefined
-            ? "panel-header-" + this.props.size
+            ? "panel-" + this.props.size
             : "")
         }
       >
@@ -17,4 +17,4 @@ class PanelHeader extends React.Component {
   }
 }
 
-export default PanelHeader;
+export default Panel;

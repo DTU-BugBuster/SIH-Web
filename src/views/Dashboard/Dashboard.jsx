@@ -22,6 +22,11 @@ import {
   getChartD,
   getChartT
 } from "variables/charts.jsx";
+
+var CanvasJSReact = require('../../canvasjs.react');
+var CanvasJS = CanvasJSReact.CanvasJS;
+var CanvasJSChart = CanvasJSReact.CanvasJSChart;
+
 function Greeting(props) {
   const isLoggedIn = props.isLoggedIn;
   if (isLoggedIn == "Orissa") return <Orissa />;
@@ -60,7 +65,7 @@ class Orissa extends React.Component {
       <div
         style={{
           marginTop: "-20px",
-          marginLeft: "-10px",
+          marginLeft: "0px",
           width: "95%",
           height: "10%"
         }}
@@ -96,7 +101,7 @@ function Chattisgarh() {
     <div
       style={{
         marginTop: "0px",
-        marginLeft: "-10px",
+        marginLeft: "0px",
         width: "95%",
         height: "10%"
       }}
@@ -130,7 +135,7 @@ function Uttrakhand() {
     <div
       style={{
         marginTop: "0px",
-        marginLeft: "-10px",
+        marginLeft: "0px",
         width: "95%",
         height: "10%"
       }}
@@ -164,7 +169,7 @@ function Jharkhand() {
     <div
       style={{
         marginTop: "0px",
-        marginLeft: "-10px",
+        marginLeft: "0px",
         width: "95%",
         height: "10%"
       }}
@@ -198,7 +203,7 @@ function Meghalaya() {
     <div
       style={{
         marginTop: "0px",
-        marginLeft: "-10px",
+        marginLeft: "0px",
         width: "95%",
         height: "10%"
       }}
@@ -232,7 +237,7 @@ function Haryana() {
     <div
       style={{
         marginTop: "0px",
-        marginLeft: "-10px",
+        marginLeft: "0px",
         width: "95%",
         height: "10%"
       }}
@@ -266,7 +271,7 @@ function Arunachal() {
     <div
       style={{
         marginTop: "0px",
-        marginLeft: "-10px",
+        marginLeft: "0px",
         width: "95%",
         height: "10%"
       }}
@@ -300,7 +305,7 @@ function MP() {
     <div
       style={{
         marginTop: "0px",
-        marginLeft: "-10px",
+        marginLeft: "0px",
         width: "95%",
         height: "10%"
       }}
@@ -334,7 +339,7 @@ function JK() {
     <div
       style={{
         marginTop: "0px",
-        marginLeft: "-10px",
+        marginLeft: "0px",
         width: "95%",
         height: "10%"
       }}
@@ -368,7 +373,7 @@ function Sikkim() {
     <div
       style={{
         marginTop: "0px",
-        marginLeft: "-10px",
+        marginLeft: "0px",
         width: "95%",
         height: "10%"
       }}
@@ -402,7 +407,7 @@ function Karnataka() {
     <div
       style={{
         marginTop: "0px",
-        marginLeft: "-10px",
+        marginLeft: "0px",
         width: "95%",
         height: "10%"
       }}
@@ -436,7 +441,7 @@ function Nagaland() {
     <div
       style={{
         marginTop: "0px",
-        marginLeft: "-10px",
+        marginLeft: "0px",
         width: "95%",
         height: "10%"
       }}
@@ -470,7 +475,7 @@ function WB() {
     <div
       style={{
         marginTop: "0px",
-        marginLeft: "-10px",
+        marginLeft: "0px",
         width: "95%",
         height: "10%"
       }}
@@ -505,7 +510,7 @@ function Bihar() {
     <div
       style={{
         marginTop: "0px",
-        marginLeft: "-10px",
+        marginLeft: "0px",
         width: "95%",
         height: "10%"
       }}
@@ -539,7 +544,7 @@ function UP() {
     <div
       style={{
         marginTop: "0px",
-        marginLeft: "-10px",
+        marginLeft: "0px",
         width: "95%",
         height: "10%"
       }}
@@ -573,7 +578,7 @@ function Rajasthan() {
     <div
       style={{
         marginTop: "0px",
-        marginLeft: "-10px",
+        marginLeft: "0px",
         width: "95%",
         height: "10%"
       }}
@@ -607,7 +612,7 @@ function Gujarat() {
     <div
       style={{
         marginTop: "0px",
-        marginLeft: "-10px",
+        marginLeft: "0px",
         width: "95%",
         height: "10%"
       }}
@@ -641,7 +646,7 @@ function Maharastra() {
     <div
       style={{
         marginTop: "0px",
-        marginLeft: "-10px",
+        marginLeft: "0px",
         width: "95%",
         height: "10%"
       }}
@@ -675,7 +680,7 @@ function AP() {
     <div
       style={{
         marginTop: "0px",
-        marginLeft: "-10px",
+        marginLeft: "0px",
         width: "95%",
         height: "10%"
       }}
@@ -709,7 +714,7 @@ function TN() {
     <div
       style={{
         marginTop: "0px",
-        marginLeft: "-10px",
+        marginLeft: "0px",
         width: "95%",
         height: "10%"
       }}
@@ -743,7 +748,7 @@ function Kerala() {
     <div
       style={{
         marginTop: "0px",
-        marginLeft: "-10px",
+        marginLeft: "0px",
         width: "95%",
         height: "10%"
       }}
@@ -777,7 +782,7 @@ function Assam() {
     <div
       style={{
         marginTop: "0px",
-        marginLeft: "-10px",
+        marginLeft: "0px",
         width: "95%",
         height: "10%"
       }}
@@ -811,7 +816,7 @@ function Manipur() {
     <div
       style={{
         marginTop: "0px",
-        marginLeft: "-10px",
+        marginLeft: "0px",
         width: "95%",
         height: "10%"
       }}
@@ -845,7 +850,7 @@ function Mizoram() {
     <div
       style={{
         marginTop: "0px",
-        marginLeft: "-10px",
+        marginLeft: "0px",
         width: "95%",
         height: "10%"
       }}
@@ -879,7 +884,7 @@ function Tripura() {
     <div
       style={{
         marginTop: "0px",
-        marginLeft: "-10px",
+        marginLeft: "0px",
         width: "95%",
         height: "10%"
       }}
@@ -913,7 +918,7 @@ function HP() {
     <div
       style={{
         marginTop: "0px",
-        marginLeft: "-10px",
+        marginLeft: "0px",
         width: "95%",
         height: "10%"
       }}
@@ -947,7 +952,7 @@ function Punjab() {
     <div
       style={{
         marginTop: "0px",
-        marginLeft: "-10px",
+        marginLeft: "0px",
         width: "95%",
         height: "10%"
       }}
@@ -1014,7 +1019,44 @@ return(
 </div>
 )
 }
-
+class App extends React.Component {
+	render() {
+		const options = {
+    backgroundColor:"White",
+      height:300,
+      width:300,
+			animationEnabled: true,
+			title: {
+				text: "Customer Satisfaction"
+			},
+			subtitles: [{
+				text: "71% Positive",
+				verticalAlign: "center",
+				fontSize: 24,
+				dockInsidePlotArea: true
+			}],
+			data: [{
+				type: "doughnut",
+				showInLegend: true,
+				indexLabel: "{name}: {y}",
+				yValueFormatString: "#,###'%'",
+				dataPoints: [
+					{ name: "Cases", y: this.props.c },
+					{ name: "Deaths", y: this.props.d },
+					{ name: "Healthy People", y: this.props.z }
+				]
+			}]
+		}
+		return (
+		<div>
+			<CanvasJSChart options = {options}
+				/* onRef={ref => this.chart = ref} */
+			/>
+			{/*You can get reference to the chart instance as shown above using onRef. This allows you to access all chart properties and methods*/}
+		</div>
+		);
+	}
+}
 
 class Dashboards extends React.Component {
   constructor(props) {
@@ -1092,15 +1134,15 @@ return k==this.state.stateselected;
               <Col xs={12} md={4}>
               <div>
                 <Greeting isLoggedIn={this.state.stateselected} />
-                <div style={{ marginTop: "0px"}}>
-                <Chats isLoggedIn={this.state.stateselected} c={this.state.numcases} d={this.state.numdeaths} h={this.state.numhealthy} />
+                <div style={{ marginTop: "0px",height:"10%"}}>
+                <App style={{marginLeft:"-10px"}} c={this.state.numcases} d={this.state.numdeaths} z={this.state.numhealthy}/>
                 </div>
               </div>
               </Col>
             </Row>
           }
         />
-        <div className="content" style={{ marginTop: "40px"}}>
+        <div className="content" style={{ marginTop: "70px"}}>
           <Row>
             <Col xs={12} md={4}>
               <Card className="card-chart">

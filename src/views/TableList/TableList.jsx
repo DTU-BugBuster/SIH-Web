@@ -12,7 +12,7 @@ import {
   Label
 } from "reactstrap";
 
-import { PanelHeader } from "components";
+import {PanelHeader} from "../../layouts"
 import { Checkbox } from "components";
 
 import { thead, tbody } from "variables/general";

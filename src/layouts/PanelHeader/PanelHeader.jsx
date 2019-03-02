@@ -3,7 +3,7 @@ import React from "react";
 class PanelHeader extends React.Component {
   render() {
     return (
-      <div style={{height:"670px",marginLeft:"0px"}}
+      <div
         className={
           "panel-header " +
           (this.props.size !== undefined
