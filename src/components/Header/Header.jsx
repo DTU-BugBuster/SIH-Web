@@ -21,6 +21,7 @@ import Autocomplete from "react-autocomplete";
 
 import dashboardRoutes from "routes/dashboard.jsx";
 import { getfirebase } from "../../firebase";
+import Axios from "axios";
 
 class Header extends React.Component {
   constructor(props) {
@@ -120,6 +121,33 @@ class Header extends React.Component {
         console.log(error);
       });
   }
+  sendnot()
+  {
+    var firebase = getfirebase();
+    firebase.database().ref('users').once('value').then((data)=>{
+      var users = data.val();
+      users = Object.entries(users);
+      for(var i=0;i<users.length;i++)
+      {
+        Axios.post('https://fcm.googleapis.com/fcm/send',{
+          "notification" : {
+            "title" : "BugBuster",
+            "body" : "Water Borne disease on rise in your region!!",
+            "click_action" : "url",
+            "icon" : "picture"
+          },
+          "to" : users[i][1].token
+        },{
+          headers :{
+          'Authorization' : 'key=AAAAviPMTG4:APA91bHuFkDkkuF3DdOtgPlDCoYoJEQtw0XqRnU9Lyz96W-8ikn-OyjBBM7Q8hYfoqShdhpz2N8EXIGHCsBZcI3dhr5XsJAcG-flzyDzg19SE1jOjvLH0ISO1G_cAsJtnKGGb6Zp5WYK'
+        }}).then(data=>{
+          console.log(data);
+        }).catch((error)=>{
+            console.log(error);
+        })
+      }
+    })
+  }
   render() {
     return (
       // add or remove classes depending if we are on full-screen-maps page or not
@@ -158,11 +186,13 @@ class Header extends React.Component {
             <span className="navbar-toggler-bar navbar-kebab" />
             <span className="navbar-toggler-bar navbar-kebab" />
           </NavbarToggler>
+          
           <Collapse
             isOpen={this.state.isOpen}
             navbar
             className="justify-content-end"
           >
+          
             <form>
               <Autocomplete
                 getItemValue={item => item}
@@ -233,6 +263,11 @@ class Header extends React.Component {
               />
             </form>
             <Nav navbar>
+            <NavItem >
+                <a href="#" className="nav-link">
+                  <i onClick={this.sendnot} className="now-ui-icons arrows-1_cloud-upload-94" />
+                </a>
+              </NavItem>
               <Dropdown
                 nav
                 isOpen={this.state.dropdownOpen}
@@ -253,7 +288,9 @@ class Header extends React.Component {
                   </DropdownItem>
                 </DropdownMenu>
               </Dropdown>
+              
             </Nav>
+            
           </Collapse>
         </Container>
       </Navbar>
