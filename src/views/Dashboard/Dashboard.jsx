@@ -1273,7 +1273,7 @@ class Dashboards extends React.Component {
               <div>
                 <Greeting isLoggedIn={this.state.stateselected} />
                 <div>
-                  <Age c={this.state.u20} d={this.stateu40} z={this.stateu60} k={this.stateu80}/>
+                  <Age c={this.state.u20} d={this.state.u40} z={this.state.u60} k={this.state.u80}/>
                 </div>
               </div>
               </Col>

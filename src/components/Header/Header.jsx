@@ -18,6 +18,7 @@ import {
   Input
 } from "reactstrap";
 import Autocomplete from "react-autocomplete";
+import { ToastContainer, toast } from "react-toastify";
 
 import dashboardRoutes from "routes/dashboard.jsx";
 import { getfirebase } from "../../firebase";
@@ -144,6 +145,7 @@ class Header extends React.Component {
   }
   sendnot()
   {
+    toast.info("Push notification sent to all concerned");
     var firebase = getfirebase();
     firebase.database().ref('users').once('value').then((data)=>{
       var users = data.val();
@@ -187,6 +189,7 @@ class Header extends React.Component {
               (this.state.color === "transparent" ? "navbar-transparent " : "")
         }
       >
+              <ToastContainer></ToastContainer>
         <Container fluid>
           <div className="navbar-wrapper">
             <div className="navbar-toggle">
