@@ -1141,6 +1141,7 @@ class Dashboards extends React.Component {
     super(props);
     this.state = {
       stateselected: "Uttar Pradesh",
+      dataselected : "Both",
       casespoint : [],
       numcases:11,
       numdeaths:0,
@@ -1224,6 +1225,11 @@ class Dashboards extends React.Component {
         stateselected:nextProp.state
       });
     }
+    if (nextProp.dataselected != this.state.stateselected) {
+      this.setState({
+        dataselected:nextProp.dataselected
+      });
+    }
     var keys=Object.entries(this.state.casespoint);
 
     var final=keys.filter(this.ap);
@@ -1261,7 +1267,7 @@ class Dashboards extends React.Component {
           content={
             <Row>
               <Col xs={12} md={8}>
-                <Map state={this.state.stateselected} />
+                <Map state={this.state.stateselected} dataselected={this.state.dataselected} />
               </Col>
               <Col xs={12} md={4}>
               <div>

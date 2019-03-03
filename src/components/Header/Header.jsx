@@ -31,6 +31,7 @@ class Header extends React.Component {
       dropdownOpen: false,
       color: "transparent",
       value: "",
+      value1:"",
       role : "",
     };
     this.toggle = this.toggle.bind(this);
@@ -213,7 +214,42 @@ class Header extends React.Component {
             navbar
             className="justify-content-end"
           >
-          
+         <form>
+              <Autocomplete
+                getItemValue={item => item}
+                items={[
+                  "Users",
+                  "Hospital",
+                  "Both"
+                ]}
+                shouldItemRender={(item, value) =>
+                  item.slice(0, value.length).toLowerCase() ==
+                  value.toLowerCase()
+                }
+                renderItem={(item, isHighlighted) => {
+                  return (
+                    <div className="form-control"  style={{ fontSize: "14px",borderRadius:"0",background:"rgba(255,255,255,1)",color:"black" }}>
+                      {item}
+                    </div>
+                  );
+                }}
+                value={this.state.value1}
+                onChange={e => this.setState({ value1: e.target.value })}
+                onSelect={val => {
+                  this.setState({ value1: val });
+                  this.props.changestate1(val);
+                }}
+                wrapperProps={{
+                  className: "no-border input-group",
+                  style: {}
+                }}
+                inputProps={{
+                  className: "form-control",
+                  placeholder: "Select the data",
+                  style: {marginBottom:"5px",borderRadius:"30px"}
+                }}
+              />
+            </form>
             <form>
               <Autocomplete
                 getItemValue={item => item}

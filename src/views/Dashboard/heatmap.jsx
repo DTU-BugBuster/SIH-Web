@@ -58,7 +58,9 @@ class MapExample extends React.Component {
     limitAddressPoints: true,
     coordinates: [80.9462, 26.8467],
     casespoint: [],
+    casespoint1 : [],
     position: [[1, 1]],
+    data : "Both",
   };
 
   /**
@@ -80,11 +82,25 @@ class MapExample extends React.Component {
       .database()
       .ref("cases")
       .on("value", snapshot => {
+
+          
+
         this.setState({
-          casespoint: snapshot.val()
-        });
-      });
-  }
+          casespoint:  [Object.entries(snapshot.val()).filter((data)=>{
+            if(data[1].isweb)
+            {
+              return data[1];
+            }
+          })],
+          casespoint1:  [Object.entries(snapshot.val()).filter((data)=>{
+            if(!data[1].isweb)
+            {
+              return data[1];
+            }
+          })]
+      })
+  })
+}
   componentWillReceiveProps(nextProp) {
     if (nextProp.state != this.props.state) {
       var result = cities.find(obj => {
@@ -98,9 +114,17 @@ class MapExample extends React.Component {
         result = [75.7139, 19.7515];
       }
       this.setState({
-        coordinates: result.coordinates
+        coordinates: result.coordinates,
       });
       console.log("g", result);
+    }
+    console.log('props',nextProp)
+    if(nextProp.dataselected != this.state.data)
+    {
+      
+      this.setState({
+        data : nextProp.dataselected
+      })
     }
   }
   deletemarker(value) {
@@ -132,7 +156,13 @@ class MapExample extends React.Component {
       '0.75': 'rgb(255,255,0)',
       '1.00': 'rgb(255,0,0)'
     }
-
+    const gradient1 = {
+      '0.0': 'rgb(0, 0, 0)',
+      '0.6': 'rgb(24, 53, 103)',
+      '0.75': 'rgb(46, 100, 158)',
+      '0.9': 'rgb(23, 173, 203)',
+      '1.0': 'rgb(0, 250, 250)'
+    }
     return (
       <div className="app">
         <div className="app-map">
@@ -151,18 +181,30 @@ class MapExample extends React.Component {
             }}
             doubleClickZoom={false}
           >
-            {!this.state.layerHidden && (
+            {console.log('a',this.state.data)}
+            { (this.props.dataselected=="Hospital" || this.props.dataselected=="Both")?
               <HeatmapLayer
-                points={this.state.casespoint}
-                longitudeExtractor={m => m.addresslng}
-                latitudeExtractor={m => m.addresslat}
+                points={this.state.casespoint[0]}
+                longitudeExtractor={m => m[1].addresslng}
+                latitudeExtractor={m => m[1].addresslat}
                 gradient={gradient}
                 intensityExtractor={m => 10000}
                 radius={Number(this.state.radius)}
                 blur={Number(this.state.blur)}
                 max={Number.parseFloat(this.state.max)}
-              />
-            )}
+              />:""}
+              { (this.props.dataselected=="Users" || this.props.dataselected=="Both")?
+              <HeatmapLayer
+                points={this.state.casespoint1[0]}
+                longitudeExtractor={m => m[1].addresslng}
+                latitudeExtractor={m => m[1].addresslat}
+                gradient={gradient1}
+                intensityExtractor={m => 10000}
+                radius={Number(this.state.radius)}
+                blur={Number(this.state.blur)}
+                max={Number.parseFloat(this.state.max)}
+              /> : ""
+              }
             <TileLayer
               url="http://{s}.tile.osm.org/{z}/{x}/{y}.png"
               attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
@@ -173,7 +215,7 @@ class MapExample extends React.Component {
                   position={value}
                 >
                   <Popup>
-                    A pretty CSS3 popup.
+                    Area marked for outbreak
                     <br />
                    <Button color="danger" onClick={()=>this.deletemarker(value)}>Delete</Button>
                   </Popup>

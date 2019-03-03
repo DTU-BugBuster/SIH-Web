@@ -72,5 +72,5 @@
     "eslint-plugin-react": "^7.10.0",
     "prettier": "^1.13.7"
   },
-  "proxy" : "https://lati.herokuapp.com/"
+  "proxy" : "http://apis.mapmyindia.com/"
 }

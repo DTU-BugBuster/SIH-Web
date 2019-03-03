@@ -46,8 +46,15 @@ class User extends React.Component {
   submit() {
     console.log("dds");
     Axios.get(
-      `https://maps.googleapis.com/maps/api/geocode/json?address="${this.state.address}"&key=AIzaSyAsjSViDZXXU8fAzih-GNhl5gBaMRd3krY`
-    ).then(data => {
+      `http://apis.mapmyindia.com/advancedmaps/v1/dmywbcu8v3poae8cwcqhygwbpmvtrdr4/geo_code?addr=${this.state.address}`
+    ,{
+        method: 'GET',
+        mode: 'no-cors',
+        headers: {
+          'Access-Control-Allow-Origin': '*',
+          'Content-Type': 'application/json',
+        }
+    }).then(data => {
       console.log(data);
       if(data.data.results[0]==undefined)
       {
@@ -95,8 +102,8 @@ class User extends React.Component {
         .push({
           disease: this.state.d_name,
           h_name: this.state.h_name,
-          addresslat: data.data.results[0].geometry.location.lat.toString(),
-          addresslng: data.data.results[0].geometry.location.lng.toString(),
+          addresslat: data.data.results[0].lat.toString(),
+          addresslng: data.data.results[0].lng.toString(),
           Date: Date.now(),
           age: parseInt(this.state.age),
           gender: this.state.gender,

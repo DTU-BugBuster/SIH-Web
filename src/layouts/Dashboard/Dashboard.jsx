@@ -20,7 +20,8 @@ class Dashboard extends React.Component {
       count: 0,
       user: "",
       stateselected: "",
-      role: ""
+      role: "",
+      dataselected : ""
     };
   }
   changestate(value) {
@@ -28,6 +29,12 @@ class Dashboard extends React.Component {
       stateselected: value
     });
     console.log(value);
+  }
+  changestate1(value) {
+    this.setState({
+      dataselected: value
+    });
+    console.log('c',value);
   }
   componentDidMount() {
     if (navigator.platform.indexOf("Win") > -1) {
@@ -93,7 +100,7 @@ class Dashboard extends React.Component {
       <div className="wrapper">
         <Sidebar {...this.props} routes={dashboardRoutes} />
         <div className="main-panel" ref="mainPanel">
-          <Header {...this.props} changestate={this.changestate.bind(this)} />
+          <Header {...this.props} changestate={this.changestate.bind(this)} changestate1={this.changestate1.bind(this)} />
           <Switch>
             {dashboardRoutes.map((prop, key) => {
               if (prop.collapse) {
@@ -116,6 +123,7 @@ class Dashboard extends React.Component {
                         <Dashboards
                           {...this.props}
                           state={this.state.stateselected}
+                          dataselected={this.state.dataselected}
                         />
                       );
                     }}
