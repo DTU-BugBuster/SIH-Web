@@ -126,13 +126,12 @@ class MapExample extends React.Component {
     }
 
     const gradient = {
-      0.1: "#21e031",
-      0.2: "#96E3E6",
-      0.4: "#1b43e2",
-      0.6: "#FAF3A5",
-      0.8: "#ffea00",
-      "1.0": "#e80909"
-    };
+      '0.00': 'rgb(255,0,255)',
+      '0.25': 'rgb(0,0,255)',
+      '0.50': 'rgb(0,255,0)',
+      '0.75': 'rgb(255,255,0)',
+      '1.00': 'rgb(255,0,0)'
+    }
 
     return (
       <div className="app">

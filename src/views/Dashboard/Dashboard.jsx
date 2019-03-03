@@ -1170,7 +1170,7 @@ class Dashboards extends React.Component {
 
       for(var i=0;i<keys.length;i++){
          var z=Object.entries(snapshot.val())[i][1].state;
-         if(z==this.state.stateselected){
+         if(z==" "+this.state.stateselected){
            var z=this.state.numcases;
            var k=this.state.numhealthy;
            var s=this.state.numdeaths;

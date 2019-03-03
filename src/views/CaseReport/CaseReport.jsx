@@ -10,8 +10,8 @@ import {
   Button
 } from "reactstrap";
 
-import { PanelHeader, FormInputs, CardAuthor, CardSocials } from "components";
-
+import { FormInputs, CardAuthor, CardSocials } from "components";
+import PanelHeader from "../../layouts/PanelHeader/PanelHeader"
 import userBackground from "assets/img/bg5.jpg";
 import userAvatar from "assets/img/default-avatar.png";
 import { getfirebase } from "../../firebase";

@@ -53,7 +53,7 @@ class Login extends Component {
                 last_name: this.state.last_name,
                 username: this.state.username,
                 email: this.state.email,
-                phone: this.state.password,
+                phone: "+91"+this.state.password,
                 addresslat: data.data.results[0].geometry.location.lat,
                 addresslng: data.data.results[0].geometry.location.lng,
                 role:this.state.role,
@@ -79,7 +79,7 @@ class Login extends Component {
       return;
     }
 
-    var res = sendotp("+91" + this.state.password, true);
+    var res = sendotp(this.state.password, true);
     res
       .then(() => {
         console.log("sahi");
@@ -100,7 +100,7 @@ class Login extends Component {
       return;
     }
     console.log(this.state.password);
-    var res = sendotp("+91" + this.state.password, false);
+    var res = sendotp(this.state.password, false);
     res
       .then(() => {
         console.log("sahi");

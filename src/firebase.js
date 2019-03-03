@@ -41,6 +41,7 @@ export const getcapcha = () => {
 
 export const sendotp = (phoneNumber, islogin) => {
   const myPromise = new Promise((resolve, reject) => {
+    phoneNumber = "+91" + phoneNumber;
     firebase
       .database()
       .ref("users")
