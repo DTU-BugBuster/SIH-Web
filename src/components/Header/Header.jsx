@@ -30,7 +30,8 @@ class Header extends React.Component {
       isOpen: false,
       dropdownOpen: false,
       color: "transparent",
-      value: ""
+      value: "",
+      role : "",
     };
     this.toggle = this.toggle.bind(this);
     this.dropdownToggle = this.dropdownToggle.bind(this);
@@ -97,6 +98,25 @@ class Header extends React.Component {
   }
   componentDidMount() {
     window.addEventListener("resize", this.updateColor.bind(this));
+    var fire = getfirebase();
+    fire.auth().onAuthStateChanged(user => {
+      if (user) {
+        
+        fire
+          .database()
+          .ref("users/" + user.uid)
+          .once("value")
+          .then(snapshot => {
+            this.setState({
+              role: snapshot.val().role
+            });
+            console.log("role", snapshot.val().role);
+          })
+          .catch(error => {
+            console.log(error);
+          });
+      }
+    });
   }
   componentDidUpdate(e) {
     if (
@@ -127,6 +147,7 @@ class Header extends React.Component {
     firebase.database().ref('users').once('value').then((data)=>{
       var users = data.val();
       users = Object.entries(users);
+      console.log(users);
       for(var i=0;i<users.length;i++)
       {
         Axios.post('https://fcm.googleapis.com/fcm/send',{
@@ -139,7 +160,7 @@ class Header extends React.Component {
           "to" : users[i][1].token
         },{
           headers :{
-          'Authorization' : 'key=AAAAviPMTG4:APA91bHuFkDkkuF3DdOtgPlDCoYoJEQtw0XqRnU9Lyz96W-8ikn-OyjBBM7Q8hYfoqShdhpz2N8EXIGHCsBZcI3dhr5XsJAcG-flzyDzg19SE1jOjvLH0ISO1G_cAsJtnKGGb6Zp5WYK'
+          'Authorization' : 'key=AAAAviPMTG4:APA91bHP1-h21hufRQxVzaOt3Bxsan1qwCrLykXKmIMkYkygAhaBWFHW5ZZT--xvroH6f32HMKmgW3s92k4uDz0-yHXgssXWMV9a_u4Qs_D9fEkxN8WkihozB6YBUhNv9ED-47bvkafc'
         }}).then(data=>{
           console.log(data);
         }).catch((error)=>{
@@ -263,16 +284,18 @@ class Header extends React.Component {
               />
             </form>
             <Nav navbar>
-            <NavItem >
+            {this.state.role=="A" ? <NavItem >
                 <a href="#" className="nav-link">
                   <i onClick={this.sendnot} className="now-ui-icons arrows-1_cloud-upload-94" />
                 </a>
-              </NavItem>
+              </NavItem> : ""}
+            
               <Dropdown
                 nav
                 isOpen={this.state.dropdownOpen}
                 toggle={e => this.dropdownToggle(e)}
               >
+            
                 <DropdownToggle caret nav>
                   <i className="now-ui-icons users_single-02" />
                   <p>

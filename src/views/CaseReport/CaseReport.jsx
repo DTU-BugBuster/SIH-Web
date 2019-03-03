@@ -45,11 +45,8 @@ class User extends React.Component {
   }
   submit() {
     console.log("dds");
-    Axios.post(
-      `https://lati.herokuapp.com/`,
-      {
-        state : this.state.state
-      }
+    Axios.get(
+      `https://maps.googleapis.com/maps/api/geocode/json?address="${this.state.address}"&key=AIzaSyAsjSViDZXXU8fAzih-GNhl5gBaMRd3krY`
     ).then(data => {
       console.log(data);
       if(data.data.results[0]==undefined)

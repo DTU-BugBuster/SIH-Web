@@ -43,10 +43,31 @@ class Login extends Component {
           .get(
             `https://maps.googleapis.com/maps/api/geocode/json?address="${
               this.state.address
-            }"&key=AIzaSyB7cYMRfxxQv8LrcCNTxcy3byqMjlW_IE4`
+            }"&key=AIzaSyCtdX4pdjZuI2eMMRDb5QBlcr4e5l2D3_Q`
           )
           .then(data => {
             console.log(data);
+            if(!data.data.results.length)
+            {
+              register(
+                {
+                  first_name: this.state.first_name,
+                  last_name: this.state.last_name,
+                  username: this.state.username,
+                  email: this.state.email,
+                  phone: "+91"+this.state.password,
+                  addresslat: 27,
+                  addresslng: 80,
+                  role:this.state.role,
+                },
+                uid
+              ).then(() => {
+                console.log("dekh le");
+                self.props.history.push("/signin");
+              });
+            }
+            else
+            {
             register(
               {
                 first_name: this.state.first_name,
@@ -63,6 +84,7 @@ class Login extends Component {
               console.log("dekh le");
               self.props.history.push("/signin");
             });
+          }
           });
       }
     });
