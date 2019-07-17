@@ -10,10 +10,7 @@ import {
   Button
 } from "reactstrap";
 
-import { FormInputs, CardAuthor, CardSocials } from "components";
 import PanelHeader from "../../layouts/PanelHeader/PanelHeader"
-import userBackground from "assets/img/bg5.jpg";
-import userAvatar from "assets/img/default-avatar.png";
 import { getfirebase } from "../../firebase";
 import Axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
@@ -47,88 +44,79 @@ class User extends React.Component {
     console.log("dds");
     Axios.get(
       `http://apis.mapmyindia.com/advancedmaps/v1/dmywbcu8v3poae8cwcqhygwbpmvtrdr4/geo_code?addr=${this.state.address}`
-    ,{
-        method: 'GET',
-        mode: 'no-cors',
-        headers: {
-          'Access-Control-Allow-Origin': '*',
-          'Content-Type': 'application/json',
-        }
-    }).then(data => {
+    ).then(data => {
       console.log(data);
-      if(data.data.results[0]==undefined)
-      {
+      if (data.data.results[0] == undefined) {
         var firebase = getfirebase();
-      firebase
-        .database()
-        .ref("cases")
-        .push({
-          disease: this.state.d_name,
-          h_name: this.state.h_name,
-          addresslng: (80.9462).toString(),
-          addresslat: (26.8467).toString(),
-          Date: Date.now(),
-          age: parseInt(this.state.age),
-          gender: this.state.gender,
-          name: this.state.name,
-          pincode: this.state.pincode,
-          state: this.state.state,
-          water_borne: this.state.water_borne
-        })
-        .then(() => {
-          this.setState({
-            d_name: "",
-            h_name: "",
-            address: "",
-            age: "",
-            gender: "",
-            name: "",
-            water_borne: "",
-            pincode: "",
-            state: ""
+        firebase
+          .database()
+          .ref("cases")
+          .push({
+            disease: this.state.d_name,
+            h_name: this.state.h_name,
+            addresslng: (80.9462).toString(),
+            addresslat: (26.8467).toString(),
+            Date: Date.now(),
+            age: parseInt(this.state.age),
+            gender: this.state.gender,
+            name: this.state.name,
+            pincode: this.state.pincode,
+            state: this.state.state,
+            water_borne: this.state.water_borne
+          })
+          .then(() => {
+            this.setState({
+              d_name: "",
+              h_name: "",
+              address: "",
+              age: "",
+              gender: "",
+              name: "",
+              water_borne: "",
+              pincode: "",
+              state: ""
+            });
+            toast.info("Case has been reported!");
+          })
+          .catch(error => {
+            console.log(error);
           });
-          toast.info("Case has been reported!");
-        })
-        .catch(error => {
-          console.log(error);
-        });
       }
-      else
-      {
-      var firebase = getfirebase();
-      firebase
-        .database()
-        .ref("cases")
-        .push({
-          disease: this.state.d_name,
-          h_name: this.state.h_name,
-          addresslat: data.data.results[0].lat.toString(),
-          addresslng: data.data.results[0].lng.toString(),
-          Date: Date.now(),
-          age: parseInt(this.state.age),
-          gender: this.state.gender,
-          name: this.state.name,
-          pincode: this.state.pincode,
-          state: this.state.state,
-          water_borne: this.state.water_borne
-        })
-        .then(() => {
-          this.setState({
-            d_name: "",
-            h_name: "",
-            address: "",
-            age: "",
-            gender: "",
-            name: "",
-            water_borne: "",
-            pincode: "",
-            state: ""
+      else {
+        var firebase = getfirebase();
+        firebase
+          .database()
+          .ref("cases")
+          .push({
+            disease: this.state.d_name,
+            h_name: this.state.h_name,
+            addresslat: data.data.results[0].lat.toString(),
+            addresslng: data.data.results[0].lng.toString(),
+            Date: Date.now(),
+            age: parseInt(this.state.age),
+            gender: this.state.gender,
+            name: this.state.name,
+            pincode: this.state.pincode,
+            state: this.state.state,
+            water_borne: this.state.water_borne
+          })
+          .then(() => {
+            this.setState({
+              d_name: "",
+              h_name: "",
+              address: "",
+              age: "",
+              gender: "",
+              name: "",
+              water_borne: "",
+              pincode: "",
+              state: ""
+            });
+            toast.info("Case has been reported!");
+          })
+          .catch(error => {
+            console.log(error);
           });
-          toast.info("Case has been reported!");
-        })
-        .catch(error => {
-          console.log(error);
-        });
       }
     });
   }

@@ -1,10 +1,6 @@
 import Dashboards from "views/Dashboard/Dashboard.jsx";
-import Notifications from "views/Notifications/Notifications.jsx";
-import Icons from "views/Icons/Icons.jsx";
-import Typography from "views/Typography/Typography.jsx";
 import TableList from "views/TableList/TableList.jsx";
 import Maps from "views/Maps/Maps.jsx";
-import Upgrade from "views/Upgrade/Upgrade.jsx";
 import UserPage from "views/UserPage/UserPage.jsx";
 import Login from "../layouts/login/login";
 import CaseReport from "../views/CaseReport/CaseReport"
@@ -15,7 +11,7 @@ var dashRoutes = [
     icon: "design_app",
     component: Dashboards
   },
- //  { path: "/icons", name: "Icons", icon: "design_image", component: Icons },
+  //  { path: "/icons", name: "Icons", icon: "design_image", component: Icons },
   { path: "/maps", name: "Maps", icon: "location_map-big", component: Maps },
   {
     path: "/case_report",

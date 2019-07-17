@@ -32,8 +32,8 @@ class Header extends React.Component {
       dropdownOpen: false,
       color: "transparent",
       value: "",
-      value1:"",
-      role : "",
+      value1: "",
+      role: "",
     };
     this.toggle = this.toggle.bind(this);
     this.dropdownToggle = this.dropdownToggle.bind(this);
@@ -103,7 +103,7 @@ class Header extends React.Component {
     var fire = getfirebase();
     fire.auth().onAuthStateChanged(user => {
       if (user) {
-        
+
         fire
           .database()
           .ref("users/" + user.uid)
@@ -143,32 +143,31 @@ class Header extends React.Component {
         console.log(error);
       });
   }
-  sendnot()
-  {
+  sendnot() {
     toast.info("Push notification sent to all concerned");
     var firebase = getfirebase();
-    firebase.database().ref('users').once('value').then((data)=>{
+    firebase.database().ref('users').once('value').then((data) => {
       var users = data.val();
       users = Object.entries(users);
       console.log(users);
-      for(var i=0;i<users.length;i++)
-      {
-        Axios.post('https://fcm.googleapis.com/fcm/send',{
-          "notification" : {
-            "title" : "BugBuster",
-            "body" : "Water Borne disease on rise in your region!!",
-            "click_action" : "url",
-            "icon" : "picture"
+      for (var i = 0; i < users.length; i++) {
+        Axios.post('https://fcm.googleapis.com/fcm/send', {
+          "notification": {
+            "title": "BugBuster",
+            "body": "Water Borne disease on rise in your region!!",
+            "click_action": "url",
+            "icon": "picture"
           },
-          "to" : users[i][1].token
-        },{
-          headers :{
-          'Authorization' : 'key=AAAAviPMTG4:APA91bHP1-h21hufRQxVzaOt3Bxsan1qwCrLykXKmIMkYkygAhaBWFHW5ZZT--xvroH6f32HMKmgW3s92k4uDz0-yHXgssXWMV9a_u4Qs_D9fEkxN8WkihozB6YBUhNv9ED-47bvkafc'
-        }}).then(data=>{
-          console.log(data);
-        }).catch((error)=>{
+          "to": users[i][1].token
+        }, {
+            headers: {
+              'Authorization': 'key=AAAAviPMTG4:APA91bHP1-h21hufRQxVzaOt3Bxsan1qwCrLykXKmIMkYkygAhaBWFHW5ZZT--xvroH6f32HMKmgW3s92k4uDz0-yHXgssXWMV9a_u4Qs_D9fEkxN8WkihozB6YBUhNv9ED-47bvkafc'
+            }
+          }).then(data => {
+            console.log(data);
+          }).catch((error) => {
             console.log(error);
-        })
+          })
       }
     })
   }
@@ -186,10 +185,10 @@ class Header extends React.Component {
           this.props.location.pathname.indexOf("full-screen-maps") !== -1
             ? "navbar-absolute fixed-top"
             : "navbar-absolute fixed-top " +
-              (this.state.color === "transparent" ? "navbar-transparent " : "")
+            (this.state.color === "transparent" ? "navbar-transparent " : "")
         }
       >
-              <ToastContainer></ToastContainer>
+        <ToastContainer></ToastContainer>
         <Container fluid>
           <div className="navbar-wrapper">
             <div className="navbar-toggle">
@@ -211,13 +210,13 @@ class Header extends React.Component {
             <span className="navbar-toggler-bar navbar-kebab" />
             <span className="navbar-toggler-bar navbar-kebab" />
           </NavbarToggler>
-          
+
           <Collapse
             isOpen={this.state.isOpen}
             navbar
             className="justify-content-end"
           >
-         <form>
+            <form>
               <Autocomplete
                 getItemValue={item => item}
                 items={[
@@ -231,7 +230,7 @@ class Header extends React.Component {
                 }
                 renderItem={(item, isHighlighted) => {
                   return (
-                    <div className="form-control"  style={{ fontSize: "14px",borderRadius:"0",background:"rgba(255,255,255,1)",color:"black" }}>
+                    <div className="form-control" style={{ fontSize: "14px", borderRadius: "0", background: "rgba(255,255,255,1)", color: "black" }}>
                       {item}
                     </div>
                   );
@@ -249,7 +248,7 @@ class Header extends React.Component {
                 inputProps={{
                   className: "form-control",
                   placeholder: "Select the data",
-                  style: {marginBottom:"5px",borderRadius:"30px"}
+                  style: { marginBottom: "5px", borderRadius: "30px" }
                 }}
               />
             </form>
@@ -300,7 +299,7 @@ class Header extends React.Component {
                 }
                 renderItem={(item, isHighlighted) => {
                   return (
-                    <div className="form-control"  style={{ fontSize: "14px",borderRadius:"0",background:"rgba(255,255,255,1)",color:"black" }}>
+                    <div className="form-control" style={{ fontSize: "14px", borderRadius: "0", background: "rgba(255,255,255,1)", color: "black" }}>
                       {item}
                     </div>
                   );
@@ -318,23 +317,23 @@ class Header extends React.Component {
                 inputProps={{
                   className: "form-control",
                   placeholder: "Select the state",
-                  style: {marginBottom:"5px",borderRadius:"30px"}
+                  style: { marginBottom: "5px", borderRadius: "30px" }
                 }}
               />
             </form>
             <Nav navbar>
-            {this.state.role=="A" ? <NavItem >
+              {this.state.role == "A" ? <NavItem >
                 <a href="#" className="nav-link">
                   <i onClick={this.sendnot} className="now-ui-icons arrows-1_cloud-upload-94" />
                 </a>
               </NavItem> : ""}
-            
+
               <Dropdown
                 nav
                 isOpen={this.state.dropdownOpen}
                 toggle={e => this.dropdownToggle(e)}
               >
-            
+
                 <DropdownToggle caret nav>
                   <i className="now-ui-icons users_single-02" />
                   <p>
@@ -350,9 +349,9 @@ class Header extends React.Component {
                   </DropdownItem>
                 </DropdownMenu>
               </Dropdown>
-              
+
             </Nav>
-            
+
           </Collapse>
         </Container>
       </Navbar>

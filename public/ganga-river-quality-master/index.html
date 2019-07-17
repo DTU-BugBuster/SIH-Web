@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Ganga</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Condensed">
+  <link rel="stylesheet" type="text/css" href="node_modules/d3-tip/examples/example-styles.css">
+  <link rel="stylesheet" type="text/css" href="css/style.css">
+</head>
+<body>
+  <div class="container">
+
+    <div class="section-1">
+      <div class="title">Water Quality of River Ganga</div>
+      <div id="stepper">
+        <div id='bod' class='active'>Biochemical Oxygen Demand</div>
+        <div id='fc'>Faecal Coliform</div>
+        <div id='ph'>PH</div>
+        <div id='do'>Dissolved Oxygen</div>
+      </div>
+
+      <div class="indicators">
+        <div class="ideal-value">Ideal Value for BOD is <span class="score">3 mg/litre or less</span></div>
+        <div class="flow-legend"></div>
+      </div>
+
+      <div id="chart"></div>
+      <div class="flow-summary-block">
+        <div>Water quality parameters were measured at <span class="value">57</span> Monitoring locations spread across <span class="value">4</span> States</div>
+        <div class="flow-summary"></div>
+      </div>
+    </div>
+
+    <div class="section-2">
+      <div class="title">Pollution by Industries</div>
+        <div class="read-label">
+          <span><span class="value">WC</span> Water Consumption</span>
+          <span><span class="value">WWG</span> Waste Water Generated</span>
+          <span><span class="value">#</span> Number of Industries</span>
+          <span><span class='value'>Size of Cubes</span> Number of Industries</span>
+          <span><span class='value'>Color of Cubes</span> Waste Water Generation</span>
+        </div>
+
+      <div class="industry-block">
+        <div id="industry-chart"></div>
+        <div id="industry-summary"></div>
+      </div>
+    </div>
+
+    <div class="section-3">
+      <div class="title">Pollution by Sewage Generated across States</div>
+        <div class="read-label">
+          <span><span class="value">SG</span> Sewage Generated</span>
+          <span><span class="value">TC</span> Treatment Capacity</span>
+          <span><span class="value">E</span> Efficiency</span>
+          <span><span class='value'>Size and color of Cubes</span> Sewage Generated</span>
+        </div>
+
+      <div class="sewage-block">
+        <div id="sewage-chart"></div>
+        <div id="sewage-summary"></div>
+      </div>
+    </div>
+  </div>
+
+  <script src="node_modules/d3/build/d3.min.js"></script>
+  <script src="node_modules/d3-scale-chromatic/build/d3-scale-chromatic.min.js"></script>
+  <script src="node_modules/d3-tip/index.js"></script>
+
+  <script src="node_modules/jquery/dist/jquery.min.js"></script>
+  <script src="node_modules/typeit/dist/typeit.min.js"></script>
+  <script src="js/utility.js"></script>
+  <script src="js/ganga_path.js"></script>
+  <script src="js/industry_treemap.js"></script>
+  <script src="js/sewage_treemap.js"></script>
+</body>
+</html>

@@ -100,7 +100,7 @@ var gradientChartOptionsConfigurationWithNumbersAndGrid = {
         ticks: {
           display: true,
           autoSkip: false,
-          callback: function(value, index, values) {
+          callback: function (value, index, values) {
             return value;
           }
         },
@@ -557,7 +557,7 @@ const getChartCholera = state => {
       gradientFill.addColorStop(0, "rgba(128, 182, 244, 0)");
       gradientFill.addColorStop(1, hexToRGB("#18ce0f", 0.4));
       return {
-        labels: ["2011","2012","2013","2014", "2015", "2016"],
+        labels: ["2011", "2012", "2013", "2014", "2015", "2016"],
         datasets: [
           {
             label: "Cases",
@@ -818,7 +818,7 @@ const getChartD = state => {
       gradientFill.addColorStop(0, "rgba(128, 182, 244, 0)");
       gradientFill.addColorStop(1, hexToRGB("#18ce0f", 0.4));
       return {
-        labels: ["2011","2012","2013","2014", "2015", "2016"],
+        labels: ["2011", "2012", "2013", "2014", "2015", "2016"],
         datasets: [
           {
             label: "Cases",
@@ -1079,7 +1079,7 @@ const getChartT = state => {
       gradientFill.addColorStop(0, "rgba(128, 182, 244, 0)");
       gradientFill.addColorStop(1, hexToRGB("#18ce0f", 0.4));
       return {
-        labels: ["2011","2012","2013","2014", "2015", "2016"],
+        labels: ["2011", "2012", "2013", "2014", "2015", "2016"],
         datasets: [
           {
             label: "Cases",
@@ -1271,9 +1271,9 @@ const dashboard24HoursPerformanceChart = {
       display: true
     },
     title: {
-            display: true,
-            text: 'Andhra Pradesh'
-        },
+      display: true,
+      text: 'Andhra Pradesh'
+    },
     tooltips: {
       bodySpacing: 4,
       mode: "nearest",
@@ -1491,9 +1491,9 @@ const dashboard24HoursPerformanceChartAssam = {
       display: true
     },
     title: {
-            display: true,
-            text: 'Assam'
-        },
+      display: true,
+      text: 'Assam'
+    },
     tooltips: {
       bodySpacing: 4,
       mode: "nearest",
@@ -1702,9 +1702,9 @@ const dashboard24HoursPerformanceChartMizoram = {
       display: true
     },
     title: {
-            display: true,
-            text: 'Mizoram'
-        },
+      display: true,
+      text: 'Mizoram'
+    },
     tooltips: {
       bodySpacing: 4,
       mode: "nearest",
@@ -1913,9 +1913,9 @@ const dashboard24HoursPerformanceChartManipur = {
       display: true
     },
     title: {
-            display: true,
-            text: 'Manipur'
-        },
+      display: true,
+      text: 'Manipur'
+    },
     tooltips: {
       bodySpacing: 4,
       mode: "nearest",
@@ -2108,9 +2108,9 @@ const dashboard24HoursPerformanceChartTripura = {
       display: true
     },
     title: {
-            display: true,
-            text: 'Tripura'
-        },
+      display: true,
+      text: 'Tripura'
+    },
     tooltips: {
       bodySpacing: 4,
       mode: "nearest",
@@ -2300,9 +2300,9 @@ const dashboard24HoursPerformanceChartChattisgarh = {
       display: true
     },
     title: {
-            display: true,
-            text: 'Chattisgarh'
-        },
+      display: true,
+      text: 'Chattisgarh'
+    },
     tooltips: {
       bodySpacing: 4,
       mode: "nearest",
@@ -2502,9 +2502,9 @@ const dashboard24HoursPerformanceChartMP = {
       display: true
     },
     title: {
-            display: true,
-            text: 'Madhya Pradesh'
-        },
+      display: true,
+      text: 'Madhya Pradesh'
+    },
     tooltips: {
       bodySpacing: 4,
       mode: "nearest",
@@ -2709,9 +2709,9 @@ const dashboard24HoursPerformanceChartHP = {
       display: true
     },
     title: {
-            display: true,
-            text: 'Himachal Pradesh'
-        },
+      display: true,
+      text: 'Himachal Pradesh'
+    },
     tooltips: {
       bodySpacing: 4,
       mode: "nearest",
@@ -2904,9 +2904,9 @@ const dashboard24HoursPerformanceChartKarnatka = {
       display: false
     },
     title: {
-            display: true,
-            text: 'Karnataka'
-        },
+      display: true,
+      text: 'Karnataka'
+    },
     tooltips: {
       bodySpacing: 4,
       mode: "nearest",
@@ -3094,9 +3094,9 @@ const dashboard24HoursPerformanceChartPunjab = {
       display: true
     },
     title: {
-            display: true,
-            text: 'Punjab'
-        },
+      display: true,
+      text: 'Punjab'
+    },
     tooltips: {
       bodySpacing: 4,
       mode: "nearest",
@@ -3288,9 +3288,9 @@ const dashboard24HoursPerformanceChartSikkim = {
       display: true
     },
     title: {
-            display: true,
-            text: 'Sikkim'
-        },
+      display: true,
+      text: 'Sikkim'
+    },
     tooltips: {
       bodySpacing: 4,
       mode: "nearest",
@@ -3506,9 +3506,9 @@ const dashboard24HoursPerformanceChartKerala = {
       display: true
     },
     title: {
-            display: true,
-            text: 'Kerala'
-        },
+      display: true,
+      text: 'Kerala'
+    },
     tooltips: {
       bodySpacing: 4,
       mode: "nearest",
@@ -3696,9 +3696,9 @@ const dashboard24HoursPerformanceChartTN = {
       display: true
     },
     title: {
-            display: true,
-            text: 'Tamil Nadu'
-        },
+      display: true,
+      text: 'Tamil Nadu'
+    },
     tooltips: {
       bodySpacing: 4,
       mode: "nearest",
@@ -3897,9 +3897,9 @@ const dashboard24HoursPerformanceChartJK = {
       display: false
     },
     title: {
-            display: true,
-            text: 'Jammu And Kashmir'
-        },
+      display: true,
+      text: 'Jammu And Kashmir'
+    },
     tooltips: {
       bodySpacing: 4,
       mode: "nearest",
@@ -4008,9 +4008,9 @@ const dashboard24HoursPerformanceChartJharkhand = {
       display: false
     },
     title: {
-            display: true,
-            text: 'Jharkhand'
-        },
+      display: true,
+      text: 'Jharkhand'
+    },
     tooltips: {
       bodySpacing: 4,
       mode: "nearest",
@@ -4119,9 +4119,9 @@ const dashboard24HoursPerformanceChartNagaland = {
       display: false
     },
     title: {
-            display: true,
-            text: 'Nagaland'
-        },
+      display: true,
+      text: 'Nagaland'
+    },
     tooltips: {
       bodySpacing: 4,
       mode: "nearest",
@@ -4329,9 +4329,9 @@ const dashboard24HoursPerformanceChartMaharastra = {
       display: true
     },
     title: {
-            display: true,
-            text: 'Maharastra'
-        },
+      display: true,
+      text: 'Maharastra'
+    },
     tooltips: {
       bodySpacing: 4,
       mode: "nearest",
@@ -4548,9 +4548,9 @@ const dashboard24HoursPerformanceChartGujarat = {
       display: true
     },
     title: {
-            display: true,
-            text: 'Gujarat'
-        },
+      display: true,
+      text: 'Gujarat'
+    },
     tooltips: {
       bodySpacing: 4,
       mode: "nearest",
@@ -4767,9 +4767,9 @@ const dashboard24HoursPerformanceChartUttrakhand = {
       display: true
     },
     title: {
-            display: true,
-            text: 'Uttrakhand'
-        },
+      display: true,
+      text: 'Uttrakhand'
+    },
     tooltips: {
       bodySpacing: 4,
       mode: "nearest",
@@ -4986,9 +4986,9 @@ const dashboard24HoursPerformanceChartHaryana = {
       display: true
     },
     title: {
-            display: true,
-            text: 'Haryana'
-        },
+      display: true,
+      text: 'Haryana'
+    },
     tooltips: {
       bodySpacing: 4,
       mode: "nearest",
@@ -5205,9 +5205,9 @@ const dashboard24HoursPerformanceChartArunachal = {
       display: true
     },
     title: {
-            display: true,
-            text: 'Arunachal Pradesh'
-        },
+      display: true,
+      text: 'Arunachal Pradesh'
+    },
     tooltips: {
       bodySpacing: 4,
       mode: "nearest",
@@ -5424,9 +5424,9 @@ const dashboard24HoursPerformanceChartMeghalaya = {
       display: true
     },
     title: {
-            display: true,
-            text: 'Meghalaya'
-        },
+      display: true,
+      text: 'Meghalaya'
+    },
     tooltips: {
       bodySpacing: 4,
       mode: "nearest",
@@ -5649,9 +5649,9 @@ const dashboard24HoursPerformanceChartRajasthan = {
       display: true
     },
     title: {
-            display: true,
-            text: 'Rajasthan'
-        },
+      display: true,
+      text: 'Rajasthan'
+    },
     tooltips: {
       bodySpacing: 4,
       mode: "nearest",
@@ -5862,9 +5862,9 @@ const dashboard24HoursPerformanceChartUP = {
       display: true
     },
     title: {
-            display: true,
-            text: 'Uttar Pradesh'
-        },
+      display: true,
+      text: 'Uttar Pradesh'
+    },
     tooltips: {
       bodySpacing: 4,
       mode: "nearest",
@@ -6065,9 +6065,9 @@ const dashboard24HoursPerformanceChartOrrisa = {
       display: true
     },
     title: {
-            display: true,
-            text: 'Orissa'
-        },
+      display: true,
+      text: 'Orissa'
+    },
     tooltips: {
       bodySpacing: 4,
       mode: "nearest",
@@ -6265,9 +6265,9 @@ const dashboard24HoursPerformanceChartBihar = {
       display: true
     },
     title: {
-            display: true,
-            text: 'Bihar'
-        },
+      display: true,
+      text: 'Bihar'
+    },
     tooltips: {
       bodySpacing: 4,
       mode: "nearest",
@@ -6505,9 +6505,9 @@ const dashboard24HoursPerformanceChartWB = {
       display: true
     },
     title: {
-            display: true,
-            text: 'West Bengal'
-        },
+      display: true,
+      text: 'West Bengal'
+    },
     tooltips: {
       bodySpacing: 4,
       mode: "nearest",

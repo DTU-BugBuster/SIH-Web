@@ -13,7 +13,6 @@ import {
 } from "reactstrap";
 
 import PanelHeader from "../../layouts/PanelHeader/PanelHeader"
-import { Checkbox } from "components";
 
 import { thead, tbody } from "variables/general";
 import { getfirebase } from "../../firebase";

@@ -1,5 +1,5 @@
 import React from "react";
-import {Polar} from 'react-chartjs-2';
+import { Polar } from 'react-chartjs-2';
 import {
   Card,
   CardHeader,
@@ -10,11 +10,11 @@ import {
   Col
 } from "reactstrap";
 // react plugin used to create charts
-import { Line, Bar } from "react-chartjs-2";
+import { Line } from "react-chartjs-2";
 // function that returns a color based on an interval of numbers
 import Map from "./heatmap";
-import { PanelHeader, Stats, CardCategory, Tasks } from "components";
-import { getfirebase,askForPermissionToReceiveNotifications } from "../../firebase";
+import { PanelHeader, Stats, CardCategory } from "components";
+import { getfirebase } from "../../firebase";
 
 import {
   dashboardPanelChart,
@@ -981,159 +981,159 @@ function Punjab() {
     </div>
   );
 }
-function Chats(props){
- const isLoggedIn=props.isLoggedIn;
- const data = {
-  datasets: [{
-    data: [
-      props.c,
-      props.d,
-      props.h
+function Chats(props) {
+  const isLoggedIn = props.isLoggedIn;
+  const data = {
+    datasets: [{
+      data: [
+        props.c,
+        props.d,
+        props.h
+      ],
+      backgroundColor: [
+        '#4BC0C0',
+        '#FFCE56',
+        '#FF6384',
+      ]
+    }],
+    labels: [
+      'cases',
+      'deaths',
+      'Healthy people'
     ],
-    backgroundColor: [
-      '#4BC0C0',
-      '#FFCE56',
-      '#FF6384',
-    ]
-   }],
-   labels:[
-   'cases',
-   'deaths',
-   'Healthy people'
-   ],
- };
-    return (
-      <div style={{ marginTop: "20px"}}>
-        <h2></h2>
-        <Polar data={data} />
-      </div>
-    );
+  };
+  return (
+    <div style={{ marginTop: "20px" }}>
+      <h2></h2>
+      <Polar data={data} />
+    </div>
+  );
 }
 
 
-function G(props){
-return(
-<div>
-        <h2>Polar Example</h2>
-        <Polar data={props.p} />
-</div>
-)
+function G(props) {
+  return (
+    <div>
+      <h2>Polar Example</h2>
+      <Polar data={props.p} />
+    </div>
+  )
 }
 class App extends React.Component {
-	render() {
-		const options = {
-    backgroundColor:"White",
-      height:300,
-      width:300,
-			animationEnabled: true,
-			title: {
-				text: "Realtime data"
-			},
-			subtitles: [{
-				text: " ",
-				verticalAlign: "center",
-				fontSize: 24,
-				dockInsidePlotArea: true
-			}],
-			data: [{
-				type: "doughnut",
-				showInLegend: true,
-				indexLabel: "{name}: {y}",
-				yValueFormatString: "#,###'%'",
-				dataPoints: [
-					{ name: "Cases", y: this.props.c },
-					{ name: "Deaths", y: this.props.d },
-					{ name: "Healthy People", y: this.props.z }
-				]
-			}]
-		}
-		return (
-		<div>
-			<CanvasJSChart options = {options}
-				/* onRef={ref => this.chart = ref} */
-			/>
-			{/*You can get reference to the chart instance as shown above using onRef. This allows you to access all chart properties and methods*/}
-		</div>
-		);
-	}
+  render() {
+    const options = {
+      backgroundColor: "White",
+      height: 300,
+      width: 300,
+      animationEnabled: true,
+      title: {
+        text: "Realtime data"
+      },
+      subtitles: [{
+        text: " ",
+        verticalAlign: "center",
+        fontSize: 24,
+        dockInsidePlotArea: true
+      }],
+      data: [{
+        type: "doughnut",
+        showInLegend: true,
+        indexLabel: "{name}: {y}",
+        yValueFormatString: "#,###'%'",
+        dataPoints: [
+          { name: "Cases", y: this.props.c },
+          { name: "Deaths", y: this.props.d },
+          { name: "Healthy People", y: this.props.z }
+        ]
+      }]
+    }
+    return (
+      <div>
+        <CanvasJSChart options={options}
+        /* onRef={ref => this.chart = ref} */
+        />
+        {/*You can get reference to the chart instance as shown above using onRef. This allows you to access all chart properties and methods*/}
+      </div>
+    );
+  }
 }
 class Gender extends React.Component {
-	render() {
-		const options = {
-    backgroundColor:"White",
-      height:300,
-      width:300,
-			animationEnabled: true,
-			title: {
-				text: "Gender wise data"
-			},
-			subtitles: [{
-				text: " ",
-				verticalAlign: "center",
-				fontSize: 24,
-				dockInsidePlotArea: true
-			}],
-			data: [{
-				type: "doughnut",
-				showInLegend: true,
-				indexLabel: "{name}: {y}",
-				yValueFormatString: "#,###'%'",
-				dataPoints: [
-					{ name: "Females", y: this.props.c },
-					{ name: "Males", y: this.props.d }
-				]
-			}]
-		}
-		return (
-		<div>
-			<CanvasJSChart options = {options}
-				/* onRef={ref => this.chart = ref} */
-			/>
-			{/*You can get reference to the chart instance as shown above using onRef. This allows you to access all chart properties and methods*/}
-		</div>
-		);
-	}
+  render() {
+    const options = {
+      backgroundColor: "White",
+      height: 300,
+      width: 300,
+      animationEnabled: true,
+      title: {
+        text: "Gender wise data"
+      },
+      subtitles: [{
+        text: " ",
+        verticalAlign: "center",
+        fontSize: 24,
+        dockInsidePlotArea: true
+      }],
+      data: [{
+        type: "doughnut",
+        showInLegend: true,
+        indexLabel: "{name}: {y}",
+        yValueFormatString: "#,###'%'",
+        dataPoints: [
+          { name: "Females", y: this.props.c },
+          { name: "Males", y: this.props.d }
+        ]
+      }]
+    }
+    return (
+      <div>
+        <CanvasJSChart options={options}
+        /* onRef={ref => this.chart = ref} */
+        />
+        {/*You can get reference to the chart instance as shown above using onRef. This allows you to access all chart properties and methods*/}
+      </div>
+    );
+  }
 }
 class Age extends React.Component {
-	render() {
-		const options = {
-    backgroundColor:"#211e1c",
-      height:300,
-      width:300,
+  render() {
+    const options = {
+      backgroundColor: "#211e1c",
+      height: 300,
+      width: 300,
       theme: "dark2",
-			title: {
-				text: "Age Wise Outbreak",
-        fontColor:"White"
-			},
-      axisY:{
-      title: "Number of cases reported"
+      title: {
+        text: "Age Wise Outbreak",
+        fontColor: "White"
       },
-      axisX:{
-      title: "Age Intervals"
+      axisY: {
+        title: "Number of cases reported"
+      },
+      axisX: {
+        title: "Age Intervals"
       },
 
-			data: [
-			{
-				// Change type to "doughnut", "line", "splineArea", etc.
-				type: "column",
-				dataPoints: [
-					{ label: "20",  y: this.props.c  },
-					{ label: "40", y: this.props.d  },
-					{ label: "60", y: this.props.z  },
-					{ label: "80",  y: this.props.k  }
-				]
-			}
-			]
-		}
-		return (
-		<div>
-			<CanvasJSChart options = {options}
-				/* onRef={ref => this.chart = ref} */
-			/>
-			{/*You can get reference to the chart instance as shown above using onRef. This allows you to access all chart properties and methods*/}
-		</div>
-		);
-	}
+      data: [
+        {
+          // Change type to "doughnut", "line", "splineArea", etc.
+          type: "column",
+          dataPoints: [
+            { label: "20", y: this.props.c },
+            { label: "40", y: this.props.d },
+            { label: "60", y: this.props.z },
+            { label: "80", y: this.props.k }
+          ]
+        }
+      ]
+    }
+    return (
+      <div>
+        <CanvasJSChart options={options}
+        /* onRef={ref => this.chart = ref} */
+        />
+        {/*You can get reference to the chart instance as shown above using onRef. This allows you to access all chart properties and methods*/}
+      </div>
+    );
+  }
 }
 
 class Dashboards extends React.Component {
@@ -1141,47 +1141,47 @@ class Dashboards extends React.Component {
     super(props);
     this.state = {
       stateselected: "Uttar Pradesh",
-      dataselected : "Both",
-      casespoint : [],
-      numcases:11,
-      numdeaths:0,
-      numhealthy:10,
-      numfem:27,
-      nummale:73,
-      u20:3,
-      u40:5,
-      u60:8,
-      u80:2
+      dataselected: "Both",
+      casespoint: [],
+      numcases: 11,
+      numdeaths: 0,
+      numhealthy: 10,
+      numfem: 27,
+      nummale: 73,
+      u20: 3,
+      u40: 5,
+      u60: 8,
+      u80: 2
     };
-    this.ap=this.ap.bind(this);
-    this.fe=this.fe.bind(this);
-    this.male=this.male.bind(this);
-    this.age1=this.age1.bind(this);
-    this.age2=this.age2.bind(this);
-    this.age3=this.age3.bind(this);
-    this.age4=this.age4.bind(this);
+    this.ap = this.ap.bind(this);
+    this.fe = this.fe.bind(this);
+    this.male = this.male.bind(this);
+    this.age1 = this.age1.bind(this);
+    this.age2 = this.age2.bind(this);
+    this.age3 = this.age3.bind(this);
+    this.age4 = this.age4.bind(this);
   }
   componentDidMount() {
     var firebase = getfirebase();
-    firebase.database().ref('cases').on('value',(snapshot)=>{
+    firebase.database().ref('cases').on('value', (snapshot) => {
       this.setState({
-          casespoint : snapshot.val()
+        casespoint: snapshot.val()
       })
-      var keys=Object.keys(snapshot.val());
+      var keys = Object.keys(snapshot.val());
 
-      for(var i=0;i<keys.length;i++){
-         var z=Object.entries(snapshot.val())[i][1].state;
-         if(z==" "+this.state.stateselected){
-           var z=this.state.numcases;
-           var k=this.state.numhealthy;
-           var s=this.state.numdeaths;
-           this.setState({
-              numcases:z+1,
-              numhealthy:k-(z+s)
-           },() => {
-           console.log("state changed", this.state.numcases);
-           })
-         }
+      for (var i = 0; i < keys.length; i++) {
+        var z = Object.entries(snapshot.val())[i][1].state;
+        if (z == " " + this.state.stateselected) {
+          var z = this.state.numcases;
+          var k = this.state.numhealthy;
+          var s = this.state.numdeaths;
+          this.setState({
+            numcases: z + 1,
+            numhealthy: k - (z + s)
+          }, () => {
+            console.log("state changed", this.state.numcases);
+          })
+        }
 
       }
 
@@ -1190,73 +1190,73 @@ class Dashboards extends React.Component {
 
 
   }
-  ap(val){
-    var k=val[1].state.substr(1);
-    return k==this.state.stateselected;
+  ap(val) {
+    var k = val[1].state.substr(1);
+    return k == this.state.stateselected;
   }
-  fe(val){
-    var k=val[1].gender;
-    return k=="F";
+  fe(val) {
+    var k = val[1].gender;
+    return k == "F";
   }
-  male(val){
-    var k=val[1].gender;
-    return k=="M";
+  male(val) {
+    var k = val[1].gender;
+    return k == "M";
   }
-  age1(val){
-    var k=val[1].age;
-    return k>=0&&k<=20;
+  age1(val) {
+    var k = val[1].age;
+    return k >= 0 && k <= 20;
   }
-  age2(val){
-    var k=val[1].age;
-    return k>=20&&k<=40;
+  age2(val) {
+    var k = val[1].age;
+    return k >= 20 && k <= 40;
   }
-  age3(val){
-    var k=val[1].age;
-    return k>=40&&k<=60;
+  age3(val) {
+    var k = val[1].age;
+    return k >= 40 && k <= 60;
   }
-  age4(val){
-    var k=val[1].age;
-    return k>=60&&k<=80;
+  age4(val) {
+    var k = val[1].age;
+    return k >= 60 && k <= 80;
   }
   componentWillReceiveProps(nextProp) {
 
     if (nextProp.state != this.state.stateselected) {
       this.setState({
-        stateselected:nextProp.state
+        stateselected: nextProp.state
       });
     }
     if (nextProp.dataselected != this.state.stateselected) {
       this.setState({
-        dataselected:nextProp.dataselected
+        dataselected: nextProp.dataselected
       });
     }
-    var keys=Object.entries(this.state.casespoint);
+    var keys = Object.entries(this.state.casespoint);
 
-    var final=keys.filter(this.ap);
+    var final = keys.filter(this.ap);
     this.setState({
-      numcases:final.length
+      numcases: final.length
     });
-    var f=final.filter(this.fe);
-    var m=final.filter(this.male);
+    var f = final.filter(this.fe);
+    var m = final.filter(this.male);
     this.setState({
-      numfem:f.length,
-      nummale:m.length
+      numfem: f.length,
+      nummale: m.length
     });
-    var k=final.filter(this.age1);
+    var k = final.filter(this.age1);
     this.setState({
-      u20:k.length
+      u20: k.length
     })
-    var j=final.filter(this.age2);
+    var j = final.filter(this.age2);
     this.setState({
-      u40:j.length
+      u40: j.length
     })
-    var a=final.filter(this.age3);
+    var a = final.filter(this.age3);
     this.setState({
-      u60:a.length
+      u60: a.length
     })
-    var g=final.filter(this.age4);
+    var g = final.filter(this.age4);
     this.setState({
-      u80:g.length
+      u80: g.length
     })
   }
   render() {
@@ -1270,126 +1270,126 @@ class Dashboards extends React.Component {
                 <Map state={this.state.stateselected} dataselected={this.state.dataselected} />
               </Col>
               <Col xs={12} md={4}>
-              <div>
-                <Greeting isLoggedIn={this.state.stateselected} />
                 <div>
-                  <Age c={this.state.u20} d={this.state.u40} z={this.state.u60} k={this.state.u80}/>
+                  <Greeting isLoggedIn={this.state.stateselected} />
+                  <div>
+                    <Age c={this.state.u20} d={this.state.u40} z={this.state.u60} k={this.state.u80} />
+                  </div>
                 </div>
-              </div>
               </Col>
             </Row>
           }
         />
-        <div className="content" style={{ marginTop: "50px"}}>
-        <Col>
-          <Row>
-            <Col xs={12} md={6}>
-            <div style={{marginLeft:"100px"}}>
-              <Gender style={{marginLeft:"-10px"}} c={this.state.numfem} d={this.state.nummale} />
-            </div>
-            </Col>
-            <Col xs={12} md={6}>
-            <div style={{ marginTop: "0px",height:"10%"}}>
-            <App style={{marginLeft:"-10px"}} c={this.state.numcases} d={this.state.numdeaths} z={this.state.numhealthy}/>
-            </div>
-            </Col>
-          </Row>
-          <Row style={{marginTop:"40px"}}>
-            <Col xs={12} md={4}>
-              <Card className="card-chart">
-                <CardHeader>
-                  <CardCategory>
-                    Cases Of Cholera in{" "}
-                    {this.state.stateselected || "Uttar Pradesh"}
-                  </CardCategory>
-                  <CardTitle tag="h4" />
-                </CardHeader>
-                <CardBody>
-                  <Line
-                    data={
-                      getChartCholera(
-                        this.state.stateselected || "Uttar Pradesh"
-                      ).data
-                    }
-                    options={
-                      getChartCholera(
-                        this.state.stateselected || "Uttar Pradesh"
-                      ).options
-                    }
-                  />
-                </CardBody>
-                <CardFooter>
-                  <Stats>
-                    {[
-                      {
-                        i: "now-ui-icons arrows-1_refresh-69",
-                        t: "Just Updated"
+        <div className="content" style={{ marginTop: "50px" }}>
+          <Col>
+            <Row>
+              <Col xs={12} md={6}>
+                <div style={{ marginLeft: "100px" }}>
+                  <Gender style={{ marginLeft: "-10px" }} c={this.state.numfem} d={this.state.nummale} />
+                </div>
+              </Col>
+              <Col xs={12} md={6}>
+                <div style={{ marginTop: "0px", height: "10%" }}>
+                  <App style={{ marginLeft: "-10px" }} c={this.state.numcases} d={this.state.numdeaths} z={this.state.numhealthy} />
+                </div>
+              </Col>
+            </Row>
+            <Row style={{ marginTop: "40px" }}>
+              <Col xs={12} md={4}>
+                <Card className="card-chart">
+                  <CardHeader>
+                    <CardCategory>
+                      Cases Of Cholera in{" "}
+                      {this.state.stateselected || "Uttar Pradesh"}
+                    </CardCategory>
+                    <CardTitle tag="h4" />
+                  </CardHeader>
+                  <CardBody>
+                    <Line
+                      data={
+                        getChartCholera(
+                          this.state.stateselected || "Uttar Pradesh"
+                        ).data
                       }
-                    ]}
-                  </Stats>
-                </CardFooter>
-              </Card>
-            </Col>
-            <Col xs={12} md={4}>
-              <Card className="card-chart">
-                <CardHeader>
-                  <CardCategory>
-                    Cases Of Diarrhea in{" "}
-                    {this.state.stateselected || "Uttar Pradesh"}
-                  </CardCategory>
-                  <CardTitle tag="h4" />
-                </CardHeader>
-                <CardBody>
-                  <Line
-                    data={getChartD(this.props.state || "Uttar Pradesh").data}
-                    options={
-                      getChartD(this.props.state || "Uttar Pradesh").options
-                    }
-                  />
-                </CardBody>
-                <CardFooter>
-                  <Stats>
-                    {[
-                      {
-                        i: "now-ui-icons arrows-1_refresh-69",
-                        t: "Just Updated"
+                      options={
+                        getChartCholera(
+                          this.state.stateselected || "Uttar Pradesh"
+                        ).options
                       }
-                    ]}
-                  </Stats>
-                </CardFooter>
-              </Card>
-            </Col>
+                    />
+                  </CardBody>
+                  <CardFooter>
+                    <Stats>
+                      {[
+                        {
+                          i: "now-ui-icons arrows-1_refresh-69",
+                          t: "Just Updated"
+                        }
+                      ]}
+                    </Stats>
+                  </CardFooter>
+                </Card>
+              </Col>
+              <Col xs={12} md={4}>
+                <Card className="card-chart">
+                  <CardHeader>
+                    <CardCategory>
+                      Cases Of Diarrhea in{" "}
+                      {this.state.stateselected || "Uttar Pradesh"}
+                    </CardCategory>
+                    <CardTitle tag="h4" />
+                  </CardHeader>
+                  <CardBody>
+                    <Line
+                      data={getChartD(this.props.state || "Uttar Pradesh").data}
+                      options={
+                        getChartD(this.props.state || "Uttar Pradesh").options
+                      }
+                    />
+                  </CardBody>
+                  <CardFooter>
+                    <Stats>
+                      {[
+                        {
+                          i: "now-ui-icons arrows-1_refresh-69",
+                          t: "Just Updated"
+                        }
+                      ]}
+                    </Stats>
+                  </CardFooter>
+                </Card>
+              </Col>
 
-            <Col xs={12} md={4}>
-              <Card className="card-chart">
-                <CardHeader>
-                  <CardCategory>
-                    Cases Of Typhoid in{" "}
-                    {this.state.stateselected || "Uttar Pradesh"}
-                  </CardCategory>
-                  <CardTitle tag="h4" />
-                </CardHeader>
-                <CardBody>
-                  <Line
-                    data={getChartT(this.props.state || "Uttar Pradesh").data}
-                    options={
-                      getChartT(this.props.state || "Uttar Pradesh").options
-                    }
-                  />
-                </CardBody>
-                <CardFooter>
-                  <Stats>
-                    {[
-                      {
-                        i: "now-ui-icons arrows-1_refresh-69",
-                        t: "Just Updated"
+              <Col xs={12} md={4}>
+                <Card className="card-chart">
+                  <CardHeader>
+                    <CardCategory>
+                      Cases Of Typhoid in{" "}
+                      {this.state.stateselected || "Uttar Pradesh"}
+                    </CardCategory>
+                    <CardTitle tag="h4" />
+                  </CardHeader>
+                  <CardBody>
+                    <Line
+                      data={getChartT(this.props.state || "Uttar Pradesh").data}
+                      options={
+                        getChartT(this.props.state || "Uttar Pradesh").options
                       }
-                    ]}
-                  </Stats>
-                </CardFooter>
-              </Card>
-            </Col>
-          </Row>
+                    />
+                  </CardBody>
+                  <CardFooter>
+                    <Stats>
+                      {[
+                        {
+                          i: "now-ui-icons arrows-1_refresh-69",
+                          t: "Just Updated"
+                        }
+                      ]}
+                    </Stats>
+                  </CardFooter>
+                </Card>
+              </Col>
+            </Row>
           </Col>
         </div>
 

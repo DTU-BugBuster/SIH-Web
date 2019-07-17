@@ -58,9 +58,9 @@ class MapExample extends React.Component {
     limitAddressPoints: true,
     coordinates: [80.9462, 26.8467],
     casespoint: [],
-    casespoint1 : [],
+    casespoint1: [],
     position: [[1, 1]],
-    data : "Both",
+    data: "Both",
   };
 
   /**
@@ -83,24 +83,22 @@ class MapExample extends React.Component {
       .ref("cases")
       .on("value", snapshot => {
 
-          
+
 
         this.setState({
-          casespoint:  [Object.entries(snapshot.val()).filter((data)=>{
-            if(data[1].isweb)
-            {
+          casespoint: [Object.entries(snapshot.val()).filter((data) => {
+            if (data[1].isweb) {
               return data[1];
             }
           })],
-          casespoint1:  [Object.entries(snapshot.val()).filter((data)=>{
-            if(!data[1].isweb)
-            {
+          casespoint1: [Object.entries(snapshot.val()).filter((data) => {
+            if (!data[1].isweb) {
               return data[1];
             }
           })]
+        })
       })
-  })
-}
+  }
   componentWillReceiveProps(nextProp) {
     if (nextProp.state != this.props.state) {
       var result = cities.find(obj => {
@@ -118,12 +116,11 @@ class MapExample extends React.Component {
       });
       console.log("g", result);
     }
-    console.log('props',nextProp)
-    if(nextProp.dataselected != this.state.data)
-    {
-      
+    console.log('props', nextProp)
+    if (nextProp.dataselected != this.state.data) {
+
       this.setState({
-        data : nextProp.dataselected
+        data: nextProp.dataselected
       })
     }
   }
@@ -169,7 +166,7 @@ class MapExample extends React.Component {
 
 
           <Map
-            style={{ width: "100%", height: "100%" ,marginLeft:"10px"}}
+            style={{ width: "100%", height: "100%", marginLeft: "10px" }}
             center={[this.state.coordinates[1], this.state.coordinates[0]]}
             zoom={6}
             onClick={e => {
@@ -181,8 +178,8 @@ class MapExample extends React.Component {
             }}
             doubleClickZoom={false}
           >
-            {console.log('a',this.state.data)}
-            { (this.props.dataselected=="Hospital" || this.props.dataselected=="Both")?
+            {console.log('a', this.state.data)}
+            {(this.props.dataselected == "Hospital" || this.props.dataselected == "Both") ?
               <HeatmapLayer
                 points={this.state.casespoint[0]}
                 longitudeExtractor={m => m[1].addresslng}
@@ -192,8 +189,8 @@ class MapExample extends React.Component {
                 radius={Number(this.state.radius)}
                 blur={Number(this.state.blur)}
                 max={Number.parseFloat(this.state.max)}
-              />:""}
-              { (this.props.dataselected=="Users" || this.props.dataselected=="Both")?
+              /> : ""}
+            {(this.props.dataselected == "Users" || this.props.dataselected == "Both") ?
               <HeatmapLayer
                 points={this.state.casespoint1[0]}
                 longitudeExtractor={m => m[1].addresslng}
@@ -204,7 +201,7 @@ class MapExample extends React.Component {
                 blur={Number(this.state.blur)}
                 max={Number.parseFloat(this.state.max)}
               /> : ""
-              }
+            }
             <TileLayer
               url="http://{s}.tile.osm.org/{z}/{x}/{y}.png"
               attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
@@ -217,7 +214,7 @@ class MapExample extends React.Component {
                   <Popup>
                     Area marked for outbreak
                     <br />
-                   <Button color="danger" onClick={()=>this.deletemarker(value)}>Delete</Button>
+                    <Button color="danger" onClick={() => this.deletemarker(value)}>Delete</Button>
                   </Popup>
                 </Marker>
               );
