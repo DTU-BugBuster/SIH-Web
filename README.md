@@ -1,0 +1,2 @@
+yarn start
+yarn install
