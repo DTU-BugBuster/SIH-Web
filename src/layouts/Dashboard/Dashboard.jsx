@@ -21,7 +21,7 @@ class Dashboard extends React.Component {
       user: "",
       stateselected: "",
       role: "",
-      dataselected : ""
+      dataselected: ""
     };
   }
   changestate(value) {
@@ -34,7 +34,7 @@ class Dashboard extends React.Component {
     this.setState({
       dataselected: value
     });
-    console.log('c',value);
+    console.log('c', value);
   }
   componentDidMount() {
     if (navigator.platform.indexOf("Win") > -1) {
@@ -44,7 +44,6 @@ class Dashboard extends React.Component {
     addResponseMessage("Welcome, How can i help you?");
     fire.auth().onAuthStateChanged(user => {
       if (user) {
-        
         fire
           .database()
           .ref("users/" + user.uid)
@@ -60,6 +59,10 @@ class Dashboard extends React.Component {
           .catch(error => {
             console.log(error);
           });
+      }
+      else
+      {
+        this.props.history.push('/login');
       }
     });
   }
@@ -131,19 +134,19 @@ class Dashboard extends React.Component {
                   />
                 );
               }
-              
-                if (prop.redirect)
-                  return (
-                    <Redirect from={prop.path} to={prop.pathTo} key={key} />
-                  );
+
+              if (prop.redirect)
                 return (
-                  <Route
-                    path={prop.path}
-                    component={prop.component}
-                    key={key}
-                  />
+                  <Redirect from={prop.path} to={prop.pathTo} key={key} />
                 );
-              
+              return (
+                <Route
+                  path={prop.path}
+                  component={prop.component}
+                  key={key}
+                />
+              );
+
             })}
           </Switch>
           <Widget
