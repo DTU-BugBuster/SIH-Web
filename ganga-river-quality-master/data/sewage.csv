@@ -1,0 +1,50 @@
+state,place,sewage_generated,treatment_capacity,category,efficiency
+Uttar Pradesh,Haridwar,39.6,18.0,Tier 1,0.45454545454545453
+Uttar Pradesh,Kanpur,339.3,171.1,Tier 1,0.5042735042735043
+Uttar Pradesh,Varanasi,187.1,141.0,Tier 1,0.7536076964190273
+Uttar Pradesh,Allahabad,208.0,89.0,Tier 1,0.42788461538461536
+Uttar Pradesh,Farrukhabad-cum-Fatehgarh,30.5,8.3,Tier 1,0.2721311475409836
+Uttar Pradesh,Mirzapur-Vindhyachal,27.5,14.0,Tier 1,0.509090909090909
+Uttar Pradesh,Unnao,23.9,19.4,Tier 1,0.8117154811715481
+Uttar Pradesh,Ballia,18.0,0.0,Tier 1,0.0
+Bihar,Munger,34.0,13.5,Tier 1,0.39705882352941174
+Bihar,Katihar,31.7,31.7,Tier 1,1.0
+Bihar,Bhagalpur,61.6,11.0,Tier 1,0.17857142857142858
+Bihar,Patna,249.2,109.0,Tier 1,0.4373996789727127
+West Bengal,Kolkata,618.4,172.0,Tier 1,0.278137128072445
+West Bengal,Haldia,24.5,24.5,Tier 1,1.0
+West Bengal,Santipur,18.7,18.7,Tier 1,1.0
+West Bengal,Nabadwip,15.5,10.0,Tier 1,0.6451612903225806
+West Bengal,Basirhat,15.3,0.0,Tier 1,0.0
+West Bengal,Bangaon,13.8,0.0,Tier 1,0.0
+West Bengal,South Dumdum,53.0,52.9,Tier 1,0.9981132075471698
+West Bengal,Rajpur Sonarpur,33.6,45.4,Tier 1,1.351190476190476
+West Bengal,Kamarhati,48.8,40.0,Tier 1,0.819672131147541
+West Bengal,North Dumdum,29.7,0.0,Tier 1,0.0
+West Bengal,Naihati,20.5,0.0,Tier 1,0.0
+West Bengal,Ulberia,27.3,0.0,Tier 1,0.0
+West Bengal,Kanchrapara,17.0,0.0,Tier 1,0.0
+West Bengal,Halisahar,16.8,0.0,Tier 1,0.0
+West Bengal,North Barrackpur,19.2,16.7,Tier 1,0.8697916666666666
+West Bengal,Rishra,13.5,15.3,Tier 1,1.1333333333333333
+West Bengal,Ashoknagar Kalyangarh,17.3,15.0,Tier 1,0.8670520231213873
+West Bengal,Haora,136.2,63.9,Tier 1,0.4691629955947137
+West Bengal,Bhatpara,59.7,28.5,Tier 1,0.4773869346733668
+West Bengal,Maheshtala,52.5,3.9,Tier 1,0.07428571428571429
+West Bengal,Serampore,26.7,18.9,Tier 1,0.7078651685393258
+West Bengal,Chandannagar,16.1,22.7,Tier 1,1.4099378881987576
+West Bengal,Habra,17.2,0.0,Tier 1,0.0
+Uttarakhand,Rishikesh,10.7,6.3,Tier 2,0.588785046728972
+Uttarakhand,Roorkee,11.0,0.0,Tier 2,0.0
+Uttar Pradesh,Najibabad,7.6,0.0,Tier 2,0.0
+Uttar Pradesh,Bijnor,7.6,8.1,Tier 2,1.0657894736842106
+Uttar Pradesh,Mughalsarai,16.0,0.0,Tier 2,0.0
+Uttar Pradesh,Ghazipur,10.7,0.0,Tier 2,0.0
+Uttar Pradesh,Kannauj,7.0,0.0,Tier 2,0.0
+Uttar Pradesh,Deoband,7.8,0.0,Tier 2,0.0
+Uttar Pradesh,Gangaghat,6.8,0.0,Tier 2,0.0
+Bihar,Buxar,7.6,2.0,Tier 2,0.2631578947368421
+Bihar,Sitamarhi,6.5,0.0,Tier 2,0.0
+Bihar,Begusarai,8.6,0.0,Tier 2,0.0
+Bihar,Mokameh,8.0,0.0,Tier 2,0.0
+West Bengal,Ranaghat,6.0,0.0,Tier 2,0.0
