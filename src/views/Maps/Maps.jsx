@@ -579,7 +579,7 @@ class FullScreenMap extends React.Component {
                                 >
                                   <ZoomableGroup center={[x, y]} zoom={zoom}>
                                     <Geographies
-                                      geography="indiastates.json"
+                                      geography="indiatates.json"
                                       disableOptimization
                                     >
                                       {(geographies, projection) => {

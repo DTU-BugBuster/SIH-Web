@@ -17,7 +17,7 @@ Here is a working live demo :  https://dtu-bugbuster.github.io/SIH-Web/
 ### Landing Page
 Currently it is just a prototype which will be developed further.
 
-![](https://dtu-bugbuster.github.io/SIH-Web/static/media/SIH.gif)
+![](SIH.gif)
 
 
 ## Instructions to Run
