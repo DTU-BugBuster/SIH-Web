@@ -22,7 +22,7 @@ Currently it is just a prototype which will be developed further.
 
 ## Instructions to Run
 
-1. `yarn install --production=false` to install the dependencies and dev dependencies. You need to be in the project root for this.
+1. `yarn install` to install the dependencies and dev dependencies. You need to be in the project root for this.
 
 2. `yarn run start` to start the development server
 
