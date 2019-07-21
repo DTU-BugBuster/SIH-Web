@@ -2,7 +2,7 @@
 <table>
 <tr>
 <td>
-  A real-time outbreak monitoring web app developed during Smart India Hackathon 2018 connecting hospital with government officials to predict water borne disease beforehand.The system considt of marking of affected Area by officials, registration of cases,display of cases by means of heatmap,alarm system through means of push notification.
+  A real-time outbreak monitoring web app developed during Smart India Hackathon 2018 connecting hospital with government officials to predict water borne disease beforehand.The system consist of marking of affected Area by officials, registration of cases,display of cases by means of heatmap,alarm system through means of push notification.
 </td>
 </tr>
 </table>
