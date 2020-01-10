@@ -58,7 +58,14 @@ function Greeting(props) {
   if (isLoggedIn == "Meghalaya") return <Meghalaya />;
   else return <UP />;
 }
-
+function List(props) {
+  const isLoggedIn = props.isLoggedIn;
+  if (isLoggedIn == "Rice") return <Rice />;
+  if (isLoggedIn == "Wheat") return <Wheat />;
+  if (isLoggedIn == "Raagi") return <Raagi />;
+  if (isLoggedIn == "Maize") return <Maize />;
+  else return <Raagi />;
+}
 class Orissa extends React.Component {
   render() {
     return (
@@ -1019,6 +1026,148 @@ function G(props) {
     </div>
   )
 }
+
+function Raagi() {
+  return (
+    <div
+      style={{
+        marginTop: "0px",
+        marginLeft: "0px",
+        width: "95%",
+        height: "10%"
+      }}
+    >
+      <Card
+        className="card-chart"
+        style={{
+          marginTop: "0px",
+          marginLeft: "0px",
+          width: "98.7%",
+          height: "1020%"
+        }}
+      >
+        <CardHeader>
+          <CardCategory>Best producer states for Raagi</CardCategory>
+          <CardTitle tag="h4" />
+        </CardHeader>
+        <CardBody>
+          <p>Rajasthan</p>
+          <p>Karnataka</p>
+          <p>Andhra Pradesh</p>
+          <p>Tamil Nadu</p>
+          <p>Odisha</p>
+        </CardBody>
+      </Card>
+    </div>
+  );
+}
+
+function Rice() {
+  return (
+    <div
+      style={{
+        marginTop: "0px",
+        marginLeft: "0px",
+        width: "95%",
+        height: "10%"
+      }}
+    >
+      <Card
+        className="card-chart"
+        style={{
+          marginTop: "0px",
+          marginLeft: "0px",
+          width: "98.7%",
+          height: "1020%"
+        }}
+      >
+        <CardHeader>
+          <CardCategory>Best producer states for Rice</CardCategory>
+          <CardTitle tag="h4" />
+        </CardHeader>
+        <CardBody>
+          <p>Karnataka</p>
+          <p>Assam</p>
+          <p>Odisha</p>
+          <p>Chattisgarh</p>
+          <p>Bihar</p>
+        </CardBody>
+      </Card>
+    </div>
+  );
+}
+
+function Wheat() {
+  return (
+    <div
+      style={{
+        marginTop: "0px",
+        marginLeft: "0px",
+        width: "95%",
+        height: "10%"
+      }}
+    >
+      <Card
+        className="card-chart"
+        style={{
+          marginTop: "0px",
+          marginLeft: "0px",
+          width: "98.7%",
+          height: "1020%"
+        }}
+      >
+        <CardHeader>
+          <CardCategory>Best producer states for Wheat</CardCategory>
+          <CardTitle tag="h4" />
+        </CardHeader>
+        <CardBody>
+          <p>Uttar Pradesh</p>
+          <p>Punjab</p>
+          <p>Madhya Pradesh</p>
+          <p>Haryana</p>
+          <p>Rajasthan</p>
+        </CardBody>
+      </Card>
+    </div>
+  );
+}
+
+function Maize() {
+  return (
+    <div
+      style={{
+        marginTop: "0px",
+        marginLeft: "0px",
+        width: "95%",
+        height: "10%"
+      }}
+    >
+      <Card
+        className="card-chart"
+        style={{
+          marginTop: "0px",
+          marginLeft: "0px",
+          width: "98.7%",
+          height: "1020%"
+        }}
+      >
+        <CardHeader>
+          <CardCategory>Best producer states for Wheat</CardCategory>
+          <CardTitle tag="h4" />
+        </CardHeader>
+        <CardBody>
+          <p>Karnataka</p>
+          <p>Rajasthan</p>
+          <p>Madhya Pradesh</p>
+          <p>Maharastra</p>
+          <p>Uttar Pradesh</p>
+        </CardBody>
+      </Card>
+    </div>
+  );
+}
+
+
 class App extends React.Component {
   render() {
     const options = {
@@ -1273,7 +1422,7 @@ class Dashboards extends React.Component {
                 <div>
                   <Greeting isLoggedIn={this.state.stateselected} />
                   <div>
-                    <Age c={this.state.u20} d={this.state.u40} z={this.state.u60} k={this.state.u80} />
+                    <List isLoggedIn={this.state.dataselected} />
                   </div>
                 </div>
               </Col>

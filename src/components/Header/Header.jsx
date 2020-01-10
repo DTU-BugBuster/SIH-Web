@@ -249,7 +249,7 @@ class Header extends React.Component {
                 }}
                 inputProps={{
                   className: "form-control",
-                  placeholder: "Select the data",
+                  placeholder: "Select the crop to be bought",
                   style: { marginBottom: "5px", borderRadius: "30px" }
                 }}
               />
