@@ -1141,7 +1141,7 @@ class Dashboards extends React.Component {
     super(props);
     this.state = {
       stateselected: "Uttar Pradesh",
-      dataselected: "Both",
+      dataselected: "All",
       casespoint: [],
       numcases: 11,
       numdeaths: 0,

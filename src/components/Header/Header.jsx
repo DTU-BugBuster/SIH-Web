@@ -220,9 +220,11 @@ class Header extends React.Component {
               <Autocomplete
                 getItemValue={item => item}
                 items={[
-                  "Users",
-                  "Hospital",
-                  "Both"
+                  "Raagi",
+                  "Rice",
+                  "Wheat",
+                  "Maize",
+                  "All"
                 ]}
                 shouldItemRender={(item, value) =>
                   item.slice(0, value.length).toLowerCase() ==

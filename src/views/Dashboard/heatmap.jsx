@@ -59,8 +59,10 @@ class MapExample extends React.Component {
     coordinates: [80.9462, 26.8467],
     casespoint: [],
     casespoint1: [],
+    casespoint2: [],
+    casespoint3: [],
     position: [[1, 1]],
-    data: "Both",
+    data: "All",
   };
 
   /**
@@ -87,12 +89,22 @@ class MapExample extends React.Component {
 
         this.setState({
           casespoint: [Object.entries(snapshot.val()).filter((data) => {
-            if (data[1].isweb) {
+            if (data[1].isweb==1) {
               return data[1];
             }
           })],
           casespoint1: [Object.entries(snapshot.val()).filter((data) => {
-            if (!data[1].isweb) {
+            if (data[1].isweb==2) {
+              return data[1];
+            }
+          })],
+          casespoint2: [Object.entries(snapshot.val()).filter((data) => {
+            if (data[1].isweb==3) {
+              return data[1];
+            }
+          })],
+          casespoint3: [Object.entries(snapshot.val()).filter((data) => {
+            if (data[1].isweb==4) {
               return data[1];
             }
           })]
@@ -179,7 +191,7 @@ class MapExample extends React.Component {
             doubleClickZoom={false}
           >
             {console.log('a', this.state.data)}
-            {(this.props.dataselected == "Hospital" || this.props.dataselected == "Both") ?
+            {(this.props.dataselected == "Raagi" || this.props.dataselected == "All") ?
               <HeatmapLayer
                 points={this.state.casespoint[0]}
                 longitudeExtractor={m => m[1].addresslng}
@@ -190,7 +202,29 @@ class MapExample extends React.Component {
                 blur={Number(this.state.blur)}
                 max={Number.parseFloat(this.state.max)}
               /> : ""}
-            {(this.props.dataselected == "Users" || this.props.dataselected == "Both") ?
+              {(this.props.dataselected == "Wheat" || this.props.dataselected == "All") ?
+                <HeatmapLayer
+                  points={this.state.casespoint2[0]}
+                  longitudeExtractor={m => m[1].addresslng}
+                  latitudeExtractor={m => m[1].addresslat}
+                  gradient={gradient}
+                  intensityExtractor={m => 10000}
+                  radius={Number(this.state.radius)}
+                  blur={Number(this.state.blur)}
+                  max={Number.parseFloat(this.state.max)}
+                /> : ""}
+                {(this.props.dataselected == "Rice" || this.props.dataselected == "All") ?
+                  <HeatmapLayer
+                    points={this.state.casespoint3[0]}
+                    longitudeExtractor={m => m[1].addresslng}
+                    latitudeExtractor={m => m[1].addresslat}
+                    gradient={gradient}
+                    intensityExtractor={m => 10000}
+                    radius={Number(this.state.radius)}
+                    blur={Number(this.state.blur)}
+                    max={Number.parseFloat(this.state.max)}
+                  /> : ""}
+            {(this.props.dataselected == "Maize" || this.props.dataselected == "All") ?
               <HeatmapLayer
                 points={this.state.casespoint1[0]}
                 longitudeExtractor={m => m[1].addresslng}
