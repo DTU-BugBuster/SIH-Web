@@ -44,6 +44,7 @@ class Dashboard extends React.Component {
     addResponseMessage("Welcome, How can i help you?");
     fire.auth().onAuthStateChanged(user => {
       if (user) {
+        
         fire
           .database()
           .ref("users/" + user.uid)

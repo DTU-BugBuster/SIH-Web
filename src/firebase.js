@@ -1,7 +1,5 @@
 import firebase from "firebase";
-import {
-  resolve
-} from "path";
+
 
 export const initializeFirebase = () => {
   firebase.initializeApp({
