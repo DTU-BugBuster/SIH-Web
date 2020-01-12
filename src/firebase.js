@@ -101,7 +101,7 @@ export const getcurrentuser = () => {
   const myPromise = new Promise((resolve, reject) => {
     if (firebase.auth().currentUser !== null) {
       firebase.database().ref('users/' + firebase.auth().currentUser.uid).once('value').then((snapshot) => {
-        resolve(snapshot.val());
+        resolve(snapshot);
       }).catch((error) => {
         console.log(error);
         reject();

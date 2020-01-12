@@ -12,8 +12,8 @@ var ps;
 class Sidebar extends React.Component {
   constructor(props) {
     super(props);
-    this.state={
-      user:""
+    this.state = {
+      user: ""
     }
     this.activeRoute.bind(this);
   }
@@ -28,18 +28,13 @@ class Sidebar extends React.Component {
         suppressScrollY: false
       });
     }
-    var fire = getfirebase();
-    fire.auth().onAuthStateChanged((user)=>{
-      if(user)
-      {
-        fire.database().ref('users/' + user.uid).once('value').then((snapshot) => {
-          this.setState({
-            user : snapshot.val()
-          })
-        }).catch((error) => {
-          console.log(error);
-        })
-      }
+    getcurrentuser().then((snapshot) => {
+      console.log("p", snapshot);
+      this.setState({
+        user: snapshot.val()
+      })
+    }).catch((error) => {
+      console.log(error);
     })
 
   }
@@ -57,21 +52,19 @@ class Sidebar extends React.Component {
           <div
             href="https://www.creative-tim.com"
             className="simple-text logo-normal"
-            style={{marginLeft:"30px"}}
+            style={{ marginLeft: "30px" }}
           >
-            {this.state.user ? "Hello, "+this.state.user.first_name +" " + this.state.user.last_name : ""}
+            {this.state.user ? "Hello, " + this.state.user.first_name + " " + this.state.user.last_name : ""}
           </div>
         </div>
         <div className="sidebar-wrapper" ref="sidebar">
           <Nav>
             {this.props.routes.map((prop, key) => {
-              if(prop.name=="User Profile") return null;
-              if(prop.name=="Report Case" && this.state.user.role=="A")
-              {
+              if (prop.name == "User Profile") return null;
+              if (prop.name == "Report Case" && this.state.user.role == "A") {
                 return null;
               }
-              if(prop.name=="Grievances" && this.state.user.role=="HA")
-              {
+              if (prop.name == "Grievances" && this.state.user.role == "HA") {
                 return null;
               }
               if (prop.redirect) return null;

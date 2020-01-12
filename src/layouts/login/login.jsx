@@ -37,7 +37,7 @@ class Login extends Component {
     var self = this;
     res.then(uid => {
       if (!this.state.ok) {
-        this.props.history.push("/signin");
+        this.props.history.push("/");
       } else {
         axios
           .get(
@@ -63,7 +63,7 @@ class Login extends Component {
                 uid
               ).then(() => {
                 console.log("dekh le");
-                self.props.history.push("/signin");
+                self.props.history.push("/login");
               });
             }
             else
@@ -82,7 +82,7 @@ class Login extends Component {
               uid
             ).then(() => {
               console.log("dekh le");
-              self.props.history.push("/signin");
+              self.props.history.push("/login");
             });
           }
           });

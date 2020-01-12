@@ -10,7 +10,6 @@ import { getcurrentuser, getfirebase, askForPermissionToReceiveNotifications } f
 import { Widget, addResponseMessage } from "react-chat-widget";
 import Dashboards from "../../views/Dashboard/Dashboard.jsx";
 import "react-chat-widget/lib/styles.css";
-import { watchFile } from "fs";
 var fire = getfirebase();
 var ps;
 class Dashboard extends React.Component {
@@ -42,29 +41,16 @@ class Dashboard extends React.Component {
       document.body.classList.toggle("perfect-scrollbar-on");
     }
     addResponseMessage("Welcome, How can i help you?");
-    fire.auth().onAuthStateChanged(user => {
-      if (user) {
-        
-        fire
-          .database()
-          .ref("users/" + user.uid)
-          .once("value")
-          .then(snapshot => {
-            this.setState({
-              user: snapshot.key,
-              role: snapshot.val().role
-            });
-            console.log("role", snapshot.val().role);
-            askForPermissionToReceiveNotifications();
-          })
-          .catch(error => {
-            console.log(error);
-          });
-      }
-      else
-      {
-        this.props.history.push('/login');
-      }
+    getcurrentuser().then((snapshot) => {
+      console.log("p", snapshot);
+      this.setState({
+        user: snapshot.key,
+        role: snapshot.val().role
+      });
+      console.log("role", snapshot.val().role);
+      askForPermissionToReceiveNotifications();
+    }).catch(error => {
+      console.log(error);
     });
   }
   componentWillUnmount() {
