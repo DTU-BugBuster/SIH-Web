@@ -1,5 +1,7 @@
 import React from "react";
 import { Polar } from 'react-chartjs-2';
+import DataTable from 'react-data-table-component';
+import DynamicDataTable from "@langleyfoxall/react-dynamic-data-table";
 import {
   Card,
   CardHeader,
@@ -1243,6 +1245,15 @@ class Gender extends React.Component {
     );
   }
 }
+class Tabi extends React.Component {
+  render() {
+    return (
+    <DynamicDataTable
+    rows={this.props.n}
+    />
+    );
+  }
+}
 class Age extends React.Component {
   render() {
     const options = {
@@ -1284,7 +1295,6 @@ class Age extends React.Component {
     );
   }
 }
-
 class Dashboards extends React.Component {
   constructor(props) {
     super(props);
@@ -1293,6 +1303,15 @@ class Dashboards extends React.Component {
       dataselected: "All",
       casespoint: [],
       numcases: 11,
+      fdatas:[],
+      tempdatas:[],
+      objc : {
+        name:"",
+        crop:"",
+        state:"",
+        rate:""
+      },
+      out : [],
       numdeaths: 0,
       numhealthy: 10,
       numfem: 27,
@@ -1309,6 +1328,8 @@ class Dashboards extends React.Component {
     this.age2 = this.age2.bind(this);
     this.age3 = this.age3.bind(this);
     this.age4 = this.age4.bind(this);
+    this.s = this.s.bind(this);
+    this.c = this.c.bind(this);
   }
   componentDidMount() {
     var firebase = getfirebase();
@@ -1333,11 +1354,39 @@ class Dashboards extends React.Component {
         }
 
       }
-
-
     });
+    firebase.database().ref('farmers').on('value', (snapshot) => {
+    this.setState({
+       fdatas: snapshot.val()
+    })
+      var ke = Object.keys(snapshot.val());
+      console.log(this.state.fdatas.Price);
+      for (var i = 0; i < ke.length; i++) {
+        var z = Object.entries(snapshot.val())[i][1].State;
+        var b = Object.entries(snapshot.val())[i][1].Crop;
+        if (z == " " + this.state.stateselected && b == this.state.dataselected) {
+          var nam = Object.entries(snapshot.val())[i][1].name;
+          var sta = Object.entries(snapshot.val())[i][1].State;
+          var cro = Object.entries(snapshot.val())[i][1].Crop;
+          var ra = Object.entries(snapshot.val())[i][1].Price;
+          var o = {
+             name:nam,
+             crop:cro,
+             state:sta,
+             rate:ra
+          };
+          var q = this.state.fdatas;
+          q.push(o);
+          this.setState({
+            objc: o,
+            fdatas: q
+          }, () => {
+            console.log("state changed", this.state.numcases);
+          })
+        }
 
-
+      }
+    });
   }
   ap(val) {
     var k = val[1].state.substr(1);
@@ -1367,6 +1416,30 @@ class Dashboards extends React.Component {
     var k = val[1].age;
     return k >= 60 && k <= 80;
   }
+  s(val) {
+    var k = val[1].State;
+    return k == this.state.stateselected;
+  }
+  c(val){
+    var k = val[1].Crop;
+    var a = val[1].State;
+    console.log(k);
+    var x = k == this.state.dataselected && a == this.state.stateselected;
+    if(x){
+       var l = this.state.out;
+       var ob = {
+          name:val[1].name,
+          state:val[1].State,
+          crop:val[1].Crop,
+          rate:val[1].Price
+       }
+        l.push(ob);
+        this.setState({
+          out: l
+        });
+    }
+    return k == this.state.dataselected && a == this.state.stateselected;
+  }
   componentWillReceiveProps(nextProp) {
 
     if (nextProp.state != this.state.stateselected) {
@@ -1380,10 +1453,13 @@ class Dashboards extends React.Component {
       });
     }
     var keys = Object.entries(this.state.casespoint);
-
+    var ke = Object.entries(this.state.fdatas);
     var final = keys.filter(this.ap);
+    var fin = ke.filter(this.c);
+    console.log(this.state.out[0]);
     this.setState({
-      numcases: final.length
+      numcases: final.length,
+      tempdatas: this.state.out
     });
     var f = final.filter(this.fe);
     var m = final.filter(this.male);
@@ -1431,13 +1507,18 @@ class Dashboards extends React.Component {
         />
         <div className="content" style={{ marginTop: "50px" }}>
           <Col>
-            <Row>
-              <Col xs={12} md={6}>
-                <div style={{ marginLeft: "100px" }}>
+          <Row style={{ marginLeft: "20px" }}>
+             <div style={{ marginTop: "20px" }}>
+                <Tabi style={{ marginLeft: "-10px" }} n={this.state.tempdatas}/>
+             </div>
+          </Row>
+            <Row style={{ marginTop: "40px" }}>
+            <Col xs={12} md={4}>
+                <div>
                   <Gender style={{ marginLeft: "-10px" }} c={this.state.numfem} d={this.state.nummale} />
                 </div>
               </Col>
-              <Col xs={12} md={6}>
+              <Col xs={12} md={4}>
                 <div style={{ marginTop: "0px", height: "10%" }}>
                   <App style={{ marginLeft: "-10px" }} c={this.state.numcases} d={this.state.numdeaths} z={this.state.numhealthy} />
                 </div>
