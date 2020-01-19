@@ -232,7 +232,7 @@ class Header extends React.Component {
                 }
                 renderItem={(item, isHighlighted) => {
                   return (
-                    <div className="form-control" style={{ fontSize: "14px", borderRadius: "0", background: "rgba(255,255,255,1)", color: "black" }}>
+                    <div className="form-control" style={{ align:"center",fontSize: "14px", borderRadius: "0", background: "rgba(255,255,255,1)", color: "black" }}>
                       {item}
                     </div>
                   );
@@ -245,12 +245,12 @@ class Header extends React.Component {
                 }}
                 wrapperProps={{
                   className: "no-border input-group",
-                  style: {}
+                  style: { align:"center"}
                 }}
                 inputProps={{
                   className: "form-control",
                   placeholder: "Select the crop to be bought",
-                  style: { marginBottom: "5px", borderRadius: "30px" }
+                  style: { marginBottom: "5px", borderRadius: "30px",align:"center" }
                 }}
               />
             </form>
@@ -301,7 +301,7 @@ class Header extends React.Component {
                 }
                 renderItem={(item, isHighlighted) => {
                   return (
-                    <div className="form-control" style={{ fontSize: "14px", borderRadius: "0", background: "rgba(255,255,255,1)", color: "black" }}>
+                    <div className="form-control" style={{ align:"center",fontSize: "14px", borderRadius: "0", background: "rgba(255,255,255,1)", color: "black" }}>
                       {item}
                     </div>
                   );

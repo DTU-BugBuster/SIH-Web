@@ -50,9 +50,14 @@
     bottom: 10px;
 }
 .sidebar .nav > li.active-pro a{
-    background: rgba(255, 255, 255, 0.14);
     opacity: 1;
     color: #FFFFFF;
+}
+.sidebar .sidebar-background:after{
+  display: none;
+}
+.sidebar[data-image]:after{
+  opacity: 0.22;
 }
 .login-head
 {
@@ -62,7 +67,7 @@
 }
  .ok{
   margin-left: 150px !important;
-} 
+}
 .login {
     margin-top: 100px ;
     max-width: 40%;
@@ -72,7 +77,7 @@
     border-radius: 2px;
     box-shadow:  0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23) ;
     background-color: rgba(0,0,0,0.2);
-     
+
 }
 
 body  {
@@ -81,7 +86,7 @@ body  {
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
-     
+
 }
 
 

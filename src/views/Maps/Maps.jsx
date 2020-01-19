@@ -3,7 +3,6 @@ import { Row, Col, Card, CardHeader, CardBody } from "reactstrap";
 // react plugin used to create google maps
 import { Line, Bar } from "react-chartjs-2";
 import { Motion, spring } from "react-motion";
-
 import {
   dashboardPanelChart,
   dashboardShippedProductsChart,
@@ -449,6 +448,8 @@ class FullScreenMap extends React.Component {
       zoom: 20,
       center: city.coordinates,
       state: city.name
+    },() => {
+        console.log("maximized", this.state.state);
     });
   }
   handleReset() {
@@ -465,7 +466,7 @@ class FullScreenMap extends React.Component {
           <Row>
             <Col>
               <Card>
-                <CardHeader>Water Quality Map of India</CardHeader>
+                <CardHeader>Agricultural Produces of India</CardHeader>
                 <CardBody>
                   <Row>
                     <Col xs={7}>
@@ -480,7 +481,7 @@ class FullScreenMap extends React.Component {
                       >
                         <ZoomableGroup center={[82, 22]} disablePanning>
                           <Geographies
-                            geography="indiastates.json"
+                            geography={"/indiastates.json"}
                             disableOptimization={this.state.disableOptimization}
                           >
                             {(geographies, projection) => {
@@ -579,13 +580,13 @@ class FullScreenMap extends React.Component {
                                 >
                                   <ZoomableGroup center={[x, y]} zoom={zoom}>
                                     <Geographies
-                                      geography="indiatates.json"
+                                      geography={"/indiastates.json"}
                                       disableOptimization
                                     >
                                       {(geographies, projection) => {
                                         return geographies.map(
                                           (geography, i) => {
-                                            //console.log( geography.properties);
+                                            console.log(geography);
                                             return (
                                               <Geography
                                                 key={i}

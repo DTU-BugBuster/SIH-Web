@@ -2811,7 +2811,8 @@ Created using IcoMoon - icomoon.io
     top: 0;
     left: 0;
     background-size: cover;
-    background-position: center center; }
+    background-position: center center;
+    background-image: url(../css/grass.jpeg); }
     .sidebar .sidebar-background:after,
     .off-canvas-sidebar .sidebar-background:after {
       position: absolute;
@@ -2822,6 +2823,9 @@ Created using IcoMoon - icomoon.io
       display: block;
       background: #FFFFFF;
       opacity: 1; }
+  .sidebar .sidebar[data-image]:after,
+  .off-canvas-sidebar .sidebar[data-image]:after {
+    opacity: 0.77; }
   .sidebar .logo,
   .off-canvas-sidebar .logo {
     position: relative;

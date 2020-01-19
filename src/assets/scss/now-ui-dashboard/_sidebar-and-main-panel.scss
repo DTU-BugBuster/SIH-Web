@@ -185,30 +185,31 @@
             position: relative;
         }
     }
-
     .sidebar-background{
         position: absolute;
         z-index: 1;
         height: 100%;
         width: 100%;
-        display: block;
+        display: none;
         top: 0;
         left: 0;
         background-size: cover;
         background-position: center center;
-
+        background-image: url(../css/grass.jpeg);
         &:after{
             position: absolute;
             z-index: 3;
             width: 100%;
             height: 100%;
             content: "";
-            display: block;
+            display: none;
             background: #FFFFFF;
             opacity: 1;
         }
     }
-
+     .sidebar[data-image]:after{
+         opacity: 0.77;
+     }
     .logo{
         position: relative;
         padding: $padding-base-vertical $padding-base-horizontal;

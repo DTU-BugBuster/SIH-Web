@@ -2,6 +2,7 @@ import React from "react";
 import { Polar } from 'react-chartjs-2';
 import DataTable from 'react-data-table-component';
 import DynamicDataTable from "@langleyfoxall/react-dynamic-data-table";
+import image from "../../assets/css/grass1.jpeg"
 import {
   Card,
   CardHeader,
@@ -1045,7 +1046,8 @@ function Raagi() {
           marginTop: "0px",
           marginLeft: "0px",
           width: "98.7%",
-          height: "1020%"
+          height: "1020%",
+          backgroundImage: `url(${image})`
         }}
       >
         <CardHeader>
@@ -1080,7 +1082,8 @@ function Rice() {
           marginTop: "0px",
           marginLeft: "0px",
           width: "98.7%",
-          height: "1020%"
+          height: "1020%",
+          backgroundImage: `url(${image})`
         }}
       >
         <CardHeader>
@@ -1098,7 +1101,11 @@ function Rice() {
     </div>
   );
 }
-
+var sectionStyle = {
+  width: "100%",
+  height: "400px",
+  backgroundImage: `url(${image})`
+};
 function Wheat() {
   return (
     <div
@@ -1115,7 +1122,8 @@ function Wheat() {
           marginTop: "0px",
           marginLeft: "0px",
           width: "98.7%",
-          height: "1020%"
+          height: "1020%",
+          backgroundImage: `url(${image})`
         }}
       >
         <CardHeader>
@@ -1144,13 +1152,15 @@ function Maize() {
         height: "10%"
       }}
     >
+    <section style={ sectionStyle }>
       <Card
         className="card-chart"
         style={{
           marginTop: "0px",
           marginLeft: "0px",
           width: "98.7%",
-          height: "1020%"
+          height: "1020%",
+          backgroundImage: `url(${image})`
         }}
       >
         <CardHeader>
@@ -1165,6 +1175,7 @@ function Maize() {
           <h5><pre>Uttar Pradesh    59%</pre></h5>
         </CardBody>
       </Card>
+      </section>
     </div>
   );
 }
@@ -1490,7 +1501,7 @@ class Dashboards extends React.Component {
         <PanelHeader
           size="lg"
           content={
-            <Row style={{ height: "100%" }}>
+            <Row style={{ height: "106%" }}>
               <Col xs={12} md={8}>
                 <Map state={this.state.stateselected} dataselected={this.state.dataselected} />
               </Col>
@@ -1509,7 +1520,7 @@ class Dashboards extends React.Component {
                 <Tabi style={{ marginLeft: "-10px" }} n={this.state.tempdatas}/>
              </div>
           </Row>
-            <Row style={{ marginTop: "40px" }}>
+            {/*<Row style={{ marginTop: "40px" }}>
             <Col xs={12} md={4}>
                 <div>
                   <Gender style={{ marginLeft: "-10px" }} c={this.state.numfem} d={this.state.nummale} />
@@ -1616,7 +1627,7 @@ class Dashboards extends React.Component {
                   </CardFooter>
                 </Card>
               </Col>
-            </Row>
+            </Row> */}
           </Col>
         </div>
 
