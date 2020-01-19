@@ -1049,15 +1049,15 @@ function Raagi() {
         }}
       >
         <CardHeader>
-          <CardCategory>Best producer states for Raagi</CardCategory>
+          <CardCategory><h4>Best producer states for Raagi</h4></CardCategory>
           <CardTitle tag="h4" />
         </CardHeader>
         <CardBody>
-          <p>Rajasthan</p>
-          <p>Karnataka</p>
-          <p>Andhra Pradesh</p>
-          <p>Tamil Nadu</p>
-          <p>Odisha</p>
+          <h5><pre>Rajasthan        84%</pre></h5>
+          <h5><pre>Karnataka        81%</pre></h5>
+          <h5><pre>Andhra Pradesh   75%</pre></h5>
+          <h5><pre>Tamil Nadu       73%</pre></h5>
+          <h5><pre>Odisha           58%</pre></h5>
         </CardBody>
       </Card>
     </div>
@@ -1084,15 +1084,15 @@ function Rice() {
         }}
       >
         <CardHeader>
-          <CardCategory>Best producer states for Rice</CardCategory>
+          <CardCategory><h4>Best producer states for Rice</h4></CardCategory>
           <CardTitle tag="h4" />
         </CardHeader>
         <CardBody>
-          <p>Karnataka</p>
-          <p>Assam</p>
-          <p>Odisha</p>
-          <p>Chattisgarh</p>
-          <p>Bihar</p>
+          <h5><pre>Karnataka        87%</pre></h5>
+          <h5><pre>Assam            85%</pre></h5>
+          <h5><pre>Odisha           83%</pre></h5>
+          <h5><pre>Chattisgarh      76%</pre></h5>
+          <h5><pre>Bihar            72%</pre></h5>
         </CardBody>
       </Card>
     </div>
@@ -1119,15 +1119,15 @@ function Wheat() {
         }}
       >
         <CardHeader>
-          <CardCategory>Best producer states for Wheat</CardCategory>
+          <CardCategory><h4>Best producer states for Wheat</h4></CardCategory>
           <CardTitle tag="h4" />
         </CardHeader>
         <CardBody>
-          <p>Uttar Pradesh</p>
-          <p>Punjab</p>
-          <p>Madhya Pradesh</p>
-          <p>Haryana</p>
-          <p>Rajasthan</p>
+          <h5><pre>Uttar Pradesh      65%</pre></h5>
+          <h5><pre>Punjab             59%</pre></h5>
+          <h5><pre>Madhya Pradesh     52%</pre></h5>
+          <h5><pre>Haryana            42%</pre></h5>
+          <h5><pre>Rajasthan          39%</pre></h5>
         </CardBody>
       </Card>
     </div>
@@ -1154,15 +1154,15 @@ function Maize() {
         }}
       >
         <CardHeader>
-          <CardCategory>Best producer states for Wheat</CardCategory>
+          <CardCategory><h4>Best producer states for Maize</h4></CardCategory>
           <CardTitle tag="h4" />
         </CardHeader>
         <CardBody>
-          <p>Karnataka</p>
-          <p>Rajasthan</p>
-          <p>Madhya Pradesh</p>
-          <p>Maharastra</p>
-          <p>Uttar Pradesh</p>
+          <h5><pre>Karnataka        90%</pre></h5>
+          <h5><pre>Rajasthan        86%</pre></h5>
+          <h5><pre>Madhya Pradesh   84%</pre></h5>
+          <h5><pre>Maharastra       78%</pre></h5>
+          <h5><pre>Uttar Pradesh    59%</pre></h5>
         </CardBody>
       </Card>
     </div>
@@ -1490,16 +1490,13 @@ class Dashboards extends React.Component {
         <PanelHeader
           size="lg"
           content={
-            <Row>
+            <Row style={{ height: "100%" }}>
               <Col xs={12} md={8}>
                 <Map state={this.state.stateselected} dataselected={this.state.dataselected} />
               </Col>
               <Col xs={12} md={4}>
-                <div>
-                  <Greeting isLoggedIn={this.state.stateselected} />
-                  <div>
+                <div style={{ height: "99%" }}>
                     <List isLoggedIn={this.state.dataselected} />
-                  </div>
                 </div>
               </Col>
             </Row>
@@ -1508,7 +1505,7 @@ class Dashboards extends React.Component {
         <div className="content" style={{ marginTop: "50px" }}>
           <Col>
           <Row style={{ marginLeft: "20px" }}>
-             <div style={{ marginTop: "20px" }}>
+             <div style={{ marginTop: "20px" },{width: "100%"}}>
                 <Tabi style={{ marginLeft: "-10px" }} n={this.state.tempdatas}/>
              </div>
           </Row>
