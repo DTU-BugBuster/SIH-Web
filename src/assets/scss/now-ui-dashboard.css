@@ -2759,7 +2759,7 @@ Created using IcoMoon - icomoon.io
       color: #FFFFFF; }
     .sidebar .nav li.active > a:not([data-toggle="collapse"]),
     .off-canvas-sidebar .nav li.active > a:not([data-toggle="collapse"]) {
-      background-color: #FFFFFF;
+      background-color: transparent;
       box-shadow: 0 1px 15px 1px rgba(39, 39, 39, 0.1); }
     .sidebar .nav li.active > a[data-toggle="collapse"],
     .off-canvas-sidebar .nav li.active > a[data-toggle="collapse"] {
@@ -2807,12 +2807,11 @@ Created using IcoMoon - icomoon.io
     z-index: 1;
     height: 100%;
     width: 100%;
-    display: block;
+    display: none;
     top: 0;
     left: 0;
     background-size: cover;
-    background-position: center center;
-    background-image: url(../css/grass.jpeg); }
+    background-position: center center; }
     .sidebar .sidebar-background:after,
     .off-canvas-sidebar .sidebar-background:after {
       position: absolute;
@@ -2820,7 +2819,7 @@ Created using IcoMoon - icomoon.io
       width: 100%;
       height: 100%;
       content: "";
-      display: block;
+      display: none;
       background: #FFFFFF;
       opacity: 1; }
   .sidebar .sidebar[data-image]:after,

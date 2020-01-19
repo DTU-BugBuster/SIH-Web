@@ -629,12 +629,12 @@ class FullScreenMap extends React.Component {
                             </Motion>
                           </div>
                         </Row>
-                        <Row xs={7}>
+                        <Row xs={7} >
                           <div
                             className="chart-area"
-                            style={{ marginTop: "10px", width: "100%" }}
+                            style={{ marginTop: "50px", width: "100%" ,height:"100%"}}
                           >
-                            <Greeting isLoggedIn={this.state.name} />,
+                            <Greeting isLoggedIn={this.state.name} style={{ marginTop: "50px", width: "100%" ,height:"100%"}}/>,
                           </div>
                         </Row>
                       </Col>

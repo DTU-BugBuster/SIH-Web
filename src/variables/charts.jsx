@@ -1111,7 +1111,7 @@ const dashboard24HoursPerformanceChart = {
     var ctx = canvas.getContext("2d");
     var gradientFill = ctx.createLinearGradient(0, 170, 0, 50);
     gradientFill.addColorStop(0, "rgba(128, 182, 244, 0)");
-    gradientFill.addColorStop(1, hexToRGB("#2CA8FF", 0.6));
+    gradientFill.addColorStop(1, hexToRGB("#062e04", 0.6));
     return {
       labels: [
         "WELL AT KUYYURA- A.P.",
@@ -1140,11 +1140,11 @@ const dashboard24HoursPerformanceChart = {
       ],
       datasets: [
         {
-          label: "Mean Temprature",
+          label: "Major Crops",
           backgroundColor: gradientFill,
-          borderColor: "#2CA8FF",
+          borderColor: "#062e04",
           pointBorderColor: "#FFF",
-          pointBackgroundColor: "#2CA8FF",
+          pointBackgroundColor: "#062e04",
           pointBorderWidth: 2,
           pointHoverRadius: 4,
           pointHoverBorderWidth: 1,
@@ -1177,8 +1177,8 @@ const dashboard24HoursPerformanceChart = {
             28,
             27
           ]
-        },
-        {
+        }
+        /*{
           label: "pH",
           type: "line",
           borderColor: "#EC932F",
@@ -1261,7 +1261,7 @@ const dashboard24HoursPerformanceChart = {
             1,
             0.9
           ]
-        }
+        }*/
       ]
     };
   },
@@ -1322,49 +1322,27 @@ const dashboard24HoursPerformanceChartAssam = {
     var ctx = canvas.getContext("2d");
     var gradientFill = ctx.createLinearGradient(0, 170, 0, 50);
     gradientFill.addColorStop(0, "rgba(128, 182, 244, 0)");
-    gradientFill.addColorStop(1, hexToRGB("#2CA8FF", 0.6));
+    gradientFill.addColorStop(1, hexToRGB("#062e04", 0.6));
     return {
       labels: [
-        "DIGBOI- TINSUKIA DISTT.- ASSAM",
-        "KARBI ANGLONG DISTT.- ASSAM",
-        "SIBSAGAR - ASSAM",
-        "SIBSAGAR- ASSAM",
-        "(JORHAT- ASSAM",
-        "SILCHAR- ASSAM",
-        "BARPETA- ASSAM",
-        "BONAIGAON- ASSAM",
-        "GUWAHATI- ASSAM",
-        "GUWAHATI- ASSAM",
-        "GROUND WATER FROM LEDO-MARGHERITA",
-        "GROUND WATER FROM NAZIRA",
-        "GROUND WATER FROM NUMALIGARH(NEAR NRL TE LABOR COLONY)",
-        "GROUND WATER FROMSEMENCHAPARI",
-        "GROUND WATER FROM SILAPATHAR",
-        "GROUND WATER FROM LAKHIMPURTOWN",
-        "GROUND WATER FROM TEZPUR(MISSION CHARIALI)",
-        "GROUND WATER FROM NAGAON(PANIGAON)",
-        "GROUND WATER FROM JAGIROAD NRHPC EFFLUENT DISCHARGE POINT",
-        "GROUND WATER NR MSW DUMPING SITE AT GARCHUK-GUWAHATI",
-        "GROUND WATER FROM NALBARI",
-        "GROUND WATER FROM BARPETA ROAD(RLY STATION)",
-        "GROUND WATER NEAR BPRL-DHALIGAON",
-        "GROUND WATER FROM KOKRAJHAR DISTRICT (HS SCHOOL )",
-        "GROUND WATER FROM DHUBRIDISTRICT (COLLEGE NAGAR )",
-        "GROUND WATER FROM GOALPARA DIST.(GOALPARA COLLEGE )",
-        "GROUND WATER FROM DIPHU (GOVT.COLLEGE)",
-        "GROUND WATER FROM HAMREN",
-        "GROUND WATER FROM HAFLONG",
-        "GROUND WATER FROM KARIMGANJ(COLLEGE)",
-        "GROUND WATER FROM HIALAKANDI (NEAR ASTC BUS STAND )",
-        "GROUND WATER IN PANCHGRAMMARKET NEAR CACHAR PAPER MILL"
+        "RICE",
+        "MAIZE",
+        "PULSES",
+        "POTATO",
+        "WHEAT",
+        "TEA",
+        "JUTE",
+        "OIL SEEDS",
+        "SUGARCANE",
+        "COTTON",
       ],
       datasets: [
         {
-          label: "Mean Temprature",
+          label: "Major Crops",
           backgroundColor: gradientFill,
-          borderColor: "#2CA8FF",
+          borderColor: "#062e04",
           pointBorderColor: "#FFF",
-          pointBackgroundColor: "#2CA8FF",
+          pointBackgroundColor: "#062e04",
           pointBorderWidth: 2,
           pointHoverRadius: 4,
           pointHoverBorderWidth: 1,
@@ -1383,22 +1361,9 @@ const dashboard24HoursPerformanceChartAssam = {
             24,
             22,
             21,
-            25,
-            30,
-            30,
-            27,
-            31,
-            25,
-            25,
-            25,
-            23,
-            28,
-            31,
-            28,
-            27
           ]
-        },
-        {
+        }
+        /*{
           label: "pH",
           type: "line",
           borderColor: "#EC932F",
@@ -1481,7 +1446,7 @@ const dashboard24HoursPerformanceChartAssam = {
             1,
             0.9
           ]
-        }
+        } */
       ]
     };
   },
@@ -1542,40 +1507,27 @@ const dashboard24HoursPerformanceChartMizoram = {
     var ctx = canvas.getContext("2d");
     var gradientFill = ctx.createLinearGradient(0, 170, 0, 50);
     gradientFill.addColorStop(0, "rgba(128, 182, 244, 0)");
-    gradientFill.addColorStop(1, hexToRGB("#2CA8FF", 0.6));
+    gradientFill.addColorStop(1, hexToRGB("#062e04", 0.6));
     return {
       labels: [
-        "WELL AT KUYYURA- A.P.",
-        "WELL AT TADAVAI A.P.",
-        "WELL AT VIJAYWADA- A.P.",
-        "WELL AT PEDDAVOORA- A.P.",
-        "B/W.- EAST OF SAICHERUVU-PAIDIPALLY (V)-WARANGAL DIST.",
-        "B/W -NEAR CKM COLLEGE -ENUMAMULA (V) -WARANGAL DIST.",
-        "O/W - BHOOMAIAH NEAR ASHPONDSOF NTPC - KUNDANPALLY (V) - RAMAGUNDAM - KARIMNAGAR- A.P",
-        "B/W - MANAKONDUR (V) - KARIMNAGAR DIST.- A.P",
-        "B/W - IDA - NEAR CHAITANYA CHLORIDES -PASHAMAYLAM - MEDAK",
-        "B/W.- PRIMARY SCHOOL -RUDRAVELLI (V) - BIBINAGAR (M)- NALGONDA DIST.- A.P",
-        "B/W - SRI RAMNAGAR COLONY- SAKKAR NAGAR- BODHAN- NIZAMABAD DIST.- A.P",
-        "B W.- KRISHNA MURTHY- D.NO.48-16-43 AUTONAGAR VIJJAYAWADA- KRISNA DIST.- A.P.",
-        "B/W.- VIJAY KUMAR AUTONAGARVIJAYAWADA- KRISHNA DIST.",
-        "B/W.- NAGARAM(V)- PALVONCHA- KHAMMAM DIST.- A.P.",
-        "B W OF NAVLOK GARDENS NELLORE",
-        "B/W.- TUNGBHADRA RIVER NEAR KURNOOL- A.P.",
-        "B/W.- NANDYAL- KURNOOL DIST.- A.P.",
-        "B/W.- NAGIRI- CHITTOOR DIST.- A.P",
-        "B/W.- SWARNAMUKHI RIVER-SRIKALAHASTI- CHITTOOR DIST.",
-        "O/W.- NEAR RAMA TEMPLE - WARD No.2 - MINDI - VISAKHAPATNAM- A.P",
-        "O/W.PEDDANUYYI - VIZIANAGARAM",
-        "B/W.- NEAR M/S ANDHRA SUGARS LTD.- KOVVUR - W.G.DIST.",
-        "O/W.-NEAR PARTAP NAGAR BRIIDGE -KAKINADA - E.G.DIST.- A.P"
+        "MANDARIN",
+        "BANANA",
+        "PINEAPPLE",
+        "GINGER",
+        "TURMERIC",
+        "CHILLI",
+        "CABBAGE",
+        "TOMATO",
+        "RADDISH",
+        "PUMPKIN"
       ],
       datasets: [
         {
-          label: "Mean Temprature",
+          label: "Major Crops",
           backgroundColor: gradientFill,
-          borderColor: "#2CA8FF",
+          borderColor: "#062e04",
           pointBorderColor: "#FFF",
-          pointBackgroundColor: "#2CA8FF",
+          pointBackgroundColor: "#062e04",
           pointBorderWidth: 2,
           pointHoverRadius: 4,
           pointHoverBorderWidth: 1,
@@ -1594,22 +1546,9 @@ const dashboard24HoursPerformanceChartMizoram = {
             24,
             22,
             21,
-            25,
-            30,
-            30,
-            27,
-            31,
-            25,
-            25,
-            25,
-            23,
-            28,
-            31,
-            28,
-            27
           ]
-        },
-        {
+        }
+        /*{
           label: "pH",
           type: "line",
           borderColor: "#EC932F",
@@ -1692,7 +1631,7 @@ const dashboard24HoursPerformanceChartMizoram = {
             1,
             0.9
           ]
-        }
+        }*/
       ]
     };
   },
@@ -1753,40 +1692,27 @@ const dashboard24HoursPerformanceChartManipur = {
     var ctx = canvas.getContext("2d");
     var gradientFill = ctx.createLinearGradient(0, 170, 0, 50);
     gradientFill.addColorStop(0, "rgba(128, 182, 244, 0)");
-    gradientFill.addColorStop(1, hexToRGB("#2CA8FF", 0.6));
+    gradientFill.addColorStop(1, hexToRGB("#062e04", 0.6));
     return {
       labels: [
-        "WELL AT KUYYURA- A.P.",
-        "WELL AT TADAVAI A.P.",
-        "WELL AT VIJAYWADA- A.P.",
-        "WELL AT PEDDAVOORA- A.P.",
-        "B/W.- EAST OF SAICHERUVU-PAIDIPALLY (V)-WARANGAL DIST.",
-        "B/W -NEAR CKM COLLEGE -ENUMAMULA (V) -WARANGAL DIST.",
-        "O/W - BHOOMAIAH NEAR ASHPONDSOF NTPC - KUNDANPALLY (V) - RAMAGUNDAM - KARIMNAGAR- A.P",
-        "B/W - MANAKONDUR (V) - KARIMNAGAR DIST.- A.P",
-        "B/W - IDA - NEAR CHAITANYA CHLORIDES -PASHAMAYLAM - MEDAK",
-        "B/W.- PRIMARY SCHOOL -RUDRAVELLI (V) - BIBINAGAR (M)- NALGONDA DIST.- A.P",
-        "B/W - SRI RAMNAGAR COLONY- SAKKAR NAGAR- BODHAN- NIZAMABAD DIST.- A.P",
-        "B W.- KRISHNA MURTHY- D.NO.48-16-43 AUTONAGAR VIJJAYAWADA- KRISNA DIST.- A.P.",
-        "B/W.- VIJAY KUMAR AUTONAGARVIJAYAWADA- KRISHNA DIST.",
-        "B/W.- NAGARAM(V)- PALVONCHA- KHAMMAM DIST.- A.P.",
-        "B W OF NAVLOK GARDENS NELLORE",
-        "B/W.- TUNGBHADRA RIVER NEAR KURNOOL- A.P.",
-        "B/W.- NANDYAL- KURNOOL DIST.- A.P.",
-        "B/W.- NAGIRI- CHITTOOR DIST.- A.P",
-        "B/W.- SWARNAMUKHI RIVER-SRIKALAHASTI- CHITTOOR DIST.",
-        "O/W.- NEAR RAMA TEMPLE - WARD No.2 - MINDI - VISAKHAPATNAM- A.P",
-        "O/W.PEDDANUYYI - VIZIANAGARAM",
-        "B/W.- NEAR M/S ANDHRA SUGARS LTD.- KOVVUR - W.G.DIST.",
-        "O/W.-NEAR PARTAP NAGAR BRIIDGE -KAKINADA - E.G.DIST.- A.P"
+        "POTATO",
+        "GINGER",
+        "GRAM",
+        "CAULIFLOWER",
+        "CABBAGE",
+        "MUSTARD",
+        "BANANA",
+        "LEMON",
+        "ORANGE",
+        "CASHEW"
       ],
       datasets: [
         {
-          label: "Mean Temprature",
+          label: "Major Crops",
           backgroundColor: gradientFill,
-          borderColor: "#2CA8FF",
+          borderColor: "#062e04",
           pointBorderColor: "#FFF",
-          pointBackgroundColor: "#2CA8FF",
+          pointBackgroundColor: "#062e04",
           pointBorderWidth: 2,
           pointHoverRadius: 4,
           pointHoverBorderWidth: 1,
@@ -1806,21 +1732,9 @@ const dashboard24HoursPerformanceChartManipur = {
             22,
             21,
             25,
-            30,
-            30,
-            27,
-            31,
-            25,
-            25,
-            25,
-            23,
-            28,
-            31,
-            28,
-            27
           ]
-        },
-        {
+        }
+        /*{
           label: "pH",
           type: "line",
           borderColor: "#EC932F",
@@ -1903,7 +1817,7 @@ const dashboard24HoursPerformanceChartManipur = {
             1,
             0.9
           ]
-        }
+        } */
       ]
     };
   },
@@ -1964,7 +1878,7 @@ const dashboard24HoursPerformanceChartTripura = {
     var ctx = canvas.getContext("2d");
     var gradientFill = ctx.createLinearGradient(0, 170, 0, 50);
     gradientFill.addColorStop(0, "rgba(128, 182, 244, 0)");
-    gradientFill.addColorStop(1, hexToRGB("#2CA8FF", 0.6));
+    gradientFill.addColorStop(1, hexToRGB("#062e04", 0.6));
     return {
       labels: [
         "WELL AT UDAIPUR (TUBEWELL)-",
@@ -1977,11 +1891,11 @@ const dashboard24HoursPerformanceChartTripura = {
       ],
       datasets: [
         {
-          label: "Mean Temprature",
+          label: "Major Crops",
           backgroundColor: gradientFill,
-          borderColor: "#2CA8FF",
+          borderColor: "#062e04",
           pointBorderColor: "#FFF",
-          pointBackgroundColor: "#2CA8FF",
+          pointBackgroundColor: "#062e04",
           pointBorderWidth: 2,
           pointHoverRadius: 4,
           pointHoverBorderWidth: 1,
@@ -2014,8 +1928,8 @@ const dashboard24HoursPerformanceChartTripura = {
             28,
             27
           ]
-        },
-        {
+        }
+        /*{
           label: "pH",
           type: "line",
           borderColor: "#EC932F",
@@ -2098,7 +2012,7 @@ const dashboard24HoursPerformanceChartTripura = {
             1,
             0.9
           ]
-        }
+        }*/
       ]
     };
   },
@@ -2159,7 +2073,7 @@ const dashboard24HoursPerformanceChartChattisgarh = {
     var ctx = canvas.getContext("2d");
     var gradientFill = ctx.createLinearGradient(0, 170, 0, 50);
     gradientFill.addColorStop(0, "rgba(128, 182, 244, 0)");
-    gradientFill.addColorStop(1, hexToRGB("#2CA8FF", 0.6));
+    gradientFill.addColorStop(1, hexToRGB("#062e04", 0.6));
     return {
       labels: [
         "AT RAIPUR REGION- CHHATISSGARH",
@@ -2169,11 +2083,11 @@ const dashboard24HoursPerformanceChartChattisgarh = {
       ],
       datasets: [
         {
-          label: "Mean Temprature",
+          label: "Major Crops",
           backgroundColor: gradientFill,
-          borderColor: "#2CA8FF",
+          borderColor: "#062e04",
           pointBorderColor: "#FFF",
-          pointBackgroundColor: "#2CA8FF",
+          pointBackgroundColor: "#062e04",
           pointBorderWidth: 2,
           pointHoverRadius: 4,
           pointHoverBorderWidth: 1,
@@ -2206,8 +2120,8 @@ const dashboard24HoursPerformanceChartChattisgarh = {
             28,
             27
           ]
-        },
-        {
+        }
+        /*{
           label: "pH",
           type: "line",
           borderColor: "#EC932F",
@@ -2290,7 +2204,7 @@ const dashboard24HoursPerformanceChartChattisgarh = {
             1,
             0.9
           ]
-        }
+        }*/
       ]
     };
   },
@@ -2351,31 +2265,26 @@ const dashboard24HoursPerformanceChartMP = {
     var ctx = canvas.getContext("2d");
     var gradientFill = ctx.createLinearGradient(0, 170, 0, 50);
     gradientFill.addColorStop(0, "rgba(128, 182, 244, 0)");
-    gradientFill.addColorStop(1, hexToRGB("#2CA8FF", 0.6));
+    gradientFill.addColorStop(1, hexToRGB("#062e04", 0.6));
     return {
       labels: [
-        "OPEN WELL/TUBE WELL INDUSTRIAL AREA- GOVINDPURA- BHOPAL",
-        "OPEN WELL/TUBE WELL INDL AREAMANDIDEEP- RAISEN",
-        "GW SAMPLING AT TWO POINTS IN INDUSTRIAL AREA MALANPUR- M.P",
-        "GROUND WATER SAMPLING AT TWOPOINTS IN INDL AREA MALANPUR",
-        "TUBE WELL AT JAINABAD- NEAR TAPTI RIVER BRIDGE- PUMPING STN-BURHANPUR",
-        "KATHODA- JABALPUR",
-        "MADAI GRAM- JABALPUR",
-        "MEHATWAS- NAGDA",
-        "BHAGATPURI VILLAGE- NAGDA",
-        "PRATAL NAGAR- DEWAS",
-        "CULVERT ON A.B.ROAD- MAKSI",
-        "TRENCHING GROUND- NEAR GARDEN- DEV GURADIYA ROAD- INDORE",
-        "TRENCHING GROUND IN THE PREMISES OF M/S RISHABH MASALA UDYOG- INDORE",
-        "TRENCHING GROUND IN THE PREMISES OF M/S LAKHANI FOOT WEAR- INDORE"
+        "RICE",
+        "WHEAT",
+        "JWAR",
+        "MAIZE",
+        "GRAM",
+        "TOWAR",
+        "COTTON",
+        "SUGARCANE",
+        "SOYABEAN"
       ],
       datasets: [
         {
-          label: "Mean Temprature",
+          label: "Major Crops",
           backgroundColor: gradientFill,
-          borderColor: "#2CA8FF",
+          borderColor: "#062e04",
           pointBorderColor: "#FFF",
-          pointBackgroundColor: "#2CA8FF",
+          pointBackgroundColor: "#062e04",
           pointBorderWidth: 2,
           pointHoverRadius: 4,
           pointHoverBorderWidth: 1,
@@ -2384,20 +2293,6 @@ const dashboard24HoursPerformanceChartMP = {
           borderWidth: 1,
 
           data: [
-            25,
-            24,
-            30,
-            22,
-            23,
-            23,
-            24,
-            24,
-            22,
-            21,
-            25,
-            30,
-            30,
-            27,
             31,
             25,
             25,
@@ -2408,8 +2303,8 @@ const dashboard24HoursPerformanceChartMP = {
             28,
             27
           ]
-        },
-        {
+        }
+        /*{
           label: "pH",
           type: "line",
           borderColor: "#EC932F",
@@ -2492,7 +2387,7 @@ const dashboard24HoursPerformanceChartMP = {
             1,
             0.9
           ]
-        }
+        }*/
       ]
     };
   },
@@ -2553,7 +2448,7 @@ const dashboard24HoursPerformanceChartHP = {
     var ctx = canvas.getContext("2d");
     var gradientFill = ctx.createLinearGradient(0, 170, 0, 50);
     gradientFill.addColorStop(0, "rgba(128, 182, 244, 0)");
-    gradientFill.addColorStop(1, hexToRGB("#2CA8FF", 0.6));
+    gradientFill.addColorStop(1, hexToRGB("#062e04", 0.6));
     return {
       labels: [
         "AT KALA AMB- H.P",
@@ -2578,11 +2473,11 @@ const dashboard24HoursPerformanceChartHP = {
       ],
       datasets: [
         {
-          label: "Mean Temprature",
+          label: "Major Crops",
           backgroundColor: gradientFill,
-          borderColor: "#2CA8FF",
+          borderColor: "#062e04",
           pointBorderColor: "#FFF",
-          pointBackgroundColor: "#2CA8FF",
+          pointBackgroundColor: "#062e04",
           pointBorderWidth: 2,
           pointHoverRadius: 4,
           pointHoverBorderWidth: 1,
@@ -2615,8 +2510,8 @@ const dashboard24HoursPerformanceChartHP = {
             28,
             27
           ]
-        },
-        {
+        }
+        /*{
           label: "pH",
           type: "line",
           borderColor: "#EC932F",
@@ -2699,7 +2594,7 @@ const dashboard24HoursPerformanceChartHP = {
             1,
             0.9
           ]
-        }
+        }*/
       ]
     };
   },
@@ -2760,7 +2655,7 @@ const dashboard24HoursPerformanceChartKarnatka = {
     var ctx = canvas.getContext("2d");
     var gradientFill = ctx.createLinearGradient(0, 170, 0, 50);
     gradientFill.addColorStop(0, "rgba(128, 182, 244, 0)");
-    gradientFill.addColorStop(1, hexToRGB("#2CA8FF", 0.6));
+    gradientFill.addColorStop(1, hexToRGB("#062e04", 0.6));
     return {
       labels: [
         "SECTOR 15",
@@ -2773,11 +2668,11 @@ const dashboard24HoursPerformanceChartKarnatka = {
       ],
       datasets: [
         {
-          label: "Mean Temprature",
+          label: "Major Crops",
           backgroundColor: gradientFill,
-          borderColor: "#2CA8FF",
+          borderColor: "#062e04",
           pointBorderColor: "#FFF",
-          pointBackgroundColor: "#2CA8FF",
+          pointBackgroundColor: "#062e04",
           pointBorderWidth: 2,
           pointHoverRadius: 4,
           pointHoverBorderWidth: 1,
@@ -2810,8 +2705,8 @@ const dashboard24HoursPerformanceChartKarnatka = {
             28,
             27
           ]
-        },
-        {
+        }
+        /*{
           label: "pH",
           type: "line",
           borderColor: "#EC932F",
@@ -2894,7 +2789,7 @@ const dashboard24HoursPerformanceChartKarnatka = {
             1,
             0.9
           ]
-        }
+        }*/
       ]
     };
   },
@@ -2951,7 +2846,7 @@ const dashboard24HoursPerformanceChartPunjab = {
     var ctx = canvas.getContext("2d");
     var gradientFill = ctx.createLinearGradient(0, 170, 0, 50);
     gradientFill.addColorStop(0, "rgba(128, 182, 244, 0)");
-    gradientFill.addColorStop(1, hexToRGB("#2CA8FF", 0.6));
+    gradientFill.addColorStop(1, hexToRGB("#062e04", 0.6));
     return {
       labels: [
         "PETROL PUMP OPP. HERO CYCLE-LUDHIANA",
@@ -2963,11 +2858,11 @@ const dashboard24HoursPerformanceChartPunjab = {
       ],
       datasets: [
         {
-          label: "Mean Temprature",
+          label: "Major Crops",
           backgroundColor: gradientFill,
-          borderColor: "#2CA8FF",
+          borderColor: "#062e04",
           pointBorderColor: "#FFF",
-          pointBackgroundColor: "#2CA8FF",
+          pointBackgroundColor: "#062e04",
           pointBorderWidth: 2,
           pointHoverRadius: 4,
           pointHoverBorderWidth: 1,
@@ -3000,8 +2895,8 @@ const dashboard24HoursPerformanceChartPunjab = {
             28,
             27
           ]
-        },
-        {
+        }
+        /*{
           label: "pH",
           type: "line",
           borderColor: "#EC932F",
@@ -3084,7 +2979,7 @@ const dashboard24HoursPerformanceChartPunjab = {
             1,
             0.9
           ]
-        }
+        }*/
       ]
     };
   },
@@ -3145,7 +3040,7 @@ const dashboard24HoursPerformanceChartSikkim = {
     var ctx = canvas.getContext("2d");
     var gradientFill = ctx.createLinearGradient(0, 170, 0, 50);
     gradientFill.addColorStop(0, "rgba(128, 182, 244, 0)");
-    gradientFill.addColorStop(1, hexToRGB("#2CA8FF", 0.6));
+    gradientFill.addColorStop(1, hexToRGB("#062e04", 0.6));
     return {
       labels: [
         "PETROL PUMP OPP. HERO CYCLE-Sikkim",
@@ -3157,11 +3052,11 @@ const dashboard24HoursPerformanceChartSikkim = {
       ],
       datasets: [
         {
-          label: "Mean Temprature",
+          label: "Major Crops",
           backgroundColor: gradientFill,
-          borderColor: "#2CA8FF",
+          borderColor: "#062e04",
           pointBorderColor: "#FFF",
-          pointBackgroundColor: "#2CA8FF",
+          pointBackgroundColor: "#062e04",
           pointBorderWidth: 2,
           pointHoverRadius: 4,
           pointHoverBorderWidth: 1,
@@ -3194,8 +3089,8 @@ const dashboard24HoursPerformanceChartSikkim = {
             28,
             27
           ]
-        },
-        {
+        }
+        /*{
           label: "pH",
           type: "line",
           borderColor: "#EC932F",
@@ -3278,7 +3173,7 @@ const dashboard24HoursPerformanceChartSikkim = {
             1,
             0.9
           ]
-        }
+        }*/
       ]
     };
   },
@@ -3339,7 +3234,7 @@ const dashboard24HoursPerformanceChartKerala = {
     var ctx = canvas.getContext("2d");
     var gradientFill = ctx.createLinearGradient(0, 170, 0, 50);
     gradientFill.addColorStop(0, "rgba(128, 182, 244, 0)");
-    gradientFill.addColorStop(1, hexToRGB("#2CA8FF", 0.6));
+    gradientFill.addColorStop(1, hexToRGB("#062e04", 0.6));
     return {
       labels: [
         "WELL AT ELOOR- KERALA",
@@ -3375,11 +3270,11 @@ const dashboard24HoursPerformanceChartKerala = {
       ],
       datasets: [
         {
-          label: "Mean Temprature",
+          label: "Major Crops",
           backgroundColor: gradientFill,
-          borderColor: "#2CA8FF",
+          borderColor: "#062e04",
           pointBorderColor: "#FFF",
-          pointBackgroundColor: "#2CA8FF",
+          pointBackgroundColor: "#062e04",
           pointBorderWidth: 2,
           pointHoverRadius: 4,
           pointHoverBorderWidth: 1,
@@ -3412,8 +3307,8 @@ const dashboard24HoursPerformanceChartKerala = {
             28,
             27
           ]
-        },
-        {
+        }
+        /*{
           label: "pH",
           type: "line",
           borderColor: "#EC932F",
@@ -3496,7 +3391,7 @@ const dashboard24HoursPerformanceChartKerala = {
             1,
             0.9
           ]
-        }
+        }*/
       ]
     };
   },
@@ -3557,7 +3452,7 @@ const dashboard24HoursPerformanceChartTN = {
     var ctx = canvas.getContext("2d");
     var gradientFill = ctx.createLinearGradient(0, 170, 0, 50);
     gradientFill.addColorStop(0, "rgba(128, 182, 244, 0)");
-    gradientFill.addColorStop(1, hexToRGB("#2CA8FF", 0.6));
+    gradientFill.addColorStop(1, hexToRGB("#062e04", 0.6));
     return {
       labels: [
         "WELL AT MUSIRI- TAMIL NADU",
@@ -3565,11 +3460,11 @@ const dashboard24HoursPerformanceChartTN = {
       ],
       datasets: [
         {
-          label: "Mean Temprature",
+          label: "Major Crops",
           backgroundColor: gradientFill,
-          borderColor: "#2CA8FF",
+          borderColor: "#062e04",
           pointBorderColor: "#FFF",
-          pointBackgroundColor: "#2CA8FF",
+          pointBackgroundColor: "#062e04",
           pointBorderWidth: 2,
           pointHoverRadius: 4,
           pointHoverBorderWidth: 1,
@@ -3602,8 +3497,8 @@ const dashboard24HoursPerformanceChartTN = {
             28,
             27
           ]
-        },
-        {
+        }
+        /*{
           label: "pH",
           type: "line",
           borderColor: "#EC932F",
@@ -3686,7 +3581,7 @@ const dashboard24HoursPerformanceChartTN = {
             1,
             0.9
           ]
-        }
+        }*/
       ]
     };
   },
@@ -3747,7 +3642,7 @@ const dashboard24HoursPerformanceChartJK = {
     var ctx = canvas.getContext("2d");
     var gradientFill = ctx.createLinearGradient(0, 170, 0, 50);
     gradientFill.addColorStop(0, "rgba(128, 182, 244, 0)");
-    gradientFill.addColorStop(1, hexToRGB("#2CA8FF", 0.6));
+    gradientFill.addColorStop(1, hexToRGB("#062e04", 0.6));
     return {
       labels: [
         "WELL AT MUTHIALPET AREA(I)",
@@ -3766,11 +3661,11 @@ const dashboard24HoursPerformanceChartJK = {
       ],
       datasets: [
         {
-          label: "Mean Temprature",
+          label: "Major Crops",
           backgroundColor: gradientFill,
-          borderColor: "#2CA8FF",
+          borderColor: "#062e04",
           pointBorderColor: "#FFF",
-          pointBackgroundColor: "#2CA8FF",
+          pointBackgroundColor: "#062e04",
           pointBorderWidth: 2,
           pointHoverRadius: 4,
           pointHoverBorderWidth: 1,
@@ -3803,8 +3698,8 @@ const dashboard24HoursPerformanceChartJK = {
             28,
             27
           ]
-        },
-        {
+        }
+        /*{
           label: "pH",
           type: "line",
           borderColor: "#EC932F",
@@ -3887,7 +3782,7 @@ const dashboard24HoursPerformanceChartJK = {
             1,
             0.9
           ]
-        }
+        }*/
       ]
     };
   },
@@ -3944,16 +3839,16 @@ const dashboard24HoursPerformanceChartJharkhand = {
     var ctx = canvas.getContext("2d");
     var gradientFill = ctx.createLinearGradient(0, 170, 0, 50);
     gradientFill.addColorStop(0, "rgba(128, 182, 244, 0)");
-    gradientFill.addColorStop(1, hexToRGB("#2CA8FF", 0.6));
+    gradientFill.addColorStop(1, hexToRGB("#062e04", 0.6));
     return {
       labels: ["WELL AT SOMNATH INDL ESTATE"],
       datasets: [
         {
-          label: "Mean Temprature",
+          label: "Major Crops",
           backgroundColor: gradientFill,
-          borderColor: "#2CA8FF",
+          borderColor: "#062e04",
           pointBorderColor: "#FFF",
-          pointBackgroundColor: "#2CA8FF",
+          pointBackgroundColor: "#062e04",
           pointBorderWidth: 2,
           pointHoverRadius: 4,
           pointHoverBorderWidth: 1,
@@ -3962,8 +3857,8 @@ const dashboard24HoursPerformanceChartJharkhand = {
           borderWidth: 1,
 
           data: [25]
-        },
-        {
+        }
+        /*{
           label: "pH",
           type: "line",
           borderColor: "#EC932F",
@@ -3998,7 +3893,7 @@ const dashboard24HoursPerformanceChartJharkhand = {
           borderWidth: 1,
 
           data: [0.5]
-        }
+        }*/
       ]
     };
   },
@@ -4055,16 +3950,16 @@ const dashboard24HoursPerformanceChartNagaland = {
     var ctx = canvas.getContext("2d");
     var gradientFill = ctx.createLinearGradient(0, 170, 0, 50);
     gradientFill.addColorStop(0, "rgba(128, 182, 244, 0)");
-    gradientFill.addColorStop(1, hexToRGB("#2CA8FF", 0.6));
+    gradientFill.addColorStop(1, hexToRGB("#062e04", 0.6));
     return {
       labels: ["WELL AT SOMNATH INDL ESTATE"],
       datasets: [
         {
-          label: "Mean Temprature",
+          label: "Major Crops",
           backgroundColor: gradientFill,
-          borderColor: "#2CA8FF",
+          borderColor: "#062e04",
           pointBorderColor: "#FFF",
-          pointBackgroundColor: "#2CA8FF",
+          pointBackgroundColor: "#062e04",
           pointBorderWidth: 2,
           pointHoverRadius: 4,
           pointHoverBorderWidth: 1,
@@ -4073,8 +3968,8 @@ const dashboard24HoursPerformanceChartNagaland = {
           borderWidth: 1,
 
           data: [25]
-        },
-        {
+        }
+        /*{
           label: "pH",
           type: "line",
           borderColor: "#EC932F",
@@ -4109,7 +4004,7 @@ const dashboard24HoursPerformanceChartNagaland = {
           borderWidth: 1,
 
           data: [0.5]
-        }
+        }*/
       ]
     };
   },
@@ -4167,7 +4062,7 @@ const dashboard24HoursPerformanceChartMaharastra = {
     var ctx = canvas.getContext("2d");
     var gradientFill = ctx.createLinearGradient(0, 170, 0, 50);
     gradientFill.addColorStop(0, "rgba(128, 182, 244, 0)");
-    gradientFill.addColorStop(1, hexToRGB("#2CA8FF", 0.6));
+    gradientFill.addColorStop(1, hexToRGB("#062e04", 0.6));
     return {
       labels: [
         "INDL.ESTATE TARAPUR",
@@ -4198,11 +4093,11 @@ const dashboard24HoursPerformanceChartMaharastra = {
       ],
       datasets: [
         {
-          label: "Mean Temprature",
+          label: "Major Crops",
           backgroundColor: gradientFill,
-          borderColor: "#2CA8FF",
+          borderColor: "#062e04",
           pointBorderColor: "#FFF",
-          pointBackgroundColor: "#2CA8FF",
+          pointBackgroundColor: "#062e04",
           pointBorderWidth: 2,
           pointHoverRadius: 4,
           pointHoverBorderWidth: 1,
@@ -4235,8 +4130,8 @@ const dashboard24HoursPerformanceChartMaharastra = {
             28,
             27
           ]
-        },
-        {
+        }
+        /*{
           label: "pH",
           type: "line",
           borderColor: "#EC932F",
@@ -4319,7 +4214,7 @@ const dashboard24HoursPerformanceChartMaharastra = {
             1,
             0.9
           ]
-        }
+        }*/
       ]
     };
   },
@@ -4380,7 +4275,7 @@ const dashboard24HoursPerformanceChartGujarat = {
     var ctx = canvas.getContext("2d");
     var gradientFill = ctx.createLinearGradient(0, 170, 0, 50);
     gradientFill.addColorStop(0, "rgba(128, 182, 244, 0)");
-    gradientFill.addColorStop(1, hexToRGB("#2CA8FF", 0.6));
+    gradientFill.addColorStop(1, hexToRGB("#062e04", 0.6));
     return {
       labels: [
         "WELL AT AHMEDABAD",
@@ -4417,11 +4312,11 @@ const dashboard24HoursPerformanceChartGujarat = {
       ],
       datasets: [
         {
-          label: "Mean Temprature",
+          label: "Major Crops",
           backgroundColor: gradientFill,
-          borderColor: "#2CA8FF",
+          borderColor: "#062e04",
           pointBorderColor: "#FFF",
-          pointBackgroundColor: "#2CA8FF",
+          pointBackgroundColor: "#062e04",
           pointBorderWidth: 2,
           pointHoverRadius: 4,
           pointHoverBorderWidth: 1,
@@ -4454,8 +4349,8 @@ const dashboard24HoursPerformanceChartGujarat = {
             28,
             27
           ]
-        },
-        {
+        }
+        /*{
           label: "pH",
           type: "line",
           borderColor: "#EC932F",
@@ -4538,7 +4433,7 @@ const dashboard24HoursPerformanceChartGujarat = {
             1,
             0.9
           ]
-        }
+        }*/
       ]
     };
   },
@@ -4599,7 +4494,7 @@ const dashboard24HoursPerformanceChartUttrakhand = {
     var ctx = canvas.getContext("2d");
     var gradientFill = ctx.createLinearGradient(0, 170, 0, 50);
     gradientFill.addColorStop(0, "rgba(128, 182, 244, 0)");
-    gradientFill.addColorStop(1, hexToRGB("#2CA8FF", 0.6));
+    gradientFill.addColorStop(1, hexToRGB("#062e04", 0.6));
     return {
       labels: [
         "WELL AT AHMEDABAD",
@@ -4636,11 +4531,11 @@ const dashboard24HoursPerformanceChartUttrakhand = {
       ],
       datasets: [
         {
-          label: "Mean Temprature",
+          label: "Major Crops",
           backgroundColor: gradientFill,
-          borderColor: "#2CA8FF",
+          borderColor: "#062e04",
           pointBorderColor: "#FFF",
-          pointBackgroundColor: "#2CA8FF",
+          pointBackgroundColor: "#062e04",
           pointBorderWidth: 2,
           pointHoverRadius: 4,
           pointHoverBorderWidth: 1,
@@ -4673,8 +4568,8 @@ const dashboard24HoursPerformanceChartUttrakhand = {
             28,
             27
           ]
-        },
-        {
+        }
+        /*{
           label: "pH",
           type: "line",
           borderColor: "#EC932F",
@@ -4757,7 +4652,7 @@ const dashboard24HoursPerformanceChartUttrakhand = {
             1,
             0.9
           ]
-        }
+        }*/
       ]
     };
   },
@@ -4818,7 +4713,7 @@ const dashboard24HoursPerformanceChartHaryana = {
     var ctx = canvas.getContext("2d");
     var gradientFill = ctx.createLinearGradient(0, 170, 0, 50);
     gradientFill.addColorStop(0, "rgba(128, 182, 244, 0)");
-    gradientFill.addColorStop(1, hexToRGB("#2CA8FF", 0.6));
+    gradientFill.addColorStop(1, hexToRGB("#062e04", 0.6));
     return {
       labels: [
         "WELL AT AHMEDABAD",
@@ -4855,11 +4750,11 @@ const dashboard24HoursPerformanceChartHaryana = {
       ],
       datasets: [
         {
-          label: "Mean Temprature",
+          label: "Major Crops",
           backgroundColor: gradientFill,
-          borderColor: "#2CA8FF",
+          borderColor: "#062e04",
           pointBorderColor: "#FFF",
-          pointBackgroundColor: "#2CA8FF",
+          pointBackgroundColor: "#062e04",
           pointBorderWidth: 2,
           pointHoverRadius: 4,
           pointHoverBorderWidth: 1,
@@ -4892,8 +4787,8 @@ const dashboard24HoursPerformanceChartHaryana = {
             28,
             27
           ]
-        },
-        {
+        }
+        /*{
           label: "pH",
           type: "line",
           borderColor: "#EC932F",
@@ -4976,7 +4871,7 @@ const dashboard24HoursPerformanceChartHaryana = {
             1,
             0.9
           ]
-        }
+        }*/
       ]
     };
   },
@@ -5037,7 +4932,7 @@ const dashboard24HoursPerformanceChartArunachal = {
     var ctx = canvas.getContext("2d");
     var gradientFill = ctx.createLinearGradient(0, 170, 0, 50);
     gradientFill.addColorStop(0, "rgba(128, 182, 244, 0)");
-    gradientFill.addColorStop(1, hexToRGB("#2CA8FF", 0.6));
+    gradientFill.addColorStop(1, hexToRGB("#062e04", 0.6));
     return {
       labels: [
         "WELL AT AHMEDABAD",
@@ -5074,11 +4969,11 @@ const dashboard24HoursPerformanceChartArunachal = {
       ],
       datasets: [
         {
-          label: "Mean Temprature",
+          label: "Major Crops",
           backgroundColor: gradientFill,
-          borderColor: "#2CA8FF",
+          borderColor: "#062e04",
           pointBorderColor: "#FFF",
-          pointBackgroundColor: "#2CA8FF",
+          pointBackgroundColor: "#062e04",
           pointBorderWidth: 2,
           pointHoverRadius: 4,
           pointHoverBorderWidth: 1,
@@ -5111,8 +5006,8 @@ const dashboard24HoursPerformanceChartArunachal = {
             28,
             27
           ]
-        },
-        {
+        }
+        /*{
           label: "pH",
           type: "line",
           borderColor: "#EC932F",
@@ -5195,7 +5090,7 @@ const dashboard24HoursPerformanceChartArunachal = {
             1,
             0.9
           ]
-        }
+        }*/
       ]
     };
   },
@@ -5256,7 +5151,7 @@ const dashboard24HoursPerformanceChartMeghalaya = {
     var ctx = canvas.getContext("2d");
     var gradientFill = ctx.createLinearGradient(0, 170, 0, 50);
     gradientFill.addColorStop(0, "rgba(128, 182, 244, 0)");
-    gradientFill.addColorStop(1, hexToRGB("#2CA8FF", 0.6));
+    gradientFill.addColorStop(1, hexToRGB("#062e04", 0.6));
     return {
       labels: [
         "WELL AT AHMEDABAD",
@@ -5293,11 +5188,11 @@ const dashboard24HoursPerformanceChartMeghalaya = {
       ],
       datasets: [
         {
-          label: "Mean Temprature",
+          label: "Major Crops",
           backgroundColor: gradientFill,
-          borderColor: "#2CA8FF",
+          borderColor: "#062e04",
           pointBorderColor: "#FFF",
-          pointBackgroundColor: "#2CA8FF",
+          pointBackgroundColor: "#062e04",
           pointBorderWidth: 2,
           pointHoverRadius: 4,
           pointHoverBorderWidth: 1,
@@ -5330,8 +5225,8 @@ const dashboard24HoursPerformanceChartMeghalaya = {
             28,
             27
           ]
-        },
-        {
+        }
+        /*{
           label: "pH",
           type: "line",
           borderColor: "#EC932F",
@@ -5414,7 +5309,7 @@ const dashboard24HoursPerformanceChartMeghalaya = {
             1,
             0.9
           ]
-        }
+        }*/
       ]
     };
   },
@@ -5475,7 +5370,7 @@ const dashboard24HoursPerformanceChartRajasthan = {
     var ctx = canvas.getContext("2d");
     var gradientFill = ctx.createLinearGradient(0, 170, 0, 50);
     gradientFill.addColorStop(0, "rgba(128, 182, 244, 0)");
-    gradientFill.addColorStop(1, hexToRGB("#2CA8FF", 0.6));
+    gradientFill.addColorStop(1, hexToRGB("#062e04", 0.6));
     return {
       labels: [
         "WELL OF LOOMJI- CHAUDHARY- NEARNAYAGAON- PALI- (UPSTREAM 1 KM.FROM PALI TOWN)",
@@ -5518,11 +5413,11 @@ const dashboard24HoursPerformanceChartRajasthan = {
       ],
       datasets: [
         {
-          label: "Mean Temprature",
+          label: "Major Crops",
           backgroundColor: gradientFill,
-          borderColor: "#2CA8FF",
+          borderColor: "#062e04",
           pointBorderColor: "#FFF",
-          pointBackgroundColor: "#2CA8FF",
+          pointBackgroundColor: "#062e04",
           pointBorderWidth: 2,
           pointHoverRadius: 4,
           pointHoverBorderWidth: 1,
@@ -5555,8 +5450,8 @@ const dashboard24HoursPerformanceChartRajasthan = {
             28,
             27
           ]
-        },
-        {
+        }
+        /*{
           label: "pH",
           type: "line",
           borderColor: "#EC932F",
@@ -5639,7 +5534,7 @@ const dashboard24HoursPerformanceChartRajasthan = {
             1,
             0.9
           ]
-        }
+        }*/
       ]
     };
   },
@@ -5700,42 +5595,26 @@ const dashboard24HoursPerformanceChartUP = {
     var ctx = canvas.getContext("2d");
     var gradientFill = ctx.createLinearGradient(0, 170, 0, 50);
     gradientFill.addColorStop(0, "rgba(128, 182, 244, 0)");
-    gradientFill.addColorStop(1, hexToRGB("#2CA8FF", 0.6));
+    gradientFill.addColorStop(1, hexToRGB("#062e04", 0.6));
     return {
       labels: [
-        "GW QUALITY STATION SARDARNAGAR",
-        "GW QUALITY STATION CAPTANGANJ",
-        "SITE 1- INDUSTRIAL AREA NEAR M/SWOODWARM CHEMICAL LTD.- UNNAO",
-        "SITE 2- INDUSTRIAL AREA NEAR M/SAMIN SONS- UNNAO-U.P",
-        "AT ROADWAYS BUS STATION- UNNAO",
-        "MAGAWARA INDUSTRIAL AREA NEARM/S JAMJAM TANNERS- UNNAO- U.P",
-        "CHINHAT INDUSTRIAL AREA IN LUCKNOW NEAR M/S INDIA PESTICIDES LUCKNOW",
-        "AISHBAGH INDUSTRIAL AREA AT LUCKNOW NEAR M/S EVEREADY INDUSTRIES LTD.",
-        "JAJMAU INDL AREA No.6 KANPUR",
-        "PANKI INDUSTRIAL AREA NEARINDUSTRY OF AMMONIA FERTIZER KANPUR- U.P",
-        "NAGAR PALIKA TUBE WELL-SULTANPUR- U.P",
-        "INDIA MARKA HAND PUMP IN SAROWNIBLOCK AT RAIBAREILLY",
-        "TUBE WELL AT MEERUT CITY",
-        "TUBE WELL AT BAGPAT CITY",
-        "TUBE WELL IN INDUSTRIAL AREA ATGAJRAULA-MORADABAD- U.P",
-        "SAHIBABAD INDUSTRIAL AREA-GHAZIABAD- U.P",
-        "MEERUT ROAD INDUSTRIAL AREAGHAZIABAD- U.P",
-        "HAPUR ROAD INDUSTRIAL AREAGHAZIABAD- U.P",
-        "PILKHUA INDUSTRIAL AREAGHAZIABAD- U.P",
-        "GOPIGANJ INDUSTRIAL AREABHADOHI- VARANASI- U.P",
-        "MIRZAPUR INDUSTRIAL AREA- U.P",
-        "GROUND AROUND STPDINAPUR-VARANASI- U.P",
-        "IFFCO- PHOOLPUR-ALLAHABAD- U.P",
-        "M/S KANORIA CHEMICAL SONBHADRA-U.P",
-        "TUBE WELL-SINGRAULI INDL AREA- U.P"
+        "RICE",
+        "WHEAT",
+        "SUGARCANE",
+        "CHICKPEA",
+        "PIGEON PEA",
+        "LENTIL",
+        "FIELD PEA",
+        "MUSTARD",
+        "POTATO"
       ],
       datasets: [
         {
-          label: "Mean Temprature",
+          label: "Major Crops",
           backgroundColor: gradientFill,
-          borderColor: "#2CA8FF",
+          borderColor: "#062e04",
           pointBorderColor: "#FFF",
-          pointBackgroundColor: "#2CA8FF",
+          pointBackgroundColor: "#062e04",
           pointBorderWidth: 2,
           pointHoverRadius: 4,
           pointHoverBorderWidth: 1,
@@ -5744,13 +5623,6 @@ const dashboard24HoursPerformanceChartUP = {
           borderWidth: 1,
 
           data: [
-            25,
-            24,
-            30,
-            22,
-            23,
-            23,
-            24,
             24,
             22,
             21,
@@ -5759,17 +5631,10 @@ const dashboard24HoursPerformanceChartUP = {
             30,
             27,
             31,
-            25,
-            25,
-            25,
-            23,
-            28,
-            31,
-            28,
-            27
+            25
           ]
-        },
-        {
+        }
+        /*{
           label: "pH",
           type: "line",
           borderColor: "#EC932F",
@@ -5852,7 +5717,7 @@ const dashboard24HoursPerformanceChartUP = {
             1,
             0.9
           ]
-        }
+        }*/
       ]
     };
   },
@@ -5913,7 +5778,7 @@ const dashboard24HoursPerformanceChartOrrisa = {
     var ctx = canvas.getContext("2d");
     var gradientFill = ctx.createLinearGradient(0, 170, 0, 50);
     gradientFill.addColorStop(0, "rgba(128, 182, 244, 0)");
-    gradientFill.addColorStop(1, hexToRGB("#2CA8FF", 0.6));
+    gradientFill.addColorStop(1, hexToRGB("#062e04", 0.6));
     return {
       labels: [
         "JAGATPUR INDUSTRIAL AREA-CUTTACK ORISSA",
@@ -5934,11 +5799,11 @@ const dashboard24HoursPerformanceChartOrrisa = {
       ],
       datasets: [
         {
-          label: "Mean Temprature",
+          label: "Major Crops",
           backgroundColor: gradientFill,
-          borderColor: "#2CA8FF",
+          borderColor: "#062e04",
           pointBorderColor: "#FFF",
-          pointBackgroundColor: "#2CA8FF",
+          pointBackgroundColor: "#062e04",
           pointBorderWidth: 2,
           pointHoverRadius: 4,
           pointHoverBorderWidth: 1,
@@ -6013,8 +5878,8 @@ const dashboard24HoursPerformanceChartOrrisa = {
             7.8,
             7.5
           ]
-        },
-        {
+        }
+        /*{
           label: "B.O.D",
           type: "line",
           borderColor: "#800000",
@@ -6055,7 +5920,7 @@ const dashboard24HoursPerformanceChartOrrisa = {
             1,
             0.9
           ]
-        }
+        }*/
       ]
     };
   },
@@ -6116,7 +5981,7 @@ const dashboard24HoursPerformanceChartBihar = {
     var ctx = canvas.getContext("2d");
     var gradientFill = ctx.createLinearGradient(0, 170, 0, 50);
     gradientFill.addColorStop(0, "rgba(128, 182, 244, 0)");
-    gradientFill.addColorStop(1, hexToRGB("#2CA8FF", 0.6));
+    gradientFill.addColorStop(1, hexToRGB("#062e04", 0.6));
     return {
       labels: [
         "PATNA",
@@ -6142,11 +6007,11 @@ const dashboard24HoursPerformanceChartBihar = {
       ],
       datasets: [
         {
-          label: "Mean Temprature",
+          label: "Major Crops",
           backgroundColor: gradientFill,
-          borderColor: "#2CA8FF",
+          borderColor: "#062e04",
           pointBorderColor: "#FFF",
-          pointBackgroundColor: "#2CA8FF",
+          pointBackgroundColor: "#062e04",
           pointBorderWidth: 2,
           pointHoverRadius: 4,
           pointHoverBorderWidth: 1,
@@ -6176,8 +6041,8 @@ const dashboard24HoursPerformanceChartBihar = {
             27,
             26
           ]
-        },
-        {
+        }
+        /*{
           label: "pH",
           type: "line",
           borderColor: "#EC932F",
@@ -6255,7 +6120,7 @@ const dashboard24HoursPerformanceChartBihar = {
             8.2,
             7.7
           ]
-        }
+        }*/
       ]
     };
   },
@@ -6320,7 +6185,7 @@ const dashboard24HoursPerformanceChartWB = {
     var ctx = canvas.getContext("2d");
     var gradientFill = ctx.createLinearGradient(0, 170, 0, 50);
     gradientFill.addColorStop(0, "rgba(128, 182, 244, 0)");
-    gradientFill.addColorStop(1, hexToRGB("#2CA8FF", 0.6));
+    gradientFill.addColorStop(1, hexToRGB("#062e04", 0.6));
     return {
       labels: [
         "MINE PIT WATER ASSANSOL- WESTBENGAL",
@@ -6355,11 +6220,11 @@ const dashboard24HoursPerformanceChartWB = {
       ],
       datasets: [
         {
-          label: "Mean Temprature",
+          label: "Major Crops",
           backgroundColor: gradientFill,
-          borderColor: "#2CA8FF",
+          borderColor: "#062e04",
           pointBorderColor: "#FFF",
-          pointBackgroundColor: "#2CA8FF",
+          pointBackgroundColor: "#062e04",
           pointBorderWidth: 2,
           pointHoverRadius: 4,
           pointHoverBorderWidth: 1,
@@ -6398,8 +6263,8 @@ const dashboard24HoursPerformanceChartWB = {
             30,
             29
           ]
-        },
-        {
+        }
+        /*{
           label: "pH",
           type: "line",
           borderColor: "#EC932F",
@@ -6495,7 +6360,7 @@ const dashboard24HoursPerformanceChartWB = {
             0.9,
             0.9
           ]
-        }
+        }*/
       ]
     };
   },

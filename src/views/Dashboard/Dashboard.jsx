@@ -1047,7 +1047,10 @@ function Raagi() {
           marginLeft: "0px",
           width: "98.7%",
           height: "1020%",
-          backgroundImage: `url(${image})`
+          backgroundImage: `url(${image})`,
+          backgroundSize: 'cover',
+          backgroundRepeat  : 'no-repeat',
+          overflow: 'hidden',
         }}
       >
         <CardHeader>
@@ -1083,7 +1086,10 @@ function Rice() {
           marginLeft: "0px",
           width: "98.7%",
           height: "1020%",
-          backgroundImage: `url(${image})`
+          backgroundImage: `url(${image})`,
+          backgroundSize: 'cover',
+          backgroundRepeat  : 'no-repeat',
+          overflow: 'hidden'
         }}
       >
         <CardHeader>
@@ -1123,7 +1129,10 @@ function Wheat() {
           marginLeft: "0px",
           width: "98.7%",
           height: "1020%",
-          backgroundImage: `url(${image})`
+          backgroundImage: `url(${image})`,
+          backgroundSize: 'cover',
+          backgroundRepeat  : 'no-repeat',
+          overflow: 'hidden'
         }}
       >
         <CardHeader>
@@ -1152,7 +1161,6 @@ function Maize() {
         height: "10%"
       }}
     >
-    <section style={ sectionStyle }>
       <Card
         className="card-chart"
         style={{
@@ -1160,7 +1168,10 @@ function Maize() {
           marginLeft: "0px",
           width: "98.7%",
           height: "1020%",
-          backgroundImage: `url(${image})`
+          backgroundImage: `url(${image})`,
+          backgroundSize: 'cover',
+          backgroundRepeat  : 'no-repeat',
+          overflow: 'hidden'
         }}
       >
         <CardHeader>
@@ -1175,7 +1186,6 @@ function Maize() {
           <h5><pre>Uttar Pradesh    59%</pre></h5>
         </CardBody>
       </Card>
-      </section>
     </div>
   );
 }
@@ -1516,6 +1526,9 @@ class Dashboards extends React.Component {
         <div className="content" style={{ marginTop: "50px" }}>
           <Col>
           <Row style={{ marginLeft: "20px" }}>
+             <div style={{align:"center"}}>
+                <h3 style={{align:"center"},{marginLeft:"250px"}}>Farmers that can be Contacted</h3>
+             </div>
              <div style={{ marginTop: "20px" },{width: "100%"}}>
                 <Tabi style={{ marginLeft: "-10px" }} n={this.state.tempdatas}/>
              </div>
